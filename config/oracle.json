@@ -1,0 +1,198 @@
+{
+  "windowDays": 90,
+  "note": "Thresholds are sized from 90 days of observed noise (see docs/ORACLE.md); every value here is published with the record.",
+  "ratioSampleDays": 2,
+  "deviationBandsPct": [
+    1,
+    2,
+    5
+  ],
+  "episodeBandsPct": [
+    2,
+    5
+  ],
+  "dia": {
+    "contract": "SP1G48FZ4Y7JY8G2Z0N51QTCYGBQ6F4J43J77BQC0.dia-oracle",
+    "heartbeatS": 900,
+    "silenceS": 3600,
+    "keys": {
+      "BTC/USD": {
+        "ref": "BTC",
+        "frozen": {
+          "warnN": 2,
+          "critN": 4,
+          "warnMovePct": 0.3,
+          "critMovePct": 1
+        }
+      },
+      "STX/USD": {
+        "ref": "STX",
+        "frozen": {
+          "warnN": 2,
+          "critN": 4,
+          "warnMovePct": 0.3,
+          "critMovePct": 1
+        }
+      },
+      "sBTC/USD": {
+        "ref": "BTC",
+        "frozen": {
+          "warnN": 3,
+          "critN": 8,
+          "warnMovePct": 0.5,
+          "critMovePct": 2
+        }
+      },
+      "stSTX/USD": {
+        "ref": "STX*ratio",
+        "frozen": {
+          "warnN": 3,
+          "critN": 8,
+          "warnMovePct": 0.5,
+          "critMovePct": 2
+        }
+      },
+      "USDh/USD": {
+        "ref": "par",
+        "frozen": null
+      }
+    },
+    "consumers": {
+      "USDh/USD": "Zest v2 USDH debt (max-staleness 86,400 s) and zUSDH collateral (max-staleness 120 s)",
+      "BTC/USD": "no in-scope lending market (third parties)",
+      "STX/USD": "no in-scope lending market (legacy Zest v1 oracles only)",
+      "sBTC/USD": "no in-scope lending market",
+      "stSTX/USD": "no in-scope lending market"
+    }
+  },
+  "arkadiko": {
+    "contract": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-oracle-v2-3",
+    "fns": [
+      "update-price-multi",
+      "update-price-owner"
+    ],
+    "tokens": {
+      "1": {
+        "name": "STX",
+        "ref": "STX",
+        "frozen": {
+          "warnN": 3,
+          "critN": 4,
+          "warnMovePct": 1,
+          "critMovePct": 2
+        }
+      },
+      "2": {
+        "name": "BTC",
+        "ref": "BTC",
+        "frozen": {
+          "warnN": 3,
+          "critN": 4,
+          "warnMovePct": 1,
+          "critMovePct": 2
+        }
+      },
+      "8": {
+        "name": "stSTX",
+        "ref": "STX*ratio",
+        "frozen": {
+          "warnN": 3,
+          "critN": 4,
+          "warnMovePct": 1,
+          "critMovePct": 2
+        }
+      }
+    },
+    "silence": {
+      "infoS": 7200,
+      "warnS": 12600,
+      "critS": 21600
+    },
+    "consumers": "Arkadiko v2 vaults (no staleness check): mints, redemptions and liquidations use the stored price"
+  },
+  "lazer": {
+    "note": "Only payload ages and tx outcomes are published. Lazer price values are not published (licence question open).",
+    "consumers": [
+      {
+        "market": "zest-v2",
+        "contract": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v0-7-market",
+        "limitS": 120,
+        "strict": false,
+        "oracleErrors": {
+          "(err u400015)": "ERR-ORACLE-MULTI (stale, monotonic race, confidence)",
+          "(err u400022)": "payload failed verification (> 7,200 s or signature)",
+          "(err u400012)": "channel / publishers"
+        }
+      },
+      {
+        "market": "zest-v2",
+        "contract": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v0-8-market",
+        "limitS": 120,
+        "strict": false,
+        "oracleErrors": {
+          "(err u400015)": "ERR-ORACLE-MULTI (stale, monotonic race, confidence)",
+          "(err u400022)": "payload failed verification (> 7,200 s or signature)",
+          "(err u400012)": "channel / publishers"
+        }
+      },
+      {
+        "market": "zest-v1",
+        "contract": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.borrow-helper-v2-1-8",
+        "limitS": 360,
+        "strict": true,
+        "oracleErrors": {
+          "(err u6006)": "Lazer verify failed (incl. age >= 360 s)",
+          "(err u6001)": "monotonic / cache-order",
+          "(err u6003)": "confidence",
+          "(err u6002)": "feed missing"
+        }
+      },
+      {
+        "market": "granite-usdcx",
+        "contract": "SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.state-v1",
+        "limitS": 300,
+        "strict": false,
+        "oracleErrors": {
+          "(err u80002)": "ERR-PYTH-PRICE-STALE",
+          "(err u80004)": "confidence",
+          "(err u80008)": "feed missing",
+          "(err u1002)": "payload > 7,200 s"
+        }
+      },
+      {
+        "market": "granite-aeusdc",
+        "contract": "SP35E2BBMDT2Y1HB0NTK139YBGYV3PAPK3WA8BRNA.state-v1",
+        "limitS": 300,
+        "strict": false,
+        "oracleErrors": {
+          "(err u80002)": "ERR-PYTH-PRICE-STALE",
+          "(err u80004)": "confidence",
+          "(err u80008)": "feed missing",
+          "(err u1002)": "payload > 7,200 s"
+        }
+      }
+    ],
+    "burst": {
+      "gapS": 900,
+      "minReverts": 3
+    }
+  },
+  "zestV2": {
+    "assets": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v0-assets",
+    "zusdhAssetId": 9,
+    "usdhAssetId": 8,
+    "vaultUsdh": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v0-vault-usdh"
+  },
+  "ststxRatioSources": [
+    {
+      "contract": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.data-stx-v2",
+      "fn": "get-stx-per-ststx"
+    },
+    {
+      "contract": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.data-core-v3",
+      "fn": "get-stx-per-ststx",
+      "reserve": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.reserve-v1"
+    }
+  ],
+  "episodeMergeMinutes": 30
+}
