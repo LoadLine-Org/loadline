@@ -1,0 +1,1092 @@
+{
+ "schema": 1,
+ "generatedAt": "2026-09-23T17:00:24.643Z",
+ "window": {
+  "from": "2026-06-25T16:55:42Z",
+  "to": "2026-09-23T16:55:42Z",
+  "days": 90,
+  "endBlock": {
+   "height": 9049335,
+   "indexBlockHash": "c9b87db03803386560b4cbfc26709fd67098af7129ae4fa7c1ff8fbd27703043",
+   "hash": "aa2388d9e2ece7da04fd68e8a02a0fbab2ca2235e613226aa33bfff3252bee08",
+   "blockTime": 1790182542,
+   "burnHeight": 968294,
+   "burnTime": 1790181060,
+   "canonical": true
+  }
+ },
+ "method": {
+  "pushes": "Every successful DIA set-multiple-values / set-value and Arkadiko update-price-multi / update-price-owner in the window, decoded from tx arguments. The value in force at the window start is read on-chain at the first block of the window.",
+  "reference": "Per-minute median of venues that traded in that minute, carrying a venue's last trade forward up to 2 min; BTC from coinbase:BTC-USD, binance:BTCUSDT, bybit:BTCUSDT (min 2); STX from binance-perp:STXUSDT, binance:STXUSDT, bybit:STXUSDT, kucoin:STX-USDT (min 2); USDT quotes x Coinbase hourly USDT-USD. stSTX reference = STX x on-chain data-stx-v2 ratio, sampled every 2 days and interpolated. Stablecoin keys against $1 par.",
+  "asRead": "Deviation and age are evaluated every minute for the value in force (last write at or before the minute).",
+  "atPublish": "DIA values are compared with the reference at the feed's own timestamp; Arkadiko values (no feed timestamp) at the block time.",
+  "frozen": "A run of identical values over N or more writes with advancing timestamps while the reference moved by at least the configured percentage (config/oracle.json).",
+  "silence": "A gap between writes of a feed longer than 3600 s (DIA) or 12600 s (Arkadiko).",
+  "deviation": "Minutes with |value/reference - 1| above 2% / 5%; an episode lasts at least 2 minutes and closes only after 30 consecutive minutes back inside the band.",
+  "lazer": "Only payload ages and tx outcomes are published. Lazer price values are not published (licence question open). Age = Stacks block time - payload timestamp. A revert is 'oracle-revert:stale' when its result is one of the consumer's oracle error codes and the payload age exceeds the consumer's limit, 'oracle-revert:other' for oracle codes within the limit (monotonic races, confidence, signature).",
+  "thresholds": {
+   "windowDays": 90,
+   "note": "Thresholds are sized from 90 days of observed noise (see docs/ORACLE.md); every value here is published with the record.",
+   "ratioSampleDays": 2,
+   "deviationBandsPct": [
+    1,
+    2,
+    5
+   ],
+   "episodeBandsPct": [
+    2,
+    5
+   ],
+   "dia": {
+    "contract": "SP1G48FZ4Y7JY8G2Z0N51QTCYGBQ6F4J43J77BQC0.dia-oracle",
+    "heartbeatS": 900,
+    "silenceS": 3600,
+    "keys": {
+     "BTC/USD": {
+      "ref": "BTC",
+      "frozen": {
+       "warnN": 2,
+       "critN": 4,
+       "warnMovePct": 0.3,
+       "critMovePct": 1
+      }
+     },
+     "STX/USD": {
+      "ref": "STX",
+      "frozen": {
+       "warnN": 2,
+       "critN": 4,
+       "warnMovePct": 0.3,
+       "critMovePct": 1
+      }
+     },
+     "sBTC/USD": {
+      "ref": "BTC",
+      "frozen": {
+       "warnN": 3,
+       "critN": 8,
+       "warnMovePct": 0.5,
+       "critMovePct": 2
+      }
+     },
+     "stSTX/USD": {
+      "ref": "STX*ratio",
+      "frozen": {
+       "warnN": 3,
+       "critN": 8,
+       "warnMovePct": 0.5,
+       "critMovePct": 2
+      }
+     },
+     "USDh/USD": {
+      "ref": "par",
+      "frozen": null
+     }
+    },
+    "consumers": {
+     "USDh/USD": "Zest v2 USDH debt (max-staleness 86,400 s) and zUSDH collateral (max-staleness 120 s)",
+     "BTC/USD": "no in-scope lending market (third parties)",
+     "STX/USD": "no in-scope lending market (legacy Zest v1 oracles only)",
+     "sBTC/USD": "no in-scope lending market",
+     "stSTX/USD": "no in-scope lending market"
+    }
+   },
+   "arkadiko": {
+    "contract": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-oracle-v2-3",
+    "fns": [
+     "update-price-multi",
+     "update-price-owner"
+    ],
+    "tokens": {
+     "1": {
+      "name": "STX",
+      "ref": "STX",
+      "frozen": {
+       "warnN": 3,
+       "critN": 4,
+       "warnMovePct": 1,
+       "critMovePct": 2
+      }
+     },
+     "2": {
+      "name": "BTC",
+      "ref": "BTC",
+      "frozen": {
+       "warnN": 3,
+       "critN": 4,
+       "warnMovePct": 1,
+       "critMovePct": 2
+      }
+     },
+     "8": {
+      "name": "stSTX",
+      "ref": "STX*ratio",
+      "frozen": {
+       "warnN": 3,
+       "critN": 4,
+       "warnMovePct": 1,
+       "critMovePct": 2
+      }
+     }
+    },
+    "silence": {
+     "infoS": 7200,
+     "warnS": 12600,
+     "critS": 21600
+    },
+    "consumers": "Arkadiko v2 vaults (no staleness check): mints, redemptions and liquidations use the stored price"
+   },
+   "lazer": {
+    "note": "Only payload ages and tx outcomes are published. Lazer price values are not published (licence question open).",
+    "consumers": [
+     {
+      "market": "zest-v2",
+      "contract": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v0-7-market",
+      "limitS": 120,
+      "strict": false,
+      "oracleErrors": {
+       "(err u400015)": "ERR-ORACLE-MULTI (stale, monotonic race, confidence)",
+       "(err u400022)": "payload failed verification (> 7,200 s or signature)",
+       "(err u400012)": "channel / publishers"
+      }
+     },
+     {
+      "market": "zest-v2",
+      "contract": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v0-8-market",
+      "limitS": 120,
+      "strict": false,
+      "oracleErrors": {
+       "(err u400015)": "ERR-ORACLE-MULTI (stale, monotonic race, confidence)",
+       "(err u400022)": "payload failed verification (> 7,200 s or signature)",
+       "(err u400012)": "channel / publishers"
+      }
+     },
+     {
+      "market": "zest-v1",
+      "contract": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.borrow-helper-v2-1-8",
+      "limitS": 360,
+      "strict": true,
+      "oracleErrors": {
+       "(err u6006)": "Lazer verify failed (incl. age >= 360 s)",
+       "(err u6001)": "monotonic / cache-order",
+       "(err u6003)": "confidence",
+       "(err u6002)": "feed missing"
+      }
+     },
+     {
+      "market": "granite-usdcx",
+      "contract": "SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.state-v1",
+      "limitS": 300,
+      "strict": false,
+      "oracleErrors": {
+       "(err u80002)": "ERR-PYTH-PRICE-STALE",
+       "(err u80004)": "confidence",
+       "(err u80008)": "feed missing",
+       "(err u1002)": "payload > 7,200 s"
+      }
+     },
+     {
+      "market": "granite-aeusdc",
+      "contract": "SP35E2BBMDT2Y1HB0NTK139YBGYV3PAPK3WA8BRNA.state-v1",
+      "limitS": 300,
+      "strict": false,
+      "oracleErrors": {
+       "(err u80002)": "ERR-PYTH-PRICE-STALE",
+       "(err u80004)": "confidence",
+       "(err u80008)": "feed missing",
+       "(err u1002)": "payload > 7,200 s"
+      }
+     }
+    ],
+    "burst": {
+     "gapS": 900,
+     "minReverts": 3
+    }
+   },
+   "zestV2": {
+    "assets": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v0-assets",
+    "zusdhAssetId": 9,
+    "usdhAssetId": 8,
+    "vaultUsdh": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v0-vault-usdh"
+   },
+   "ststxRatioSources": [
+    {
+     "contract": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.data-stx-v2",
+     "fn": "get-stx-per-ststx"
+    },
+    {
+     "contract": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.data-core-v3",
+     "fn": "get-stx-per-ststx",
+     "reserve": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.reserve-v1"
+    }
+   ],
+   "episodeMergeMinutes": 30
+  }
+ },
+ "provenance": {
+  "diaTxs": 9742,
+  "arkadikoTxs": 5571,
+  "ststxRatioSamples": [
+   {
+    "time": "2026-06-25T17:04:22Z",
+    "ratio": 1.177102,
+    "source": "data-core-v3"
+   },
+   {
+    "time": "2026-06-27T17:04:33Z",
+    "ratio": 1.177324,
+    "source": "data-core-v3"
+   },
+   {
+    "time": "2026-06-29T16:58:12Z",
+    "ratio": 1.177576,
+    "source": "data-core-v3"
+   },
+   {
+    "time": "2026-07-01T17:03:27Z",
+    "ratio": 1.177793,
+    "source": "data-core-v3"
+   },
+   {
+    "time": "2026-07-03T16:57:56Z",
+    "ratio": 1.17801,
+    "source": "data-core-v3"
+   },
+   {
+    "time": "2026-07-05T17:02:50Z",
+    "ratio": 1.178225,
+    "source": "data-core-v3"
+   },
+   {
+    "time": "2026-07-07T17:03:07Z",
+    "ratio": 1.17844,
+    "source": "data-core-v3"
+   },
+   {
+    "time": "2026-07-09T16:56:02Z",
+    "ratio": 1.178655,
+    "source": "data-core-v3"
+   },
+   {
+    "time": "2026-07-11T17:04:25Z",
+    "ratio": 1.178816,
+    "source": "data-core-v3"
+   },
+   {
+    "time": "2026-07-13T17:01:06Z",
+    "ratio": 1.179085,
+    "source": "data-core-v3"
+   },
+   {
+    "time": "2026-07-15T17:05:54Z",
+    "ratio": 1.179313,
+    "source": "data-core-v3"
+   },
+   {
+    "time": "2026-07-17T17:00:25Z",
+    "ratio": 1.179498,
+    "source": "data-core-v3"
+   },
+   {
+    "time": "2026-07-19T17:00:11Z",
+    "ratio": 1.179789,
+    "source": "data-core-v3"
+   },
+   {
+    "time": "2026-07-21T17:06:37Z",
+    "ratio": 1.180023,
+    "source": "data-core-v3"
+   },
+   {
+    "time": "2026-07-23T17:06:17Z",
+    "ratio": 1.180256,
+    "source": "data-core-v3"
+   },
+   {
+    "time": "2026-07-25T17:07:08Z",
+    "ratio": 1.180491,
+    "source": "data-core-v3"
+   },
+   {
+    "time": "2026-07-27T17:07:17Z",
+    "ratio": 1.180726,
+    "source": "data-core-v3"
+   },
+   {
+    "time": "2026-07-29T16:58:26Z",
+    "ratio": 1.180903,
+    "source": "data-core-v3"
+   },
+   {
+    "time": "2026-08-06T17:10:32Z",
+    "ratio": 1.183378,
+    "source": "data-stx-v2"
+   },
+   {
+    "time": "2026-08-08T17:01:41Z",
+    "ratio": 1.183673,
+    "source": "data-stx-v2"
+   },
+   {
+    "time": "2026-08-10T17:01:38Z",
+    "ratio": 1.183967,
+    "source": "data-stx-v2"
+   },
+   {
+    "time": "2026-08-12T17:07:23Z",
+    "ratio": 1.184264,
+    "source": "data-stx-v2"
+   },
+   {
+    "time": "2026-08-14T16:56:39Z",
+    "ratio": 1.184264,
+    "source": "data-stx-v2"
+   },
+   {
+    "time": "2026-08-16T16:58:19Z",
+    "ratio": 1.184264,
+    "source": "data-stx-v2"
+   },
+   {
+    "time": "2026-08-18T17:02:08Z",
+    "ratio": 1.184264,
+    "source": "data-stx-v2"
+   },
+   {
+    "time": "2026-08-20T17:03:58Z",
+    "ratio": 1.184264,
+    "source": "data-stx-v2"
+   },
+   {
+    "time": "2026-08-22T17:08:10Z",
+    "ratio": 1.184264,
+    "source": "data-stx-v2"
+   },
+   {
+    "time": "2026-08-24T16:58:00Z",
+    "ratio": 1.184264,
+    "source": "data-stx-v2"
+   },
+   {
+    "time": "2026-08-26T16:57:35Z",
+    "ratio": 1.184264,
+    "source": "data-stx-v2"
+   },
+   {
+    "time": "2026-08-28T16:59:33Z",
+    "ratio": 1.184304,
+    "source": "data-stx-v2"
+   },
+   {
+    "time": "2026-08-30T17:05:04Z",
+    "ratio": 1.18436,
+    "source": "data-stx-v2"
+   },
+   {
+    "time": "2026-09-01T17:09:10Z",
+    "ratio": 1.184414,
+    "source": "data-stx-v2"
+   },
+   {
+    "time": "2026-09-03T16:59:26Z",
+    "ratio": 1.184456,
+    "source": "data-stx-v2"
+   },
+   {
+    "time": "2026-09-05T17:07:42Z",
+    "ratio": 1.184494,
+    "source": "data-stx-v2"
+   },
+   {
+    "time": "2026-09-07T17:05:42Z",
+    "ratio": 1.184545,
+    "source": "data-stx-v2"
+   },
+   {
+    "time": "2026-09-09T17:08:24Z",
+    "ratio": 1.184578,
+    "source": "data-stx-v2"
+   },
+   {
+    "time": "2026-09-11T17:03:19Z",
+    "ratio": 1.185068,
+    "source": "data-stx-v2"
+   },
+   {
+    "time": "2026-09-13T17:00:01Z",
+    "ratio": 1.185394,
+    "source": "data-stx-v2"
+   },
+   {
+    "time": "2026-09-15T16:57:31Z",
+    "ratio": 1.185674,
+    "source": "data-stx-v2"
+   },
+   {
+    "time": "2026-09-17T17:02:09Z",
+    "ratio": 1.1859,
+    "source": "data-stx-v2"
+   },
+   {
+    "time": "2026-09-19T17:07:02Z",
+    "ratio": 1.186253,
+    "source": "data-stx-v2"
+   },
+   {
+    "time": "2026-09-21T16:57:18Z",
+    "ratio": 1.186592,
+    "source": "data-stx-v2"
+   },
+   {
+    "time": "2026-09-23T16:55:42Z",
+    "ratio": 1.186903,
+    "source": "data-stx-v2"
+   }
+  ],
+  "referenceVenueCoverage": {
+   "BTC": {
+    "coinbase:BTC-USD": 1,
+    "binance:BTCUSDT": 1,
+    "bybit:BTCUSDT": 1
+   },
+   "STX": {
+    "binance-perp:STXUSDT": 0.982,
+    "binance:STXUSDT": 0.688,
+    "bybit:STXUSDT": 0.463,
+    "kucoin:STX-USDT": 0.306
+   }
+  },
+  "requests": {
+   "api.hiro.so": {
+    "requests": 61,
+    "retries": 1,
+    "kb": 1773
+   },
+   "api.stxer.xyz": {
+    "requests": 50,
+    "retries": 0,
+    "kb": 13
+   },
+   "api.bybit.com": {
+    "requests": 4,
+    "retries": 0,
+    "kb": 157
+   },
+   "api.binance.com": {
+    "requests": 4,
+    "retries": 0,
+    "kb": 317
+   },
+   "api.exchange.coinbase.com": {
+    "requests": 6,
+    "retries": 0,
+    "kb": 60
+   },
+   "fapi.binance.com": {
+    "requests": 2,
+    "retries": 0,
+    "kb": 130
+   },
+   "api.kucoin.com": {
+    "requests": 1,
+    "retries": 0,
+    "kb": 66
+   }
+  }
+ },
+ "episodeCounts": {
+  "silence": 158,
+  "frozen": 323,
+  "deviation": 866,
+  "lazerStaleBurst": 3
+ },
+ "feeds": {
+  "DIA:BTC/USD": {
+   "source": "DIA",
+   "feed": "BTC/USD",
+   "reference": "BTC",
+   "consumers": "no in-scope lending market (third parties)",
+   "writesInWindow": 8556,
+   "gapS": {
+    "p50": 900,
+    "p90": 944,
+    "p99": 1242,
+    "max": 46331
+   },
+   "hoursAgeOver": {
+    "1350s": 40.8,
+    "1h": 24.47,
+    "3.5h": 12.75,
+    "6h": 7.75,
+    "24h": 0
+   },
+   "shareOfMinutesAgeAtMost120s": 0.1192,
+   "hoursDeviationOver": {
+    "1%": 4.27,
+    "2%": 0.23,
+    "5%": 0
+   },
+   "maxAsReadDeviationPct": 3.52,
+   "atPublishDeviationPct": {
+    "p50": 0.0262,
+    "p99": 0.2112,
+    "max": 1.136
+   },
+   "frozenHours": 0,
+   "referenceDegradedMinutes": 1,
+   "referenceValidMinutes": 129600,
+   "now": {
+    "value": 83998.29755405,
+    "lastWriteUtc": "2026-09-23T16:43:40Z",
+    "lastTx": "0xbbb0cc8fe303074023cc6e2b2a5885671ac593f6b227c18260c6469977f5ca21",
+    "ageS": 732,
+    "deviationPct": 0.07
+   }
+  },
+  "DIA:STX/USD": {
+   "source": "DIA",
+   "feed": "STX/USD",
+   "reference": "STX",
+   "consumers": "no in-scope lending market (legacy Zest v1 oracles only)",
+   "writesInWindow": 8561,
+   "gapS": {
+    "p50": 900,
+    "p90": 943,
+    "p99": 1240,
+    "max": 46331
+   },
+   "hoursAgeOver": {
+    "1350s": 40.62,
+    "1h": 24.47,
+    "3.5h": 12.75,
+    "6h": 7.75,
+    "24h": 0
+   },
+   "shareOfMinutesAgeAtMost120s": 0.1193,
+   "hoursDeviationOver": {
+    "1%": 80.72,
+    "2%": 13.48,
+    "5%": 0.2
+   },
+   "maxAsReadDeviationPct": 11.16,
+   "atPublishDeviationPct": {
+    "p50": 0.0655,
+    "p99": 0.5387,
+    "max": 4.5158
+   },
+   "frozenHours": 0,
+   "referenceDegradedMinutes": 6704,
+   "referenceValidMinutes": 122897,
+   "now": {
+    "value": 0.31691206,
+    "lastWriteUtc": "2026-09-23T16:43:40Z",
+    "lastTx": "0xbbb0cc8fe303074023cc6e2b2a5885671ac593f6b227c18260c6469977f5ca21",
+    "ageS": 732,
+    "deviationPct": 0.15
+   }
+  },
+  "DIA:sBTC/USD": {
+   "source": "DIA",
+   "feed": "sBTC/USD",
+   "reference": "BTC",
+   "consumers": "no in-scope lending market",
+   "writesInWindow": 3563,
+   "gapS": {
+    "p50": 900,
+    "p90": 1034,
+    "p99": 1981,
+    "max": 3884242
+   },
+   "hoursAgeOver": {
+    "1350s": 1262.32,
+    "1h": 1237.1,
+    "3.5h": 1206.45,
+    "6h": 1188.95,
+    "24h": 1093.78
+   },
+   "shareOfMinutesAgeAtMost120s": 0.0502,
+   "hoursDeviationOver": {
+    "1%": 1455.02,
+    "2%": 1101.38,
+    "5%": 806.33
+   },
+   "maxAsReadDeviationPct": 23.16,
+   "atPublishDeviationPct": {
+    "p50": 0.8284,
+    "p99": 6.9669,
+    "max": 7.8695
+   },
+   "frozenHours": 549.51,
+   "referenceDegradedMinutes": 1,
+   "referenceValidMinutes": 129600,
+   "now": {
+    "value": 80529.84394506,
+    "lastWriteUtc": "2026-09-23T16:43:40Z",
+    "lastTx": "0xbbb0cc8fe303074023cc6e2b2a5885671ac593f6b227c18260c6469977f5ca21",
+    "ageS": 732,
+    "deviationPct": -4.06
+   }
+  },
+  "DIA:stSTX/USD": {
+   "source": "DIA",
+   "feed": "stSTX/USD",
+   "reference": "STX*ratio",
+   "consumers": "no in-scope lending market",
+   "writesInWindow": 7232,
+   "gapS": {
+    "p50": 900,
+    "p90": 947,
+    "p99": 3605,
+    "max": 125648
+   },
+   "hoursAgeOver": {
+    "1350s": 368.48,
+    "1h": 312.85,
+    "3.5h": 205.87,
+    "6h": 147.53,
+    "24h": 15.27
+   },
+   "shareOfMinutesAgeAtMost120s": 0.101,
+   "hoursDeviationOver": {
+    "1%": 1031.97,
+    "2%": 625.68,
+    "5%": 205.4
+   },
+   "maxAsReadDeviationPct": 17.46,
+   "atPublishDeviationPct": {
+    "p50": 0.795,
+    "p99": 6.1553,
+    "max": 10.1544
+   },
+   "frozenHours": 1611.97,
+   "referenceDegradedMinutes": 6704,
+   "referenceValidMinutes": 122897,
+   "now": {
+    "value": 0.36808361,
+    "lastWriteUtc": "2026-09-23T16:43:40Z",
+    "lastTx": "0xbbb0cc8fe303074023cc6e2b2a5885671ac593f6b227c18260c6469977f5ca21",
+    "ageS": 732,
+    "deviationPct": -1.99
+   }
+  },
+  "DIA:USDh/USD": {
+   "source": "DIA",
+   "feed": "USDh/USD",
+   "reference": "par",
+   "consumers": "Zest v2 USDH debt (max-staleness 86,400 s) and zUSDH collateral (max-staleness 120 s)",
+   "writesInWindow": 8230,
+   "gapS": {
+    "p50": 900,
+    "p90": 944,
+    "p99": 1257,
+    "max": 87346
+   },
+   "hoursAgeOver": {
+    "1350s": 120.3,
+    "1h": 98.97,
+    "3.5h": 76.98,
+    "6h": 65.32,
+    "24h": 24.33
+   },
+   "shareOfMinutesAgeAtMost120s": 0.1147,
+   "hoursDeviationOver": {
+    "1%": 81.52,
+    "2%": 30.3,
+    "5%": 0
+   },
+   "maxAsReadDeviationPct": 2.62,
+   "atPublishDeviationPct": {
+    "p50": 0,
+    "p99": 2.6192,
+    "max": 2.6192
+   },
+   "frozenHours": 0,
+   "referenceDegradedMinutes": 0,
+   "referenceValidMinutes": 129601,
+   "now": {
+    "value": 1,
+    "lastWriteUtc": "2026-09-23T16:43:40Z",
+    "lastTx": "0xbbb0cc8fe303074023cc6e2b2a5885671ac593f6b227c18260c6469977f5ca21",
+    "ageS": 732,
+    "deviationPct": 0
+   }
+  },
+  "Arkadiko:STX (token 1)": {
+   "source": "Arkadiko",
+   "feed": "STX (token 1)",
+   "reference": "STX",
+   "consumers": "Arkadiko v2 vaults (no staleness check): mints, redemptions and liquidations use the stored price",
+   "writesInWindow": 1073,
+   "gapS": {
+    "p50": 3604,
+    "p90": 6013,
+    "p99": 9003,
+    "max": 3314656
+   },
+   "hoursAgeOver": {
+    "1350s": 1793.07,
+    "1h": 1279.93,
+    "3.5h": 1044.37,
+    "6h": 1041.87,
+    "24h": 1023.87
+   },
+   "shareOfMinutesAgeAtMost120s": 0.0154,
+   "hoursDeviationOver": {
+    "1%": 1165.25,
+    "2%": 947.35,
+    "5%": 607.05
+   },
+   "maxAsReadDeviationPct": 25.24,
+   "atPublishDeviationPct": {
+    "p50": 0.1005,
+    "p99": 1.088,
+    "max": 3.204
+   },
+   "frozenHours": 0,
+   "referenceDegradedMinutes": 6704,
+   "referenceValidMinutes": 122897,
+   "now": {
+    "value": 0.315,
+    "lastWriteUtc": "2026-09-23T16:10:50Z",
+    "lastTx": "0x2f89c0b89383f132bca831d7e91854f729abd56351c80e514157f5096feeaa80",
+    "ageS": 2692,
+    "deviationPct": -0.45
+   }
+  },
+  "Arkadiko:BTC (token 2)": {
+   "source": "Arkadiko",
+   "feed": "BTC (token 2)",
+   "reference": "BTC",
+   "consumers": "Arkadiko v2 vaults (no staleness check): mints, redemptions and liquidations use the stored price",
+   "writesInWindow": 1058,
+   "gapS": {
+    "p50": 3609,
+    "p90": 6022,
+    "p99": 8461,
+    "max": 3320605
+   },
+   "hoursAgeOver": {
+    "1350s": 1797.5,
+    "1h": 1282.32,
+    "3.5h": 1046.03,
+    "6h": 1043.53,
+    "24h": 1025.53
+   },
+   "shareOfMinutesAgeAtMost120s": 0.0152,
+   "hoursDeviationOver": {
+    "1%": 1063.32,
+    "2%": 1040.45,
+    "5%": 1008.1
+   },
+   "maxAsReadDeviationPct": 13.29,
+   "atPublishDeviationPct": {
+    "p50": 0.0265,
+    "p99": 0.2647,
+    "max": 2.0391
+   },
+   "frozenHours": 0,
+   "referenceDegradedMinutes": 1,
+   "referenceValidMinutes": 129600,
+   "now": {
+    "value": 84329.77,
+    "lastWriteUtc": "2026-09-23T16:11:07Z",
+    "lastTx": "0x07a2dc9d87e22ca97555e6b94262170695e06a416ccf8de71d60e6a60ec05062",
+    "ageS": 2675,
+    "deviationPct": 0.47
+   }
+  },
+  "Arkadiko:stSTX (token 8)": {
+   "source": "Arkadiko",
+   "feed": "stSTX (token 8)",
+   "reference": "STX*ratio",
+   "consumers": "Arkadiko v2 vaults (no staleness check): mints, redemptions and liquidations use the stored price",
+   "writesInWindow": 1086,
+   "gapS": {
+    "p50": 3604,
+    "p90": 6004,
+    "p99": 9022,
+    "max": 3327986
+   },
+   "hoursAgeOver": {
+    "1350s": 1798.35,
+    "1h": 1285.33,
+    "3.5h": 1048.07,
+    "6h": 1045.57,
+    "24h": 1027.57
+   },
+   "shareOfMinutesAgeAtMost120s": 0.0153,
+   "hoursDeviationOver": {
+    "1%": 1171.07,
+    "2%": 947.35,
+    "5%": 604.05
+   },
+   "maxAsReadDeviationPct": 24.85,
+   "atPublishDeviationPct": {
+    "p50": 0.1039,
+    "p99": 1.3919,
+    "max": 4.6254
+   },
+   "frozenHours": 0,
+   "referenceDegradedMinutes": 6704,
+   "referenceValidMinutes": 122897,
+   "now": {
+    "value": 0.373872,
+    "lastWriteUtc": "2026-09-23T16:11:07Z",
+    "lastTx": "0x3406d2b78e36dfe696c437f0cff86da0bf38e106f7d3ca452b7f2d5468578d2f",
+    "ageS": 2675,
+    "deviationPct": -0.45
+   }
+  }
+ },
+ "lazer": {
+  "zest-v2:v0-7-market": {
+   "market": "zest-v2",
+   "contract": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v0-7-market",
+   "limitS": 120,
+   "lazerTxs": 828,
+   "ok": 795,
+   "oracleRevertsStale": 10,
+   "oracleRevertsOther": 0,
+   "nonOracleReverts": 23,
+   "payloadAgeAtInclusionOkS": {
+    "p50": 21,
+    "p90": 51,
+    "p99": 109,
+    "max": 1798
+   },
+   "firstObserved": "2026-08-17T11:43:51Z",
+   "lastObserved": "2026-09-01T08:16:35Z"
+  },
+  "zest-v2:v0-8-market": {
+   "market": "zest-v2",
+   "contract": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v0-8-market",
+   "limitS": 120,
+   "lazerTxs": 1598,
+   "ok": 1449,
+   "oracleRevertsStale": 75,
+   "oracleRevertsOther": 3,
+   "nonOracleReverts": 71,
+   "payloadAgeAtInclusionOkS": {
+    "p50": 18,
+    "p90": 47,
+    "p99": 114,
+    "max": 353
+   },
+   "firstObserved": "2026-08-31T10:02:47Z",
+   "lastObserved": "2026-09-23T16:35:11Z"
+  },
+  "zest-v1:borrow-helper-v2-1-8": {
+   "market": "zest-v1",
+   "contract": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.borrow-helper-v2-1-8",
+   "limitS": 360,
+   "lazerTxs": 402,
+   "ok": 264,
+   "oracleRevertsStale": 1,
+   "oracleRevertsOther": 1,
+   "nonOracleReverts": 136,
+   "payloadAgeAtInclusionOkS": {
+    "p50": 18,
+    "p90": 59,
+    "p99": 143,
+    "max": 345
+   },
+   "firstObserved": "2026-08-14T11:04:36Z",
+   "lastObserved": "2026-09-23T16:28:13Z"
+  },
+  "granite-usdcx:state-v1": {
+   "market": "granite-usdcx",
+   "contract": "SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.state-v1",
+   "limitS": 300,
+   "lazerTxs": 70,
+   "ok": 70,
+   "oracleRevertsStale": 0,
+   "oracleRevertsOther": 0,
+   "nonOracleReverts": 0,
+   "payloadAgeAtInclusionOkS": {
+    "p50": 78,
+    "p90": 122,
+    "p99": 152,
+    "max": 153
+   },
+   "firstObserved": "2026-08-03T11:44:16Z",
+   "lastObserved": "2026-09-23T12:21:12Z"
+  },
+  "granite-aeusdc:state-v1": {
+   "market": "granite-aeusdc",
+   "contract": "SP35E2BBMDT2Y1HB0NTK139YBGYV3PAPK3WA8BRNA.state-v1",
+   "limitS": 300,
+   "lazerTxs": 3,
+   "ok": 3,
+   "oracleRevertsStale": 0,
+   "oracleRevertsOther": 0,
+   "nonOracleReverts": 0,
+   "payloadAgeAtInclusionOkS": {
+    "p50": 29,
+    "p90": 29,
+    "p99": 29,
+    "max": 84
+   },
+   "firstObserved": "2026-08-17T11:35:24Z",
+   "lastObserved": "2026-08-17T13:19:22Z"
+  }
+ },
+ "findings": [
+  {
+   "id": "arkadiko-silence",
+   "severity": "critical",
+   "title": "Arkadiko oracle silent for 921–924 h",
+   "statement": "arkadiko-oracle-v2-3 received no price for BTC 922.39 h (2026-07-01T00:41:41Z → 2026-08-08T11:05:06Z), STX 920.74 h (2026-07-01T02:20:37Z → 2026-08-08T11:04:53Z), stSTX 924.44 h (2026-07-01T02:21:10Z → 2026-08-08T14:47:36Z). Arkadiko vaults read the stored price with no staleness check, so the old price stayed live for mints, redemptions and liquidations.",
+   "evidence": [
+    {
+     "feed": "BTC (token 2)",
+     "hours": 922.39,
+     "start": "2026-07-01T00:41:41Z",
+     "end": "2026-08-08T11:05:06Z",
+     "lastWriteBefore": "0x438d5c2cebca2dd036d25d780b7869ad8ee48c40a1efcd375e5c16e5377a965a",
+     "firstWriteAfter": "0xaf1920237ae44e6dc6786b8171338def9a712838f08b8ddec3c81d641f506bfe"
+    },
+    {
+     "feed": "STX (token 1)",
+     "hours": 920.74,
+     "start": "2026-07-01T02:20:37Z",
+     "end": "2026-08-08T11:04:53Z",
+     "lastWriteBefore": "0xf58f0aab6e00c712a4ada4ad15b61f08d480baec0a11f5100c91af0b558c84b2",
+     "firstWriteAfter": "0x36283ee3446fdeb50ee7d83242f6c70f406a197a8abeb1c3607675ff558bdb3c"
+    },
+    {
+     "feed": "stSTX (token 8)",
+     "hours": 924.44,
+     "start": "2026-07-01T02:21:10Z",
+     "end": "2026-08-08T14:47:36Z",
+     "lastWriteBefore": "0x20427b0707cb9e467c3f82b01c9dea32b48bbbe9395af416e4b79e07d09792a8",
+     "firstWriteAfter": "0xa2e03e26cc2de6c96a10db64ae61372e4a891f5a62aba3b1858fbe469a032ec2"
+    }
+   ]
+  },
+  {
+   "id": "dia-core-outages",
+   "severity": "warn",
+   "title": "DIA BTC/USD and STX/USD: 2 outage(s) over 6 h",
+   "statement": "DIA's healthiest keys stopped updating together: 6.87 h from 2026-06-28T10:49:51Z; 12.87 h from 2026-07-10T03:43:49Z. Values stayed within 5% of the reference, but any consumer with a staleness limit under the gap would have stopped.",
+   "evidence": [
+    {
+     "feed": "BTC/USD",
+     "hours": 6.87,
+     "start": "2026-06-28T10:49:51Z",
+     "end": "2026-06-28T17:42:04Z",
+     "lastWriteBefore": "0xb4955c5f55aaa64926e1c7a1b4d515bda0eaf6e18f1d53ae55c67634660fa269",
+     "firstWriteAfter": "0x4b0568f1aa423c561e53829373db8b3c6b4b73da630fd69a87476a6644787e41"
+    },
+    {
+     "feed": "BTC/USD",
+     "hours": 12.87,
+     "start": "2026-07-10T03:43:49Z",
+     "end": "2026-07-10T16:36:00Z",
+     "lastWriteBefore": "0x1cf182e924b95810ebd9c1bfe9785b6c2ccc3bfe170e1ad2bf625fac7d31190d",
+     "firstWriteAfter": "0xb7f73d4c9bfb8b0d16bd9310fce9b2ce764ea1d03fa6e6829b1639fc1d05a925"
+    },
+    {
+     "feed": "STX/USD",
+     "hours": 6.87,
+     "start": "2026-06-28T10:49:51Z",
+     "end": "2026-06-28T17:42:04Z",
+     "lastWriteBefore": "0xb4955c5f55aaa64926e1c7a1b4d515bda0eaf6e18f1d53ae55c67634660fa269",
+     "firstWriteAfter": "0x4b0568f1aa423c561e53829373db8b3c6b4b73da630fd69a87476a6644787e41"
+    },
+    {
+     "feed": "STX/USD",
+     "hours": 12.87,
+     "start": "2026-07-10T03:43:49Z",
+     "end": "2026-07-10T16:36:00Z",
+     "lastWriteBefore": "0x1cf182e924b95810ebd9c1bfe9785b6c2ccc3bfe170e1ad2bf625fac7d31190d",
+     "firstWriteAfter": "0xb7f73d4c9bfb8b0d16bd9310fce9b2ce764ea1d03fa6e6829b1639fc1d05a925"
+    }
+   ]
+  },
+  {
+   "id": "dia-sbtc-frozen",
+   "severity": "warn",
+   "title": "DIA sBTC/USD: 550 h frozen-but-fresh, 1079 h silent",
+   "statement": "DIA kept writing sBTC/USD with fresh timestamps and an identical value for 550 h in the window (84 episodes; longest 239.75 h over 943 writes at $63,077.12), and was more than 5% off its reference for 806.33 h. A timestamp-only staleness check passes throughout. No in-scope lending market consumes this key.",
+   "evidence": {
+    "longestFrozen": {
+     "start": "2026-07-26T07:07:14Z",
+     "end": "2026-08-05T06:52:21Z",
+     "writes": 943,
+     "value": 63077.11986412,
+     "startTx": "0xf11b45370b0af4e340df197f0cbc347a5d99381c1c1b535b7b19341822cc2a21",
+     "endTx": "0x636d6bede27867baf1242af13917ff7a1520a5e723a9b2095935ff723267631e"
+    },
+    "longestSilence": {
+     "start": "2026-08-05T06:52:21Z",
+     "end": "2026-09-19T05:49:43Z",
+     "hours": 1078.96
+    },
+    "now": {
+     "value": 80529.84394506,
+     "lastWriteUtc": "2026-09-23T16:43:40Z",
+     "lastTx": "0xbbb0cc8fe303074023cc6e2b2a5885671ac593f6b227c18260c6469977f5ca21",
+     "ageS": 732,
+     "deviationPct": -4.06
+    }
+   }
+  },
+  {
+   "id": "dia-ststx-frozen",
+   "severity": "warn",
+   "title": "DIA stSTX/USD: 1612 h frozen-but-fresh, 35 h silent",
+   "statement": "DIA kept writing stSTX/USD with fresh timestamps and an identical value for 1612 h in the window (239 episodes; longest 98.89 h over 344 writes at $0.304376), and was more than 5% off its reference for 205.4 h. A timestamp-only staleness check passes throughout. No in-scope lending market consumes this key.",
+   "evidence": {
+    "longestFrozen": {
+     "start": "2026-09-11T16:33:02Z",
+     "end": "2026-09-15T19:26:13Z",
+     "writes": 344,
+     "value": 0.30437574,
+     "startTx": "0x6533e45c80873e10563c07622c41c4269460ee84b8e9c2eab8afeeda4cc50395",
+     "endTx": "0x8ccd940f0669ba8a2f961cb03bb18c7539fd0284477614bdf17e772a7b9db044"
+    },
+    "longestSilence": {
+     "start": "2026-08-17T05:58:57Z",
+     "end": "2026-08-18T16:53:05Z",
+     "hours": 34.9
+    },
+    "now": {
+     "value": 0.36808361,
+     "lastWriteUtc": "2026-09-23T16:43:40Z",
+     "lastTx": "0xbbb0cc8fe303074023cc6e2b2a5885671ac593f6b227c18260c6469977f5ca21",
+     "ageS": 732,
+     "deviationPct": -1.99
+    }
+   }
+  },
+  {
+   "id": "zest-v2-zusdh-staleness-trap",
+   "severity": "warn",
+   "title": "Zest v2 zUSDH: 120 s limit on a ~900 s DIA heartbeat",
+   "statement": "v0-assets asset 9 (zUSDH, collateral enabled) is priced from DIA \"USDh/USD\" with max-staleness 120 s. DIA pushes that key about every 900 s, so its age was within 120 s only 11.47% of minutes in the window. A priced operation for an account holding zUSDH would revert most of the time. USDH debt (asset 8) uses the same key with max-staleness 86400 s. 0 Zest v2 v0-7/v0-8 transaction(s) have referenced v0-vault-usdh.",
+   "evidence": {
+    "block": 9049335,
+    "zusdh": {
+     "maxStalenessS": 120,
+     "oracleType": "0x01",
+     "collateral": true
+    },
+    "usdhDebt": {
+     "maxStalenessS": 86400
+    },
+    "diaUsdhShareOfMinutesAgeAtMost120s": 0.1147,
+    "txsReferencingVaultUsdh": 0
+   }
+  },
+  {
+   "id": "lazer-stale-revert-burst",
+   "severity": "critical",
+   "title": "Largest Lazer stale-revert burst: 30 reverts (zest-v2 v0-8-market)",
+   "statement": "30 oracle reverts from 1 sender(s); payload age 128–152 s vs limit 120 s, 2026-09-04T00:21:25Z → 2026-09-04T00:21:49Z.",
+   "evidence": {
+    "firstTx": "0x7cc41d4f53b013836eca8ded45f94cc31e2a8f6d7513b67b9ee9840547d2ac5d",
+    "lastTx": "0xe76e36053448b34bc24d719a1c41fedea4a912cfe9e098033f4863a477982131"
+   }
+  }
+ ]
+}

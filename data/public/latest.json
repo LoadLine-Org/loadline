@@ -1,0 +1,1003 @@
+{
+ "schema": 1,
+ "generatedAt": "2026-09-23T16:52:02.300Z",
+ "block": {
+  "height": 9049309,
+  "indexBlockHash": "e09ec7824541c05da41d6b59e234860a4bab496331a9a51efc82798756821065",
+  "hash": "7642a63c8996789a90bbd8d60bfd78ee2ff344fa639a1cba05af65530516b98f",
+  "blockTime": 1790182173,
+  "burnHeight": 968294,
+  "burnTime": 1790181060,
+  "canonical": true
+ },
+ "code": {
+  "version": "0.1.0",
+  "fingerprint": "4ef2451ca0f28c6789a33b39ceb913c3198905fc16ce44806dc0375a25dd0549"
+ },
+ "markets": {
+  "zest-v2": {
+   "name": "Zest v2",
+   "protocol": "Zest",
+   "state": "VERIFIED",
+   "reasons": [],
+   "verifiedAt": {
+    "height": 9049309,
+    "indexBlockHash": "e09ec7824541c05da41d6b59e234860a4bab496331a9a51efc82798756821065",
+    "time": 1790182173,
+    "snapshot": "snapshots/9049309/zest-v2.json"
+   },
+   "snapshot": "snapshots/9049309/zest-v2.json",
+   "current": true,
+   "withheld": {
+    "positions": null,
+    "risk": null
+   },
+   "summary": {
+    "positions": 665,
+    "borrowers": 275,
+    "dustBorrowers": 39,
+    "risk": {
+     "debtUsd": "1467410039679076",
+     "dustDebtUsd": "6747869413",
+     "collUsd": "4694362405850122",
+     "liquidatable": {
+      "yes": 0,
+      "band": 0,
+      "no": 236
+     },
+     "badDebt": {
+      "count": 0,
+      "debtUsd": "0"
+     },
+     "excluded": [],
+     "within": {
+      "5%": 2,
+      "10%": 23,
+      "25%": 44
+     },
+     "nearest": [
+      {
+       "key": "SP28ZTJS8Q58ERK8MDNFGQA85CHQRP4SYH85B95SG",
+       "h": 1.030638,
+       "hLow": 1.030638,
+       "hHigh": 1.030638,
+       "debtUsd": "428867133341",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP3Q2Q6DEHY9VVZ87B6QPWYEMTB7665H8W1PTZKAK",
+       "h": 1.044087,
+       "hLow": 1.044086,
+       "hHigh": 1.044087,
+       "debtUsd": "2612995685",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP1RKSWR61ZAGV35DJKKQ87MF3GD9X0ZG9T88VXWM",
+       "h": 1.052798,
+       "hLow": 1.052798,
+       "hHigh": 1.052798,
+       "debtUsd": "18305918088368",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP1B6P8BZ1DQ43ZD92Y1VZFCMWQZ3JX4WH4F0QNTQ",
+       "h": 1.054129,
+       "hLow": 1.054129,
+       "hHigh": 1.054129,
+       "debtUsd": "5729333752623",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP7KZ2AFRRTP53WGKQWY9707Y0W61DK848J1EK2D",
+       "h": 1.058668,
+       "hLow": 1.058667,
+       "hHigh": 1.058668,
+       "debtUsd": "61382390666",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP3SP0D29JN9FB5KSAFVXQYA7V5DQ9BA13ZATCZA3",
+       "h": 1.05884,
+       "hLow": 1.05884,
+       "hHigh": 1.05884,
+       "debtUsd": "3469900583",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP2EZBRH2T5A4TPFFTDK48CHR0WG95YZZA4HC1TJE",
+       "h": 1.060179,
+       "hLow": 1.060179,
+       "hHigh": 1.060179,
+       "debtUsd": "2572507798253",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SPZKWN8EC8DHXYW6D6DVHFVMX2HBWMRTSZET8YHM",
+       "h": 1.060694,
+       "hLow": 1.060694,
+       "hHigh": 1.060694,
+       "debtUsd": "5913555577446",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP1AZWJFWMAPHPD9AE9WD4388XSG3PVVBRP91PVHB",
+       "h": 1.062209,
+       "hLow": 1.062209,
+       "hHigh": 1.062209,
+       "debtUsd": "3133546914",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.zv-ops-stbtc-0",
+       "h": 1.06269,
+       "hLow": 1.06269,
+       "hHigh": 1.06269,
+       "debtUsd": "598532117191460",
+       "liquidatable": "no"
+      }
+     ]
+    }
+   },
+   "checks": [
+    {
+     "id": "debt:STX",
+     "status": "OK",
+     "deltaPct": 1e-10,
+     "delta": "4"
+    },
+    {
+     "id": "debt:sBTC",
+     "status": "OK",
+     "deltaPct": 1.38e-8,
+     "delta": "1"
+    },
+    {
+     "id": "debt:stSTX",
+     "status": "OK",
+     "deltaPct": 6e-10,
+     "delta": "4"
+    },
+    {
+     "id": "debt:USDC",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "2"
+    },
+    {
+     "id": "debt:USDH",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "5"
+    },
+    {
+     "id": "debt:stSTXbtc",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "debt:stBTC",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "collateral:zSTX",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "collateral:sBTC",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "collateral:zsBTC",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "collateral:zstSTX",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "collateral:zUSDC",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "collateral:zstSTXbtc",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "collateral:zstBTC",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "count:registry",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    }
+   ],
+   "liquidationPath": {
+    "status": "UNPROVEN",
+    "summary": "0 of 181 liquidation attempts on v0-8-market have succeeded since it went live; a liquidatable position here has never actually been liquidated."
+   },
+   "pointer": {
+    "label": "Live market implementation",
+    "read": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v0-market-vault.get-impl()",
+    "expected": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v0-8-market",
+    "actual": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v0-8-market",
+    "match": true
+   }
+  },
+  "zest-v1": {
+   "name": "Zest v1",
+   "protocol": "Zest",
+   "state": "VERIFIED",
+   "reasons": [],
+   "verifiedAt": {
+    "height": 9049309,
+    "indexBlockHash": "e09ec7824541c05da41d6b59e234860a4bab496331a9a51efc82798756821065",
+    "time": 1790182173,
+    "snapshot": "snapshots/9049309/zest-v1.json"
+   },
+   "snapshot": "snapshots/9049309/zest-v1.json",
+   "current": true,
+   "withheld": {
+    "positions": null,
+    "risk": null
+   },
+   "summary": {
+    "positions": 1584,
+    "borrowers": 1584,
+    "dustBorrowers": 1102,
+    "risk": {
+     "debtUsd": "16232872336124",
+     "dustDebtUsd": "155297672447",
+     "collUsd": "38630269825846",
+     "liquidatable": {
+      "yes": 7,
+      "band": 0,
+      "no": 469
+     },
+     "badDebt": {
+      "count": 5,
+      "debtUsd": "644957337685"
+     },
+     "excluded": [
+      {
+       "account": "SP174BBVTRQSE3YAMBKD5NKG03TMDQSY6ZMJT14J6",
+       "debtUsd": "12558245142548",
+       "reason": "Known orphan bad-debt record: principal-borrow-balance 1.40104912 sBTC, no collateral, last updated at block 1,511,101. The sBTC reserve's total-borrows-variable does not include it (research 02-scope §0.2). Excluded from the reconciliation sum and from risk counts; reported separately."
+      }
+     ],
+     "within": {
+      "5%": 9,
+      "10%": 24,
+      "25%": 157
+     },
+     "nearest": [
+      {
+       "key": "SP2YR4E6C2XJ10MAP5VR8GYAJJF4CHNNC1EGZY70X",
+       "h": 0.708689,
+       "hLow": 0.708658,
+       "hHigh": 0.708719,
+       "debtUsd": "37424658021",
+       "liquidatable": "yes"
+      },
+      {
+       "key": "SP37E46M4GR5X7A1KGE3B3V7TCVWBJCZCGQH0PS40",
+       "h": 0.796375,
+       "hLow": 0.796051,
+       "hHigh": 0.796693,
+       "debtUsd": "6175557093",
+       "liquidatable": "yes"
+      },
+      {
+       "key": "SP17TK3BKFPQADD4Q1CTWSR5GC7GVFY7VE76NJTW5",
+       "h": 0.824298,
+       "hLow": 0.824298,
+       "hHigh": 0.824298,
+       "debtUsd": "12701159850",
+       "liquidatable": "yes"
+      },
+      {
+       "key": "SP1ED2H5ENVTRW8NG3BQ47V3M4W14G71WH4YASD5B",
+       "h": 0.825796,
+       "hLow": 0.825796,
+       "hHigh": 0.825796,
+       "debtUsd": "1381395349",
+       "liquidatable": "yes"
+      },
+      {
+       "key": "SP3XTYYV9133Z7RNWEDEP04Z6FZ0E9WVKV9D65XQM",
+       "h": 0.836644,
+       "hLow": 0.836614,
+       "hHigh": 0.836673,
+       "debtUsd": "20231473416",
+       "liquidatable": "yes"
+      },
+      {
+       "key": "SP3VGGV866MC5EKKHWG7G8WZSER20VV1ETNHF8CWG",
+       "h": 0.858196,
+       "hLow": 0.857901,
+       "hHigh": 0.858485,
+       "debtUsd": "6115062456",
+       "liquidatable": "yes"
+      },
+      {
+       "key": "SP3REXZ9NQQ84R2SJ0D26CJ6RDBQ383W8QM5MC2R4",
+       "h": 0.961895,
+       "hLow": 0.960792,
+       "hHigh": 0.962978,
+       "debtUsd": "1324216074",
+       "liquidatable": "yes"
+      },
+      {
+       "key": "SP2EZBRH2T5A4TPFFTDK48CHR0WG95YZZA4HC1TJE",
+       "h": 1.025591,
+       "hLow": 1.025543,
+       "hHigh": 1.025637,
+       "debtUsd": "3996762007721",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP1W5YQQ375XGC1Q14D8GZ22MJZMR6QYG9YAYSBC",
+       "h": 1.036335,
+       "hLow": 1.036335,
+       "hHigh": 1.036335,
+       "debtUsd": "25925411655",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SPMA0EH4FZGPA1FJBQXJREE22CBKYCBBVH8M55TV",
+       "h": 1.057938,
+       "hLow": 1.056846,
+       "hHigh": 1.05901,
+       "debtUsd": "301233761591",
+       "liquidatable": "no"
+      }
+     ]
+    }
+   },
+   "checks": [
+    {
+     "id": "debt:stSTX",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "debt:aeUSDC",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "debt:STX",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "debt:USDH",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "debt:sUSDT",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "debt:sBTC",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "debt:ALEX",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "collateral:stSTX",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "collateral:aeUSDC",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "collateral:STX",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "collateral:DIKO",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "collateral:USDH",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "collateral:sUSDT",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "collateral:USDA",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "collateral:sBTC",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "collateral:ALEX",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "collateral:stSTXbtc",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    }
+   ],
+   "liquidationPath": {
+    "status": "LIVE",
+    "summary": "51 of 139 liquidation calls through borrow-helper-v2-1-8 succeeded since activation, by 1 keeper; last 2.3 days before this block."
+   },
+   "pointer": {
+    "label": "Entry point approved on the lending pool",
+    "read": "pool-borrow-v2-4.is-approved-contract(borrow-helper-v2-1-8)",
+    "expected": "true",
+    "actual": "true",
+    "match": true
+   }
+  },
+  "granite-usdcx": {
+   "name": "Granite USDCx",
+   "protocol": "Granite",
+   "state": "VERIFIED",
+   "reasons": [],
+   "verifiedAt": {
+    "height": 9049309,
+    "indexBlockHash": "e09ec7824541c05da41d6b59e234860a4bab496331a9a51efc82798756821065",
+    "time": 1790182173,
+    "snapshot": "snapshots/9049309/granite-usdcx.json"
+   },
+   "snapshot": "snapshots/9049309/granite-usdcx.json",
+   "current": true,
+   "withheld": {
+    "positions": null,
+    "risk": null
+   },
+   "summary": {
+    "positions": 38,
+    "borrowers": 32,
+    "dustBorrowers": 9,
+    "risk": {
+     "debtUsd": "116728194915500",
+     "dustDebtUsd": "490805300",
+     "collUsd": "303582899677300",
+     "liquidatable": {
+      "yes": 0,
+      "band": 0,
+      "no": 23
+     },
+     "badDebt": {
+      "count": 0,
+      "debtUsd": "0"
+     },
+     "excluded": [],
+     "within": {
+      "5%": 0,
+      "10%": 0,
+      "25%": 0
+     },
+     "nearest": [
+      {
+       "key": "SPWEA3BQ1KRXGDGGTN5W8TDKHGZWGMAWTNN4QNWT",
+       "h": 1.262332,
+       "hLow": 1.251629,
+       "hHigh": 1.273089,
+       "debtUsd": "11555338712900",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP17MRV60MP61BRP9QJC92GHV1PQYDCE5KH99AEHQ",
+       "h": 1.263351,
+       "hLow": 1.252639,
+       "hHigh": 1.274116,
+       "debtUsd": "8111430154100",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP3QXCV3CDV124V6XXJN1HXY3KXCSG30P9XFT3ZSK",
+       "h": 1.264072,
+       "hLow": 1.253354,
+       "hHigh": 1.274844,
+       "debtUsd": "10070890835600",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP14YFFWP15FJCYRFY6Z0JN71QMMXZYS4CY25HVR2",
+       "h": 1.35033,
+       "hLow": 1.338881,
+       "hHigh": 1.361837,
+       "debtUsd": "11676241548900",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP10GK6MG2GM7BCVYV7XBHK1JVJDHFDMNBENNBRC3",
+       "h": 1.359872,
+       "hLow": 1.348342,
+       "hHigh": 1.37146,
+       "debtUsd": "9554106300600",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP3Z7511VWR5WG9J3MAKER3NRZYKWT83K2XTP36EV",
+       "h": 1.36681,
+       "hLow": 1.355221,
+       "hHigh": 1.378457,
+       "debtUsd": "39915084300",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP2Z0HPNE0EN7BRSESTPEMRBB4EB6KTYFE9CC82CW",
+       "h": 1.397522,
+       "hLow": 1.385672,
+       "hHigh": 1.40943,
+       "debtUsd": "3907110600",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP22YFNH4BYXM6QK3XN55JTJSRBHE99K5VPH8S4BR",
+       "h": 1.449785,
+       "hLow": 1.437493,
+       "hHigh": 1.46214,
+       "debtUsd": "2683135826700",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP2154FKKKX40REDZQSEX9WMAPVZ4SYYJ193BSPR4",
+       "h": 1.485646,
+       "hLow": 1.47305,
+       "hHigh": 1.498306,
+       "debtUsd": "211503463300",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP2GMT23R9WWF12B9S1795RPV18PG50S1V66DNK22",
+       "h": 1.49344,
+       "hLow": 1.480778,
+       "hHigh": 1.506166,
+       "debtUsd": "16790328214100",
+       "liquidatable": "no"
+      }
+     ]
+    }
+   },
+   "checks": [
+    {
+     "id": "debt:shares",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "collateral:sBTC",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    }
+   ],
+   "liquidationPath": {
+    "status": "UNPROVEN",
+    "summary": "No liquidation has executed through liquidator-v1 since this generation went live."
+   },
+   "pointer": {
+    "label": "Borrower entry point allowed",
+    "read": "state-v1.is-allowed-contract(SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.borrower-v1)",
+    "expected": "true",
+    "actual": "true",
+    "match": true
+   }
+  },
+  "granite-aeusdc": {
+   "name": "Granite aeUSDC",
+   "protocol": "Granite",
+   "state": "VERIFIED",
+   "reasons": [],
+   "verifiedAt": {
+    "height": 9049309,
+    "indexBlockHash": "e09ec7824541c05da41d6b59e234860a4bab496331a9a51efc82798756821065",
+    "time": 1790182173,
+    "snapshot": "snapshots/9049309/granite-aeusdc.json"
+   },
+   "snapshot": "snapshots/9049309/granite-aeusdc.json",
+   "current": true,
+   "withheld": {
+    "positions": null,
+    "risk": null
+   },
+   "summary": {
+    "positions": 379,
+    "borrowers": 340,
+    "dustBorrowers": 326,
+    "risk": {
+     "debtUsd": "4484036256500",
+     "dustDebtUsd": "5863538400",
+     "collUsd": "9525800566100",
+     "liquidatable": {
+      "yes": 0,
+      "band": 0,
+      "no": 14
+     },
+     "badDebt": {
+      "count": 0,
+      "debtUsd": "0"
+     },
+     "excluded": [],
+     "within": {
+      "5%": 0,
+      "10%": 0,
+      "25%": 0
+     },
+     "nearest": [
+      {
+       "key": "SP3ZRRPPW4PXA8M7D69XEC6VSDDAYQCBABGP7WHA7",
+       "h": 1.280116,
+       "hLow": 1.269263,
+       "hHigh": 1.291025,
+       "debtUsd": "2764434000",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP1ZENTH44EFJJM1867F79GC6NW5AGXEPCHED2811",
+       "h": 1.318485,
+       "hLow": 1.307306,
+       "hHigh": 1.32972,
+       "debtUsd": "258288649800",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP35Q0J032X8KWFBEYE7BJ1AEP4KWFB51PKJVDGM9",
+       "h": 1.318487,
+       "hLow": 1.307307,
+       "hHigh": 1.329722,
+       "debtUsd": "375832297100",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP2Q0YNXDTVEEBFSYE2KKPXM0GAYJE9SJQA50YPTX",
+       "h": 1.318488,
+       "hLow": 1.307308,
+       "hHigh": 1.329723,
+       "debtUsd": "468163389600",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP2QXZM2T50WD0SH8TD6SA02T8KQTJ7AS3T335C17",
+       "h": 1.318487,
+       "hLow": 1.307308,
+       "hHigh": 1.329722,
+       "debtUsd": "983613421200",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP73FGVQ7C0K1JS2PVHM2T4PS9X6SB3SPSJN51HX",
+       "h": 1.318487,
+       "hLow": 1.307308,
+       "hHigh": 1.329722,
+       "debtUsd": "1046892214200",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP30GZT60YD042MC1FH9WQ770QMHHPPGY96XBEPB4",
+       "h": 1.318493,
+       "hLow": 1.307314,
+       "hHigh": 1.329728,
+       "debtUsd": "415726107500",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP299PAE8YNRT1B16KNCRSP2ZQ05F0QQJ6M7BQAZQ",
+       "h": 1.318499,
+       "hLow": 1.307319,
+       "hHigh": 1.329734,
+       "debtUsd": "46223694400",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP3X1PPX49N1MHFSHQJASZHNS4K6MDA4MKTGMJ08V",
+       "h": 1.424071,
+       "hLow": 1.411997,
+       "hHigh": 1.436206,
+       "debtUsd": "184041662200",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP38XSJ91XTY6ARN2W58AKKPBJAJ0AM02W1QJ497F",
+       "h": 1.498244,
+       "hLow": 1.485541,
+       "hHigh": 1.511011,
+       "debtUsd": "681096717900",
+       "liquidatable": "no"
+      }
+     ]
+    }
+   },
+   "checks": [
+    {
+     "id": "debt:shares",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "collateral:sBTC",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    }
+   ],
+   "liquidationPath": {
+    "status": "LIVE",
+    "summary": "1 liquidation transaction through SP119QJ4…liquidator-v1; last at block 8786498 (37.1 days before this block)."
+   },
+   "pointer": {
+    "label": "Borrower entry point allowed",
+    "read": "state-v1.is-allowed-contract(SP119QJ4NVE3RQP8RXJVW5EXAV3XD4CJZWRCEEAAR.borrower-v1)",
+    "expected": "true",
+    "actual": "true",
+    "match": true
+   }
+  },
+  "arkadiko-v2": {
+   "name": "Arkadiko v2",
+   "protocol": "Arkadiko",
+   "state": "VERIFIED",
+   "reasons": [],
+   "verifiedAt": {
+    "height": 9049309,
+    "indexBlockHash": "e09ec7824541c05da41d6b59e234860a4bab496331a9a51efc82798756821065",
+    "time": 1790182173,
+    "snapshot": "snapshots/9049309/arkadiko-v2.json"
+   },
+   "snapshot": "snapshots/9049309/arkadiko-v2.json",
+   "current": true,
+   "withheld": {
+    "positions": null,
+    "risk": null
+   },
+   "summary": {
+    "positions": 116,
+    "borrowers": 116,
+    "dustBorrowers": 92,
+    "risk": {
+     "debtUsd": "36320887248300",
+     "dustDebtUsd": "7683829500",
+     "collUsd": "99897032520268",
+     "liquidatable": {
+      "yes": 0,
+      "band": 0,
+      "no": 24
+     },
+     "badDebt": {
+      "count": 0,
+      "debtUsd": "0"
+     },
+     "excluded": [],
+     "within": {
+      "5%": 0,
+      "10%": 0,
+      "25%": 0
+     },
+     "nearest": [
+      {
+       "key": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR|SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+       "h": 1.280929,
+       "hLow": 1.280929,
+       "hHigh": 1.280929,
+       "debtUsd": "1800308219700",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR|SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+       "h": 1.843857,
+       "hLow": 1.843857,
+       "hHigh": 1.843857,
+       "debtUsd": "27368432123500",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SPJXWDR6YPME7X4BZ8PK6WDG76B7DZVHKEPAACF3|SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token",
+       "h": 1.996143,
+       "hLow": 1.996143,
+       "hHigh": 1.996143,
+       "debtUsd": "3753425036000",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP18ZQRE3N8RNMYGMASDZXV4XGYEZMA8JSHAK31Q8|SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+       "h": 2.079,
+       "hLow": 2.079,
+       "hHigh": 2.079,
+       "debtUsd": "131960331900",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP2YADQRAJ4468KEX4CYD4MQPF0S6QYFT5BRA22J0|SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token",
+       "h": 2.086214,
+       "hLow": 2.086214,
+       "hHigh": 2.086214,
+       "debtUsd": "2049908268600",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP3JYTEYFKCY12WTY7TNRCQ392D1WF0YTPV71P0EM|SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+       "h": 2.187214,
+       "hLow": 2.187214,
+       "hHigh": 2.187214,
+       "debtUsd": "39067291400",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP3P9XNPA8GQ2GH2BJ0P3DK71HS34WSD6TK59G3HR|SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+       "h": 2.277643,
+       "hLow": 2.277643,
+       "hHigh": 2.277643,
+       "debtUsd": "387329994600",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP2QE3SKKZAY68Z3KN4TTJN41BVE3B5QVJMNKJAZB|SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+       "h": 2.580071,
+       "hLow": 2.580071,
+       "hHigh": 2.580071,
+       "debtUsd": "2600492600",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SP2Y738VAEMGCMJ8BR4Q94A74EY7DHQEEG31KH078|SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+       "h": 2.691286,
+       "hLow": 2.691286,
+       "hHigh": 2.691286,
+       "debtUsd": "1843444500",
+       "liquidatable": "no"
+      },
+      {
+       "key": "SPKCN7FXPWGKN6NSBHYA2EJG8PHF451B5BMRXGP1|SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+       "h": 2.801143,
+       "hLow": 2.801143,
+       "hHigh": 2.801143,
+       "debtUsd": "1204842500",
+       "liquidatable": "no"
+      }
+     ]
+    }
+   },
+   "checks": [
+    {
+     "id": "count:STX",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "debt:STX",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "collateral:STX",
+     "status": "OK",
+     "deltaPct": 66.3942359903,
+     "delta": "230514321399"
+    },
+    {
+     "id": "count:stSTX",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "debt:stSTX",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "collateral:stSTX",
+     "status": "OK",
+     "deltaPct": 7.4e-9,
+     "delta": "154"
+    },
+    {
+     "id": "count:xBTC",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "debt:xBTC",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "collateral:xBTC",
+     "status": "OK",
+     "deltaPct": 94.5384184984,
+     "delta": "9853936"
+    },
+    {
+     "id": "count:sBTC",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "debt:sBTC",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    },
+    {
+     "id": "collateral:sBTC",
+     "status": "OK",
+     "deltaPct": 0,
+     "delta": "0"
+    }
+   ],
+   "liquidationPath": {
+    "status": "BLOCKED",
+    "summary": "Liquidation burns the vault's debt from the liquidation pool, which holds 0.001622 USDA: enough for 0 of 116 vaults. Redemption is the only forced-deleveraging path (last successful redeem-vault at block 8844103)."
+   },
+   "pointer": {
+    "label": "DAO registry \"oracle\"",
+    "read": "arkadiko-dao.get-qualified-name-by-name(\"oracle\")",
+    "expected": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-oracle-v2-3",
+    "actual": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-oracle-v2-3",
+    "match": true
+   }
+  }
+ }
+}
