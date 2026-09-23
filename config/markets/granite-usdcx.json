@@ -1,0 +1,70 @@
+{
+  "protocol": "Granite",
+  "band": {
+    "BTC": 0.6,
+    "USDC": 0.25
+  },
+  "bandSource": "BTC 0.60%: max Lazer-vs-reference deviation at block time in successful priced txs (measured from 1,583 decoded Lazer-carrying txs, 2026-08-13..09-22). USDC 0.25%: estimate [E], not yet measured.",
+  "dustUsd": 10,
+  "tolerances": {
+    "debt": {
+      "okPct": 0.05,
+      "failPct": 0.5
+    },
+    "collateral": {
+      "okPct": 0.1,
+      "failPct": 1
+    }
+  },
+  "sbtc": "SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token",
+  "id": "granite-usdcx",
+  "name": "Granite USDCx",
+  "priceBasis": {
+    "protocol": "pyth-adapter-v1: Pyth Lazer feed 1 (BTC) for sBTC collateral and feed 7 (USDC/USD) for USDCx debt, verified in each tx, max age 300 s",
+    "monitor": "7-venue CEX median for BTC and USDC; interest accrued to the block with the protocol's own accrue-interest read-only",
+    "exact": false
+  },
+  "generation": {
+    "id": "SPSX722N clone set (Lazer adapter)",
+    "activationBlock": 8692946,
+    "evidence": [
+      "0xaa03b37c (set-allowed-contract borrower-v1, 2026-08-03 02:04:41Z)"
+    ],
+    "contracts": {
+      "state": "SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.state-v1",
+      "borrower": "SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.borrower-v1",
+      "liquidator": "SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.liquidator-v1",
+      "pythAdapter": "SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.pyth-adapter-v1",
+      "ir": "SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.linear-kinked-ir-v1",
+      "governance": "SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.governance-v1",
+      "constants": "SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.constants-v2",
+      "marketAsset": "SP120SBRBQJ00MCWS7TM5R8WJNTTKD5K0HFRC2CNE.usdcx"
+    }
+  },
+  "retiredEntrypoints": [
+    "SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.borrower-v1",
+    "SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.liquidator-v1"
+  ],
+  "candidates": [],
+  "governance": {
+    "resolve": {
+      "kind": "var",
+      "contract": "SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.state-v1",
+      "var": "governance"
+    },
+    "expect": "SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.governance-v1",
+    "proposeFns": [
+      "initiate-proposal-to-update-allowed-contract",
+      "initiate-proposal-to-update-governance"
+    ],
+    "executeFns": [
+      "execute"
+    ],
+    "classify": {
+      "always": true
+    },
+    "proposalIdFromResult": true,
+    "windowSeconds": 3024000,
+    "note": "Granite clones deploy from a fresh address each time, so there is no next-name to probe; the governance contract is re-derived from state-v1 every run (aeUSDC moved governance twice)."
+  }
+}

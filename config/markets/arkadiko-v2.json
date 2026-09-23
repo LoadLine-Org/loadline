@@ -1,0 +1,116 @@
+{
+  "id": "arkadiko-v2",
+  "name": "Arkadiko v2",
+  "protocol": "Arkadiko",
+  "priceBasis": {
+    "protocol": "arkadiko-oracle-v2-3 stored price (3-of-N signed pushes), no staleness check",
+    "monitor": "the same stored on-chain price, read at the block (exact)",
+    "exact": true
+  },
+  "band": {},
+  "dustUsd": 10,
+  "tolerances": {
+    "debt": {
+      "okPct": 0.05,
+      "failPct": 0.5
+    },
+    "collateral": {
+      "okPct": 0.1,
+      "failPct": 1
+    }
+  },
+  "generation": {
+    "id": "vaults v1-1/v1-2/v1-3 + oracle-v2-3",
+    "activationBlock": 0,
+    "evidence": [
+      "DAO registry read (vaults-manager-v1-2 and vaults-operations-v1-3 registered by propose-dao 2025-05-14, end-proposal 2025-05-20 0xb91ed4b8)"
+    ],
+    "contracts": {
+      "deployer": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR",
+      "dao": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-dao",
+      "usda": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.usda-token",
+      "oracle": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-oracle-v2-3",
+      "vaults-manager": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-manager-v1-2",
+      "vaults-operations": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-operations-v1-3",
+      "vaults-data": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-data-v1-1",
+      "vaults-sorted": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-sorted-v1-1",
+      "vaults-tokens": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-tokens-v1-1",
+      "vaults-helpers": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-helpers-v1-1",
+      "vaults-pool-active": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-pool-active-v1-1",
+      "vaults-pool-liq": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-pool-liq-v1-2",
+      "vaults-migration": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-migration-v1-3",
+      "governance": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-governance-v4-3"
+    }
+  },
+  "registryNames": [
+    "oracle",
+    "vaults-manager",
+    "vaults-operations",
+    "vaults-data",
+    "vaults-sorted",
+    "vaults-tokens",
+    "vaults-helpers",
+    "vaults-pool-active",
+    "vaults-pool-liq",
+    "vaults-migration",
+    "governance"
+  ],
+  "knownDeployedUnregistered": [
+    "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-oracle-v2-4",
+    "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-oracle-v2-5",
+    "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-oracle-v3-0",
+    "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-pool-liq-v1-3"
+  ],
+  "candidates": [
+    {
+      "contract": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-manager-v1-3",
+      "meaning": "next vaults-manager (needs a passed DAO vote to register)",
+      "effect": "info"
+    },
+    {
+      "contract": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-operations-v1-4",
+      "meaning": "next vaults-operations",
+      "effect": "info"
+    },
+    {
+      "contract": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-data-v1-2",
+      "meaning": "next vaults-data (the storage layer itself)",
+      "effect": "info"
+    },
+    {
+      "contract": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-pool-liq-v1-4",
+      "meaning": "next liquidation pool",
+      "effect": "info"
+    },
+    {
+      "contract": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-oracle-v2-6",
+      "meaning": "next oracle",
+      "effect": "info"
+    }
+  ],
+  "governance": {
+    "resolve": {
+      "kind": "readonly",
+      "contract": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-dao",
+      "fn": "get-qualified-name-by-name",
+      "argAscii": "governance"
+    },
+    "expect": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-governance-v4-3",
+    "proposeFns": [
+      "propose",
+      "propose-dao"
+    ],
+    "executeFns": [
+      "end-proposal"
+    ],
+    "classify": {
+      "argKeywords": [
+        "vaults-",
+        "oracle"
+      ]
+    },
+    "windowSeconds": 864000,
+    "note": "Registry changes only through a passed DAO vote (>= 250 burn blocks of voting, >= 5% DIKO participation, then end-proposal).",
+    "matchBy": "anyLater"
+  }
+}

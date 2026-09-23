@@ -1,0 +1,94 @@
+{
+  "id": "zest-v2",
+  "name": "Zest v2",
+  "protocol": "Zest",
+  "priceBasis": {
+    "protocol": "Pyth Lazer feeds 1 (BTC) / 45 (STX) / 7 (USDC) verified inside each tx, max age 120 s; DIA USDh/USD; stSTX and stBTC ratios; vault liquidity indices",
+    "monitor": "7-venue CEX median for BTC/STX/USDC; on-chain DIA, LST ratios and indices read at the block",
+    "exact": false
+  },
+  "dustUsd": 10,
+  "tolerances": {
+    "debt": {
+      "okPct": 0.05,
+      "failPct": 0.5
+    },
+    "collateral": {
+      "okPct": 0.1,
+      "failPct": 1
+    }
+  },
+  "generation": {
+    "id": "v0-8-market",
+    "activationBlock": 8883743,
+    "evidence": [
+      "0xce8d5c1a (stbm1 execute, 2026-08-31 09:56:54Z)"
+    ],
+    "contracts": {
+      "deployer": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7",
+      "market": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v0-8-market",
+      "marketVault": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v0-market-vault",
+      "assets": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v0-assets",
+      "egroup": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v0-egroup",
+      "daoExecutor": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.dao-executor",
+      "daoMultisig": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.dao-multisig",
+      "ststxRatio": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.data-stx-v2",
+      "stbtcRatio": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.data-stbtc-v1",
+      "dia": "SP1G48FZ4Y7JY8G2Z0N51QTCYGBQ6F4J43J77BQC0.dia-oracle"
+    }
+  },
+  "vaults": {
+    "0": "stx",
+    "2": "sbtc",
+    "4": "ststx",
+    "6": "usdc",
+    "8": "usdh",
+    "10": "ststxbtc",
+    "12": "stbtc"
+  },
+  "candidates": [
+    {
+      "contract": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v0-9-market",
+      "meaning": "next market implementation; Zest v2 switches have followed the deploy by 4-35 min",
+      "effect": "pending"
+    },
+    {
+      "contract": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v0-10-market",
+      "meaning": "market implementation",
+      "effect": "pending"
+    },
+    {
+      "contract": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v1-0-market",
+      "meaning": "market implementation",
+      "effect": "pending"
+    }
+  ],
+  "governance": {
+    "resolve": {
+      "kind": "readonly",
+      "contract": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.dao-executor",
+      "fn": "get-impl"
+    },
+    "proposeFns": [
+      "propose"
+    ],
+    "executeFns": [
+      "execute"
+    ],
+    "classify": {
+      "argName": "script",
+      "sourceKeywords": [
+        "set-impl",
+        "set-authorized-contract",
+        "set-pause-states"
+      ]
+    },
+    "windowSeconds": 259200
+  },
+  "band": {
+    "BTC": 0.6,
+    "STX": 1.05,
+    "USDC": 0.25
+  },
+  "bandSource": "BTC 0.60% and STX 1.05%: max Lazer-vs-reference deviation at block time in successful priced txs (measured from 1,583 decoded Lazer-carrying txs, 2026-08-13..09-22). USDC 0.25%: estimate [E], not yet measured."
+}

@@ -1,0 +1,171 @@
+{
+  "id": "zest-v1",
+  "name": "Zest v1",
+  "protocol": "Zest",
+  "priceBasis": {
+    "protocol": "stx-btc-oracle-v1-7: Pyth Lazer feeds 1 (BTC) / 45 (STX) opened per tx, max age 360 s; stSTX = STX x data-stx-v2 ratio; stSTXbtc = STX; aeUSDC/USDH/sUSDT and legacy assets use fixed-price oracle contracts",
+    "monitor": "7-venue CEX median for BTC/STX; the stSTX ratio and every fixed-price oracle read on-chain at the block (the protocol's own value, even where it differs from market)",
+    "exact": false
+  },
+  "band": {
+    "BTC": 0.6,
+    "STX": 1.05
+  },
+  "bandSource": "Max Lazer-vs-reference deviation at block time in successful priced txs (measured from 1,583 decoded Lazer-carrying txs, 2026-08-13..09-22).",
+  "dustUsd": 10,
+  "tolerances": {
+    "debt": {
+      "okPct": 0.1,
+      "failPct": 0.5
+    },
+    "collateral": {
+      "okPct": 0.1,
+      "failPct": 1
+    }
+  },
+  "generation": {
+    "id": "borrow-helper-v2-1-8 / stx-btc-oracle-v1-7",
+    "activationBlock": 8786501,
+    "evidence": [
+      "0x9610f1c7 (zip-054 execute-proposal, 2026-08-17 13:20:01Z)"
+    ],
+    "contracts": {
+      "deployer": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N",
+      "helper": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.borrow-helper-v2-1-8",
+      "pool": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.pool-borrow-v2-4",
+      "reserve": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.pool-0-reserve-v2-0",
+      "liquidationManager": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.liquidation-manager-v2-3",
+      "oracle": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.stx-btc-oracle-v1-7",
+      "governance": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.zest-governance",
+      "ststxRatio": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.data-stx-v2"
+    }
+  },
+  "userRegistries": [
+    "pool-borrow",
+    "pool-borrow-v1-1",
+    "pool-borrow-v1-2",
+    "pool-borrow-v2-0",
+    "pool-borrow-v2-1",
+    "pool-borrow-v2-2",
+    "pool-borrow-v2-3",
+    "pool-borrow-v2-4"
+  ],
+  "assets": {
+    "SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token": {
+      "symbol": "sBTC",
+      "price": "BTC"
+    },
+    "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.wstx": {
+      "symbol": "STX",
+      "price": "STX"
+    },
+    "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token": {
+      "symbol": "stSTX",
+      "price": "STX*ststxRatio"
+    },
+    "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststxbtc-token-v2": {
+      "symbol": "stSTXbtc",
+      "price": "STX"
+    },
+    "SP3Y2ZSH8P7D50B0VBTSX11S7XSG24M1VB9YFQA4K.token-aeusdc": {
+      "symbol": "aeUSDC",
+      "price": "fixed"
+    },
+    "SPN5AKG35QZSK2M8GAMR4AFX45659RJHDW353HSG.usdh-token-v1": {
+      "symbol": "USDH",
+      "price": "fixed"
+    },
+    "SP2XD7417HGPRTREMKF748VNEQPDRR0RMANB7X1NK.token-susdt": {
+      "symbol": "sUSDT",
+      "price": "fixed"
+    },
+    "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.usda-token": {
+      "symbol": "USDA",
+      "price": "fixed"
+    },
+    "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-token": {
+      "symbol": "DIKO",
+      "price": "fixed"
+    },
+    "SP102V8P0F7JX67ARQ77WEA3D3CFB5XW39REDT0AM.token-alex": {
+      "symbol": "ALEX",
+      "price": "fixed"
+    }
+  },
+  "reconciliationExclusions": [
+    {
+      "account": "SP174BBVTRQSE3YAMBKD5NKG03TMDQSY6ZMJT14J6",
+      "asset": "sBTC",
+      "reason": "Known orphan bad-debt record: principal-borrow-balance 1.40104912 sBTC, no collateral, last updated at block 1,511,101. The sBTC reserve's total-borrows-variable does not include it (research 02-scope \u00a70.2). Excluded from the reconciliation sum and from risk counts; reported separately."
+    }
+  ],
+  "candidates": [
+    {
+      "contract": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v0-transfer-v1-1",
+      "meaning": "pre-approved v1->v2 migration contract (zip-054). Already true in pool-borrow-v2-4.approved-contracts, so its deploy IS its activation: it can move v1 positions without going through borrow-helper",
+      "effect": "unverified"
+    },
+    {
+      "contract": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.borrow-helper-v2-1-9",
+      "meaning": "next entry point; needs a zip to approve it (>= 144 burn blocks)",
+      "effect": "info"
+    },
+    {
+      "contract": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.borrow-helper-v2-2-0",
+      "meaning": "next entry point",
+      "effect": "info"
+    },
+    {
+      "contract": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.pool-borrow-v2-5",
+      "meaning": "next lending pool",
+      "effect": "info"
+    },
+    {
+      "contract": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.stx-btc-oracle-v1-8",
+      "meaning": "next oracle",
+      "effect": "info"
+    },
+    {
+      "contract": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.liquidation-manager-v2-4",
+      "meaning": "next liquidation manager",
+      "effect": "info"
+    }
+  ],
+  "governance": {
+    "resolve": {
+      "kind": "fixed",
+      "contract": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.zest-governance"
+    },
+    "proposeFns": [
+      "add-signer-proposal"
+    ],
+    "executeFns": [
+      "execute-proposal"
+    ],
+    "classify": {
+      "argName": "proposal",
+      "sourceKeywords": [
+        "set-approved-contract",
+        "replacement-oracle",
+        "replacement-helper",
+        "helper-addr-after",
+        "set-lending-pool",
+        "set-liquidator"
+      ]
+    },
+    "windowSeconds": 518400
+  },
+  "zTokenFts": {
+    "stSTX": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.zststx-token::zststx",
+    "aeUSDC": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.zaeusdc-token::zaeusdc",
+    "STX": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.zwstx-token::zwstx",
+    "DIKO": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.zdiko-token::zdiko",
+    "USDH": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.zusdh-token::zusdh",
+    "sUSDT": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.zsusdt-token::zsusdt",
+    "USDA": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.zusda-token::zusda",
+    "sBTC": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.zsbtc-token::zsbtc",
+    "ALEX": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.zalex-token::zalex",
+    "stSTXbtc": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.zststxbtc-v2-token::zststxbtc-v2"
+  },
+  "holdersRefreshHours": 24
+}

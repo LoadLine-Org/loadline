@@ -1,0 +1,26 @@
+{
+  "name": "loadline",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Reconciled, independently verifiable index of Stacks lending positions and oracle health.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "snapshot": "node src/cli.ts snapshot",
+    "verify": "node src/cli.ts verify",
+    "oracle": "node src/cli.ts oracle",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test test/*.test.ts",
+    "start": "node server/index.ts"
+  },
+  "dependencies": {
+    "@stacks/transactions": "7.6.0"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "@types/node": "24.13.6"
+  }
+}
