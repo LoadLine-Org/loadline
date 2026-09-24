@@ -1,0 +1,1002 @@
+{
+ "schema": 1,
+ "generatedAt": "2026-09-24T13:37:51.000Z",
+ "note": "Light migration replay: the four July–August 2026 switches that produced each market's current contract generation. Pointers are read with today's config at the block before and the block of each step.",
+ "switches": [
+  {
+   "id": "zest-v2-v0-8",
+   "market": "zest-v2",
+   "title": "Zest v2: v0-7 → v0-8 market (with the stBTC vault)",
+   "configGeneration": "v0-8-market",
+   "newContract": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v0-8-market",
+   "newContractDeploy": {
+    "txid": "0xeecc0fef6908f29fbffe1a280ce14020344552b78e182077e3ece00c54e1f7bd",
+    "height": 8883545,
+    "time": 1788168346
+   },
+   "warningMinutes": 31,
+   "steps": [
+    {
+     "label": "Multisig script stbm1 switches the market implementation",
+     "tx": {
+      "txid": "0xce8d5c1a27565f72cb89c2c096b7915d2e93ac5f3a62aa2cef961738dd966096",
+      "height": 8883743,
+      "time": 1788170214,
+      "fn": "execute",
+      "cid": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.dao-multisig"
+     },
+     "before": {
+      "height": 8883742,
+      "indexBlockHash": "02c1721a905ee067633f1d3567e6a4970450f1ec38e7fe95d8189c0de7a26fe0",
+      "time": 1788170205,
+      "pointers": [
+       {
+        "label": "Live market implementation",
+        "read": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v0-market-vault.get-impl()",
+        "actual": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v0-7-market",
+        "match": false
+       },
+       {
+        "label": "DAO executor implementation",
+        "read": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.dao-executor.get-impl()",
+        "actual": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.dao-multisig",
+        "match": true
+       },
+       {
+        "label": "v0-vault-stx authorises the market",
+        "read": "v0-vault-stx.is-authorized-contract(v0-8-market)",
+        "actual": "false",
+        "match": false
+       },
+       {
+        "label": "v0-vault-sbtc authorises the market",
+        "read": "v0-vault-sbtc.is-authorized-contract(v0-8-market)",
+        "actual": "false",
+        "match": false
+       },
+       {
+        "label": "v0-vault-ststx authorises the market",
+        "read": "v0-vault-ststx.is-authorized-contract(v0-8-market)",
+        "actual": "false",
+        "match": false
+       },
+       {
+        "label": "v0-vault-usdc authorises the market",
+        "read": "v0-vault-usdc.is-authorized-contract(v0-8-market)",
+        "actual": "false",
+        "match": false
+       },
+       {
+        "label": "v0-vault-usdh authorises the market",
+        "read": "v0-vault-usdh.is-authorized-contract(v0-8-market)",
+        "actual": "false",
+        "match": false
+       },
+       {
+        "label": "v0-vault-ststxbtc authorises the market",
+        "read": "v0-vault-ststxbtc.is-authorized-contract(v0-8-market)",
+        "actual": "false",
+        "match": false
+       },
+       {
+        "label": "v0-vault-stbtc authorises the market",
+        "read": "v0-vault-stbtc.is-authorized-contract(v0-8-market)",
+        "actual": "false",
+        "match": false
+       }
+      ],
+      "state": "UNVERIFIED",
+      "mismatches": 8
+     },
+     "at": {
+      "height": 8883743,
+      "indexBlockHash": "66662bf308682e1a2e76a356a6c67c116e9a9f2370367b046f46272fce99c085",
+      "time": 1788170214,
+      "pointers": [
+       {
+        "label": "Live market implementation",
+        "read": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v0-market-vault.get-impl()",
+        "actual": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v0-8-market",
+        "match": true
+       },
+       {
+        "label": "DAO executor implementation",
+        "read": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.dao-executor.get-impl()",
+        "actual": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.dao-multisig",
+        "match": true
+       },
+       {
+        "label": "v0-vault-stx authorises the market",
+        "read": "v0-vault-stx.is-authorized-contract(v0-8-market)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "v0-vault-sbtc authorises the market",
+        "read": "v0-vault-sbtc.is-authorized-contract(v0-8-market)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "v0-vault-ststx authorises the market",
+        "read": "v0-vault-ststx.is-authorized-contract(v0-8-market)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "v0-vault-usdc authorises the market",
+        "read": "v0-vault-usdc.is-authorized-contract(v0-8-market)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "v0-vault-usdh authorises the market",
+        "read": "v0-vault-usdh.is-authorized-contract(v0-8-market)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "v0-vault-ststxbtc authorises the market",
+        "read": "v0-vault-ststxbtc.is-authorized-contract(v0-8-market)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "v0-vault-stbtc authorises the market",
+        "read": "v0-vault-stbtc.is-authorized-contract(v0-8-market)",
+        "actual": "true",
+        "match": true
+       }
+      ],
+      "state": "VERIFIED",
+      "mismatches": 0
+     },
+     "changed": [
+      "Live market implementation",
+      "v0-vault-stx authorises the market",
+      "v0-vault-sbtc authorises the market",
+      "v0-vault-ststx authorises the market",
+      "v0-vault-usdc authorises the market",
+      "v0-vault-usdh authorises the market",
+      "v0-vault-ststxbtc authorises the market",
+      "v0-vault-stbtc authorises the market"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "zest-v1-zip-054",
+   "market": "zest-v1",
+   "title": "Zest v1: zip-054 (Lazer oracle v1-7, entry point borrow-helper-v2-1-8)",
+   "configGeneration": "borrow-helper-v2-1-8 / stx-btc-oracle-v1-7",
+   "newContract": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.borrow-helper-v2-1-8",
+   "newContractDeploy": {
+    "txid": "0xcbeaea1d071c45cd76589811515c4b52efac3c9c06b6aa2892e8e66c8f2ebd8a",
+    "height": 8754810,
+    "time": 1786645492
+   },
+   "warningMinutes": 5455,
+   "steps": [
+    {
+     "label": "zip-054 executed by zest-governance",
+     "tx": {
+      "txid": "0x9610f1c7708a944c1532374697d2859fd04ece07b331118b8881e04b82477b08",
+      "height": 8786501,
+      "time": 1786972801,
+      "fn": "execute-proposal",
+      "cid": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.zest-governance"
+     },
+     "before": {
+      "height": 8786500,
+      "indexBlockHash": "463b27fe13bae1a4d6e2fcf4cd7968d770a2831f2367905664e9891643cb67a1",
+      "time": 1786972788,
+      "pointers": [
+       {
+        "label": "Entry point approved on the lending pool",
+        "read": "pool-borrow-v2-4.is-approved-contract(borrow-helper-v2-1-8)",
+        "actual": "(err u30000)",
+        "match": false
+       },
+       {
+        "label": "Reserve's lending pool",
+        "read": "pool-0-reserve-v2-0::lending-pool",
+        "actual": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.pool-borrow-v2-4",
+        "match": true
+       },
+       {
+        "label": "Reserve's liquidator",
+        "read": "pool-0-reserve-v2-0::liquidator",
+        "actual": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.liquidation-manager-v2-3",
+        "match": true
+       },
+       {
+        "label": "sBTC reserve oracle",
+        "read": "pool-0-reserve-v2-0.get-reserve-state(sbtc-token).oracle",
+        "actual": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.stx-btc-oracle-v1-6",
+        "match": false
+       },
+       {
+        "label": "STX reserve oracle",
+        "read": "pool-0-reserve-v2-0.get-reserve-state(wstx).oracle",
+        "actual": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.stx-btc-oracle-v1-6",
+        "match": false
+       },
+       {
+        "label": "stSTX reserve oracle",
+        "read": "pool-0-reserve-v2-0.get-reserve-state(ststx-token).oracle",
+        "actual": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.stx-btc-oracle-v1-6",
+        "match": false
+       },
+       {
+        "label": "stSTXbtc reserve oracle",
+        "read": "pool-0-reserve-v2-0.get-reserve-state(ststxbtc-token-v2).oracle",
+        "actual": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.stx-btc-oracle-v1-6",
+        "match": false
+       }
+      ],
+      "state": "UNVERIFIED",
+      "mismatches": 5
+     },
+     "at": {
+      "height": 8786501,
+      "indexBlockHash": "710a44286d87e166b08a933fe0b63684781288d40384ed8c4157df69f90a0b86",
+      "time": 1786972801,
+      "pointers": [
+       {
+        "label": "Entry point approved on the lending pool",
+        "read": "pool-borrow-v2-4.is-approved-contract(borrow-helper-v2-1-8)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "Reserve's lending pool",
+        "read": "pool-0-reserve-v2-0::lending-pool",
+        "actual": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.pool-borrow-v2-4",
+        "match": true
+       },
+       {
+        "label": "Reserve's liquidator",
+        "read": "pool-0-reserve-v2-0::liquidator",
+        "actual": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.liquidation-manager-v2-3",
+        "match": true
+       },
+       {
+        "label": "sBTC reserve oracle",
+        "read": "pool-0-reserve-v2-0.get-reserve-state(sbtc-token).oracle",
+        "actual": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.stx-btc-oracle-v1-7",
+        "match": true
+       },
+       {
+        "label": "STX reserve oracle",
+        "read": "pool-0-reserve-v2-0.get-reserve-state(wstx).oracle",
+        "actual": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.stx-btc-oracle-v1-7",
+        "match": true
+       },
+       {
+        "label": "stSTX reserve oracle",
+        "read": "pool-0-reserve-v2-0.get-reserve-state(ststx-token).oracle",
+        "actual": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.stx-btc-oracle-v1-7",
+        "match": true
+       },
+       {
+        "label": "stSTXbtc reserve oracle",
+        "read": "pool-0-reserve-v2-0.get-reserve-state(ststxbtc-token-v2).oracle",
+        "actual": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.stx-btc-oracle-v1-7",
+        "match": true
+       }
+      ],
+      "state": "VERIFIED",
+      "mismatches": 0
+     },
+     "changed": [
+      "Entry point approved on the lending pool",
+      "sBTC reserve oracle",
+      "STX reserve oracle",
+      "stSTX reserve oracle",
+      "stSTXbtc reserve oracle"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "granite-usdcx-spsx722n",
+   "market": "granite-usdcx",
+   "title": "Granite USDCx: SP3M2BYF → SPSX722N contract set (Lazer adapter)",
+   "configGeneration": "SPSX722N clone set (Lazer adapter)",
+   "newContract": "SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.borrower-v1",
+   "newContractDeploy": {
+    "txid": "0x19e8500f37e6a82972afb08b3fd204db05c86d8d747fd776257b48877b156a38",
+    "height": 8666363,
+    "time": 1785409144
+   },
+   "warningMinutes": 5226,
+   "steps": [
+    {
+     "label": "New borrower-v1 allowed on state-v1",
+     "tx": {
+      "txid": "0xaa03b37cfecdaa90d0ce8712eefe9825e029df34e118c398e23d812e4b7f5184",
+      "height": 8692946,
+      "time": 1785722681,
+      "fn": "execute",
+      "cid": "SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.governance-v1"
+     },
+     "before": {
+      "height": 8692945,
+      "indexBlockHash": "40a53d5efbd6a8ab0d60a34a9ec1ebc8d9fb8d384eeef5d86073bcaf4da1f9ee",
+      "time": 1785722670,
+      "pointers": [
+       {
+        "label": "Borrower entry point allowed",
+        "read": "state-v1.is-allowed-contract(SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.borrower-v1)",
+        "actual": "(err u107)",
+        "match": false
+       },
+       {
+        "label": "Liquidator entry point allowed",
+        "read": "state-v1.is-allowed-contract(SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.liquidator-v1)",
+        "actual": "(err u107)",
+        "match": false
+       },
+       {
+        "label": "Governance contract",
+        "read": "state-v1::governance",
+        "actual": "SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.governance-v1",
+        "match": false
+       },
+       {
+        "label": "Retired SP3M2BYF…borrower-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.borrower-v1)",
+        "actual": "true",
+        "match": false
+       },
+       {
+        "label": "Retired SP3M2BYF…liquidator-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.liquidator-v1)",
+        "actual": "true",
+        "match": false
+       }
+      ],
+      "state": "UNVERIFIED",
+      "mismatches": 5
+     },
+     "at": {
+      "height": 8692946,
+      "indexBlockHash": "5b22ba3b868c7034297738ab0633319b759413e036415cdd495257ab86481ecf",
+      "time": 1785722681,
+      "pointers": [
+       {
+        "label": "Borrower entry point allowed",
+        "read": "state-v1.is-allowed-contract(SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.borrower-v1)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "Liquidator entry point allowed",
+        "read": "state-v1.is-allowed-contract(SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.liquidator-v1)",
+        "actual": "(err u107)",
+        "match": false
+       },
+       {
+        "label": "Governance contract",
+        "read": "state-v1::governance",
+        "actual": "SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.governance-v1",
+        "match": false
+       },
+       {
+        "label": "Retired SP3M2BYF…borrower-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.borrower-v1)",
+        "actual": "true",
+        "match": false
+       },
+       {
+        "label": "Retired SP3M2BYF…liquidator-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.liquidator-v1)",
+        "actual": "true",
+        "match": false
+       }
+      ],
+      "state": "UNVERIFIED",
+      "mismatches": 4
+     },
+     "changed": [
+      "Borrower entry point allowed"
+     ]
+    },
+    {
+     "label": "Remaining new entry points allowed",
+     "tx": null,
+     "before": {
+      "height": 8693006,
+      "indexBlockHash": "ea458817f88d25971bf995a63f8bc5813cf296fc9a0c4f3da81783a4fb2f46af",
+      "time": 1785723555,
+      "pointers": [
+       {
+        "label": "Borrower entry point allowed",
+        "read": "state-v1.is-allowed-contract(SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.borrower-v1)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "Liquidator entry point allowed",
+        "read": "state-v1.is-allowed-contract(SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.liquidator-v1)",
+        "actual": "(err u107)",
+        "match": false
+       },
+       {
+        "label": "Governance contract",
+        "read": "state-v1::governance",
+        "actual": "SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.governance-v1",
+        "match": false
+       },
+       {
+        "label": "Retired SP3M2BYF…borrower-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.borrower-v1)",
+        "actual": "true",
+        "match": false
+       },
+       {
+        "label": "Retired SP3M2BYF…liquidator-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.liquidator-v1)",
+        "actual": "true",
+        "match": false
+       }
+      ],
+      "state": "UNVERIFIED",
+      "mismatches": 4
+     },
+     "at": {
+      "height": 8693007,
+      "indexBlockHash": "a7b363577edfb106765bd8e405664a9d9a6117c789bbc3b57c8861571692523a",
+      "time": 1785723566,
+      "pointers": [
+       {
+        "label": "Borrower entry point allowed",
+        "read": "state-v1.is-allowed-contract(SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.borrower-v1)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "Liquidator entry point allowed",
+        "read": "state-v1.is-allowed-contract(SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.liquidator-v1)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "Governance contract",
+        "read": "state-v1::governance",
+        "actual": "SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.governance-v1",
+        "match": false
+       },
+       {
+        "label": "Retired SP3M2BYF…borrower-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.borrower-v1)",
+        "actual": "true",
+        "match": false
+       },
+       {
+        "label": "Retired SP3M2BYF…liquidator-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.liquidator-v1)",
+        "actual": "true",
+        "match": false
+       }
+      ],
+      "state": "UNVERIFIED",
+      "mismatches": 3
+     },
+     "changed": [
+      "Liquidator entry point allowed"
+     ]
+    },
+    {
+     "label": "Old SP3M2BYF entry points removed",
+     "tx": {
+      "txid": "0x3b4ef4e9869e49b4b95024412d31043e68ea8b0f70c16db5efa02d8a890beca7",
+      "height": 8731180,
+      "time": 1786330409,
+      "fn": "execute",
+      "cid": "SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.governance-v1"
+     },
+     "before": {
+      "height": 8731179,
+      "indexBlockHash": "38be6895ad430776afcc0a01aa374b24e3f92203880eb67ff2e5036f6f58addc",
+      "time": 1786330394,
+      "pointers": [
+       {
+        "label": "Borrower entry point allowed",
+        "read": "state-v1.is-allowed-contract(SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.borrower-v1)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "Liquidator entry point allowed",
+        "read": "state-v1.is-allowed-contract(SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.liquidator-v1)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "Governance contract",
+        "read": "state-v1::governance",
+        "actual": "SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.governance-v1",
+        "match": false
+       },
+       {
+        "label": "Retired SP3M2BYF…borrower-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.borrower-v1)",
+        "actual": "true",
+        "match": false
+       },
+       {
+        "label": "Retired SP3M2BYF…liquidator-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.liquidator-v1)",
+        "actual": "true",
+        "match": false
+       }
+      ],
+      "state": "UNVERIFIED",
+      "mismatches": 3
+     },
+     "at": {
+      "height": 8731180,
+      "indexBlockHash": "cf60446a220e365f3393d48486779852c37f4ecb5f8da7fff599bf0df0c2b5c6",
+      "time": 1786330409,
+      "pointers": [
+       {
+        "label": "Borrower entry point allowed",
+        "read": "state-v1.is-allowed-contract(SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.borrower-v1)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "Liquidator entry point allowed",
+        "read": "state-v1.is-allowed-contract(SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.liquidator-v1)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "Governance contract",
+        "read": "state-v1::governance",
+        "actual": "SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.governance-v1",
+        "match": false
+       },
+       {
+        "label": "Retired SP3M2BYF…borrower-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.borrower-v1)",
+        "actual": "(err u107)",
+        "match": true
+       },
+       {
+        "label": "Retired SP3M2BYF…liquidator-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.liquidator-v1)",
+        "actual": "(err u107)",
+        "match": true
+       }
+      ],
+      "state": "UNVERIFIED",
+      "mismatches": 1
+     },
+     "changed": [
+      "Retired SP3M2BYF…borrower-v1 stays disallowed",
+      "Retired SP3M2BYF…liquidator-v1 stays disallowed"
+     ]
+    },
+    {
+     "label": "Governance moved to SPSX722N",
+     "tx": {
+      "txid": "0xccc373149bf20cab8df2b7b2ddbc8921083241393f354538521d3f54135057af",
+      "height": 8738544,
+      "time": 1786451075,
+      "fn": "execute",
+      "cid": "SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.governance-v1"
+     },
+     "before": {
+      "height": 8738543,
+      "indexBlockHash": "e8fbfc255e7e00a8e3cd8b0b56041b2e91161456c2db3639546a776dc732b004",
+      "time": 1786451040,
+      "pointers": [
+       {
+        "label": "Borrower entry point allowed",
+        "read": "state-v1.is-allowed-contract(SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.borrower-v1)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "Liquidator entry point allowed",
+        "read": "state-v1.is-allowed-contract(SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.liquidator-v1)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "Governance contract",
+        "read": "state-v1::governance",
+        "actual": "SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.governance-v1",
+        "match": false
+       },
+       {
+        "label": "Retired SP3M2BYF…borrower-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.borrower-v1)",
+        "actual": "(err u107)",
+        "match": true
+       },
+       {
+        "label": "Retired SP3M2BYF…liquidator-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.liquidator-v1)",
+        "actual": "(err u107)",
+        "match": true
+       }
+      ],
+      "state": "UNVERIFIED",
+      "mismatches": 1
+     },
+     "at": {
+      "height": 8738544,
+      "indexBlockHash": "72ebd1534104369510ce7d2eddabaa8a89edfbbdb6a63c03bf85b0336e97925d",
+      "time": 1786451075,
+      "pointers": [
+       {
+        "label": "Borrower entry point allowed",
+        "read": "state-v1.is-allowed-contract(SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.borrower-v1)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "Liquidator entry point allowed",
+        "read": "state-v1.is-allowed-contract(SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.liquidator-v1)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "Governance contract",
+        "read": "state-v1::governance",
+        "actual": "SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.governance-v1",
+        "match": true
+       },
+       {
+        "label": "Retired SP3M2BYF…borrower-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.borrower-v1)",
+        "actual": "(err u107)",
+        "match": true
+       },
+       {
+        "label": "Retired SP3M2BYF…liquidator-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.liquidator-v1)",
+        "actual": "(err u107)",
+        "match": true
+       }
+      ],
+      "state": "VERIFIED",
+      "mismatches": 0
+     },
+     "changed": [
+      "Governance contract"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "granite-aeusdc-sp119qj4",
+   "market": "granite-aeusdc",
+   "title": "Granite aeUSDC: SP26NGV9 → SP119QJ4 contract set",
+   "configGeneration": "SP119QJ4 clone set (Lazer adapter)",
+   "newContract": "SP119QJ4NVE3RQP8RXJVW5EXAV3XD4CJZWRCEEAAR.borrower-v1",
+   "newContractDeploy": {
+    "txid": "0xbfe0b2f04cde6d15fe998feeadd5e5106f4b6c5afba4140d6ec550e03035ee35",
+    "height": 8749853,
+    "time": 1786597625
+   },
+   "warningMinutes": 4432,
+   "steps": [
+    {
+     "label": "New borrower-v1 allowed on state-v1",
+     "tx": {
+      "txid": "0xa346b1963bb7ea823b54ffc715e779ff53dcb56a5967497ebafd0742782cf7bb",
+      "height": 8776553,
+      "time": 1786863518,
+      "fn": "execute",
+      "cid": "SP2TRSJJMSX0J0GDBNCEG0Y1AQW26G3HYM9K4WCJG.governance-v1"
+     },
+     "before": {
+      "height": 8776552,
+      "indexBlockHash": "6ace17bae92102c5203a1f7eab928e2dbce5e311a583d1b46ada10bff1a82aa7",
+      "time": 1786863511,
+      "pointers": [
+       {
+        "label": "Borrower entry point allowed",
+        "read": "state-v1.is-allowed-contract(SP119QJ4NVE3RQP8RXJVW5EXAV3XD4CJZWRCEEAAR.borrower-v1)",
+        "actual": "(err u107)",
+        "match": false
+       },
+       {
+        "label": "Liquidator entry point allowed",
+        "read": "state-v1.is-allowed-contract(SP119QJ4NVE3RQP8RXJVW5EXAV3XD4CJZWRCEEAAR.liquidator-v1)",
+        "actual": "(err u107)",
+        "match": false
+       },
+       {
+        "label": "Governance contract",
+        "read": "state-v1::governance",
+        "actual": "SP2TRSJJMSX0J0GDBNCEG0Y1AQW26G3HYM9K4WCJG.governance-v1",
+        "match": false
+       },
+       {
+        "label": "Retired SP26NGV9…borrower-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP26NGV9AFZBX7XBDBS2C7EC7FCPSAV9PKREQNMVS.borrower-v1)",
+        "actual": "true",
+        "match": false
+       },
+       {
+        "label": "Retired SP26NGV9…liquidator-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP26NGV9AFZBX7XBDBS2C7EC7FCPSAV9PKREQNMVS.liquidator-v1)",
+        "actual": "true",
+        "match": false
+       },
+       {
+        "label": "Retired SP3BJR4P…liquidator-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP3BJR4P3W2Y9G22HA595Z59VHBC9EQYRFWSKG743.liquidator-v1)",
+        "actual": "true",
+        "match": false
+       }
+      ],
+      "state": "UNVERIFIED",
+      "mismatches": 6
+     },
+     "at": {
+      "height": 8776553,
+      "indexBlockHash": "679db11937e903404eeb041d1138e7be4b7dfc0970f84068b18a8b1f54a9d028",
+      "time": 1786863518,
+      "pointers": [
+       {
+        "label": "Borrower entry point allowed",
+        "read": "state-v1.is-allowed-contract(SP119QJ4NVE3RQP8RXJVW5EXAV3XD4CJZWRCEEAAR.borrower-v1)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "Liquidator entry point allowed",
+        "read": "state-v1.is-allowed-contract(SP119QJ4NVE3RQP8RXJVW5EXAV3XD4CJZWRCEEAAR.liquidator-v1)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "Governance contract",
+        "read": "state-v1::governance",
+        "actual": "SP2TRSJJMSX0J0GDBNCEG0Y1AQW26G3HYM9K4WCJG.governance-v1",
+        "match": false
+       },
+       {
+        "label": "Retired SP26NGV9…borrower-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP26NGV9AFZBX7XBDBS2C7EC7FCPSAV9PKREQNMVS.borrower-v1)",
+        "actual": "true",
+        "match": false
+       },
+       {
+        "label": "Retired SP26NGV9…liquidator-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP26NGV9AFZBX7XBDBS2C7EC7FCPSAV9PKREQNMVS.liquidator-v1)",
+        "actual": "true",
+        "match": false
+       },
+       {
+        "label": "Retired SP3BJR4P…liquidator-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP3BJR4P3W2Y9G22HA595Z59VHBC9EQYRFWSKG743.liquidator-v1)",
+        "actual": "true",
+        "match": false
+       }
+      ],
+      "state": "UNVERIFIED",
+      "mismatches": 4
+     },
+     "changed": [
+      "Borrower entry point allowed",
+      "Liquidator entry point allowed"
+     ]
+    },
+    {
+     "label": "Old SP26NGV9 / SP3BJR4P entry points removed",
+     "tx": {
+      "txid": "0xfe5806a7a030e7a5b8226e89a18cb1783e1618bb5f207ca3bb2705f3d6bb307e",
+      "height": 8808416,
+      "time": 1787236419,
+      "fn": "execute",
+      "cid": "SP2TRSJJMSX0J0GDBNCEG0Y1AQW26G3HYM9K4WCJG.governance-v1"
+     },
+     "before": {
+      "height": 8808415,
+      "indexBlockHash": "526d45cea969935d04ebd394d36ffdd639638ffbe58520ab7f19b0c6f345f772",
+      "time": 1787236399,
+      "pointers": [
+       {
+        "label": "Borrower entry point allowed",
+        "read": "state-v1.is-allowed-contract(SP119QJ4NVE3RQP8RXJVW5EXAV3XD4CJZWRCEEAAR.borrower-v1)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "Liquidator entry point allowed",
+        "read": "state-v1.is-allowed-contract(SP119QJ4NVE3RQP8RXJVW5EXAV3XD4CJZWRCEEAAR.liquidator-v1)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "Governance contract",
+        "read": "state-v1::governance",
+        "actual": "SP2TRSJJMSX0J0GDBNCEG0Y1AQW26G3HYM9K4WCJG.governance-v1",
+        "match": false
+       },
+       {
+        "label": "Retired SP26NGV9…borrower-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP26NGV9AFZBX7XBDBS2C7EC7FCPSAV9PKREQNMVS.borrower-v1)",
+        "actual": "true",
+        "match": false
+       },
+       {
+        "label": "Retired SP26NGV9…liquidator-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP26NGV9AFZBX7XBDBS2C7EC7FCPSAV9PKREQNMVS.liquidator-v1)",
+        "actual": "true",
+        "match": false
+       },
+       {
+        "label": "Retired SP3BJR4P…liquidator-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP3BJR4P3W2Y9G22HA595Z59VHBC9EQYRFWSKG743.liquidator-v1)",
+        "actual": "(err u107)",
+        "match": true
+       }
+      ],
+      "state": "UNVERIFIED",
+      "mismatches": 3
+     },
+     "at": {
+      "height": 8808416,
+      "indexBlockHash": "ae67b42f31190b8994db4114cf6de27963fdf746545e312f86a60ecefdc5bd24",
+      "time": 1787236419,
+      "pointers": [
+       {
+        "label": "Borrower entry point allowed",
+        "read": "state-v1.is-allowed-contract(SP119QJ4NVE3RQP8RXJVW5EXAV3XD4CJZWRCEEAAR.borrower-v1)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "Liquidator entry point allowed",
+        "read": "state-v1.is-allowed-contract(SP119QJ4NVE3RQP8RXJVW5EXAV3XD4CJZWRCEEAAR.liquidator-v1)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "Governance contract",
+        "read": "state-v1::governance",
+        "actual": "SP2TRSJJMSX0J0GDBNCEG0Y1AQW26G3HYM9K4WCJG.governance-v1",
+        "match": false
+       },
+       {
+        "label": "Retired SP26NGV9…borrower-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP26NGV9AFZBX7XBDBS2C7EC7FCPSAV9PKREQNMVS.borrower-v1)",
+        "actual": "(err u107)",
+        "match": true
+       },
+       {
+        "label": "Retired SP26NGV9…liquidator-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP26NGV9AFZBX7XBDBS2C7EC7FCPSAV9PKREQNMVS.liquidator-v1)",
+        "actual": "(err u107)",
+        "match": true
+       },
+       {
+        "label": "Retired SP3BJR4P…liquidator-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP3BJR4P3W2Y9G22HA595Z59VHBC9EQYRFWSKG743.liquidator-v1)",
+        "actual": "(err u107)",
+        "match": true
+       }
+      ],
+      "state": "UNVERIFIED",
+      "mismatches": 1
+     },
+     "changed": [
+      "Retired SP26NGV9…borrower-v1 stays disallowed",
+      "Retired SP26NGV9…liquidator-v1 stays disallowed"
+     ]
+    },
+    {
+     "label": "Governance moved to SP119QJ4",
+     "tx": {
+      "txid": "0x11f827717fa4e971e6bf5dc8645f9f1bc50f0d8cb5846b6c65ba8f38d7f36223",
+      "height": 8830860,
+      "time": 1787560974,
+      "fn": "execute",
+      "cid": "SP2TRSJJMSX0J0GDBNCEG0Y1AQW26G3HYM9K4WCJG.governance-v1"
+     },
+     "before": {
+      "height": 8830859,
+      "indexBlockHash": "85d11884d02c9fadc17b4e7269f4dd2d88e7cddd92d46881881532d2479ca93a",
+      "time": 1787560959,
+      "pointers": [
+       {
+        "label": "Borrower entry point allowed",
+        "read": "state-v1.is-allowed-contract(SP119QJ4NVE3RQP8RXJVW5EXAV3XD4CJZWRCEEAAR.borrower-v1)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "Liquidator entry point allowed",
+        "read": "state-v1.is-allowed-contract(SP119QJ4NVE3RQP8RXJVW5EXAV3XD4CJZWRCEEAAR.liquidator-v1)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "Governance contract",
+        "read": "state-v1::governance",
+        "actual": "SP2TRSJJMSX0J0GDBNCEG0Y1AQW26G3HYM9K4WCJG.governance-v1",
+        "match": false
+       },
+       {
+        "label": "Retired SP26NGV9…borrower-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP26NGV9AFZBX7XBDBS2C7EC7FCPSAV9PKREQNMVS.borrower-v1)",
+        "actual": "(err u107)",
+        "match": true
+       },
+       {
+        "label": "Retired SP26NGV9…liquidator-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP26NGV9AFZBX7XBDBS2C7EC7FCPSAV9PKREQNMVS.liquidator-v1)",
+        "actual": "(err u107)",
+        "match": true
+       },
+       {
+        "label": "Retired SP3BJR4P…liquidator-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP3BJR4P3W2Y9G22HA595Z59VHBC9EQYRFWSKG743.liquidator-v1)",
+        "actual": "(err u107)",
+        "match": true
+       }
+      ],
+      "state": "UNVERIFIED",
+      "mismatches": 1
+     },
+     "at": {
+      "height": 8830860,
+      "indexBlockHash": "cf09760df8a56c3397f963cd1efbec78ebf8d861acfd9713b6f3d82ad8f0c1f3",
+      "time": 1787560974,
+      "pointers": [
+       {
+        "label": "Borrower entry point allowed",
+        "read": "state-v1.is-allowed-contract(SP119QJ4NVE3RQP8RXJVW5EXAV3XD4CJZWRCEEAAR.borrower-v1)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "Liquidator entry point allowed",
+        "read": "state-v1.is-allowed-contract(SP119QJ4NVE3RQP8RXJVW5EXAV3XD4CJZWRCEEAAR.liquidator-v1)",
+        "actual": "true",
+        "match": true
+       },
+       {
+        "label": "Governance contract",
+        "read": "state-v1::governance",
+        "actual": "SP119QJ4NVE3RQP8RXJVW5EXAV3XD4CJZWRCEEAAR.governance-v1",
+        "match": true
+       },
+       {
+        "label": "Retired SP26NGV9…borrower-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP26NGV9AFZBX7XBDBS2C7EC7FCPSAV9PKREQNMVS.borrower-v1)",
+        "actual": "(err u107)",
+        "match": true
+       },
+       {
+        "label": "Retired SP26NGV9…liquidator-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP26NGV9AFZBX7XBDBS2C7EC7FCPSAV9PKREQNMVS.liquidator-v1)",
+        "actual": "(err u107)",
+        "match": true
+       },
+       {
+        "label": "Retired SP3BJR4P…liquidator-v1 stays disallowed",
+        "read": "state-v1.is-allowed-contract(SP3BJR4P3W2Y9G22HA595Z59VHBC9EQYRFWSKG743.liquidator-v1)",
+        "actual": "(err u107)",
+        "match": true
+       }
+      ],
+      "state": "VERIFIED",
+      "mismatches": 0
+     },
+     "changed": [
+      "Governance contract"
+     ]
+    }
+   ]
+  }
+ ]
+}

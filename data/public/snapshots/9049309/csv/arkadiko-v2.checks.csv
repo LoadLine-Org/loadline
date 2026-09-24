@@ -1,0 +1,13 @@
+block_height,market,check,kind,asset,decimals,indexed,onchain,delta,delta_pct,rule,status
+9049309,arkadiko-v2,count:STX,count,STX,,45,45,0,0,exact,OK
+9049309,arkadiko-v2,debt:STX,debt,USDA,6,18018268408,18018268408,0,0,tolerance,OK
+9049309,arkadiko-v2,collateral:STX,collateral,STX,,116675939865,347190261264,230514321399,66.3942359903,lte,OK
+9049309,arkadiko-v2,count:stSTX,count,stSTX,,66,66,0,0,exact,OK
+9049309,arkadiko-v2,debt:stSTX,debt,USDA,6,282007123380,282007123380,0,0,tolerance,OK
+9049309,arkadiko-v2,collateral:stSTX,collateral,stSTX,,2071018164889,2071018165043,154,7.4e-9,lte,OK
+9049309,arkadiko-v2,count:xBTC,count,xBTC,,1,1,0,0,exact,OK
+9049309,arkadiko-v2,debt:xBTC,debt,USDA,6,53153006,53153006,0,0,tolerance,OK
+9049309,arkadiko-v2,collateral:xBTC,collateral,xBTC,,569272,10423208,9853936,94.5384184984,lte,OK
+9049309,arkadiko-v2,count:sBTC,count,sBTC,,4,4,0,0,exact,OK
+9049309,arkadiko-v2,debt:sBTC,debt,USDA,6,59989412134,59989412134,0,0,tolerance,OK
+9049309,arkadiko-v2,collateral:sBTC,collateral,sBTC,,222272200,222272200,0,0,lte,OK

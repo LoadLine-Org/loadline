@@ -1,17 +1,17 @@
 {
  "schema": 1,
- "generatedAt": "2026-09-23T17:00:24.643Z",
+ "generatedAt": "2026-09-24T13:36:54.703Z",
  "window": {
-  "from": "2026-06-25T16:55:42Z",
-  "to": "2026-09-23T16:55:42Z",
+  "from": "2026-06-26T13:32:08Z",
+  "to": "2026-09-24T13:32:08Z",
   "days": 90,
   "endBlock": {
-   "height": 9049335,
-   "indexBlockHash": "c9b87db03803386560b4cbfc26709fd67098af7129ae4fa7c1ff8fbd27703043",
-   "hash": "aa2388d9e2ece7da04fd68e8a02a0fbab2ca2235e613226aa33bfff3252bee08",
-   "blockTime": 1790182542,
-   "burnHeight": 968294,
-   "burnTime": 1790181060,
+   "height": 9053707,
+   "indexBlockHash": "070eedd7be8931adaf2ac3877ad998e8819d94abc9a66fcd1a3b558a7f1ace39",
+   "hash": "9a84ad2bd6e1e75e7252ddd2b4156615af8c5bdf789cfe66e69d4b5b536936b0",
+   "blockTime": 1790256728,
+   "burnHeight": 968395,
+   "burnTime": 1790254217,
    "canonical": true
   }
  },
@@ -224,222 +224,222 @@
   }
  },
  "provenance": {
-  "diaTxs": 9742,
-  "arkadikoTxs": 5571,
+  "diaTxs": 9748,
+  "arkadikoTxs": 5625,
   "ststxRatioSamples": [
    {
-    "time": "2026-06-25T17:04:22Z",
-    "ratio": 1.177102,
+    "time": "2026-06-26T13:35:15Z",
+    "ratio": 1.177157,
     "source": "data-core-v3"
    },
    {
-    "time": "2026-06-27T17:04:33Z",
-    "ratio": 1.177324,
+    "time": "2026-06-28T17:42:04Z",
+    "ratio": 1.177434,
     "source": "data-core-v3"
    },
    {
-    "time": "2026-06-29T16:58:12Z",
-    "ratio": 1.177576,
+    "time": "2026-06-30T13:37:09Z",
+    "ratio": 1.177684,
     "source": "data-core-v3"
    },
    {
-    "time": "2026-07-01T17:03:27Z",
-    "ratio": 1.177793,
+    "time": "2026-07-02T13:36:36Z",
+    "ratio": 1.177902,
     "source": "data-core-v3"
    },
    {
-    "time": "2026-07-03T16:57:56Z",
-    "ratio": 1.17801,
+    "time": "2026-07-04T13:42:30Z",
+    "ratio": 1.178117,
     "source": "data-core-v3"
    },
    {
-    "time": "2026-07-05T17:02:50Z",
-    "ratio": 1.178225,
+    "time": "2026-07-06T13:33:28Z",
+    "ratio": 1.178332,
     "source": "data-core-v3"
    },
    {
-    "time": "2026-07-07T17:03:07Z",
-    "ratio": 1.17844,
+    "time": "2026-07-08T13:43:08Z",
+    "ratio": 1.178494,
     "source": "data-core-v3"
    },
    {
-    "time": "2026-07-09T16:56:02Z",
-    "ratio": 1.178655,
+    "time": "2026-07-10T16:36:00Z",
+    "ratio": 1.178709,
     "source": "data-core-v3"
    },
    {
-    "time": "2026-07-11T17:04:25Z",
-    "ratio": 1.178816,
+    "time": "2026-07-12T13:38:04Z",
+    "ratio": 1.178924,
     "source": "data-core-v3"
    },
    {
-    "time": "2026-07-13T17:01:06Z",
-    "ratio": 1.179085,
+    "time": "2026-07-14T13:40:38Z",
+    "ratio": 1.179139,
     "source": "data-core-v3"
    },
    {
-    "time": "2026-07-15T17:05:54Z",
-    "ratio": 1.179313,
+    "time": "2026-07-16T13:33:38Z",
+    "ratio": 1.17938,
     "source": "data-core-v3"
    },
    {
-    "time": "2026-07-17T17:00:25Z",
-    "ratio": 1.179498,
+    "time": "2026-07-18T13:42:49Z",
+    "ratio": 1.179614,
     "source": "data-core-v3"
    },
    {
-    "time": "2026-07-19T17:00:11Z",
-    "ratio": 1.179789,
+    "time": "2026-07-20T13:45:22Z",
+    "ratio": 1.179906,
     "source": "data-core-v3"
    },
    {
-    "time": "2026-07-21T17:06:37Z",
-    "ratio": 1.180023,
+    "time": "2026-07-22T13:43:56Z",
+    "ratio": 1.180081,
     "source": "data-core-v3"
    },
    {
-    "time": "2026-07-23T17:06:17Z",
-    "ratio": 1.180256,
+    "time": "2026-07-24T13:37:34Z",
+    "ratio": 1.180374,
     "source": "data-core-v3"
    },
    {
-    "time": "2026-07-25T17:07:08Z",
-    "ratio": 1.180491,
+    "time": "2026-07-26T13:37:27Z",
+    "ratio": 1.18055,
     "source": "data-core-v3"
    },
    {
-    "time": "2026-07-27T17:07:17Z",
-    "ratio": 1.180726,
+    "time": "2026-07-28T13:34:46Z",
+    "ratio": 1.180785,
     "source": "data-core-v3"
    },
    {
-    "time": "2026-07-29T16:58:26Z",
-    "ratio": 1.180903,
+    "time": "2026-07-30T13:34:05Z",
+    "ratio": 1.180904,
     "source": "data-core-v3"
    },
    {
-    "time": "2026-08-06T17:10:32Z",
-    "ratio": 1.183378,
+    "time": "2026-08-07T13:35:35Z",
+    "ratio": 1.183452,
     "source": "data-stx-v2"
    },
    {
-    "time": "2026-08-08T17:01:41Z",
-    "ratio": 1.183673,
+    "time": "2026-08-09T13:35:05Z",
+    "ratio": 1.183747,
     "source": "data-stx-v2"
    },
    {
-    "time": "2026-08-10T17:01:38Z",
-    "ratio": 1.183967,
+    "time": "2026-08-11T13:34:25Z",
+    "ratio": 1.184041,
     "source": "data-stx-v2"
    },
    {
-    "time": "2026-08-12T17:07:23Z",
+    "time": "2026-08-13T13:38:11Z",
     "ratio": 1.184264,
     "source": "data-stx-v2"
    },
    {
-    "time": "2026-08-14T16:56:39Z",
+    "time": "2026-08-15T13:42:11Z",
     "ratio": 1.184264,
     "source": "data-stx-v2"
    },
    {
-    "time": "2026-08-16T16:58:19Z",
+    "time": "2026-08-17T13:44:04Z",
     "ratio": 1.184264,
     "source": "data-stx-v2"
    },
    {
-    "time": "2026-08-18T17:02:08Z",
+    "time": "2026-08-19T13:37:37Z",
     "ratio": 1.184264,
     "source": "data-stx-v2"
    },
    {
-    "time": "2026-08-20T17:03:58Z",
+    "time": "2026-08-21T13:36:13Z",
     "ratio": 1.184264,
     "source": "data-stx-v2"
    },
    {
-    "time": "2026-08-22T17:08:10Z",
+    "time": "2026-08-23T13:42:19Z",
     "ratio": 1.184264,
     "source": "data-stx-v2"
    },
    {
-    "time": "2026-08-24T16:58:00Z",
+    "time": "2026-08-25T13:38:09Z",
     "ratio": 1.184264,
     "source": "data-stx-v2"
    },
    {
-    "time": "2026-08-26T16:57:35Z",
-    "ratio": 1.184264,
+    "time": "2026-08-27T13:39:33Z",
+    "ratio": 1.18427,
     "source": "data-stx-v2"
    },
    {
-    "time": "2026-08-28T16:59:33Z",
-    "ratio": 1.184304,
+    "time": "2026-08-29T13:47:09Z",
+    "ratio": 1.184327,
     "source": "data-stx-v2"
    },
    {
-    "time": "2026-08-30T17:05:04Z",
-    "ratio": 1.18436,
+    "time": "2026-08-31T13:46:32Z",
+    "ratio": 1.184385,
     "source": "data-stx-v2"
    },
    {
-    "time": "2026-09-01T17:09:10Z",
-    "ratio": 1.184414,
+    "time": "2026-09-02T13:35:08Z",
+    "ratio": 1.184428,
     "source": "data-stx-v2"
    },
    {
-    "time": "2026-09-03T16:59:26Z",
-    "ratio": 1.184456,
+    "time": "2026-09-04T13:33:32Z",
+    "ratio": 1.184474,
     "source": "data-stx-v2"
    },
    {
-    "time": "2026-09-05T17:07:42Z",
-    "ratio": 1.184494,
+    "time": "2026-09-06T13:44:01Z",
+    "ratio": 1.18451,
     "source": "data-stx-v2"
    },
    {
-    "time": "2026-09-07T17:05:42Z",
-    "ratio": 1.184545,
+    "time": "2026-09-08T13:44:48Z",
+    "ratio": 1.184559,
     "source": "data-stx-v2"
    },
    {
-    "time": "2026-09-09T17:08:24Z",
-    "ratio": 1.184578,
+    "time": "2026-09-10T13:33:20Z",
+    "ratio": 1.184596,
     "source": "data-stx-v2"
    },
    {
-    "time": "2026-09-11T17:03:19Z",
-    "ratio": 1.185068,
+    "time": "2026-09-12T13:38:36Z",
+    "ratio": 1.185235,
     "source": "data-stx-v2"
    },
    {
-    "time": "2026-09-13T17:00:01Z",
-    "ratio": 1.185394,
+    "time": "2026-09-14T13:37:38Z",
+    "ratio": 1.185499,
     "source": "data-stx-v2"
    },
    {
-    "time": "2026-09-15T16:57:31Z",
-    "ratio": 1.185674,
+    "time": "2026-09-16T13:39:28Z",
+    "ratio": 1.18577,
     "source": "data-stx-v2"
    },
    {
-    "time": "2026-09-17T17:02:09Z",
-    "ratio": 1.1859,
+    "time": "2026-09-18T13:34:20Z",
+    "ratio": 1.186058,
     "source": "data-stx-v2"
    },
    {
-    "time": "2026-09-19T17:07:02Z",
-    "ratio": 1.186253,
+    "time": "2026-09-20T13:37:25Z",
+    "ratio": 1.186374,
     "source": "data-stx-v2"
    },
    {
-    "time": "2026-09-21T16:57:18Z",
-    "ratio": 1.186592,
+    "time": "2026-09-22T13:36:13Z",
+    "ratio": 1.186734,
     "source": "data-stx-v2"
    },
    {
-    "time": "2026-09-23T16:55:42Z",
-    "ratio": 1.186903,
+    "time": "2026-09-24T13:32:08Z",
+    "ratio": 1.186999,
     "source": "data-stx-v2"
    }
   ],
@@ -451,16 +451,16 @@
    },
    "STX": {
     "binance-perp:STXUSDT": 0.982,
-    "binance:STXUSDT": 0.688,
-    "bybit:STXUSDT": 0.463,
-    "kucoin:STX-USDT": 0.306
+    "binance:STXUSDT": 0.69,
+    "bybit:STXUSDT": 0.465,
+    "kucoin:STX-USDT": 0.307
    }
   },
   "requests": {
    "api.hiro.so": {
-    "requests": 61,
+    "requests": 63,
     "retries": 1,
-    "kb": 1773
+    "kb": 2059
    },
    "api.stxer.xyz": {
     "requests": 50,
@@ -468,35 +468,35 @@
     "kb": 13
    },
    "api.bybit.com": {
-    "requests": 4,
-    "retries": 0,
-    "kb": 157
-   },
-   "api.binance.com": {
-    "requests": 4,
-    "retries": 0,
-    "kb": 317
-   },
-   "api.exchange.coinbase.com": {
     "requests": 6,
     "retries": 0,
-    "kb": 60
+    "kb": 342
+   },
+   "api.binance.com": {
+    "requests": 6,
+    "retries": 0,
+    "kb": 699
+   },
+   "api.exchange.coinbase.com": {
+    "requests": 11,
+    "retries": 0,
+    "kb": 133
    },
    "fapi.binance.com": {
-    "requests": 2,
+    "requests": 3,
     "retries": 0,
-    "kb": 130
+    "kb": 287
    },
    "api.kucoin.com": {
-    "requests": 1,
+    "requests": 2,
     "retries": 0,
-    "kb": 66
+    "kb": 144
    }
   }
  },
  "episodeCounts": {
-  "silence": 158,
-  "frozen": 323,
+  "silence": 157,
+  "frozen": 311,
   "deviation": 866,
   "lazerStaleBurst": 3
  },
@@ -506,11 +506,11 @@
    "feed": "BTC/USD",
    "reference": "BTC",
    "consumers": "no in-scope lending market (third parties)",
-   "writesInWindow": 8556,
+   "writesInWindow": 8558,
    "gapS": {
     "p50": 900,
     "p90": 944,
-    "p99": 1242,
+    "p99": 1248,
     "max": 46331
    },
    "hoursAgeOver": {
@@ -522,25 +522,25 @@
    },
    "shareOfMinutesAgeAtMost120s": 0.1192,
    "hoursDeviationOver": {
-    "1%": 4.27,
+    "1%": 4.05,
     "2%": 0.23,
     "5%": 0
    },
    "maxAsReadDeviationPct": 3.52,
    "atPublishDeviationPct": {
-    "p50": 0.0262,
-    "p99": 0.2112,
+    "p50": 0.026,
+    "p99": 0.2091,
     "max": 1.136
    },
    "frozenHours": 0,
    "referenceDegradedMinutes": 1,
    "referenceValidMinutes": 129600,
    "now": {
-    "value": 83998.29755405,
-    "lastWriteUtc": "2026-09-23T16:43:40Z",
-    "lastTx": "0xbbb0cc8fe303074023cc6e2b2a5885671ac593f6b227c18260c6469977f5ca21",
-    "ageS": 732,
-    "deviationPct": 0.07
+    "value": 83801.53961967,
+    "lastWriteUtc": "2026-09-24T13:31:33Z",
+    "lastTx": "0xa9c23bec0916013d33d62dc4058ecb7f4f4808507968b0fc6d4a8f800c8ebdd0",
+    "ageS": 48,
+    "deviationPct": -0.3
    }
   },
   "DIA:STX/USD": {
@@ -548,11 +548,11 @@
    "feed": "STX/USD",
    "reference": "STX",
    "consumers": "no in-scope lending market (legacy Zest v1 oracles only)",
-   "writesInWindow": 8561,
+   "writesInWindow": 8563,
    "gapS": {
     "p50": 900,
     "p90": 943,
-    "p99": 1240,
+    "p99": 1241,
     "max": 46331
    },
    "hoursAgeOver": {
@@ -564,25 +564,25 @@
    },
    "shareOfMinutesAgeAtMost120s": 0.1193,
    "hoursDeviationOver": {
-    "1%": 80.72,
-    "2%": 13.48,
+    "1%": 80.82,
+    "2%": 13.42,
     "5%": 0.2
    },
    "maxAsReadDeviationPct": 11.16,
    "atPublishDeviationPct": {
-    "p50": 0.0655,
-    "p99": 0.5387,
+    "p50": 0.0653,
+    "p99": 0.5372,
     "max": 4.5158
    },
    "frozenHours": 0,
-   "referenceDegradedMinutes": 6704,
-   "referenceValidMinutes": 122897,
+   "referenceDegradedMinutes": 6657,
+   "referenceValidMinutes": 122944,
    "now": {
-    "value": 0.31691206,
-    "lastWriteUtc": "2026-09-23T16:43:40Z",
-    "lastTx": "0xbbb0cc8fe303074023cc6e2b2a5885671ac593f6b227c18260c6469977f5ca21",
-    "ageS": 732,
-    "deviationPct": 0.15
+    "value": 0.30917068,
+    "lastWriteUtc": "2026-09-24T13:31:33Z",
+    "lastTx": "0xa9c23bec0916013d33d62dc4058ecb7f4f4808507968b0fc6d4a8f800c8ebdd0",
+    "ageS": 48,
+    "deviationPct": -0.29
    }
   },
   "DIA:sBTC/USD": {
@@ -590,7 +590,7 @@
    "feed": "sBTC/USD",
    "reference": "BTC",
    "consumers": "no in-scope lending market",
-   "writesInWindow": 3563,
+   "writesInWindow": 3565,
    "gapS": {
     "p50": 900,
     "p90": 1034,
@@ -606,25 +606,25 @@
    },
    "shareOfMinutesAgeAtMost120s": 0.0502,
    "hoursDeviationOver": {
-    "1%": 1455.02,
-    "2%": 1101.38,
+    "1%": 1470.65,
+    "2%": 1120.5,
     "5%": 806.33
    },
    "maxAsReadDeviationPct": 23.16,
    "atPublishDeviationPct": {
-    "p50": 0.8284,
+    "p50": 0.8648,
     "p99": 6.9669,
     "max": 7.8695
    },
-   "frozenHours": 549.51,
+   "frozenHours": 562.29,
    "referenceDegradedMinutes": 1,
    "referenceValidMinutes": 129600,
    "now": {
     "value": 80529.84394506,
-    "lastWriteUtc": "2026-09-23T16:43:40Z",
-    "lastTx": "0xbbb0cc8fe303074023cc6e2b2a5885671ac593f6b227c18260c6469977f5ca21",
-    "ageS": 732,
-    "deviationPct": -4.06
+    "lastWriteUtc": "2026-09-24T13:31:33Z",
+    "lastTx": "0xa9c23bec0916013d33d62dc4058ecb7f4f4808507968b0fc6d4a8f800c8ebdd0",
+    "ageS": 48,
+    "deviationPct": -4.2
    }
   },
   "DIA:stSTX/USD": {
@@ -632,41 +632,41 @@
    "feed": "stSTX/USD",
    "reference": "STX*ratio",
    "consumers": "no in-scope lending market",
-   "writesInWindow": 7232,
+   "writesInWindow": 7240,
    "gapS": {
     "p50": 900,
     "p90": 947,
-    "p99": 3605,
+    "p99": 3596,
     "max": 125648
    },
    "hoursAgeOver": {
-    "1350s": 368.48,
-    "1h": 312.85,
+    "1350s": 366.92,
+    "1h": 311.92,
     "3.5h": 205.87,
     "6h": 147.53,
     "24h": 15.27
    },
-   "shareOfMinutesAgeAtMost120s": 0.101,
+   "shareOfMinutesAgeAtMost120s": 0.1011,
    "hoursDeviationOver": {
-    "1%": 1031.97,
-    "2%": 625.68,
-    "5%": 205.4
+    "1%": 1029.02,
+    "2%": 620.07,
+    "5%": 205.5
    },
    "maxAsReadDeviationPct": 17.46,
    "atPublishDeviationPct": {
-    "p50": 0.795,
-    "p99": 6.1553,
-    "max": 10.1544
+    "p50": 0.7977,
+    "p99": 6.1545,
+    "max": 10.1548
    },
-   "frozenHours": 1611.97,
-   "referenceDegradedMinutes": 6704,
-   "referenceValidMinutes": 122897,
+   "frozenHours": 1613.26,
+   "referenceDegradedMinutes": 6657,
+   "referenceValidMinutes": 122944,
    "now": {
-    "value": 0.36808361,
-    "lastWriteUtc": "2026-09-23T16:43:40Z",
-    "lastTx": "0xbbb0cc8fe303074023cc6e2b2a5885671ac593f6b227c18260c6469977f5ca21",
-    "ageS": 732,
-    "deviationPct": -1.99
+    "value": 0.36303397,
+    "lastWriteUtc": "2026-09-24T13:31:33Z",
+    "lastTx": "0xa9c23bec0916013d33d62dc4058ecb7f4f4808507968b0fc6d4a8f800c8ebdd0",
+    "ageS": 48,
+    "deviationPct": -1.36
    }
   },
   "DIA:USDh/USD": {
@@ -674,23 +674,23 @@
    "feed": "USDh/USD",
    "reference": "par",
    "consumers": "Zest v2 USDH debt (max-staleness 86,400 s) and zUSDH collateral (max-staleness 120 s)",
-   "writesInWindow": 8230,
+   "writesInWindow": 8314,
    "gapS": {
     "p50": 900,
-    "p90": 944,
+    "p90": 943,
     "p99": 1257,
     "max": 87346
    },
    "hoursAgeOver": {
-    "1350s": 120.3,
-    "1h": 98.97,
-    "3.5h": 76.98,
-    "6h": 65.32,
-    "24h": 24.33
+    "1350s": 99.68,
+    "1h": 78.35,
+    "3.5h": 56.37,
+    "6h": 44.7,
+    "24h": 6.8
    },
-   "shareOfMinutesAgeAtMost120s": 0.1147,
+   "shareOfMinutesAgeAtMost120s": 0.1159,
    "hoursDeviationOver": {
-    "1%": 81.52,
+    "1%": 60.9,
     "2%": 30.3,
     "5%": 0
    },
@@ -704,11 +704,11 @@
    "referenceDegradedMinutes": 0,
    "referenceValidMinutes": 129601,
    "now": {
-    "value": 1,
-    "lastWriteUtc": "2026-09-23T16:43:40Z",
-    "lastTx": "0xbbb0cc8fe303074023cc6e2b2a5885671ac593f6b227c18260c6469977f5ca21",
-    "ageS": 732,
-    "deviationPct": 0
+    "value": 0.99884278,
+    "lastWriteUtc": "2026-09-24T13:31:33Z",
+    "lastTx": "0xa9c23bec0916013d33d62dc4058ecb7f4f4808507968b0fc6d4a8f800c8ebdd0",
+    "ageS": 48,
+    "deviationPct": -0.12
    }
   },
   "Arkadiko:STX (token 1)": {
@@ -716,41 +716,41 @@
    "feed": "STX (token 1)",
    "reference": "STX",
    "consumers": "Arkadiko v2 vaults (no staleness check): mints, redemptions and liquidations use the stored price",
-   "writesInWindow": 1073,
+   "writesInWindow": 1088,
    "gapS": {
-    "p50": 3604,
-    "p90": 6013,
+    "p50": 3605,
+    "p90": 6016,
     "p99": 9003,
     "max": 3314656
    },
    "hoursAgeOver": {
-    "1350s": 1793.07,
-    "1h": 1279.93,
-    "3.5h": 1044.37,
-    "6h": 1041.87,
-    "24h": 1023.87
+    "1350s": 1787.4,
+    "1h": 1265.35,
+    "3.5h": 1023.75,
+    "6h": 1021.25,
+    "24h": 1003.25
    },
-   "shareOfMinutesAgeAtMost120s": 0.0154,
+   "shareOfMinutesAgeAtMost120s": 0.0157,
    "hoursDeviationOver": {
-    "1%": 1165.25,
-    "2%": 947.35,
-    "5%": 607.05
+    "1%": 1149.93,
+    "2%": 927.93,
+    "5%": 587.27
    },
    "maxAsReadDeviationPct": 25.24,
    "atPublishDeviationPct": {
-    "p50": 0.1005,
+    "p50": 0.1019,
     "p99": 1.088,
     "max": 3.204
    },
    "frozenHours": 0,
-   "referenceDegradedMinutes": 6704,
-   "referenceValidMinutes": 122897,
+   "referenceDegradedMinutes": 6657,
+   "referenceValidMinutes": 122944,
    "now": {
-    "value": 0.315,
-    "lastWriteUtc": "2026-09-23T16:10:50Z",
-    "lastTx": "0x2f89c0b89383f132bca831d7e91854f729abd56351c80e514157f5096feeaa80",
-    "ageS": 2692,
-    "deviationPct": -0.45
+    "value": 0.3031,
+    "lastWriteUtc": "2026-09-24T12:11:02Z",
+    "lastTx": "0x85ae4169453cb7c97bb1f878b49bab9540f338ac07b4966e7150411f09cc7488",
+    "ageS": 4866,
+    "deviationPct": -2.25
    }
   },
   "Arkadiko:BTC (token 2)": {
@@ -758,7 +758,7 @@
    "feed": "BTC (token 2)",
    "reference": "BTC",
    "consumers": "Arkadiko v2 vaults (no staleness check): mints, redemptions and liquidations use the stored price",
-   "writesInWindow": 1058,
+   "writesInWindow": 1073,
    "gapS": {
     "p50": 3609,
     "p90": 6022,
@@ -766,17 +766,17 @@
     "max": 3320605
    },
    "hoursAgeOver": {
-    "1350s": 1797.5,
-    "1h": 1282.32,
-    "3.5h": 1046.03,
-    "6h": 1043.53,
-    "24h": 1025.53
+    "1350s": 1791.87,
+    "1h": 1267.57,
+    "3.5h": 1025.42,
+    "6h": 1022.92,
+    "24h": 1004.92
    },
-   "shareOfMinutesAgeAtMost120s": 0.0152,
+   "shareOfMinutesAgeAtMost120s": 0.0154,
    "hoursDeviationOver": {
-    "1%": 1063.32,
-    "2%": 1040.45,
-    "5%": 1008.1
+    "1%": 1042.7,
+    "2%": 1019.83,
+    "5%": 987.48
    },
    "maxAsReadDeviationPct": 13.29,
    "atPublishDeviationPct": {
@@ -788,11 +788,11 @@
    "referenceDegradedMinutes": 1,
    "referenceValidMinutes": 129600,
    "now": {
-    "value": 84329.77,
-    "lastWriteUtc": "2026-09-23T16:11:07Z",
-    "lastTx": "0x07a2dc9d87e22ca97555e6b94262170695e06a416ccf8de71d60e6a60ec05062",
-    "ageS": 2675,
-    "deviationPct": 0.47
+    "value": 83539.73,
+    "lastWriteUtc": "2026-09-24T12:11:02Z",
+    "lastTx": "0x6176e81c0b0d0614018d47f31eaf238e7c81eb51e355d1f1be28f91f41f23992",
+    "ageS": 4866,
+    "deviationPct": -0.62
    }
   },
   "Arkadiko:stSTX (token 8)": {
@@ -800,41 +800,41 @@
    "feed": "stSTX (token 8)",
    "reference": "STX*ratio",
    "consumers": "Arkadiko v2 vaults (no staleness check): mints, redemptions and liquidations use the stored price",
-   "writesInWindow": 1086,
+   "writesInWindow": 1101,
    "gapS": {
-    "p50": 3604,
-    "p90": 6004,
+    "p50": 3605,
+    "p90": 6007,
     "p99": 9022,
     "max": 3327986
    },
    "hoursAgeOver": {
-    "1350s": 1798.35,
-    "1h": 1285.33,
-    "3.5h": 1048.07,
-    "6h": 1045.57,
-    "24h": 1027.57
+    "1350s": 1792.73,
+    "1h": 1270.73,
+    "3.5h": 1027.45,
+    "6h": 1024.95,
+    "24h": 1006.95
    },
-   "shareOfMinutesAgeAtMost120s": 0.0153,
+   "shareOfMinutesAgeAtMost120s": 0.0155,
    "hoursDeviationOver": {
-    "1%": 1171.07,
-    "2%": 947.35,
-    "5%": 604.05
+    "1%": 1155.25,
+    "2%": 927.75,
+    "5%": 584.22
    },
-   "maxAsReadDeviationPct": 24.85,
+   "maxAsReadDeviationPct": 24.87,
    "atPublishDeviationPct": {
-    "p50": 0.1039,
-    "p99": 1.3919,
+    "p50": 0.107,
+    "p99": 1.3917,
     "max": 4.6254
    },
    "frozenHours": 0,
-   "referenceDegradedMinutes": 6704,
-   "referenceValidMinutes": 122897,
+   "referenceDegradedMinutes": 6657,
+   "referenceValidMinutes": 122944,
    "now": {
-    "value": 0.373872,
-    "lastWriteUtc": "2026-09-23T16:11:07Z",
-    "lastTx": "0x3406d2b78e36dfe696c437f0cff86da0bf38e106f7d3ca452b7f2d5468578d2f",
-    "ageS": 2675,
-    "deviationPct": -0.45
+    "value": 0.359779,
+    "lastWriteUtc": "2026-09-24T12:11:19Z",
+    "lastTx": "0xad43d9b5d10ac6f67d6c166a1ba792ee74ae3ab8c529c513fa7a6a3d412aeda1",
+    "ageS": 4849,
+    "deviationPct": -2.25
    }
   }
  },
@@ -861,19 +861,19 @@
    "market": "zest-v2",
    "contract": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v0-8-market",
    "limitS": 120,
-   "lazerTxs": 1598,
-   "ok": 1449,
-   "oracleRevertsStale": 75,
+   "lazerTxs": 1668,
+   "ok": 1518,
+   "oracleRevertsStale": 76,
    "oracleRevertsOther": 3,
    "nonOracleReverts": 71,
    "payloadAgeAtInclusionOkS": {
-    "p50": 18,
+    "p50": 19,
     "p90": 47,
     "p99": 114,
     "max": 353
    },
    "firstObserved": "2026-08-31T10:02:47Z",
-   "lastObserved": "2026-09-23T16:35:11Z"
+   "lastObserved": "2026-09-24T13:22:47Z"
   },
   "zest-v1:borrow-helper-v2-1-8": {
    "market": "zest-v1",
@@ -1006,8 +1006,8 @@
   {
    "id": "dia-sbtc-frozen",
    "severity": "warn",
-   "title": "DIA sBTC/USD: 550 h frozen-but-fresh, 1079 h silent",
-   "statement": "DIA kept writing sBTC/USD with fresh timestamps and an identical value for 550 h in the window (84 episodes; longest 239.75 h over 943 writes at $63,077.12), and was more than 5% off its reference for 806.33 h. A timestamp-only staleness check passes throughout. No in-scope lending market consumes this key.",
+   "title": "DIA sBTC/USD: 562 h frozen-but-fresh, 1079 h silent",
+   "statement": "DIA kept writing sBTC/USD with fresh timestamps and an identical value for 562 h in the window (76 episodes; longest 239.75 h over 943 writes at $63,077.12), and was more than 5% off its reference for 806.33 h. A timestamp-only staleness check passes throughout. No in-scope lending market consumes this key.",
    "evidence": {
     "longestFrozen": {
      "start": "2026-07-26T07:07:14Z",
@@ -1024,18 +1024,18 @@
     },
     "now": {
      "value": 80529.84394506,
-     "lastWriteUtc": "2026-09-23T16:43:40Z",
-     "lastTx": "0xbbb0cc8fe303074023cc6e2b2a5885671ac593f6b227c18260c6469977f5ca21",
-     "ageS": 732,
-     "deviationPct": -4.06
+     "lastWriteUtc": "2026-09-24T13:31:33Z",
+     "lastTx": "0xa9c23bec0916013d33d62dc4058ecb7f4f4808507968b0fc6d4a8f800c8ebdd0",
+     "ageS": 48,
+     "deviationPct": -4.2
     }
    }
   },
   {
    "id": "dia-ststx-frozen",
    "severity": "warn",
-   "title": "DIA stSTX/USD: 1612 h frozen-but-fresh, 35 h silent",
-   "statement": "DIA kept writing stSTX/USD with fresh timestamps and an identical value for 1612 h in the window (239 episodes; longest 98.89 h over 344 writes at $0.304376), and was more than 5% off its reference for 205.4 h. A timestamp-only staleness check passes throughout. No in-scope lending market consumes this key.",
+   "title": "DIA stSTX/USD: 1613 h frozen-but-fresh, 35 h silent",
+   "statement": "DIA kept writing stSTX/USD with fresh timestamps and an identical value for 1613 h in the window (235 episodes; longest 98.89 h over 344 writes at $0.304376), and was more than 5% off its reference for 205.5 h. A timestamp-only staleness check passes throughout. No in-scope lending market consumes this key.",
    "evidence": {
     "longestFrozen": {
      "start": "2026-09-11T16:33:02Z",
@@ -1051,11 +1051,11 @@
      "hours": 34.9
     },
     "now": {
-     "value": 0.36808361,
-     "lastWriteUtc": "2026-09-23T16:43:40Z",
-     "lastTx": "0xbbb0cc8fe303074023cc6e2b2a5885671ac593f6b227c18260c6469977f5ca21",
-     "ageS": 732,
-     "deviationPct": -1.99
+     "value": 0.36303397,
+     "lastWriteUtc": "2026-09-24T13:31:33Z",
+     "lastTx": "0xa9c23bec0916013d33d62dc4058ecb7f4f4808507968b0fc6d4a8f800c8ebdd0",
+     "ageS": 48,
+     "deviationPct": -1.36
     }
    }
   },
@@ -1063,9 +1063,9 @@
    "id": "zest-v2-zusdh-staleness-trap",
    "severity": "warn",
    "title": "Zest v2 zUSDH: 120 s limit on a ~900 s DIA heartbeat",
-   "statement": "v0-assets asset 9 (zUSDH, collateral enabled) is priced from DIA \"USDh/USD\" with max-staleness 120 s. DIA pushes that key about every 900 s, so its age was within 120 s only 11.47% of minutes in the window. A priced operation for an account holding zUSDH would revert most of the time. USDH debt (asset 8) uses the same key with max-staleness 86400 s. 0 Zest v2 v0-7/v0-8 transaction(s) have referenced v0-vault-usdh.",
+   "statement": "v0-assets asset 9 (zUSDH, collateral enabled) is priced from DIA \"USDh/USD\" with max-staleness 120 s. DIA pushes that key about every 900 s, so its age was within 120 s only 11.59% of minutes in the window. A priced operation for an account holding zUSDH would revert most of the time. USDH debt (asset 8) uses the same key with max-staleness 86400 s. 0 Zest v2 v0-7/v0-8 transaction(s) have referenced v0-vault-usdh.",
    "evidence": {
-    "block": 9049335,
+    "block": 9053707,
     "zusdh": {
      "maxStalenessS": 120,
      "oracleType": "0x01",
@@ -1074,7 +1074,7 @@
     "usdhDebt": {
      "maxStalenessS": 86400
     },
-    "diaUsdhShareOfMinutesAgeAtMost120s": 0.1147,
+    "diaUsdhShareOfMinutesAgeAtMost120s": 0.1159,
     "txsReferencingVaultUsdh": 0
    }
   },

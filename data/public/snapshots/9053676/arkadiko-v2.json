@@ -1,0 +1,5784 @@
+{
+ "schema": 1,
+ "market": "arkadiko-v2",
+ "name": "Arkadiko v2",
+ "protocol": "Arkadiko",
+ "block": {
+  "height": 9053676,
+  "indexBlockHash": "8054dd90f5ff1967841815fecda2951777bcff62c41e950ba83fd0e881cfc6b6",
+  "hash": "ca7d2454d8c9638bb39b0a3120a4a60c48d5d0066bce2af297e998db7231a92a",
+  "blockTime": 1790256347,
+  "burnHeight": 968395,
+  "burnTime": 1790254217,
+  "canonical": true
+ },
+ "generatedAt": "2026-09-24T13:33:15.738Z",
+ "code": {
+  "version": "0.1.0",
+  "fingerprint": "fb68cff128512c3b1cddd6026ea78d26ce28be6a6a9162e7af0612a10e3abe46"
+ },
+ "generation": {
+  "id": "vaults v1-1/v1-2/v1-3 + oracle-v2-3",
+  "activationBlock": 0,
+  "evidence": [
+   "DAO registry read (vaults-manager-v1-2 and vaults-operations-v1-3 registered by propose-dao 2025-05-14, end-proposal 2025-05-20 0xb91ed4b8)"
+  ],
+  "contracts": {
+   "deployer": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR",
+   "dao": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-dao",
+   "usda": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.usda-token",
+   "oracle": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-oracle-v2-3",
+   "vaults-manager": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-manager-v1-2",
+   "vaults-operations": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-operations-v1-3",
+   "vaults-data": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-data-v1-1",
+   "vaults-sorted": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-sorted-v1-1",
+   "vaults-tokens": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-tokens-v1-1",
+   "vaults-helpers": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-helpers-v1-1",
+   "vaults-pool-active": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-pool-active-v1-1",
+   "vaults-pool-liq": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-pool-liq-v1-2",
+   "vaults-migration": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-migration-v1-3",
+   "governance": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-governance-v4-3"
+  }
+ },
+ "priceBasis": {
+  "protocol": "arkadiko-oracle-v2-3 stored price (3-of-N signed pushes), no staleness check",
+  "monitor": "the same stored on-chain price, read at the block (exact)",
+  "exact": true
+ },
+ "band": {},
+ "bandSource": null,
+ "dustUsd": 10,
+ "tolerances": {
+  "debt": {
+   "okPct": 0.05,
+   "failPct": 0.5
+  },
+  "collateral": {
+   "okPct": 0.1,
+   "failPct": 1
+  }
+ },
+ "pointers": [
+  {
+   "label": "DAO registry \"oracle\"",
+   "read": "arkadiko-dao.get-qualified-name-by-name(\"oracle\")",
+   "expected": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-oracle-v2-3",
+   "actual": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-oracle-v2-3",
+   "match": true
+  },
+  {
+   "label": "DAO registry \"vaults-manager\"",
+   "read": "arkadiko-dao.get-qualified-name-by-name(\"vaults-manager\")",
+   "expected": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-manager-v1-2",
+   "actual": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-manager-v1-2",
+   "match": true
+  },
+  {
+   "label": "DAO registry \"vaults-operations\"",
+   "read": "arkadiko-dao.get-qualified-name-by-name(\"vaults-operations\")",
+   "expected": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-operations-v1-3",
+   "actual": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-operations-v1-3",
+   "match": true
+  },
+  {
+   "label": "DAO registry \"vaults-data\"",
+   "read": "arkadiko-dao.get-qualified-name-by-name(\"vaults-data\")",
+   "expected": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-data-v1-1",
+   "actual": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-data-v1-1",
+   "match": true
+  },
+  {
+   "label": "DAO registry \"vaults-sorted\"",
+   "read": "arkadiko-dao.get-qualified-name-by-name(\"vaults-sorted\")",
+   "expected": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-sorted-v1-1",
+   "actual": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-sorted-v1-1",
+   "match": true
+  },
+  {
+   "label": "DAO registry \"vaults-tokens\"",
+   "read": "arkadiko-dao.get-qualified-name-by-name(\"vaults-tokens\")",
+   "expected": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-tokens-v1-1",
+   "actual": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-tokens-v1-1",
+   "match": true
+  },
+  {
+   "label": "DAO registry \"vaults-helpers\"",
+   "read": "arkadiko-dao.get-qualified-name-by-name(\"vaults-helpers\")",
+   "expected": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-helpers-v1-1",
+   "actual": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-helpers-v1-1",
+   "match": true
+  },
+  {
+   "label": "DAO registry \"vaults-pool-active\"",
+   "read": "arkadiko-dao.get-qualified-name-by-name(\"vaults-pool-active\")",
+   "expected": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-pool-active-v1-1",
+   "actual": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-pool-active-v1-1",
+   "match": true
+  },
+  {
+   "label": "DAO registry \"vaults-pool-liq\"",
+   "read": "arkadiko-dao.get-qualified-name-by-name(\"vaults-pool-liq\")",
+   "expected": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-pool-liq-v1-2",
+   "actual": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-pool-liq-v1-2",
+   "match": true
+  },
+  {
+   "label": "DAO registry \"vaults-migration\"",
+   "read": "arkadiko-dao.get-qualified-name-by-name(\"vaults-migration\")",
+   "expected": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-migration-v1-3",
+   "actual": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-migration-v1-3",
+   "match": true
+  },
+  {
+   "label": "DAO registry \"governance\"",
+   "read": "arkadiko-dao.get-qualified-name-by-name(\"governance\")",
+   "expected": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-governance-v4-3",
+   "actual": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-governance-v4-3",
+   "match": true
+  }
+ ],
+ "candidates": [
+  {
+   "contract": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-manager-v1-3",
+   "meaning": "next vaults-manager (needs a passed DAO vote to register)",
+   "effect": "info",
+   "deployed": false
+  },
+  {
+   "contract": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-operations-v1-4",
+   "meaning": "next vaults-operations",
+   "effect": "info",
+   "deployed": false
+  },
+  {
+   "contract": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-data-v1-2",
+   "meaning": "next vaults-data (the storage layer itself)",
+   "effect": "info",
+   "deployed": false
+  },
+  {
+   "contract": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-pool-liq-v1-4",
+   "meaning": "next liquidation pool",
+   "effect": "info",
+   "deployed": false
+  },
+  {
+   "contract": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-oracle-v2-6",
+   "meaning": "next oracle",
+   "effect": "info",
+   "deployed": false
+  }
+ ],
+ "governance": {
+  "contract": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-governance-v4-3",
+  "txsScanned": 248,
+  "relevantProposalsInWindow": 0,
+  "pending": []
+ },
+ "prices": {
+  "method": "median of last traded 1m candle close (<=300 s old) before block time; USDT quotes x median USDT/USD (kraken, coinbase)",
+  "targetMinute": 1790256240,
+  "usdtUsd": 0.999655,
+  "usdtVenues": [
+   {
+    "venue": "kraken",
+    "sym": "USDTUSD",
+    "candleTime": 1790256240,
+    "closeRaw": 0.99964,
+    "quote": "USD",
+    "usd": 0.99964
+   },
+   {
+    "venue": "coinbase",
+    "sym": "USDT-USD",
+    "candleTime": 1790256240,
+    "closeRaw": 0.99967,
+    "quote": "USD",
+    "usd": 0.99967
+   }
+  ],
+  "assets": {
+   "BTC": {
+    "asset": "BTC",
+    "usd1e8": "8377810344775",
+    "median": 83778.10344775,
+    "venues": [
+     {
+      "venue": "coinbase",
+      "sym": "BTC-USD",
+      "candleTime": 1790256240,
+      "closeRaw": 83779.02,
+      "quote": "USD",
+      "usd": 83779.02
+     },
+     {
+      "venue": "kraken",
+      "sym": "XBTUSD",
+      "candleTime": 1790256240,
+      "closeRaw": 83786.1,
+      "quote": "USD",
+      "usd": 83786.1
+     },
+     {
+      "venue": "binance",
+      "sym": "BTCUSDT",
+      "candleTime": 1790256240,
+      "closeRaw": 83804,
+      "quote": "USDT",
+      "usd": 83775.08761999999
+     },
+     {
+      "venue": "bybit",
+      "sym": "BTCUSDT",
+      "candleTime": 1790256240,
+      "closeRaw": 83802.7,
+      "quote": "USDT",
+      "usd": 83773.7880685
+     },
+     {
+      "venue": "kucoin",
+      "sym": "BTC-USDT",
+      "candleTime": 1790256240,
+      "closeRaw": 83808.2,
+      "quote": "USDT",
+      "usd": 83779.286171
+     },
+     {
+      "venue": "gate",
+      "sym": "BTC_USDT",
+      "candleTime": 1790256240,
+      "closeRaw": 83806.1,
+      "quote": "USDT",
+      "usd": 83777.1868955
+     }
+    ],
+    "missing": [
+     {
+      "venue": "okx",
+      "reason": "fetch failed"
+     }
+    ]
+   },
+   "STX": {
+    "asset": "STX",
+    "usd1e8": "30949319",
+    "median": 0.309493188,
+    "venues": [
+     {
+      "venue": "coinbase",
+      "sym": "STX-USD",
+      "candleTime": 1790256180,
+      "closeRaw": 0.3092,
+      "quote": "USD",
+      "usd": 0.3092
+     },
+     {
+      "venue": "binance",
+      "sym": "STXUSDT",
+      "candleTime": 1790256240,
+      "closeRaw": 0.3096,
+      "quote": "USDT",
+      "usd": 0.309493188
+     },
+     {
+      "venue": "bybit",
+      "sym": "STXUSDT",
+      "candleTime": 1790256240,
+      "closeRaw": 0.3096,
+      "quote": "USDT",
+      "usd": 0.309493188
+     },
+     {
+      "venue": "kucoin",
+      "sym": "STX-USDT",
+      "candleTime": 1790256060,
+      "closeRaw": 0.3097,
+      "quote": "USDT",
+      "usd": 0.30959315349999994
+     },
+     {
+      "venue": "gate",
+      "sym": "STX_USDT",
+      "candleTime": 1790256180,
+      "closeRaw": 0.3095,
+      "quote": "USDT",
+      "usd": 0.3093932225
+     }
+    ],
+    "missing": [
+     {
+      "venue": "kraken",
+      "reason": "fetch failed"
+     },
+     {
+      "venue": "okx",
+      "reason": "unreachable this run: fetch failed"
+     }
+    ]
+   },
+   "USDC": {
+    "asset": "USDC",
+    "usd1e8": "99985493",
+    "median": 0.9998549309999999,
+    "venues": [
+     {
+      "venue": "binance",
+      "sym": "USDCUSDT",
+      "candleTime": 1790256240,
+      "closeRaw": 1.00022,
+      "quote": "USDT",
+      "usd": 0.9998749241000001
+     },
+     {
+      "venue": "bybit",
+      "sym": "USDCUSDT",
+      "candleTime": 1790256240,
+      "closeRaw": 1.0002,
+      "quote": "USDT",
+      "usd": 0.9998549309999999
+     },
+     {
+      "venue": "kucoin",
+      "sym": "USDC-USDT",
+      "candleTime": 1790256240,
+      "closeRaw": 1.0002,
+      "quote": "USDT",
+      "usd": 0.9998549309999999
+     },
+     {
+      "venue": "gate",
+      "sym": "USDC_USDT",
+      "candleTime": 1790256240,
+      "closeRaw": 1.0002,
+      "quote": "USDT",
+      "usd": 0.9998549309999999
+     }
+    ],
+    "missing": [
+     {
+      "venue": "kraken",
+      "reason": "unreachable this run: fetch failed"
+     },
+     {
+      "venue": "okx",
+      "reason": "unreachable this run: fetch failed"
+     }
+    ]
+   }
+  }
+ },
+ "priceVector": {
+  "BTC": "8377810344775",
+  "STX": "30949319",
+  "USDC": "99985493"
+ },
+ "discovery": {
+  "method": "walk of each token's vaults-sorted linked list from first-owner (cached owners batch-read, new owners stepped)",
+  "walked": {
+   "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token": 45,
+   "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token": 66,
+   "SP3DX3H4FEYZJZ586MFBS25ZW3HZDMEW92260R2PR.Wrapped-Bitcoin": 1,
+   "SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token": 4
+  },
+  "sequentialReads": 0
+ },
+ "params": {
+  "tokens": {
+   "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token": {
+    "symbol": "STX",
+    "liquidationRatio": "14000",
+    "stabilityFee": "600",
+    "liquidationPenalty": "1000",
+    "redemptionFeeMin": "100",
+    "redemptionFeeMax": "300",
+    "redemptionFeeBlockInterval": "144",
+    "firstOwner": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR",
+    "totalVaults": "45",
+    "totalDebt": "18018268408"
+   },
+   "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token": {
+    "symbol": "stSTX",
+    "liquidationRatio": "14000",
+    "stabilityFee": "600",
+    "liquidationPenalty": "1000",
+    "redemptionFeeMin": "100",
+    "redemptionFeeMax": "300",
+    "redemptionFeeBlockInterval": "144",
+    "firstOwner": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR",
+    "totalVaults": "66",
+    "totalDebt": "282007123380"
+   },
+   "SP3DX3H4FEYZJZ586MFBS25ZW3HZDMEW92260R2PR.Wrapped-Bitcoin": {
+    "symbol": "xBTC",
+    "liquidationRatio": "14000",
+    "stabilityFee": "900",
+    "liquidationPenalty": "1000",
+    "redemptionFeeMin": "100",
+    "redemptionFeeMax": "300",
+    "redemptionFeeBlockInterval": "144",
+    "firstOwner": "SPPMGZTRGMBVCFW3RMEVQJEF26MW9G6EKT51EMD8",
+    "totalVaults": "1",
+    "totalDebt": "53153006"
+   },
+   "SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token": {
+    "symbol": "sBTC",
+    "liquidationRatio": "14000",
+    "stabilityFee": "400",
+    "liquidationPenalty": "1000",
+    "redemptionFeeMin": "3000",
+    "redemptionFeeMax": "6000",
+    "redemptionFeeBlockInterval": "144",
+    "firstOwner": "SPJXWDR6YPME7X4BZ8PK6WDG76B7DZVHKEPAACF3",
+    "totalVaults": "4",
+    "totalDebt": "60867079850"
+   }
+  },
+  "prices": {
+   "STX": {
+    "lastPrice": "303100",
+    "lastBlock": "968393",
+    "decimals": "1000000"
+   },
+   "stSTX": {
+    "lastPrice": "359779",
+    "lastBlock": "968393",
+    "decimals": "1000000"
+   },
+   "xBTC": {
+    "lastPrice": "83539730000",
+    "lastBlock": "968393",
+    "decimals": "100000000"
+   },
+   "sBTC": {
+    "lastPrice": "83539730000",
+    "lastBlock": "968393",
+    "decimals": "100000000"
+   }
+  },
+  "burnHeight": 968395,
+  "poolLiqUsda": "1622",
+  "redemptionBlockLast": {
+   "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token": "0",
+   "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token": "963976",
+   "SP3DX3H4FEYZJZ586MFBS25ZW3HZDMEW92260R2PR.Wrapped-Bitcoin": "0",
+   "SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token": "953795"
+  },
+  "deployer": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR"
+ },
+ "onchain": {
+  "collateral:STX": "347190261264",
+  "debt:STX": "18018268408",
+  "count:STX": "45",
+  "collateral:stSTX": "2071018165043",
+  "debt:stSTX": "282007123380",
+  "count:stSTX": "66",
+  "collateral:xBTC": "10423208",
+  "debt:xBTC": "53153006",
+  "count:xBTC": "1",
+  "collateral:sBTC": "165221692",
+  "debt:sBTC": "60867079850",
+  "count:sBTC": "4"
+ },
+ "checks": [
+  {
+   "id": "count:STX",
+   "kind": "count",
+   "asset": "STX",
+   "label": "STX vaults walked vs vaults-sorted total-vaults",
+   "indexed": "45",
+   "onchain": "45",
+   "delta": "0",
+   "deltaPct": 0,
+   "rule": "exact",
+   "status": "OK"
+  },
+  {
+   "id": "debt:STX",
+   "kind": "debt",
+   "asset": "USDA",
+   "decimals": 6,
+   "label": "STX vaults USDA debt: Σ vaults vs vaults-data total-debt",
+   "indexed": "18018268408",
+   "onchain": "18018268408",
+   "delta": "0",
+   "deltaPct": 0,
+   "rule": "tolerance",
+   "okPct": 0.05,
+   "failPct": 0.5,
+   "status": "OK"
+  },
+  {
+   "id": "collateral:STX",
+   "kind": "collateral",
+   "asset": "STX",
+   "label": "STX collateral: Σ vaults ≤ balance of vaults-pool-active",
+   "indexed": "116675939865",
+   "onchain": "347190261264",
+   "note": "The pool can hold more than the vaults' collateral (surplus from redemptions, fees and direct transfers), so the check is Σ ≤ pool, with the surplus shown.",
+   "delta": "230514321399",
+   "deltaPct": 66.3942359903,
+   "rule": "lte",
+   "status": "OK"
+  },
+  {
+   "id": "count:stSTX",
+   "kind": "count",
+   "asset": "stSTX",
+   "label": "stSTX vaults walked vs vaults-sorted total-vaults",
+   "indexed": "66",
+   "onchain": "66",
+   "delta": "0",
+   "deltaPct": 0,
+   "rule": "exact",
+   "status": "OK"
+  },
+  {
+   "id": "debt:stSTX",
+   "kind": "debt",
+   "asset": "USDA",
+   "decimals": 6,
+   "label": "stSTX vaults USDA debt: Σ vaults vs vaults-data total-debt",
+   "indexed": "282007123380",
+   "onchain": "282007123380",
+   "delta": "0",
+   "deltaPct": 0,
+   "rule": "tolerance",
+   "okPct": 0.05,
+   "failPct": 0.5,
+   "status": "OK"
+  },
+  {
+   "id": "collateral:stSTX",
+   "kind": "collateral",
+   "asset": "stSTX",
+   "label": "stSTX collateral: Σ vaults ≤ balance of vaults-pool-active",
+   "indexed": "2071018164889",
+   "onchain": "2071018165043",
+   "note": "The pool can hold more than the vaults' collateral (surplus from redemptions, fees and direct transfers), so the check is Σ ≤ pool, with the surplus shown.",
+   "delta": "154",
+   "deltaPct": 7.4e-9,
+   "rule": "lte",
+   "status": "OK"
+  },
+  {
+   "id": "count:xBTC",
+   "kind": "count",
+   "asset": "xBTC",
+   "label": "xBTC vaults walked vs vaults-sorted total-vaults",
+   "indexed": "1",
+   "onchain": "1",
+   "delta": "0",
+   "deltaPct": 0,
+   "rule": "exact",
+   "status": "OK"
+  },
+  {
+   "id": "debt:xBTC",
+   "kind": "debt",
+   "asset": "USDA",
+   "decimals": 6,
+   "label": "xBTC vaults USDA debt: Σ vaults vs vaults-data total-debt",
+   "indexed": "53153006",
+   "onchain": "53153006",
+   "delta": "0",
+   "deltaPct": 0,
+   "rule": "tolerance",
+   "okPct": 0.05,
+   "failPct": 0.5,
+   "status": "OK"
+  },
+  {
+   "id": "collateral:xBTC",
+   "kind": "collateral",
+   "asset": "xBTC",
+   "label": "xBTC collateral: Σ vaults ≤ balance of vaults-pool-active",
+   "indexed": "569272",
+   "onchain": "10423208",
+   "note": "The pool can hold more than the vaults' collateral (surplus from redemptions, fees and direct transfers), so the check is Σ ≤ pool, with the surplus shown.",
+   "delta": "9853936",
+   "deltaPct": 94.5384184984,
+   "rule": "lte",
+   "status": "OK"
+  },
+  {
+   "id": "count:sBTC",
+   "kind": "count",
+   "asset": "sBTC",
+   "label": "sBTC vaults walked vs vaults-sorted total-vaults",
+   "indexed": "4",
+   "onchain": "4",
+   "delta": "0",
+   "deltaPct": 0,
+   "rule": "exact",
+   "status": "OK"
+  },
+  {
+   "id": "debt:sBTC",
+   "kind": "debt",
+   "asset": "USDA",
+   "decimals": 6,
+   "label": "sBTC vaults USDA debt: Σ vaults vs vaults-data total-debt",
+   "indexed": "60867079850",
+   "onchain": "60867079850",
+   "delta": "0",
+   "deltaPct": 0,
+   "rule": "tolerance",
+   "okPct": 0.05,
+   "failPct": 0.5,
+   "status": "OK"
+  },
+  {
+   "id": "collateral:sBTC",
+   "kind": "collateral",
+   "asset": "sBTC",
+   "label": "sBTC collateral: Σ vaults ≤ balance of vaults-pool-active",
+   "indexed": "165221692",
+   "onchain": "165221692",
+   "note": "The pool can hold more than the vaults' collateral (surplus from redemptions, fees and direct transfers), so the check is Σ ≤ pool, with the surplus shown.",
+   "delta": "0",
+   "deltaPct": 0,
+   "rule": "lte",
+   "status": "OK"
+  }
+ ],
+ "liquidationPath": {
+  "status": "BLOCKED",
+  "summary": "Liquidation burns the vault's debt from the liquidation pool, which holds 0.001622 USDA: enough for 0 of 116 vaults. Redemption is the only forced-deleveraging path (last successful redeem-vault at block 8844103).",
+  "evidence": {
+   "poolLiqContract": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-pool-liq-v1-2",
+   "poolLiqUsda": "1622",
+   "vaultsCoverable": 0,
+   "vaultsWithDebt": 116,
+   "liquidateAttempts": 43,
+   "liquidateSuccesses": 38,
+   "redemptions": 391,
+   "lastRedemption": {
+    "txid": "0x6b97fd72e246df71dd001d8582d1d2f19586374829a711ba65894e3a50f81cab",
+    "height": 8844103,
+    "time": 1787737665
+   }
+  }
+ },
+ "liquidations": {
+  "contract": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-manager-v1-2",
+  "fns": [
+   "liquidate-vault"
+  ],
+  "window": {
+   "days": 30,
+   "fromTime": 1787664347,
+   "toHeight": 9053676
+  },
+  "events": [],
+  "sinceActivation": {
+   "fromHeight": 0,
+   "attempts": 43,
+   "successes": 38
+  },
+  "indirectSuccessful": 0,
+  "scanComplete": true
+ },
+ "redemptions": {
+  "contract": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.arkadiko-vaults-manager-v1-2",
+  "fns": [
+   "redeem-vault"
+  ],
+  "window": {
+   "days": 30,
+   "fromTime": 1787664347,
+   "toHeight": 9053676
+  },
+  "events": [
+   {
+    "txid": "0x31e7bcb14ed83c0dac7d7e16ec460a1491823732778375cd2ecd71b4e984859a",
+    "height": 8839334,
+    "time": 1787676797,
+    "fn": "redeem-vault",
+    "liquidator": "SP2YXYP86KQYSYNZ1TBC5Q1NZV6PPAH23MPVATY43",
+    "borrowers": [
+     "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR"
+    ],
+    "debtRepaid": [
+     {
+      "asset": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.usda-token::usda",
+      "amount": "9589649"
+     }
+    ],
+    "collateralSeized": [
+     {
+      "asset": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token::ststx",
+      "amount": "32133195"
+     }
+    ]
+   },
+   {
+    "txid": "0x1bebeac2b508f2963c76c0f59e8e7a9aa03c62df4d41b3436875b8a9ea500601",
+    "height": 8840416,
+    "time": 1787690004,
+    "fn": "redeem-vault",
+    "liquidator": "SP2YXYP86KQYSYNZ1TBC5Q1NZV6PPAH23MPVATY43",
+    "borrowers": [
+     "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR"
+    ],
+    "debtRepaid": [
+     {
+      "asset": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.usda-token::usda",
+      "amount": "9598478"
+     }
+    ],
+    "collateralSeized": [
+     {
+      "asset": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token::ststx",
+      "amount": "31824979"
+     }
+    ]
+   },
+   {
+    "txid": "0x6b97fd72e246df71dd001d8582d1d2f19586374829a711ba65894e3a50f81cab",
+    "height": 8844103,
+    "time": 1787737665,
+    "fn": "redeem-vault",
+    "liquidator": "SP2YXYP86KQYSYNZ1TBC5Q1NZV6PPAH23MPVATY43",
+    "borrowers": [
+     "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR"
+    ],
+    "debtRepaid": [
+     {
+      "asset": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.usda-token::usda",
+      "amount": "2886280"
+     }
+    ],
+    "collateralSeized": [
+     {
+      "asset": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token::ststx",
+      "amount": "9213848"
+     }
+    ]
+   }
+  ],
+  "sinceActivation": {
+   "fromHeight": 0,
+   "attempts": 667,
+   "successes": 391
+  },
+  "indirectSuccessful": 0,
+  "scanComplete": true
+ },
+ "positions": [
+  {
+   "account": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR",
+   "collateral": {
+    "STX": "102493000000"
+   },
+   "debt": {
+    "USDA": "18000041095"
+   },
+   "debtStored": {
+    "USDA": "18000041095"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 968146,
+    "nicr": "569404255",
+    "listIndex": 0
+   },
+   "d": {
+    "collUsd": "3106562830000",
+    "debtUsd": "1800515754500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "17253",
+    "threshold": "14000",
+    "h": 1.232357,
+    "hLow": 1.232357,
+    "hHigh": 1.232357,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP309MM3CDDHR37DCQ1R704JKR4CQYEQ1EATPH8T5",
+   "collateral": {
+    "STX": "13980000"
+   },
+   "debt": {
+    "USDA": "1080874"
+   },
+   "debtStored": {
+    "USDA": "1080874"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "1293397750",
+    "listIndex": 1
+   },
+   "d": {
+    "collUsd": "423733800",
+    "debtUsd": "124502600",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "34034",
+    "threshold": "14000",
+    "h": 2.431,
+    "hLow": 2.431,
+    "hHigh": 2.431,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SPKCN7FXPWGKN6NSBHYA2EJG8PHF451B5BMRXGP1",
+   "collateral": {
+    "STX": "150000000"
+   },
+   "debt": {
+    "USDA": "10460922"
+   },
+   "debtStored": {
+    "USDA": "10460922"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "1433908024",
+    "listIndex": 2
+   },
+   "d": {
+    "collUsd": "4546500000",
+    "debtUsd": "1204963100",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "37731",
+    "threshold": "14000",
+    "h": 2.695071,
+    "hLow": 2.695071,
+    "hHigh": 2.695071,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP8R8AT0HS12MRKHMZ22J05DMTBDHRW9XJBKE5DG",
+   "collateral": {
+    "STX": "13438425"
+   },
+   "debt": {
+    "USDA": "745120"
+   },
+   "debtStored": {
+    "USDA": "745120"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "1803524935",
+    "listIndex": 3
+   },
+   "d": {
+    "collUsd": "407318661",
+    "debtUsd": "85828100",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "47457",
+    "threshold": "14000",
+    "h": 3.389786,
+    "hLow": 3.389786,
+    "hHigh": 3.389786,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP272HMYC5PG4R60NQKCX96Q682NDKF1VDZ7P5RSQ",
+   "collateral": {
+    "STX": "1000000"
+   },
+   "debt": {
+    "USDA": "48169"
+   },
+   "debtStored": {
+    "USDA": "48169"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "2076023998",
+    "listIndex": 4
+   },
+   "d": {
+    "collUsd": "30310000",
+    "debtUsd": "5548400",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "54628",
+    "threshold": "14000",
+    "h": 3.902,
+    "hLow": 3.902,
+    "hHigh": 3.902,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP248HH800501WYSG7Z2SS1ZWHQW1GGH85ME34NT2",
+   "collateral": {
+    "STX": "114760904"
+   },
+   "debt": {
+    "USDA": "4032005"
+   },
+   "debtStored": {
+    "USDA": "4032005"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "2846249049",
+    "listIndex": 5
+   },
+   "d": {
+    "collUsd": "3478403000",
+    "debtUsd": "464434800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "74895",
+    "threshold": "14000",
+    "h": 5.349643,
+    "hLow": 5.349643,
+    "hHigh": 5.349643,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP17Q8MQJNAZEQHNM00VFM3KGYBN9KPWZ7WDF0EFS",
+   "collateral": {
+    "STX": "3889688"
+   },
+   "debt": {
+    "USDA": "122999"
+   },
+   "debtStored": {
+    "USDA": "122999"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "3162373677",
+    "listIndex": 6
+   },
+   "d": {
+    "collUsd": "117896443",
+    "debtUsd": "14167600",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "83215",
+    "threshold": "14000",
+    "h": 5.943929,
+    "hLow": 5.943929,
+    "hHigh": 5.943929,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP49DG6YSCMNFT6S0KCC0A3XWXZEZVS7GMZ6ABTG",
+   "collateral": {
+    "STX": "2000000"
+   },
+   "debt": {
+    "USDA": "44458"
+   },
+   "debtStored": {
+    "USDA": "44458"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "4498627918",
+    "listIndex": 7
+   },
+   "d": {
+    "collUsd": "60620000",
+    "debtUsd": "5120800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "118379",
+    "threshold": "14000",
+    "h": 8.455643,
+    "hLow": 8.455643,
+    "hHigh": 8.455643,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP19ZA9EWV3DF2202Y9ZHTVF94G7NFS6ZEJNN6T8X",
+   "collateral": {
+    "STX": "500000"
+   },
+   "debt": {
+    "USDA": "10282"
+   },
+   "debtStored": {
+    "USDA": "10282"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "4862867146",
+    "listIndex": 8
+   },
+   "d": {
+    "collUsd": "15155000",
+    "debtUsd": "1184100",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "127987",
+    "threshold": "14000",
+    "h": 9.141929,
+    "hLow": 9.141929,
+    "hHigh": 9.141929,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP28PBTWEHR197J6BJHCDCKTVH6EFTRADJ5X7XFXF",
+   "collateral": {
+    "STX": "1030112"
+   },
+   "debt": {
+    "USDA": "20727"
+   },
+   "debtStored": {
+    "USDA": "20727"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "4969903989",
+    "listIndex": 9
+   },
+   "d": {
+    "collUsd": "31222694",
+    "debtUsd": "2387300",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "130786",
+    "threshold": "14000",
+    "h": 9.341857,
+    "hLow": 9.341857,
+    "hHigh": 9.341857,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP2FSM29506QZYKJMFGNTAF2V6Q58K2Y61DDT7Y0F",
+   "collateral": {
+    "STX": "4283470"
+   },
+   "debt": {
+    "USDA": "59295"
+   },
+   "debtStored": {
+    "USDA": "59295"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "7223998650",
+    "listIndex": 10
+   },
+   "d": {
+    "collUsd": "129831975",
+    "debtUsd": "6829800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "190096",
+    "threshold": "14000",
+    "h": 13.578286,
+    "hLow": 13.578286,
+    "hHigh": 13.578286,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SPYGMT67CFCEBJJ9CCG0K5WDEK45ED6R17PT8P16",
+   "collateral": {
+    "STX": "8990216"
+   },
+   "debt": {
+    "USDA": "116164"
+   },
+   "debtStored": {
+    "USDA": "116164"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "7739244516",
+    "listIndex": 11
+   },
+   "d": {
+    "collUsd": "272493446",
+    "debtUsd": "13380300",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "203652",
+    "threshold": "14000",
+    "h": 14.546571,
+    "hLow": 14.546571,
+    "hHigh": 14.546571,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP1JPKH64TWH1EW9K88A16FJRRXRNMY2J9JSAF086",
+   "collateral": {
+    "STX": "1000000"
+   },
+   "debt": {
+    "USDA": "10000"
+   },
+   "debtStored": {
+    "USDA": "10000"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "10000000000",
+    "listIndex": 12
+   },
+   "d": {
+    "collUsd": "30310000",
+    "debtUsd": "1151800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "263153",
+    "threshold": "14000",
+    "h": 18.796643,
+    "hLow": 18.796643,
+    "hHigh": 18.796643,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SPE39HZGRQ45ZSDJXY5JEG483VC8B8J0DEEDDTT5",
+   "collateral": {
+    "STX": "1000000"
+   },
+   "debt": {
+    "USDA": "10000"
+   },
+   "debtStored": {
+    "USDA": "10000"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "10000000000",
+    "listIndex": 13
+   },
+   "d": {
+    "collUsd": "30310000",
+    "debtUsd": "1151800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "263153",
+    "threshold": "14000",
+    "h": 18.796643,
+    "hLow": 18.796643,
+    "hHigh": 18.796643,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP13AC1JF3RVH4PMB3CDM8Y6AK9K24XRY20XYCRZT",
+   "collateral": {
+    "STX": "51300435"
+   },
+   "debt": {
+    "USDA": "508178"
+   },
+   "debtStored": {
+    "USDA": "508178"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "10094973611",
+    "listIndex": 14
+   },
+   "d": {
+    "collUsd": "1554916184",
+    "debtUsd": "58535300",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "265637",
+    "threshold": "14000",
+    "h": 18.974071,
+    "hLow": 18.974071,
+    "hHigh": 18.974071,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP3H6Z8KZ2EHTCNW5B43K3RSXCYWTPNKPTX4VJJZE",
+   "collateral": {
+    "STX": "1800779"
+   },
+   "debt": {
+    "USDA": "10144"
+   },
+   "debtStored": {
+    "USDA": "10144"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "17752158911",
+    "listIndex": 15
+   },
+   "d": {
+    "collUsd": "54581611",
+    "debtUsd": "1168200",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "467228",
+    "threshold": "14000",
+    "h": 33.373429,
+    "hLow": 33.373429,
+    "hHigh": 33.373429,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP3MSQHD6CD47T80DQTHN964ZVMMBX12VM6SC8RDT",
+   "collateral": {
+    "STX": "100000000"
+   },
+   "debt": {
+    "USDA": "541139"
+   },
+   "debtStored": {
+    "USDA": "541139"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "18479540376",
+    "listIndex": 16
+   },
+   "d": {
+    "collUsd": "3031000000",
+    "debtUsd": "62332100",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "486266",
+    "threshold": "14000",
+    "h": 34.733286,
+    "hLow": 34.733286,
+    "hHigh": 34.733286,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP19R89P6EQ3XE8B2KC4K5M1FE909XWCZCYEN18P6",
+   "collateral": {
+    "STX": "5421814"
+   },
+   "debt": {
+    "USDA": "19796"
+   },
+   "debtStored": {
+    "USDA": "19796"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "27388432006",
+    "listIndex": 17
+   },
+   "d": {
+    "collUsd": "164335182",
+    "debtUsd": "2280000",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "720768",
+    "threshold": "14000",
+    "h": 51.483429,
+    "hLow": 51.483429,
+    "hHigh": 51.483429,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SPK2780EBGCJG5BQKS62JG0SBPNBYNMYYF5XYFPE",
+   "collateral": {
+    "STX": "2753277"
+   },
+   "debt": {
+    "USDA": "10004"
+   },
+   "debtStored": {
+    "USDA": "10004"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "27521761295",
+    "listIndex": 18
+   },
+   "d": {
+    "collUsd": "83451825",
+    "debtUsd": "1152200",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "724282",
+    "threshold": "14000",
+    "h": 51.734429,
+    "hLow": 51.734429,
+    "hHigh": 51.734429,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP1JQ6KP52NFT2RAF0JN348G8XD142GZ0PN7Q9ETK",
+   "collateral": {
+    "STX": "4903578"
+   },
+   "debt": {
+    "USDA": "10705"
+   },
+   "debtStored": {
+    "USDA": "10705"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "45806426903",
+    "listIndex": 19
+   },
+   "d": {
+    "collUsd": "148627449",
+    "debtUsd": "1233000",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "1205413",
+    "threshold": "14000",
+    "h": 86.100929,
+    "hLow": 86.100929,
+    "hHigh": 86.100929,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SPF2VNHRHWJR3ABJRGKS21CH6KMR50NGADH29E5A",
+   "collateral": {
+    "STX": "33327404"
+   },
+   "debt": {
+    "USDA": "52559"
+   },
+   "debtStored": {
+    "USDA": "52559"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "63409509313",
+    "listIndex": 20
+   },
+   "d": {
+    "collUsd": "1010153615",
+    "debtUsd": "6053900",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "1668599",
+    "threshold": "14000",
+    "h": 119.185643,
+    "hLow": 119.185643,
+    "hHigh": 119.185643,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP2N6WDD2M9DNC6J5D566GPC2QD8MRQRDBG6NH6F",
+   "collateral": {
+    "STX": "10000000"
+   },
+   "debt": {
+    "USDA": "10000"
+   },
+   "debtStored": {
+    "USDA": "10000"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "100000000000",
+    "listIndex": 21
+   },
+   "d": {
+    "collUsd": "303100000",
+    "debtUsd": "1151800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "2631533",
+    "threshold": "14000",
+    "h": 187.966643,
+    "hLow": 187.966643,
+    "hHigh": 187.966643,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SPDVAGX3EGETB7BJ6737FRS4DTNXC7CVSNFK7TSR",
+   "collateral": {
+    "STX": "10000000"
+   },
+   "debt": {
+    "USDA": "10000"
+   },
+   "debtStored": {
+    "USDA": "10000"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "100000000000",
+    "listIndex": 22
+   },
+   "d": {
+    "collUsd": "303100000",
+    "debtUsd": "1151800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "2631533",
+    "threshold": "14000",
+    "h": 187.966643,
+    "hLow": 187.966643,
+    "hHigh": 187.966643,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP3AWE771HSHKVAWXJKEFRFP79SB8FK3H8E6YMSRZ",
+   "collateral": {
+    "STX": "13000000"
+   },
+   "debt": {
+    "USDA": "10000"
+   },
+   "debtStored": {
+    "USDA": "10000"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "130000000000",
+    "listIndex": 23
+   },
+   "d": {
+    "collUsd": "394030000",
+    "debtUsd": "1151800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "3420993",
+    "threshold": "14000",
+    "h": 244.356643,
+    "hLow": 244.356643,
+    "hHigh": 244.356643,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP1YK1VXJXD2RWTZ6M8TNB99KQZX0EXJ9RJ591E15",
+   "collateral": {
+    "STX": "50000000"
+   },
+   "debt": {
+    "USDA": "36303"
+   },
+   "debtStored": {
+    "USDA": "36303"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "137729664215",
+    "listIndex": 24
+   },
+   "d": {
+    "collUsd": "1515500000",
+    "debtUsd": "4181500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "3624297",
+    "threshold": "14000",
+    "h": 258.878357,
+    "hLow": 258.878357,
+    "hHigh": 258.878357,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP1JVB9ZWKPGMYQ62YFWA8KBE66SDEFJHGJR9DVX1",
+   "collateral": {
+    "STX": "15000000"
+   },
+   "debt": {
+    "USDA": "10000"
+   },
+   "debtStored": {
+    "USDA": "10000"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "150000000000",
+    "listIndex": 25
+   },
+   "d": {
+    "collUsd": "454650000",
+    "debtUsd": "1151800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "3947299",
+    "threshold": "14000",
+    "h": 281.949929,
+    "hLow": 281.949929,
+    "hHigh": 281.949929,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP1HBSPDYX7D8413DP2Q2GWQD2YFV061Q0VJ82ED4",
+   "collateral": {
+    "STX": "18060000"
+   },
+   "debt": {
+    "USDA": "10000"
+   },
+   "debtStored": {
+    "USDA": "10000"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "180600000000",
+    "listIndex": 26
+   },
+   "d": {
+    "collUsd": "547398600",
+    "debtUsd": "1151800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "4752549",
+    "threshold": "14000",
+    "h": 339.467786,
+    "hLow": 339.467786,
+    "hHigh": 339.467786,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP2FERZWHCY7B9CTFSJK8EW75W01MDGF3S8Z76TRN",
+   "collateral": {
+    "STX": "40356514"
+   },
+   "debt": {
+    "USDA": "17004"
+   },
+   "debtStored": {
+    "USDA": "17004"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "237335415196",
+    "listIndex": 27
+   },
+   "d": {
+    "collUsd": "1223205939",
+    "debtUsd": "1958500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "6245626",
+    "threshold": "14000",
+    "h": 446.116143,
+    "hLow": 446.116143,
+    "hHigh": 446.116143,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP30MK30GF3YACJQ0ERHG89V1FCAWMQBKSPQG93MM",
+   "collateral": {
+    "STX": "36132760"
+   },
+   "debt": {
+    "USDA": "10000"
+   },
+   "debtStored": {
+    "USDA": "10000"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "361327600000",
+    "listIndex": 28
+   },
+   "d": {
+    "collUsd": "1095183955",
+    "debtUsd": "1151800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "9508455",
+    "threshold": "14000",
+    "h": 679.175357,
+    "hLow": 679.175357,
+    "hHigh": 679.175357,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SPMHBW0ME2NPEBGGQ3H56Q159FNFR79DD6WNVJMG",
+   "collateral": {
+    "STX": "155000000"
+   },
+   "debt": {
+    "USDA": "37505"
+   },
+   "debtStored": {
+    "USDA": "37505"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "413278229569",
+    "listIndex": 29
+   },
+   "d": {
+    "collUsd": "4698050000",
+    "debtUsd": "4320000",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "10875115",
+    "threshold": "14000",
+    "h": 776.793929,
+    "hLow": 776.793929,
+    "hHigh": 776.793929,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP2KP96PS0P584GVKA1HC5RP385DK53ZYC50B00K0",
+   "collateral": {
+    "STX": "50000000"
+   },
+   "debt": {
+    "USDA": "10036"
+   },
+   "debtStored": {
+    "USDA": "10036"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "498206456755",
+    "listIndex": 30
+   },
+   "d": {
+    "collUsd": "1515500000",
+    "debtUsd": "1155900",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "13110995",
+    "threshold": "14000",
+    "h": 936.499643,
+    "hLow": 936.499643,
+    "hHigh": 936.499643,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP3SKQXRJCZ1HPJV4JCH4EC78RRTQP3Y3M33TARHQ",
+   "collateral": {
+    "STX": "50000000"
+   },
+   "debt": {
+    "USDA": "10000"
+   },
+   "debtStored": {
+    "USDA": "10000"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "500000000000",
+    "listIndex": 31
+   },
+   "d": {
+    "collUsd": "1515500000",
+    "debtUsd": "1151800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "13157666",
+    "threshold": "14000",
+    "h": 939.833286,
+    "hLow": 939.833286,
+    "hHigh": 939.833286,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP30HDQ1WGZRD1YTBRPPPYZHKQJ7E8CVYZCTHXKVX",
+   "collateral": {
+    "STX": "50000000"
+   },
+   "debt": {
+    "USDA": "10000"
+   },
+   "debtStored": {
+    "USDA": "10000"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "500000000000",
+    "listIndex": 32
+   },
+   "d": {
+    "collUsd": "1515500000",
+    "debtUsd": "1151800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "13157666",
+    "threshold": "14000",
+    "h": 939.833286,
+    "hLow": 939.833286,
+    "hHigh": 939.833286,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP3P8X7VY45Y9T21FNAJAG95H8ADE2MB00TCKRAXB",
+   "collateral": {
+    "STX": "50000000"
+   },
+   "debt": {
+    "USDA": "10000"
+   },
+   "debtStored": {
+    "USDA": "10000"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "500000000000",
+    "listIndex": 33
+   },
+   "d": {
+    "collUsd": "1515500000",
+    "debtUsd": "1151800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "13157666",
+    "threshold": "14000",
+    "h": 939.833286,
+    "hLow": 939.833286,
+    "hHigh": 939.833286,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP19JB746XZZW6PH8KRDA4P9NBY7285STF10039E0",
+   "collateral": {
+    "STX": "100000000"
+   },
+   "debt": {
+    "USDA": "19733"
+   },
+   "debtStored": {
+    "USDA": "19733"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "506765316981",
+    "listIndex": 34
+   },
+   "d": {
+    "collUsd": "3031000000",
+    "debtUsd": "2272700",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "13336560",
+    "threshold": "14000",
+    "h": 952.611429,
+    "hLow": 952.611429,
+    "hHigh": 952.611429,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SPT7WQRTS0KTTGY7YZ1GF1K30J60C8Y32Q7DQVPK",
+   "collateral": {
+    "STX": "52000000"
+   },
+   "debt": {
+    "USDA": "10000"
+   },
+   "debtStored": {
+    "USDA": "10000"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "520000000000",
+    "listIndex": 35
+   },
+   "d": {
+    "collUsd": "1576120000",
+    "debtUsd": "1151800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "13683972",
+    "threshold": "14000",
+    "h": 977.426571,
+    "hLow": 977.426571,
+    "hHigh": 977.426571,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP11ETHNJKZRF8N4VMMK62FM322HKVQPRAN8JM1R6",
+   "collateral": {
+    "STX": "100360669"
+   },
+   "debt": {
+    "USDA": "10000"
+   },
+   "debtStored": {
+    "USDA": "10000"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "1003606690000",
+    "listIndex": 36
+   },
+   "d": {
+    "collUsd": "3041931877",
+    "debtUsd": "1151800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "26410243",
+    "threshold": "14000",
+    "h": 1886.445929,
+    "hLow": 1886.445929,
+    "hHigh": 1886.445929,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP1D50E7VETCSWK00T9GJK1TD3PRM0JFPD84QQBWT",
+   "collateral": {
+    "STX": "104627434"
+   },
+   "debt": {
+    "USDA": "10000"
+   },
+   "debtStored": {
+    "USDA": "10000"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "1046274340000",
+    "listIndex": 37
+   },
+   "d": {
+    "collUsd": "3171257524",
+    "debtUsd": "1151800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "27533057",
+    "threshold": "14000",
+    "h": 1966.646929,
+    "hLow": 1966.646929,
+    "hHigh": 1966.646929,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP285GDW3F18MY7YHR2GN4X0C90F4SQT2D9GTBJX9",
+   "collateral": {
+    "STX": "230230069"
+   },
+   "debt": {
+    "USDA": "13192"
+   },
+   "debtStored": {
+    "USDA": "13192"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "1745224901455",
+    "listIndex": 38
+   },
+   "d": {
+    "collUsd": "6978273391",
+    "debtUsd": "1519400",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "45927822",
+    "threshold": "14000",
+    "h": 3280.558714,
+    "hLow": 3280.558714,
+    "hHigh": 3280.558714,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP2E7W7F568R99DKATHCB5B5ZTG690RF0KAPR9BWX",
+   "collateral": {
+    "STX": "200000000"
+   },
+   "debt": {
+    "USDA": "10000"
+   },
+   "debtStored": {
+    "USDA": "10000"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "2000000000000",
+    "listIndex": 39
+   },
+   "d": {
+    "collUsd": "6062000000",
+    "debtUsd": "1151800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "52630665",
+    "threshold": "14000",
+    "h": 3759.333214,
+    "hLow": 3759.333214,
+    "hHigh": 3759.333214,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP2CNWQ85KJAP57RSDANZM3BK2YWQN1FAH21RZS2S",
+   "collateral": {
+    "STX": "308538684"
+   },
+   "debt": {
+    "USDA": "10000"
+   },
+   "debtStored": {
+    "USDA": "10000"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "3085386840000",
+    "listIndex": 40
+   },
+   "d": {
+    "collUsd": "9351807512",
+    "debtUsd": "1151800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "81192980",
+    "threshold": "14000",
+    "h": 5799.498571,
+    "hLow": 5799.498571,
+    "hHigh": 5799.498571,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SPKPA06RC4DW68HGDS3CFEXT7ZH7QPMGM97B7K02",
+   "collateral": {
+    "STX": "422000000"
+   },
+   "debt": {
+    "USDA": "10000"
+   },
+   "debtStored": {
+    "USDA": "10000"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "4220000000000",
+    "listIndex": 41
+   },
+   "d": {
+    "collUsd": "12790820000",
+    "debtUsd": "1151800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "111050703",
+    "threshold": "14000",
+    "h": 7932.193071,
+    "hLow": 7932.193071,
+    "hHigh": 7932.193071,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP4HRBY7QMDRJWWTDWR23D5P24MGKB3ZWYNHG0VY",
+   "collateral": {
+    "STX": "800000000"
+   },
+   "debt": {
+    "USDA": "10000"
+   },
+   "debtStored": {
+    "USDA": "10000"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "8000000000000",
+    "listIndex": 42
+   },
+   "d": {
+    "collUsd": "24248000000",
+    "debtUsd": "1151800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "210522660",
+    "threshold": "14000",
+    "h": 15037.332857,
+    "hLow": 15037.332857,
+    "hHigh": 15037.332857,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP3RPJF4RXQP8V1A2786W4N9PH1DMK0N2WSSCPXNP",
+   "collateral": {
+    "STX": "802253633"
+   },
+   "debt": {
+    "USDA": "10000"
+   },
+   "debtStored": {
+    "USDA": "10000"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "8022536330000",
+    "listIndex": 43
+   },
+   "d": {
+    "collUsd": "24316307616",
+    "debtUsd": "1151800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "211115711",
+    "threshold": "14000",
+    "h": 15079.693643,
+    "hLow": 15079.693643,
+    "hHigh": 15079.693643,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP32HTXYCW8MMESEAT5V0J1MBJHBJK4MR95WDZ91Z",
+   "collateral": {
+    "STX": "10000000000"
+   },
+   "debt": {
+    "USDA": "10000"
+   },
+   "debtStored": {
+    "USDA": "10000"
+   },
+   "meta": {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "status": 101,
+    "lastBlock": 835356,
+    "nicr": "100000000000000",
+    "listIndex": 44
+   },
+   "d": {
+    "collUsd": "303100000000",
+    "debtUsd": "1151800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "2631533252",
+    "threshold": "14000",
+    "h": 187966.660857,
+    "hLow": 187966.660857,
+    "hHigh": 187966.660857,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR",
+   "collateral": {
+    "stSTX": "1889696391418"
+   },
+   "debt": {
+    "USDA": "272386443365"
+   },
+   "debtStored": {
+    "USDA": "272386443365"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 964120,
+    "nicr": "693755668",
+    "listIndex": 0
+   },
+   "d": {
+    "collUsd": "67987307800797",
+    "debtUsd": "27371572652100",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "24838",
+    "threshold": "14000",
+    "h": 1.774143,
+    "hLow": 1.774143,
+    "hHigh": 1.774143,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP2B1NXRQ6YQ0PH0046PQFKF99AZ8DRWGD8KC0040",
+   "collateral": {
+    "stSTX": "53362290"
+   },
+   "debt": {
+    "USDA": "6616299"
+   },
+   "debtStored": {
+    "USDA": "6616299"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 845944,
+    "nicr": "806527788",
+    "listIndex": 1
+   },
+   "d": {
+    "collUsd": "1919863133",
+    "debtUsd": "754115100",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "25458",
+    "threshold": "14000",
+    "h": 1.818429,
+    "hLow": 1.818429,
+    "hHigh": 1.818429,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP3JYTEYFKCY12WTY7TNRCQ392D1WF0YTPV71P0EM",
+   "collateral": {
+    "stSTX": "3199790003"
+   },
+   "debt": {
+    "USDA": "387746667"
+   },
+   "debtStored": {
+    "USDA": "387746667"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 961683,
+    "nicr": "825226952",
+    "listIndex": 2
+   },
+   "d": {
+    "collUsd": "115121724748",
+    "debtUsd": "39071762000",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "29464",
+    "threshold": "14000",
+    "h": 2.104571,
+    "hLow": 2.104571,
+    "hHigh": 2.104571,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SPJXTF0YCFHKMYGBH73M1Q7JK7A41SPB715478BZ",
+   "collateral": {
+    "stSTX": "34823791"
+   },
+   "debt": {
+    "USDA": "4021050"
+   },
+   "debtStored": {
+    "USDA": "4021050"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "866037253",
+    "listIndex": 3
+   },
+   "d": {
+    "collUsd": "1252886870",
+    "debtUsd": "463167100",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "27050",
+    "threshold": "14000",
+    "h": 1.932143,
+    "hLow": 1.932143,
+    "hHigh": 1.932143,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP3P9XNPA8GQ2GH2BJ0P3DK71HS34WSD6TK59G3HR",
+   "collateral": {
+    "stSTX": "33035666087"
+   },
+   "debt": {
+    "USDA": "3810658977"
+   },
+   "debtStored": {
+    "USDA": "3810658977"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 953894,
+    "nicr": "866927906",
+    "listIndex": 4
+   },
+   "d": {
+    "collUsd": "1188553890911",
+    "debtUsd": "387373930300",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "30682",
+    "threshold": "14000",
+    "h": 2.191571,
+    "hLow": 2.191571,
+    "hHigh": 2.191571,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP18ZQRE3N8RNMYGMASDZXV4XGYEZMA8JSHAK31Q8",
+   "collateral": {
+    "stSTX": "10273448070"
+   },
+   "debt": {
+    "USDA": "1145746719"
+   },
+   "debtStored": {
+    "USDA": "1145746719"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "896659610",
+    "listIndex": 5
+   },
+   "d": {
+    "collUsd": "369617087317",
+    "debtUsd": "131973542000",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "28006",
+    "threshold": "14000",
+    "h": 2.000429,
+    "hLow": 2.000429,
+    "hHigh": 2.000429,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP3GNH2HRF8M2RTMJPECHX3YMCBPMH02NCBK688EH",
+   "collateral": {
+    "stSTX": "9949654"
+   },
+   "debt": {
+    "USDA": "1037744"
+   },
+   "debtStored": {
+    "USDA": "1037744"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "958777309",
+    "listIndex": 6
+   },
+   "d": {
+    "collUsd": "357967656",
+    "debtUsd": "119533000",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "29947",
+    "threshold": "14000",
+    "h": 2.139071,
+    "hLow": 2.139071,
+    "hHigh": 2.139071,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP2QE3SKKZAY68Z3KN4TTJN41BVE3B5QVJMNKJAZB",
+   "collateral": {
+    "stSTX": "251242631"
+   },
+   "debt": {
+    "USDA": "22578800"
+   },
+   "debtStored": {
+    "USDA": "22578800"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "1112736863",
+    "listIndex": 7
+   },
+   "d": {
+    "collUsd": "9039182253",
+    "debtUsd": "2600752900",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "34756",
+    "threshold": "14000",
+    "h": 2.482571,
+    "hLow": 2.482571,
+    "hHigh": 2.482571,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP2Y738VAEMGCMJ8BR4Q94A74EY7DHQEEG31KH078",
+   "collateral": {
+    "stSTX": "185782886"
+   },
+   "debt": {
+    "USDA": "16180369"
+   },
+   "debtStored": {
+    "USDA": "16180369"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 846259,
+    "nicr": "1148199314",
+    "listIndex": 8
+   },
+   "d": {
+    "collUsd": "6684078094",
+    "debtUsd": "1843631100",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "36254",
+    "threshold": "14000",
+    "h": 2.589571,
+    "hLow": 2.589571,
+    "hHigh": 2.589571,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SPCJ7D2GMHQ5N9ZYSBT35AAH3TTTTXEN2CEP1QCJ",
+   "collateral": {
+    "stSTX": "69647583"
+   },
+   "debt": {
+    "USDA": "5734948"
+   },
+   "debtStored": {
+    "USDA": "5734948"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "1214441403",
+    "listIndex": 9
+   },
+   "d": {
+    "collUsd": "2505773776",
+    "debtUsd": "660583200",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "37932",
+    "threshold": "14000",
+    "h": 2.709429,
+    "hLow": 2.709429,
+    "hHigh": 2.709429,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP3WSZQSHV99NJ7GX1G908ZFME42V86J6FAY5WXVE",
+   "collateral": {
+    "stSTX": "286445719"
+   },
+   "debt": {
+    "USDA": "23325367"
+   },
+   "debtStored": {
+    "USDA": "23325367"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 849851,
+    "nicr": "1228043781",
+    "listIndex": 10
+   },
+   "d": {
+    "collUsd": "10305715433",
+    "debtUsd": "2648185300",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "38916",
+    "threshold": "14000",
+    "h": 2.779714,
+    "hLow": 2.779714,
+    "hHigh": 2.779714,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP7SPH7XXSS6HBFAFQ1W4HRHB70GD3XH8HM1FH0A",
+   "collateral": {
+    "stSTX": "5182338427"
+   },
+   "debt": {
+    "USDA": "415389225"
+   },
+   "debtStored": {
+    "USDA": "415389225"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "1247586146",
+    "listIndex": 11
+   },
+   "d": {
+    "collUsd": "186449653692",
+    "debtUsd": "47846863800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "38967",
+    "threshold": "14000",
+    "h": 2.783357,
+    "hLow": 2.783357,
+    "hHigh": 2.783357,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP3V9TP8NJ704HQPE7M419B0G3ZMGBK53F77E1V27",
+   "collateral": {
+    "stSTX": "775273235"
+   },
+   "debt": {
+    "USDA": "60429666"
+   },
+   "debtStored": {
+    "USDA": "60429666"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "1282934833",
+    "listIndex": 12
+   },
+   "d": {
+    "collUsd": "27892702921",
+    "debtUsd": "6960628000",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "40072",
+    "threshold": "14000",
+    "h": 2.862286,
+    "hLow": 2.862286,
+    "hHigh": 2.862286,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP103BZSXCX2YF8HXMN8DDP5Z46DN4A0HPRDYJXDD",
+   "collateral": {
+    "stSTX": "9000000000"
+   },
+   "debt": {
+    "USDA": "621726248"
+   },
+   "debtStored": {
+    "USDA": "621726248"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 963114,
+    "nicr": "1447582441",
+    "listIndex": 13
+   },
+   "d": {
+    "collUsd": "323801100000",
+    "debtUsd": "62547434800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "51768",
+    "threshold": "14000",
+    "h": 3.697714,
+    "hLow": 3.697714,
+    "hHigh": 3.697714,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP8R8AT0HS12MRKHMZ22J05DMTBDHRW9XJBKE5DG",
+   "collateral": {
+    "stSTX": "24007293"
+   },
+   "debt": {
+    "USDA": "1537151"
+   },
+   "debtStored": {
+    "USDA": "1537151"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "1561804468",
+    "listIndex": 14
+   },
+   "d": {
+    "collUsd": "863731986",
+    "debtUsd": "177057600",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "48782",
+    "threshold": "14000",
+    "h": 3.484429,
+    "hLow": 3.484429,
+    "hHigh": 3.484429,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP3MA7SZSW1T0CR9Y3WEX4BJZNESCXMA493RF4H0K",
+   "collateral": {
+    "stSTX": "14934982438"
+   },
+   "debt": {
+    "USDA": "945022601"
+   },
+   "debtStored": {
+    "USDA": "945022601"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 960965,
+    "nicr": "1580383624",
+    "listIndex": 15
+   },
+   "d": {
+    "collUsd": "537329304656",
+    "debtUsd": "95303803200",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "56380",
+    "threshold": "14000",
+    "h": 4.027143,
+    "hLow": 4.027143,
+    "hHigh": 4.027143,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP2387SVTEFW59A7BWJE84V9Y6M9SYEBDPFAQ1XN1",
+   "collateral": {
+    "stSTX": "179956326"
+   },
+   "debt": {
+    "USDA": "11344766"
+   },
+   "debtStored": {
+    "USDA": "11344766"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 848783,
+    "nicr": "1586249782",
+    "listIndex": 16
+   },
+   "d": {
+    "collUsd": "6474450701",
+    "debtUsd": "1289381600",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "50213",
+    "threshold": "14000",
+    "h": 3.586643,
+    "hLow": 3.586643,
+    "hHigh": 3.586643,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP229CVAF2X6SR5GYKEFYF0B84W66S9423AWABJFD",
+   "collateral": {
+    "stSTX": "21144306155"
+   },
+   "debt": {
+    "USDA": "1017767123"
+   },
+   "debtStored": {
+    "USDA": "1017767123"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 935213,
+    "nicr": "2077519078",
+    "listIndex": 17
+   },
+   "d": {
+    "collUsd": "760727732413",
+    "debtUsd": "105631911800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "72016",
+    "threshold": "14000",
+    "h": 5.144,
+    "hLow": 5.144,
+    "hHigh": 5.144,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP1AX2ND6NE41YNN9C0SDJV2N11X7684RBKQWB9XD",
+   "collateral": {
+    "stSTX": "21951664028"
+   },
+   "debt": {
+    "USDA": "1000122146"
+   },
+   "debtStored": {
+    "USDA": "1000122146"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 963720,
+    "nicr": "2194898304",
+    "listIndex": 18
+   },
+   "d": {
+    "collUsd": "789774773232",
+    "debtUsd": "100545955500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "78548",
+    "threshold": "14000",
+    "h": 5.610571,
+    "hLow": 5.610571,
+    "hHigh": 5.610571,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP3EVQ0GWNJAYTXMNKMDX6EWP06TXTX3RSE0RTNS4",
+   "collateral": {
+    "stSTX": "179093785"
+   },
+   "debt": {
+    "USDA": "7768056"
+   },
+   "debtStored": {
+    "USDA": "7768056"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "2305516142",
+    "listIndex": 19
+   },
+   "d": {
+    "collUsd": "6443418287",
+    "debtUsd": "894768200",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "72012",
+    "threshold": "14000",
+    "h": 5.143714,
+    "hLow": 5.143714,
+    "hHigh": 5.143714,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP1W5CWFJWXGHHM4ZEAJWFQ6D9V3N5GB9VQEDYSED",
+   "collateral": {
+    "stSTX": "696475832"
+   },
+   "debt": {
+    "USDA": "27067732"
+   },
+   "debtStored": {
+    "USDA": "27067732"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "2573085295",
+    "listIndex": 20
+   },
+   "d": {
+    "collUsd": "25057737836",
+    "debtUsd": "3117813100",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "80369",
+    "threshold": "14000",
+    "h": 5.740643,
+    "hLow": 5.740643,
+    "hHigh": 5.740643,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP2M51D1DTWR3ARWSD3TDKYN3W5T7FE1QN9YZV3G6",
+   "collateral": {
+    "stSTX": "29848964"
+   },
+   "debt": {
+    "USDA": "1082356"
+   },
+   "debtStored": {
+    "USDA": "1082356"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "2757776923",
+    "listIndex": 21
+   },
+   "d": {
+    "collUsd": "1073903041",
+    "debtUsd": "124671700",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "86138",
+    "threshold": "14000",
+    "h": 6.152714,
+    "hLow": 6.152714,
+    "hHigh": 6.152714,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP39ZYHN0GRAA9FBE43QGQ2HFS3PRWZGE1JCQRWYH",
+   "collateral": {
+    "stSTX": "122981434"
+   },
+   "debt": {
+    "USDA": "4429814"
+   },
+   "debtStored": {
+    "USDA": "4429814"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 853142,
+    "nicr": "2776221168",
+    "listIndex": 22
+   },
+   "d": {
+    "collUsd": "4424613734",
+    "debtUsd": "501263100",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "88269",
+    "threshold": "14000",
+    "h": 6.304929,
+    "hLow": 6.304929,
+    "hHigh": 6.304929,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP3CSPJCN6T4Z7BX1EWW1JGX90KXP7NF6MN9YZGJ3",
+   "collateral": {
+    "stSTX": "190865219"
+   },
+   "debt": {
+    "USDA": "6215564"
+   },
+   "debtStored": {
+    "USDA": "6215564"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 844566,
+    "nicr": "3070762669",
+    "listIndex": 23
+   },
+   "d": {
+    "collUsd": "6866929762",
+    "debtUsd": "709417700",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "96796",
+    "threshold": "14000",
+    "h": 6.914,
+    "hLow": 6.914,
+    "hHigh": 6.914,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SPQH1F2WVJN92B0JK8Q036E9HV3NT30VX8S2EVQM",
+   "collateral": {
+    "stSTX": "3979861"
+   },
+   "debt": {
+    "USDA": "100000"
+   },
+   "debtStored": {
+    "USDA": "100000"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "3979861000",
+    "listIndex": 24
+   },
+   "d": {
+    "collUsd": "143187041",
+    "debtUsd": "11518500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "124310",
+    "threshold": "14000",
+    "h": 8.879286,
+    "hLow": 8.879286,
+    "hHigh": 8.879286,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP2KQN92ME0P6ZNMDZC8JGPTWD3V120TQYPKKV12H",
+   "collateral": {
+    "stSTX": "4071902"
+   },
+   "debt": {
+    "USDA": "100000"
+   },
+   "debtStored": {
+    "USDA": "100000"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "4071902000",
+    "listIndex": 25
+   },
+   "d": {
+    "collUsd": "146498482",
+    "debtUsd": "11518500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "127185",
+    "threshold": "14000",
+    "h": 9.084643,
+    "hLow": 9.084643,
+    "hHigh": 9.084643,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP3W83KG17KJZZXPDZQDTRQKQRGHNFZN410R9P02E",
+   "collateral": {
+    "stSTX": "4974827"
+   },
+   "debt": {
+    "USDA": "100000"
+   },
+   "debtStored": {
+    "USDA": "100000"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "4974827000",
+    "listIndex": 26
+   },
+   "d": {
+    "collUsd": "178983828",
+    "debtUsd": "11518500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "155388",
+    "threshold": "14000",
+    "h": 11.099143,
+    "hLow": 11.099143,
+    "hHigh": 11.099143,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP97DC4P1XFZMAG3B2EPVD8R1JPK9DES691JAM97",
+   "collateral": {
+    "stSTX": "4974827"
+   },
+   "debt": {
+    "USDA": "100000"
+   },
+   "debtStored": {
+    "USDA": "100000"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "4974827000",
+    "listIndex": 27
+   },
+   "d": {
+    "collUsd": "178983828",
+    "debtUsd": "11518500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "155388",
+    "threshold": "14000",
+    "h": 11.099143,
+    "hLow": 11.099143,
+    "hHigh": 11.099143,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP3WT85B2PJWBQG70B8NTCA9DNZ6TS07YP5497WWW",
+   "collateral": {
+    "stSTX": "5048521"
+   },
+   "debt": {
+    "USDA": "100872"
+   },
+   "debtStored": {
+    "USDA": "100872"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "5004878459",
+    "listIndex": 28
+   },
+   "d": {
+    "collUsd": "181635183",
+    "debtUsd": "11618900",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "156327",
+    "threshold": "14000",
+    "h": 11.166214,
+    "hLow": 11.166214,
+    "hHigh": 11.166214,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP1Z84TMVM83HXE5VFHTXF27JPF73HPWT618RR26Y",
+   "collateral": {
+    "stSTX": "9949654"
+   },
+   "debt": {
+    "USDA": "198140"
+   },
+   "debtStored": {
+    "USDA": "198140"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "5021527202",
+    "listIndex": 29
+   },
+   "d": {
+    "collUsd": "357967656",
+    "debtUsd": "22822700",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "156847",
+    "threshold": "14000",
+    "h": 11.203357,
+    "hLow": 11.203357,
+    "hHigh": 11.203357,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP2KB34T2ZCX7F6TW3MTM5FZ2738WABWRVZFY7N1J",
+   "collateral": {
+    "stSTX": "306758686"
+   },
+   "debt": {
+    "USDA": "5728024"
+   },
+   "debtStored": {
+    "USDA": "5728024"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "5355401548",
+    "listIndex": 30
+   },
+   "d": {
+    "collUsd": "11036533329",
+    "debtUsd": "659785800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "167274",
+    "threshold": "14000",
+    "h": 11.948143,
+    "hLow": 11.948143,
+    "hHigh": 11.948143,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP1Z9QKX59DADP38X0PHRY9NQX0X29BPE0Q9136MS",
+   "collateral": {
+    "stSTX": "2249457081"
+   },
+   "debt": {
+    "USDA": "35892430"
+   },
+   "debtStored": {
+    "USDA": "35892430"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 848387,
+    "nicr": "6267218689",
+    "listIndex": 31
+   },
+   "d": {
+    "collUsd": "80930741914",
+    "debtUsd": "4080952700",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "198313",
+    "threshold": "14000",
+    "h": 14.165214,
+    "hLow": 14.165214,
+    "hHigh": 14.165214,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP28QESDAEJ94D43QVFEPS51J7YVB4YW4XH2N66V7",
+   "collateral": {
+    "stSTX": "8954689"
+   },
+   "debt": {
+    "USDA": "100000"
+   },
+   "debtStored": {
+    "USDA": "100000"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "8954689000",
+    "listIndex": 32
+   },
+   "d": {
+    "collUsd": "322170905",
+    "debtUsd": "11518500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "279698",
+    "threshold": "14000",
+    "h": 19.978429,
+    "hLow": 19.978429,
+    "hHigh": 19.978429,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP3DAT7GJ2CZW3V1DGC8PAKP3SW4KSFXTWM3FB1HC",
+   "collateral": {
+    "stSTX": "9949654"
+   },
+   "debt": {
+    "USDA": "101021"
+   },
+   "debtStored": {
+    "USDA": "101021"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "9849094742",
+    "listIndex": 33
+   },
+   "d": {
+    "collUsd": "357967656",
+    "debtUsd": "11636100",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "307635",
+    "threshold": "14000",
+    "h": 21.973929,
+    "hLow": 21.973929,
+    "hHigh": 21.973929,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP7RHAGSV5K6BQSNFZ79HVCAYVYP84DJHHVPXTQA",
+   "collateral": {
+    "stSTX": "2039285509"
+   },
+   "debt": {
+    "USDA": "20528625"
+   },
+   "debtStored": {
+    "USDA": "20528625"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 850497,
+    "nicr": "9933863125",
+    "listIndex": 34
+   },
+   "d": {
+    "collUsd": "73369210114",
+    "debtUsd": "2329150400",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "315004",
+    "threshold": "14000",
+    "h": 22.500286,
+    "hLow": 22.500286,
+    "hHigh": 22.500286,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP1A4R6JSS4Q384GNHVH1DWAMHAX6X11WEK1D6QEG",
+   "collateral": {
+    "stSTX": "9949654"
+   },
+   "debt": {
+    "USDA": "100000"
+   },
+   "debtStored": {
+    "USDA": "100000"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "9949654000",
+    "listIndex": 35
+   },
+   "d": {
+    "collUsd": "357967656",
+    "debtUsd": "11518500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "310776",
+    "threshold": "14000",
+    "h": 22.198286,
+    "hLow": 22.198286,
+    "hHigh": 22.198286,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP357REJB7P8K2N1Z3KAY5Z3APSXHHQCTHRPX1JT0",
+   "collateral": {
+    "stSTX": "12275067"
+   },
+   "debt": {
+    "USDA": "100000"
+   },
+   "debtStored": {
+    "USDA": "100000"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "12275067000",
+    "listIndex": 36
+   },
+   "d": {
+    "collUsd": "441631133",
+    "debtUsd": "11518500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "383410",
+    "threshold": "14000",
+    "h": 27.386429,
+    "hLow": 27.386429,
+    "hHigh": 27.386429,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP3TKT08Y3NA1R6MYR4YVCQ36Q0EV0KK3Z2VH38G0",
+   "collateral": {
+    "stSTX": "149244821"
+   },
+   "debt": {
+    "USDA": "1063673"
+   },
+   "debtStored": {
+    "USDA": "1063673"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "14031081074",
+    "listIndex": 37
+   },
+   "d": {
+    "collUsd": "5369515245",
+    "debtUsd": "122519700",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "438257",
+    "threshold": "14000",
+    "h": 31.304071,
+    "hLow": 31.304071,
+    "hHigh": 31.304071,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP2Z7BS65RDDHE17JSXVHCQDGNPJVW6672W0WZT00",
+   "collateral": {
+    "stSTX": "116410960"
+   },
+   "debt": {
+    "USDA": "786874"
+   },
+   "debtStored": {
+    "USDA": "786874"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "14794104265",
+    "listIndex": 38
+   },
+   "d": {
+    "collUsd": "4188221877",
+    "debtUsd": "90636400",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "462090",
+    "threshold": "14000",
+    "h": 33.006429,
+    "hLow": 33.006429,
+    "hHigh": 33.006429,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP2S6MCR2K3TYAC02RSYQ74RE9RJ3Q0EV3FYFGKGB",
+   "collateral": {
+    "stSTX": "596979284"
+   },
+   "debt": {
+    "USDA": "3707712"
+   },
+   "debtStored": {
+    "USDA": "3707712"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "16101015504",
+    "listIndex": 39
+   },
+   "d": {
+    "collUsd": "21478060981",
+    "debtUsd": "427074900",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "502910",
+    "threshold": "14000",
+    "h": 35.922143,
+    "hLow": 35.922143,
+    "hHigh": 35.922143,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SPHTME3Z11YK1AGKC0MBNNXKCPRC9WR52MDDV9GK",
+   "collateral": {
+    "stSTX": "20107671"
+   },
+   "debt": {
+    "USDA": "100000"
+   },
+   "debtStored": {
+    "USDA": "100000"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "20107671000",
+    "listIndex": 40
+   },
+   "d": {
+    "collUsd": "723431776",
+    "debtUsd": "11518500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "628060",
+    "threshold": "14000",
+    "h": 44.861429,
+    "hLow": 44.861429,
+    "hHigh": 44.861429,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP3KFNCCPKPCGMFKMVCCGK877M9VTD23Q9JNSR4TD",
+   "collateral": {
+    "stSTX": "24874136"
+   },
+   "debt": {
+    "USDA": "100000"
+   },
+   "debtStored": {
+    "USDA": "100000"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "24874136000",
+    "listIndex": 41
+   },
+   "d": {
+    "collUsd": "894919177",
+    "debtUsd": "11518500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "776940",
+    "threshold": "14000",
+    "h": 55.495714,
+    "hLow": 55.495714,
+    "hHigh": 55.495714,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SPN4Y5QPGQA8882ZXW90ADC2DHYXMSTN8VAR8C3X",
+   "collateral": {
+    "stSTX": "99496547"
+   },
+   "debt": {
+    "USDA": "371771"
+   },
+   "debtStored": {
+    "USDA": "371771"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "26762858587",
+    "listIndex": 42
+   },
+   "d": {
+    "collUsd": "3579676818",
+    "debtUsd": "42822600",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "835931",
+    "threshold": "14000",
+    "h": 59.709357,
+    "hLow": 59.709357,
+    "hHigh": 59.709357,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP1JVB9ZWKPGMYQ62YFWA8KBE66SDEFJHGJR9DVX1",
+   "collateral": {
+    "stSTX": "27859033"
+   },
+   "debt": {
+    "USDA": "100000"
+   },
+   "debtStored": {
+    "USDA": "100000"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "27859033000",
+    "listIndex": 43
+   },
+   "d": {
+    "collUsd": "1002309503",
+    "debtUsd": "11518500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "870173",
+    "threshold": "14000",
+    "h": 62.155214,
+    "hLow": 62.155214,
+    "hHigh": 62.155214,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP15W9F3KC39ZHXS6Q3HA4J3VMXSVDWF4DSND7GAK",
+   "collateral": {
+    "stSTX": "29944077"
+   },
+   "debt": {
+    "USDA": "100768"
+   },
+   "debtStored": {
+    "USDA": "100768"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "29715859201",
+    "listIndex": 44
+   },
+   "d": {
+    "collUsd": "1077325007",
+    "debtUsd": "11607000",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "928168",
+    "threshold": "14000",
+    "h": 66.297714,
+    "hLow": 66.297714,
+    "hHigh": 66.297714,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP2MN9BT5230AM8YPXK4JVYRMAXJ6G3VZ206ZS8X1",
+   "collateral": {
+    "stSTX": "994965474"
+   },
+   "debt": {
+    "USDA": "3067533"
+   },
+   "debtStored": {
+    "USDA": "3067533"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "32435363335",
+    "listIndex": 45
+   },
+   "d": {
+    "collUsd": "35796768327",
+    "debtUsd": "353335400",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "1013110",
+    "threshold": "14000",
+    "h": 72.365,
+    "hLow": 72.365,
+    "hHigh": 72.365,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP1SBR1Z6PZBJT17PHYBSPB6YP7TBGBRD85FJ31X5",
+   "collateral": {
+    "stSTX": "40793584"
+   },
+   "debt": {
+    "USDA": "104293"
+   },
+   "debtStored": {
+    "USDA": "104293"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "39114402692",
+    "listIndex": 46
+   },
+   "d": {
+    "collUsd": "1467667485",
+    "debtUsd": "12012900",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "1221742",
+    "threshold": "14000",
+    "h": 87.267286,
+    "hLow": 87.267286,
+    "hHigh": 87.267286,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP2EEJQ060B714W0DPXTZ9STWS9F1FXZ807ZYJPX5",
+   "collateral": {
+    "stSTX": "1020375001"
+   },
+   "debt": {
+    "USDA": "2551229"
+   },
+   "debtStored": {
+    "USDA": "2551229"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "39995429692",
+    "listIndex": 47
+   },
+   "d": {
+    "collUsd": "36710949748",
+    "debtUsd": "293864600",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "1249247",
+    "threshold": "14000",
+    "h": 89.231929,
+    "hLow": 89.231929,
+    "hHigh": 89.231929,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP2132VJK6NHGW73PQSDH0QKY4CMT5BQSZ75XADDF",
+   "collateral": {
+    "stSTX": "54723101"
+   },
+   "debt": {
+    "USDA": "100000"
+   },
+   "debtStored": {
+    "USDA": "100000"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "54723101000",
+    "listIndex": 48
+   },
+   "d": {
+    "collUsd": "1968822255",
+    "debtUsd": "11518500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "1709269",
+    "threshold": "14000",
+    "h": 122.090643,
+    "hLow": 122.090643,
+    "hHigh": 122.090643,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP15M3SRPBS8P9TQG9R095BARHA4S5A5QFMCY2TGM",
+   "collateral": {
+    "stSTX": "76612341"
+   },
+   "debt": {
+    "USDA": "100000"
+   },
+   "debtStored": {
+    "USDA": "100000"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "76612341000",
+    "listIndex": 49
+   },
+   "d": {
+    "collUsd": "2756351143",
+    "debtUsd": "11518500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "2392977",
+    "threshold": "14000",
+    "h": 170.926929,
+    "hLow": 170.926929,
+    "hHigh": 170.926929,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP1GCY8C8TAFTWK2CF1MFGN85W3FSJCN9N2VRFZF7",
+   "collateral": {
+    "stSTX": "99496547"
+   },
+   "debt": {
+    "USDA": "101543"
+   },
+   "debtStored": {
+    "USDA": "101543"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "97984643943",
+    "listIndex": 50
+   },
+   "d": {
+    "collUsd": "3579676818",
+    "debtUsd": "11696100",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "3060573",
+    "threshold": "14000",
+    "h": 218.612357,
+    "hLow": 218.612357,
+    "hHigh": 218.612357,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP1RJ9M7YTC2H8DAYGTAQGEYHNQ7SATF0SJMQJX59",
+   "collateral": {
+    "stSTX": "99496547"
+   },
+   "debt": {
+    "USDA": "100000"
+   },
+   "debtStored": {
+    "USDA": "100000"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "99496547000",
+    "listIndex": 51
+   },
+   "d": {
+    "collUsd": "3579676818",
+    "debtUsd": "11518500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "3107763",
+    "threshold": "14000",
+    "h": 221.983071,
+    "hLow": 221.983071,
+    "hHigh": 221.983071,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SPKPA06RC4DW68HGDS3CFEXT7ZH7QPMGM97B7K02",
+   "collateral": {
+    "stSTX": "198993094"
+   },
+   "debt": {
+    "USDA": "125948"
+   },
+   "debtStored": {
+    "USDA": "125948"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "157996231778",
+    "listIndex": 52
+   },
+   "d": {
+    "collUsd": "7159353636",
+    "debtUsd": "14507100",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "4935068",
+    "threshold": "14000",
+    "h": 352.504857,
+    "hLow": 352.504857,
+    "hHigh": 352.504857,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP3822PDE5AZSHDMF7W1F60QMFWVRRC641AGBKYYY",
+   "collateral": {
+    "stSTX": "174673790"
+   },
+   "debt": {
+    "USDA": "100000"
+   },
+   "debtStored": {
+    "USDA": "100000"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "174673790000",
+    "listIndex": 53
+   },
+   "d": {
+    "collUsd": "6284396149",
+    "debtUsd": "11518500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "5455915",
+    "threshold": "14000",
+    "h": 389.708214,
+    "hLow": 389.708214,
+    "hHigh": 389.708214,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP2BHZ4GDZBP12WGWH0GGVF3ZNVGYWTWN6B7P3QXY",
+   "collateral": {
+    "stSTX": "198993094"
+   },
+   "debt": {
+    "USDA": "100000"
+   },
+   "debtStored": {
+    "USDA": "100000"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "198993094000",
+    "listIndex": 54
+   },
+   "d": {
+    "collUsd": "7159353636",
+    "debtUsd": "11518500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "6215526",
+    "threshold": "14000",
+    "h": 443.966143,
+    "hLow": 443.966143,
+    "hHigh": 443.966143,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP2E85Y7SJAPEET3RG6X79AMCSSEMP28M09W0V026",
+   "collateral": {
+    "stSTX": "218892404"
+   },
+   "debt": {
+    "USDA": "100039"
+   },
+   "debtStored": {
+    "USDA": "100039"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "218807069242",
+    "listIndex": 55
+   },
+   "d": {
+    "collUsd": "7875289021",
+    "debtUsd": "11522900",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "6834467",
+    "threshold": "14000",
+    "h": 488.176214,
+    "hLow": 488.176214,
+    "hHigh": 488.176214,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP30NSFJ78W9Q1KREP8NJD7T3YAMY6HR8E4ACDQVE",
+   "collateral": {
+    "stSTX": "224862197"
+   },
+   "debt": {
+    "USDA": "100000"
+   },
+   "debtStored": {
+    "USDA": "100000"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "224862197000",
+    "listIndex": 56
+   },
+   "d": {
+    "collUsd": "8090069637",
+    "debtUsd": "11518500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "7023544",
+    "threshold": "14000",
+    "h": 501.681714,
+    "hLow": 501.681714,
+    "hHigh": 501.681714,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP2NR2625HB0YFFRFBD9VHVYESNY83VTMKZXMV6H0",
+   "collateral": {
+    "stSTX": "248741368"
+   },
+   "debt": {
+    "USDA": "100000"
+   },
+   "debtStored": {
+    "USDA": "100000"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "248741368000",
+    "listIndex": 57
+   },
+   "d": {
+    "collUsd": "8949192063",
+    "debtUsd": "11518500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "7769407",
+    "threshold": "14000",
+    "h": 554.957643,
+    "hLow": 554.957643,
+    "hHigh": 554.957643,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP1EMFNE8SYE60AAH6X2YW1RC2K2VE1744KT4G3YD",
+   "collateral": {
+    "stSTX": "293514815"
+   },
+   "debt": {
+    "USDA": "100000"
+   },
+   "debtStored": {
+    "USDA": "100000"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "293514815000",
+    "listIndex": 58
+   },
+   "d": {
+    "collUsd": "10560046662",
+    "debtUsd": "11518500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "9167900",
+    "threshold": "14000",
+    "h": 654.85,
+    "hLow": 654.85,
+    "hHigh": 654.85,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP168KQV2ME5PDA6P6KRQ49M7ZED1TYC0JMX2VNDK",
+   "collateral": {
+    "stSTX": "994965474"
+   },
+   "debt": {
+    "USDA": "100000"
+   },
+   "debtStored": {
+    "USDA": "100000"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "994965474000",
+    "listIndex": 59
+   },
+   "d": {
+    "collUsd": "35796768327",
+    "debtUsd": "11518500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "31077630",
+    "threshold": "14000",
+    "h": 2219.830714,
+    "hLow": 2219.830714,
+    "hHigh": 2219.830714,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP18ZWQMEX1K741ZXQ6FZ1J6RMZ4NWNR08YTH8HK4",
+   "collateral": {
+    "stSTX": "2543701024"
+   },
+   "debt": {
+    "USDA": "100000"
+   },
+   "debtStored": {
+    "USDA": "100000"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "2543701024000",
+    "listIndex": 60
+   },
+   "d": {
+    "collUsd": "91517021071",
+    "debtUsd": "11518500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "79452203",
+    "threshold": "14000",
+    "h": 5675.157357,
+    "hLow": 5675.157357,
+    "hHigh": 5675.157357,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP1DW2D361PXVM0VC3Z0MPTGAVC8RQYPAG19YSBVG",
+   "collateral": {
+    "stSTX": "3004057764"
+   },
+   "debt": {
+    "USDA": "100000"
+   },
+   "debtStored": {
+    "USDA": "100000"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "3004057764000",
+    "listIndex": 61
+   },
+   "d": {
+    "collUsd": "108079689827",
+    "debtUsd": "11518500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "93831392",
+    "threshold": "14000",
+    "h": 6702.242286,
+    "hLow": 6702.242286,
+    "hHigh": 6702.242286,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP2ZDK0KDW1CFRJ0Q6KCB77XA16BW5ZREA1QG92ST",
+   "collateral": {
+    "stSTX": "3702303780"
+   },
+   "debt": {
+    "USDA": "100132"
+   },
+   "debtStored": {
+    "USDA": "100132"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "3697423181400",
+    "listIndex": 62
+   },
+   "d": {
+    "collUsd": "133201115166",
+    "debtUsd": "11533500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "115490627",
+    "threshold": "14000",
+    "h": 8249.3305,
+    "hLow": 8249.3305,
+    "hHigh": 8249.3305,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP1E4RB2PRM9SNN8M4V6C6K7DG55DM722DJ0AQWS8",
+   "collateral": {
+    "stSTX": "5134977645"
+   },
+   "debt": {
+    "USDA": "100000"
+   },
+   "debtStored": {
+    "USDA": "100000"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "5134977645000",
+    "listIndex": 63
+   },
+   "d": {
+    "collUsd": "184745712214",
+    "debtUsd": "11518500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "160390426",
+    "threshold": "14000",
+    "h": 11456.459,
+    "hLow": 11456.459,
+    "hHigh": 11456.459,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP12C6V7SMTTM4DK87FX4FDAA9WPCV7P83EP4EMD1",
+   "collateral": {
+    "stSTX": "8093179401"
+   },
+   "debt": {
+    "USDA": "100000"
+   },
+   "debtStored": {
+    "USDA": "100000"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "8093179401000",
+    "listIndex": 64
+   },
+   "d": {
+    "collUsd": "291175599171",
+    "debtUsd": "11518500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "252789511",
+    "threshold": "14000",
+    "h": 18056.393643,
+    "hLow": 18056.393643,
+    "hHigh": 18056.393643,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP25GVRF24WD68CG4A6Q5PTN5CGC0SSPWZZW0V9XM",
+   "collateral": {
+    "stSTX": "26356956715"
+   },
+   "debt": {
+    "USDA": "100000"
+   },
+   "debtStored": {
+    "USDA": "100000"
+   },
+   "meta": {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "status": 101,
+    "lastBlock": 835369,
+    "nicr": "26356956715000",
+    "listIndex": 65
+   },
+   "d": {
+    "collUsd": "948267952996",
+    "debtUsd": "11518500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "823256459",
+    "threshold": "14000",
+    "h": 58804.032786,
+    "hLow": 58804.032786,
+    "hHigh": 58804.032786,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SPPMGZTRGMBVCFW3RMEVQJEF26MW9G6EKT51EMD8",
+   "collateral": {
+    "xBTC": "569272"
+   },
+   "debt": {
+    "USDA": "53153006"
+   },
+   "debtStored": {
+    "USDA": "53153006"
+   },
+   "meta": {
+    "token": "SP3DX3H4FEYZJZ586MFBS25ZW3HZDMEW92260R2PR.Wrapped-Bitcoin",
+    "status": 101,
+    "lastBlock": 835349,
+    "nicr": "1071006",
+    "listIndex": 0
+   },
+   "d": {
+    "collUsd": "47556829176",
+    "debtUsd": "6526224200",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "72870",
+    "threshold": "14000",
+    "h": 5.205,
+    "hLow": 5.205,
+    "hHigh": 5.205,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SPJXWDR6YPME7X4BZ8PK6WDG76B7DZVHKEPAACF3",
+   "collateral": {
+    "sBTC": "67336067"
+   },
+   "debt": {
+    "USDA": "37534334051"
+   },
+   "debtStored": {
+    "USDA": "37534334051"
+   },
+   "meta": {
+    "token": "SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token",
+    "status": 101,
+    "lastBlock": 968297,
+    "nicr": "179398",
+    "listIndex": 0
+   },
+   "d": {
+    "collUsd": "5625236856441",
+    "debtUsd": "3753713341500",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "14985",
+    "threshold": "14000",
+    "h": 1.070357,
+    "hLow": 1.070357,
+    "hHigh": 1.070357,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP2YADQRAJ4468KEX4CYD4MQPF0S6QYFT5BRA22J0",
+   "collateral": {
+    "sBTC": "70998968"
+   },
+   "debt": {
+    "USDA": "20000976184"
+   },
+   "debtStored": {
+    "USDA": "20000976184"
+   },
+   "meta": {
+    "token": "SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token",
+    "status": 101,
+    "lastBlock": 935570,
+    "nicr": "354977",
+    "listIndex": 1
+   },
+   "d": {
+    "collUsd": "5931234616998",
+    "debtUsd": "2050062005200",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "28931",
+    "threshold": "14000",
+    "h": 2.0665,
+    "hLow": 2.0665,
+    "hHigh": 2.0665,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR",
+   "collateral": {
+    "sBTC": "20886657"
+   },
+   "debt": {
+    "USDA": "2831769615"
+   },
+   "debtStored": {
+    "USDA": "2831769615"
+   },
+   "meta": {
+    "token": "SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token",
+    "status": 101,
+    "lastBlock": 959708,
+    "nicr": "737583",
+    "listIndex": 2
+   },
+   "d": {
+    "collUsd": "1744865686382",
+    "debtUsd": "285049075800",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "61212",
+    "threshold": "14000",
+    "h": 4.372286,
+    "hLow": 4.372286,
+    "hHigh": 4.372286,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP1HRWQ1NB3QP80AWCSNFP7HV7MC9T0D85MTFXJRW",
+   "collateral": {
+    "sBTC": "6000000"
+   },
+   "debt": {
+    "USDA": "500000000"
+   },
+   "debtStored": {
+    "USDA": "500000000"
+   },
+   "meta": {
+    "token": "SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token",
+    "status": 101,
+    "lastBlock": 881127,
+    "nicr": "1200000",
+    "listIndex": 3
+   },
+   "d": {
+    "collUsd": "501238380000",
+    "debtUsd": "53320700100",
+    "metric": "collateral-to-debt ratio (bps)",
+    "value": "94004",
+    "threshold": "14000",
+    "h": 6.714571,
+    "hLow": 6.714571,
+    "hHigh": 6.714571,
+    "liquidatable": "no",
+    "dust": false
+   }
+  }
+ ],
+ "state": {
+  "state": "VERIFIED",
+  "since": {
+   "height": 9049309,
+   "time": 1790182173
+  },
+  "reasons": [],
+  "pending": [],
+  "passesSinceUnverified": 0,
+  "lastVerified": {
+   "height": 9049309,
+   "indexBlockHash": "e09ec7824541c05da41d6b59e234860a4bab496331a9a51efc82798756821065",
+   "time": 1790182173,
+   "snapshot": "snapshots/9049309/arkadiko-v2.json"
+  }
+ },
+ "withheld": {
+  "positions": null,
+  "risk": null
+ },
+ "summary": {
+  "positions": 116,
+  "borrowers": 116,
+  "dustBorrowers": 92,
+  "risk": {
+   "debtUsd": "36324815014800",
+   "dustDebtUsd": "7684599800",
+   "collUsd": "91897464540824",
+   "liquidatable": {
+    "yes": 0,
+    "band": 0,
+    "no": 24
+   },
+   "badDebt": {
+    "count": 0,
+    "debtUsd": "0"
+   },
+   "excluded": [],
+   "within": {
+    "5%": 0,
+    "10%": 1,
+    "25%": 2
+   },
+   "nearest": [
+    {
+     "key": "SPJXWDR6YPME7X4BZ8PK6WDG76B7DZVHKEPAACF3|SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token",
+     "h": 1.070357,
+     "hLow": 1.070357,
+     "hHigh": 1.070357,
+     "debtUsd": "3753713341500",
+     "liquidatable": "no"
+    },
+    {
+     "key": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR|SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+     "h": 1.232357,
+     "hLow": 1.232357,
+     "hHigh": 1.232357,
+     "debtUsd": "1800515754500",
+     "liquidatable": "no"
+    },
+    {
+     "key": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR|SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+     "h": 1.774143,
+     "hLow": 1.774143,
+     "hHigh": 1.774143,
+     "debtUsd": "27371572652100",
+     "liquidatable": "no"
+    },
+    {
+     "key": "SP18ZQRE3N8RNMYGMASDZXV4XGYEZMA8JSHAK31Q8|SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+     "h": 2.000429,
+     "hLow": 2.000429,
+     "hHigh": 2.000429,
+     "debtUsd": "131973542000",
+     "liquidatable": "no"
+    },
+    {
+     "key": "SP2YADQRAJ4468KEX4CYD4MQPF0S6QYFT5BRA22J0|SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token",
+     "h": 2.0665,
+     "hLow": 2.0665,
+     "hHigh": 2.0665,
+     "debtUsd": "2050062005200",
+     "liquidatable": "no"
+    },
+    {
+     "key": "SP3JYTEYFKCY12WTY7TNRCQ392D1WF0YTPV71P0EM|SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+     "h": 2.104571,
+     "hLow": 2.104571,
+     "hHigh": 2.104571,
+     "debtUsd": "39071762000",
+     "liquidatable": "no"
+    },
+    {
+     "key": "SP3P9XNPA8GQ2GH2BJ0P3DK71HS34WSD6TK59G3HR|SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+     "h": 2.191571,
+     "hLow": 2.191571,
+     "hHigh": 2.191571,
+     "debtUsd": "387373930300",
+     "liquidatable": "no"
+    },
+    {
+     "key": "SP2QE3SKKZAY68Z3KN4TTJN41BVE3B5QVJMNKJAZB|SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+     "h": 2.482571,
+     "hLow": 2.482571,
+     "hHigh": 2.482571,
+     "debtUsd": "2600752900",
+     "liquidatable": "no"
+    },
+    {
+     "key": "SP2Y738VAEMGCMJ8BR4Q94A74EY7DHQEEG31KH078|SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+     "h": 2.589571,
+     "hLow": 2.589571,
+     "hHigh": 2.589571,
+     "debtUsd": "1843631100",
+     "liquidatable": "no"
+    },
+    {
+     "key": "SPKCN7FXPWGKN6NSBHYA2EJG8PHF451B5BMRXGP1|SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+     "h": 2.695071,
+     "hLow": 2.695071,
+     "hHigh": 2.695071,
+     "debtUsd": "1204963100",
+     "liquidatable": "no"
+    }
+   ]
+  }
+ },
+ "extras": {
+  "redemptionQueue": [
+   {
+    "token": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR.wstx-token",
+    "symbol": "STX",
+    "vaults": 45,
+    "owedTotalUsda": "18026153001",
+    "feeBps": "100",
+    "feeMinBps": "100",
+    "feeMaxBps": "300",
+    "liquidationRatioBps": "14000",
+    "head": {
+     "rank": 1,
+     "owner": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR",
+     "ownerIsDeployer": true,
+     "collateral": "102493000000",
+     "owedUsda": "18005157545",
+     "owedAheadUsda": "0",
+     "ratioBps": "17253",
+     "nicr": "569404255"
+    },
+    "deployerVaults": 1,
+    "deployerOwedUsda": "18005157545",
+    "entries": [
+     {
+      "rank": 1,
+      "owner": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR",
+      "ownerIsDeployer": true,
+      "collateral": "102493000000",
+      "owedUsda": "18005157545",
+      "owedAheadUsda": "0",
+      "ratioBps": "17253",
+      "nicr": "569404255"
+     },
+     {
+      "rank": 2,
+      "owner": "SP309MM3CDDHR37DCQ1R704JKR4CQYEQ1EATPH8T5",
+      "ownerIsDeployer": false,
+      "collateral": "13980000",
+      "owedUsda": "1245026",
+      "owedAheadUsda": "18005157545",
+      "ratioBps": "34034",
+      "nicr": "1293397750"
+     },
+     {
+      "rank": 3,
+      "owner": "SPKCN7FXPWGKN6NSBHYA2EJG8PHF451B5BMRXGP1",
+      "ownerIsDeployer": false,
+      "collateral": "150000000",
+      "owedUsda": "12049631",
+      "owedAheadUsda": "18006402571",
+      "ratioBps": "37731",
+      "nicr": "1433908024"
+     },
+     {
+      "rank": 4,
+      "owner": "SP8R8AT0HS12MRKHMZ22J05DMTBDHRW9XJBKE5DG",
+      "ownerIsDeployer": false,
+      "collateral": "13438425",
+      "owedUsda": "858281",
+      "owedAheadUsda": "18018452202",
+      "ratioBps": "47457",
+      "nicr": "1803524935"
+     },
+     {
+      "rank": 5,
+      "owner": "SP272HMYC5PG4R60NQKCX96Q682NDKF1VDZ7P5RSQ",
+      "ownerIsDeployer": false,
+      "collateral": "1000000",
+      "owedUsda": "55484",
+      "owedAheadUsda": "18019310483",
+      "ratioBps": "54628",
+      "nicr": "2076023998"
+     },
+     {
+      "rank": 6,
+      "owner": "SP248HH800501WYSG7Z2SS1ZWHQW1GGH85ME34NT2",
+      "ownerIsDeployer": false,
+      "collateral": "114760904",
+      "owedUsda": "4644348",
+      "owedAheadUsda": "18019365967",
+      "ratioBps": "74895",
+      "nicr": "2846249049"
+     },
+     {
+      "rank": 7,
+      "owner": "SP17Q8MQJNAZEQHNM00VFM3KGYBN9KPWZ7WDF0EFS",
+      "ownerIsDeployer": false,
+      "collateral": "3889688",
+      "owedUsda": "141676",
+      "owedAheadUsda": "18024010315",
+      "ratioBps": "83215",
+      "nicr": "3162373677"
+     },
+     {
+      "rank": 8,
+      "owner": "SP49DG6YSCMNFT6S0KCC0A3XWXZEZVS7GMZ6ABTG",
+      "ownerIsDeployer": false,
+      "collateral": "2000000",
+      "owedUsda": "51208",
+      "owedAheadUsda": "18024151991",
+      "ratioBps": "118379",
+      "nicr": "4498627918"
+     },
+     {
+      "rank": 9,
+      "owner": "SP19ZA9EWV3DF2202Y9ZHTVF94G7NFS6ZEJNN6T8X",
+      "ownerIsDeployer": false,
+      "collateral": "500000",
+      "owedUsda": "11841",
+      "owedAheadUsda": "18024203199",
+      "ratioBps": "127987",
+      "nicr": "4862867146"
+     },
+     {
+      "rank": 10,
+      "owner": "SP28PBTWEHR197J6BJHCDCKTVH6EFTRADJ5X7XFXF",
+      "ownerIsDeployer": false,
+      "collateral": "1030112",
+      "owedUsda": "23873",
+      "owedAheadUsda": "18024215040",
+      "ratioBps": "130786",
+      "nicr": "4969903989"
+     },
+     {
+      "rank": 11,
+      "owner": "SP2FSM29506QZYKJMFGNTAF2V6Q58K2Y61DDT7Y0F",
+      "ownerIsDeployer": false,
+      "collateral": "4283470",
+      "owedUsda": "68298",
+      "owedAheadUsda": "18024238913",
+      "ratioBps": "190096",
+      "nicr": "7223998650"
+     },
+     {
+      "rank": 12,
+      "owner": "SPYGMT67CFCEBJJ9CCG0K5WDEK45ED6R17PT8P16",
+      "ownerIsDeployer": false,
+      "collateral": "8990216",
+      "owedUsda": "133803",
+      "owedAheadUsda": "18024307211",
+      "ratioBps": "203652",
+      "nicr": "7739244516"
+     },
+     {
+      "rank": 13,
+      "owner": "SP1JPKH64TWH1EW9K88A16FJRRXRNMY2J9JSAF086",
+      "ownerIsDeployer": false,
+      "collateral": "1000000",
+      "owedUsda": "11518",
+      "owedAheadUsda": "18024441014",
+      "ratioBps": "263153",
+      "nicr": "10000000000"
+     },
+     {
+      "rank": 14,
+      "owner": "SPE39HZGRQ45ZSDJXY5JEG483VC8B8J0DEEDDTT5",
+      "ownerIsDeployer": false,
+      "collateral": "1000000",
+      "owedUsda": "11518",
+      "owedAheadUsda": "18024452532",
+      "ratioBps": "263153",
+      "nicr": "10000000000"
+     },
+     {
+      "rank": 15,
+      "owner": "SP13AC1JF3RVH4PMB3CDM8Y6AK9K24XRY20XYCRZT",
+      "ownerIsDeployer": false,
+      "collateral": "51300435",
+      "owedUsda": "585353",
+      "owedAheadUsda": "18024464050",
+      "ratioBps": "265637",
+      "nicr": "10094973611"
+     },
+     {
+      "rank": 16,
+      "owner": "SP3H6Z8KZ2EHTCNW5B43K3RSXCYWTPNKPTX4VJJZE",
+      "ownerIsDeployer": false,
+      "collateral": "1800779",
+      "owedUsda": "11682",
+      "owedAheadUsda": "18025049403",
+      "ratioBps": "467228",
+      "nicr": "17752158911"
+     },
+     {
+      "rank": 17,
+      "owner": "SP3MSQHD6CD47T80DQTHN964ZVMMBX12VM6SC8RDT",
+      "ownerIsDeployer": false,
+      "collateral": "100000000",
+      "owedUsda": "623321",
+      "owedAheadUsda": "18025061085",
+      "ratioBps": "486266",
+      "nicr": "18479540376"
+     },
+     {
+      "rank": 18,
+      "owner": "SP19R89P6EQ3XE8B2KC4K5M1FE909XWCZCYEN18P6",
+      "ownerIsDeployer": false,
+      "collateral": "5421814",
+      "owedUsda": "22800",
+      "owedAheadUsda": "18025684406",
+      "ratioBps": "720768",
+      "nicr": "27388432006"
+     },
+     {
+      "rank": 19,
+      "owner": "SPK2780EBGCJG5BQKS62JG0SBPNBYNMYYF5XYFPE",
+      "ownerIsDeployer": false,
+      "collateral": "2753277",
+      "owedUsda": "11522",
+      "owedAheadUsda": "18025707206",
+      "ratioBps": "724282",
+      "nicr": "27521761295"
+     },
+     {
+      "rank": 20,
+      "owner": "SP1JQ6KP52NFT2RAF0JN348G8XD142GZ0PN7Q9ETK",
+      "ownerIsDeployer": false,
+      "collateral": "4903578",
+      "owedUsda": "12330",
+      "owedAheadUsda": "18025718728",
+      "ratioBps": "1205413",
+      "nicr": "45806426903"
+     },
+     {
+      "rank": 21,
+      "owner": "SPF2VNHRHWJR3ABJRGKS21CH6KMR50NGADH29E5A",
+      "ownerIsDeployer": false,
+      "collateral": "33327404",
+      "owedUsda": "60539",
+      "owedAheadUsda": "18025731058",
+      "ratioBps": "1668599",
+      "nicr": "63409509313"
+     },
+     {
+      "rank": 22,
+      "owner": "SP2N6WDD2M9DNC6J5D566GPC2QD8MRQRDBG6NH6F",
+      "ownerIsDeployer": false,
+      "collateral": "10000000",
+      "owedUsda": "11518",
+      "owedAheadUsda": "18025791597",
+      "ratioBps": "2631533",
+      "nicr": "100000000000"
+     },
+     {
+      "rank": 23,
+      "owner": "SPDVAGX3EGETB7BJ6737FRS4DTNXC7CVSNFK7TSR",
+      "ownerIsDeployer": false,
+      "collateral": "10000000",
+      "owedUsda": "11518",
+      "owedAheadUsda": "18025803115",
+      "ratioBps": "2631533",
+      "nicr": "100000000000"
+     },
+     {
+      "rank": 24,
+      "owner": "SP3AWE771HSHKVAWXJKEFRFP79SB8FK3H8E6YMSRZ",
+      "ownerIsDeployer": false,
+      "collateral": "13000000",
+      "owedUsda": "11518",
+      "owedAheadUsda": "18025814633",
+      "ratioBps": "3420993",
+      "nicr": "130000000000"
+     },
+     {
+      "rank": 25,
+      "owner": "SP1YK1VXJXD2RWTZ6M8TNB99KQZX0EXJ9RJ591E15",
+      "ownerIsDeployer": false,
+      "collateral": "50000000",
+      "owedUsda": "41815",
+      "owedAheadUsda": "18025826151",
+      "ratioBps": "3624297",
+      "nicr": "137729664215"
+     },
+     {
+      "rank": 26,
+      "owner": "SP1JVB9ZWKPGMYQ62YFWA8KBE66SDEFJHGJR9DVX1",
+      "ownerIsDeployer": false,
+      "collateral": "15000000",
+      "owedUsda": "11518",
+      "owedAheadUsda": "18025867966",
+      "ratioBps": "3947299",
+      "nicr": "150000000000"
+     },
+     {
+      "rank": 27,
+      "owner": "SP1HBSPDYX7D8413DP2Q2GWQD2YFV061Q0VJ82ED4",
+      "ownerIsDeployer": false,
+      "collateral": "18060000",
+      "owedUsda": "11518",
+      "owedAheadUsda": "18025879484",
+      "ratioBps": "4752549",
+      "nicr": "180600000000"
+     },
+     {
+      "rank": 28,
+      "owner": "SP2FERZWHCY7B9CTFSJK8EW75W01MDGF3S8Z76TRN",
+      "ownerIsDeployer": false,
+      "collateral": "40356514",
+      "owedUsda": "19585",
+      "owedAheadUsda": "18025891002",
+      "ratioBps": "6245626",
+      "nicr": "237335415196"
+     },
+     {
+      "rank": 29,
+      "owner": "SP30MK30GF3YACJQ0ERHG89V1FCAWMQBKSPQG93MM",
+      "ownerIsDeployer": false,
+      "collateral": "36132760",
+      "owedUsda": "11518",
+      "owedAheadUsda": "18025910587",
+      "ratioBps": "9508455",
+      "nicr": "361327600000"
+     },
+     {
+      "rank": 30,
+      "owner": "SPMHBW0ME2NPEBGGQ3H56Q159FNFR79DD6WNVJMG",
+      "ownerIsDeployer": false,
+      "collateral": "155000000",
+      "owedUsda": "43200",
+      "owedAheadUsda": "18025922105",
+      "ratioBps": "10875115",
+      "nicr": "413278229569"
+     },
+     {
+      "rank": 31,
+      "owner": "SP2KP96PS0P584GVKA1HC5RP385DK53ZYC50B00K0",
+      "ownerIsDeployer": false,
+      "collateral": "50000000",
+      "owedUsda": "11559",
+      "owedAheadUsda": "18025965305",
+      "ratioBps": "13110995",
+      "nicr": "498206456755"
+     },
+     {
+      "rank": 32,
+      "owner": "SP3SKQXRJCZ1HPJV4JCH4EC78RRTQP3Y3M33TARHQ",
+      "ownerIsDeployer": false,
+      "collateral": "50000000",
+      "owedUsda": "11518",
+      "owedAheadUsda": "18025976864",
+      "ratioBps": "13157666",
+      "nicr": "500000000000"
+     },
+     {
+      "rank": 33,
+      "owner": "SP30HDQ1WGZRD1YTBRPPPYZHKQJ7E8CVYZCTHXKVX",
+      "ownerIsDeployer": false,
+      "collateral": "50000000",
+      "owedUsda": "11518",
+      "owedAheadUsda": "18025988382",
+      "ratioBps": "13157666",
+      "nicr": "500000000000"
+     },
+     {
+      "rank": 34,
+      "owner": "SP3P8X7VY45Y9T21FNAJAG95H8ADE2MB00TCKRAXB",
+      "ownerIsDeployer": false,
+      "collateral": "50000000",
+      "owedUsda": "11518",
+      "owedAheadUsda": "18025999900",
+      "ratioBps": "13157666",
+      "nicr": "500000000000"
+     },
+     {
+      "rank": 35,
+      "owner": "SP19JB746XZZW6PH8KRDA4P9NBY7285STF10039E0",
+      "ownerIsDeployer": false,
+      "collateral": "100000000",
+      "owedUsda": "22727",
+      "owedAheadUsda": "18026011418",
+      "ratioBps": "13336560",
+      "nicr": "506765316981"
+     },
+     {
+      "rank": 36,
+      "owner": "SPT7WQRTS0KTTGY7YZ1GF1K30J60C8Y32Q7DQVPK",
+      "ownerIsDeployer": false,
+      "collateral": "52000000",
+      "owedUsda": "11518",
+      "owedAheadUsda": "18026034145",
+      "ratioBps": "13683972",
+      "nicr": "520000000000"
+     },
+     {
+      "rank": 37,
+      "owner": "SP11ETHNJKZRF8N4VMMK62FM322HKVQPRAN8JM1R6",
+      "ownerIsDeployer": false,
+      "collateral": "100360669",
+      "owedUsda": "11518",
+      "owedAheadUsda": "18026045663",
+      "ratioBps": "26410243",
+      "nicr": "1003606690000"
+     },
+     {
+      "rank": 38,
+      "owner": "SP1D50E7VETCSWK00T9GJK1TD3PRM0JFPD84QQBWT",
+      "ownerIsDeployer": false,
+      "collateral": "104627434",
+      "owedUsda": "11518",
+      "owedAheadUsda": "18026057181",
+      "ratioBps": "27533057",
+      "nicr": "1046274340000"
+     },
+     {
+      "rank": 39,
+      "owner": "SP285GDW3F18MY7YHR2GN4X0C90F4SQT2D9GTBJX9",
+      "ownerIsDeployer": false,
+      "collateral": "230230069",
+      "owedUsda": "15194",
+      "owedAheadUsda": "18026068699",
+      "ratioBps": "45927822",
+      "nicr": "1745224901455"
+     },
+     {
+      "rank": 40,
+      "owner": "SP2E7W7F568R99DKATHCB5B5ZTG690RF0KAPR9BWX",
+      "ownerIsDeployer": false,
+      "collateral": "200000000",
+      "owedUsda": "11518",
+      "owedAheadUsda": "18026083893",
+      "ratioBps": "52630665",
+      "nicr": "2000000000000"
+     },
+     {
+      "rank": 41,
+      "owner": "SP2CNWQ85KJAP57RSDANZM3BK2YWQN1FAH21RZS2S",
+      "ownerIsDeployer": false,
+      "collateral": "308538684",
+      "owedUsda": "11518",
+      "owedAheadUsda": "18026095411",
+      "ratioBps": "81192980",
+      "nicr": "3085386840000"
+     },
+     {
+      "rank": 42,
+      "owner": "SPKPA06RC4DW68HGDS3CFEXT7ZH7QPMGM97B7K02",
+      "ownerIsDeployer": false,
+      "collateral": "422000000",
+      "owedUsda": "11518",
+      "owedAheadUsda": "18026106929",
+      "ratioBps": "111050703",
+      "nicr": "4220000000000"
+     },
+     {
+      "rank": 43,
+      "owner": "SP4HRBY7QMDRJWWTDWR23D5P24MGKB3ZWYNHG0VY",
+      "ownerIsDeployer": false,
+      "collateral": "800000000",
+      "owedUsda": "11518",
+      "owedAheadUsda": "18026118447",
+      "ratioBps": "210522660",
+      "nicr": "8000000000000"
+     },
+     {
+      "rank": 44,
+      "owner": "SP3RPJF4RXQP8V1A2786W4N9PH1DMK0N2WSSCPXNP",
+      "ownerIsDeployer": false,
+      "collateral": "802253633",
+      "owedUsda": "11518",
+      "owedAheadUsda": "18026129965",
+      "ratioBps": "211115711",
+      "nicr": "8022536330000"
+     },
+     {
+      "rank": 45,
+      "owner": "SP32HTXYCW8MMESEAT5V0J1MBJHBJK4MR95WDZ91Z",
+      "ownerIsDeployer": false,
+      "collateral": "10000000000",
+      "owedUsda": "11518",
+      "owedAheadUsda": "18026141483",
+      "ratioBps": "2631533252",
+      "nicr": "100000000000000"
+     }
+    ]
+   },
+   {
+    "token": "SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.ststx-token",
+    "symbol": "stSTX",
+    "vaults": 66,
+    "owedTotalUsda": "283735283679",
+    "feeBps": "100",
+    "feeMinBps": "100",
+    "feeMaxBps": "300",
+    "liquidationRatioBps": "14000",
+    "head": {
+     "rank": 1,
+     "owner": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR",
+     "ownerIsDeployer": true,
+     "collateral": "1889696391418",
+     "owedUsda": "273715726521",
+     "owedAheadUsda": "0",
+     "ratioBps": "24838",
+     "nicr": "693755668"
+    },
+    "deployerVaults": 1,
+    "deployerOwedUsda": "273715726521",
+    "entries": [
+     {
+      "rank": 1,
+      "owner": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR",
+      "ownerIsDeployer": true,
+      "collateral": "1889696391418",
+      "owedUsda": "273715726521",
+      "owedAheadUsda": "0",
+      "ratioBps": "24838",
+      "nicr": "693755668"
+     },
+     {
+      "rank": 2,
+      "owner": "SP2B1NXRQ6YQ0PH0046PQFKF99AZ8DRWGD8KC0040",
+      "ownerIsDeployer": false,
+      "collateral": "53362290",
+      "owedUsda": "7541151",
+      "owedAheadUsda": "273715726521",
+      "ratioBps": "25458",
+      "nicr": "806527788"
+     },
+     {
+      "rank": 3,
+      "owner": "SP3JYTEYFKCY12WTY7TNRCQ392D1WF0YTPV71P0EM",
+      "ownerIsDeployer": false,
+      "collateral": "3199790003",
+      "owedUsda": "390717620",
+      "owedAheadUsda": "273723267672",
+      "ratioBps": "29464",
+      "nicr": "825226952"
+     },
+     {
+      "rank": 4,
+      "owner": "SPJXTF0YCFHKMYGBH73M1Q7JK7A41SPB715478BZ",
+      "ownerIsDeployer": false,
+      "collateral": "34823791",
+      "owedUsda": "4631671",
+      "owedAheadUsda": "274113985292",
+      "ratioBps": "27050",
+      "nicr": "866037253"
+     },
+     {
+      "rank": 5,
+      "owner": "SP3P9XNPA8GQ2GH2BJ0P3DK71HS34WSD6TK59G3HR",
+      "ownerIsDeployer": false,
+      "collateral": "33035666087",
+      "owedUsda": "3873739303",
+      "owedAheadUsda": "274118616963",
+      "ratioBps": "30682",
+      "nicr": "866927906"
+     },
+     {
+      "rank": 6,
+      "owner": "SP18ZQRE3N8RNMYGMASDZXV4XGYEZMA8JSHAK31Q8",
+      "ownerIsDeployer": false,
+      "collateral": "10273448070",
+      "owedUsda": "1319735420",
+      "owedAheadUsda": "277992356266",
+      "ratioBps": "28006",
+      "nicr": "896659610"
+     },
+     {
+      "rank": 7,
+      "owner": "SP3GNH2HRF8M2RTMJPECHX3YMCBPMH02NCBK688EH",
+      "ownerIsDeployer": false,
+      "collateral": "9949654",
+      "owedUsda": "1195330",
+      "owedAheadUsda": "279312091686",
+      "ratioBps": "29947",
+      "nicr": "958777309"
+     },
+     {
+      "rank": 8,
+      "owner": "SP2QE3SKKZAY68Z3KN4TTJN41BVE3B5QVJMNKJAZB",
+      "ownerIsDeployer": false,
+      "collateral": "251242631",
+      "owedUsda": "26007529",
+      "owedAheadUsda": "279313287016",
+      "ratioBps": "34756",
+      "nicr": "1112736863"
+     },
+     {
+      "rank": 9,
+      "owner": "SP2Y738VAEMGCMJ8BR4Q94A74EY7DHQEEG31KH078",
+      "ownerIsDeployer": false,
+      "collateral": "185782886",
+      "owedUsda": "18436311",
+      "owedAheadUsda": "279339294545",
+      "ratioBps": "36254",
+      "nicr": "1148199314"
+     },
+     {
+      "rank": 10,
+      "owner": "SPCJ7D2GMHQ5N9ZYSBT35AAH3TTTTXEN2CEP1QCJ",
+      "ownerIsDeployer": false,
+      "collateral": "69647583",
+      "owedUsda": "6605832",
+      "owedAheadUsda": "279357730856",
+      "ratioBps": "37932",
+      "nicr": "1214441403"
+     },
+     {
+      "rank": 11,
+      "owner": "SP3WSZQSHV99NJ7GX1G908ZFME42V86J6FAY5WXVE",
+      "ownerIsDeployer": false,
+      "collateral": "286445719",
+      "owedUsda": "26481853",
+      "owedAheadUsda": "279364336688",
+      "ratioBps": "38916",
+      "nicr": "1228043781"
+     },
+     {
+      "rank": 12,
+      "owner": "SP7SPH7XXSS6HBFAFQ1W4HRHB70GD3XH8HM1FH0A",
+      "ownerIsDeployer": false,
+      "collateral": "5182338427",
+      "owedUsda": "478468638",
+      "owedAheadUsda": "279390818541",
+      "ratioBps": "38967",
+      "nicr": "1247586146"
+     },
+     {
+      "rank": 13,
+      "owner": "SP3V9TP8NJ704HQPE7M419B0G3ZMGBK53F77E1V27",
+      "ownerIsDeployer": false,
+      "collateral": "775273235",
+      "owedUsda": "69606280",
+      "owedAheadUsda": "279869287179",
+      "ratioBps": "40072",
+      "nicr": "1282934833"
+     },
+     {
+      "rank": 14,
+      "owner": "SP103BZSXCX2YF8HXMN8DDP5Z46DN4A0HPRDYJXDD",
+      "ownerIsDeployer": false,
+      "collateral": "9000000000",
+      "owedUsda": "625474348",
+      "owedAheadUsda": "279938893459",
+      "ratioBps": "51768",
+      "nicr": "1447582441"
+     },
+     {
+      "rank": 15,
+      "owner": "SP8R8AT0HS12MRKHMZ22J05DMTBDHRW9XJBKE5DG",
+      "ownerIsDeployer": false,
+      "collateral": "24007293",
+      "owedUsda": "1770576",
+      "owedAheadUsda": "280564367807",
+      "ratioBps": "48782",
+      "nicr": "1561804468"
+     },
+     {
+      "rank": 16,
+      "owner": "SP3MA7SZSW1T0CR9Y3WEX4BJZNESCXMA493RF4H0K",
+      "ownerIsDeployer": false,
+      "collateral": "14934982438",
+      "owedUsda": "953038032",
+      "owedAheadUsda": "280566138383",
+      "ratioBps": "56380",
+      "nicr": "1580383624"
+     },
+     {
+      "rank": 17,
+      "owner": "SP2387SVTEFW59A7BWJE84V9Y6M9SYEBDPFAQ1XN1",
+      "ownerIsDeployer": false,
+      "collateral": "179956326",
+      "owedUsda": "12893816",
+      "owedAheadUsda": "281519176415",
+      "ratioBps": "50213",
+      "nicr": "1586249782"
+     },
+     {
+      "rank": 18,
+      "owner": "SP229CVAF2X6SR5GYKEFYF0B84W66S9423AWABJFD",
+      "ownerIsDeployer": false,
+      "collateral": "21144306155",
+      "owedUsda": "1056319118",
+      "owedAheadUsda": "281532070231",
+      "ratioBps": "72016",
+      "nicr": "2077519078"
+     },
+     {
+      "rank": 19,
+      "owner": "SP1AX2ND6NE41YNN9C0SDJV2N11X7684RBKQWB9XD",
+      "ownerIsDeployer": false,
+      "collateral": "21951664028",
+      "owedUsda": "1005459555",
+      "owedAheadUsda": "282588389349",
+      "ratioBps": "78548",
+      "nicr": "2194898304"
+     },
+     {
+      "rank": 20,
+      "owner": "SP3EVQ0GWNJAYTXMNKMDX6EWP06TXTX3RSE0RTNS4",
+      "ownerIsDeployer": false,
+      "collateral": "179093785",
+      "owedUsda": "8947682",
+      "owedAheadUsda": "283593848904",
+      "ratioBps": "72012",
+      "nicr": "2305516142"
+     },
+     {
+      "rank": 21,
+      "owner": "SP1W5CWFJWXGHHM4ZEAJWFQ6D9V3N5GB9VQEDYSED",
+      "ownerIsDeployer": false,
+      "collateral": "696475832",
+      "owedUsda": "31178131",
+      "owedAheadUsda": "283602796586",
+      "ratioBps": "80369",
+      "nicr": "2573085295"
+     },
+     {
+      "rank": 22,
+      "owner": "SP2M51D1DTWR3ARWSD3TDKYN3W5T7FE1QN9YZV3G6",
+      "ownerIsDeployer": false,
+      "collateral": "29848964",
+      "owedUsda": "1246717",
+      "owedAheadUsda": "283633974717",
+      "ratioBps": "86138",
+      "nicr": "2757776923"
+     },
+     {
+      "rank": 23,
+      "owner": "SP39ZYHN0GRAA9FBE43QGQ2HFS3PRWZGE1JCQRWYH",
+      "ownerIsDeployer": false,
+      "collateral": "122981434",
+      "owedUsda": "5012631",
+      "owedAheadUsda": "283635221434",
+      "ratioBps": "88269",
+      "nicr": "2776221168"
+     },
+     {
+      "rank": 24,
+      "owner": "SP3CSPJCN6T4Z7BX1EWW1JGX90KXP7NF6MN9YZGJ3",
+      "ownerIsDeployer": false,
+      "collateral": "190865219",
+      "owedUsda": "7094177",
+      "owedAheadUsda": "283640234065",
+      "ratioBps": "96796",
+      "nicr": "3070762669"
+     },
+     {
+      "rank": 25,
+      "owner": "SPQH1F2WVJN92B0JK8Q036E9HV3NT30VX8S2EVQM",
+      "ownerIsDeployer": false,
+      "collateral": "3979861",
+      "owedUsda": "115185",
+      "owedAheadUsda": "283647328242",
+      "ratioBps": "124310",
+      "nicr": "3979861000"
+     },
+     {
+      "rank": 26,
+      "owner": "SP2KQN92ME0P6ZNMDZC8JGPTWD3V120TQYPKKV12H",
+      "ownerIsDeployer": false,
+      "collateral": "4071902",
+      "owedUsda": "115185",
+      "owedAheadUsda": "283647443427",
+      "ratioBps": "127185",
+      "nicr": "4071902000"
+     },
+     {
+      "rank": 27,
+      "owner": "SP3W83KG17KJZZXPDZQDTRQKQRGHNFZN410R9P02E",
+      "ownerIsDeployer": false,
+      "collateral": "4974827",
+      "owedUsda": "115185",
+      "owedAheadUsda": "283647558612",
+      "ratioBps": "155388",
+      "nicr": "4974827000"
+     },
+     {
+      "rank": 28,
+      "owner": "SP97DC4P1XFZMAG3B2EPVD8R1JPK9DES691JAM97",
+      "ownerIsDeployer": false,
+      "collateral": "4974827",
+      "owedUsda": "115185",
+      "owedAheadUsda": "283647673797",
+      "ratioBps": "155388",
+      "nicr": "4974827000"
+     },
+     {
+      "rank": 29,
+      "owner": "SP3WT85B2PJWBQG70B8NTCA9DNZ6TS07YP5497WWW",
+      "ownerIsDeployer": false,
+      "collateral": "5048521",
+      "owedUsda": "116189",
+      "owedAheadUsda": "283647788982",
+      "ratioBps": "156327",
+      "nicr": "5004878459"
+     },
+     {
+      "rank": 30,
+      "owner": "SP1Z84TMVM83HXE5VFHTXF27JPF73HPWT618RR26Y",
+      "ownerIsDeployer": false,
+      "collateral": "9949654",
+      "owedUsda": "228227",
+      "owedAheadUsda": "283647905171",
+      "ratioBps": "156847",
+      "nicr": "5021527202"
+     },
+     {
+      "rank": 31,
+      "owner": "SP2KB34T2ZCX7F6TW3MTM5FZ2738WABWRVZFY7N1J",
+      "ownerIsDeployer": false,
+      "collateral": "306758686",
+      "owedUsda": "6597858",
+      "owedAheadUsda": "283648133398",
+      "ratioBps": "167274",
+      "nicr": "5355401548"
+     },
+     {
+      "rank": 32,
+      "owner": "SP1Z9QKX59DADP38X0PHRY9NQX0X29BPE0Q9136MS",
+      "ownerIsDeployer": false,
+      "collateral": "2249457081",
+      "owedUsda": "40809527",
+      "owedAheadUsda": "283654731256",
+      "ratioBps": "198313",
+      "nicr": "6267218689"
+     },
+     {
+      "rank": 33,
+      "owner": "SP28QESDAEJ94D43QVFEPS51J7YVB4YW4XH2N66V7",
+      "ownerIsDeployer": false,
+      "collateral": "8954689",
+      "owedUsda": "115185",
+      "owedAheadUsda": "283695540783",
+      "ratioBps": "279698",
+      "nicr": "8954689000"
+     },
+     {
+      "rank": 34,
+      "owner": "SP3DAT7GJ2CZW3V1DGC8PAKP3SW4KSFXTWM3FB1HC",
+      "ownerIsDeployer": false,
+      "collateral": "9949654",
+      "owedUsda": "116361",
+      "owedAheadUsda": "283695655968",
+      "ratioBps": "307635",
+      "nicr": "9849094742"
+     },
+     {
+      "rank": 35,
+      "owner": "SP7RHAGSV5K6BQSNFZ79HVCAYVYP84DJHHVPXTQA",
+      "ownerIsDeployer": false,
+      "collateral": "2039285509",
+      "owedUsda": "23291504",
+      "owedAheadUsda": "283695772329",
+      "ratioBps": "315004",
+      "nicr": "9933863125"
+     },
+     {
+      "rank": 36,
+      "owner": "SP1A4R6JSS4Q384GNHVH1DWAMHAX6X11WEK1D6QEG",
+      "ownerIsDeployer": false,
+      "collateral": "9949654",
+      "owedUsda": "115185",
+      "owedAheadUsda": "283719063833",
+      "ratioBps": "310776",
+      "nicr": "9949654000"
+     },
+     {
+      "rank": 37,
+      "owner": "SP357REJB7P8K2N1Z3KAY5Z3APSXHHQCTHRPX1JT0",
+      "ownerIsDeployer": false,
+      "collateral": "12275067",
+      "owedUsda": "115185",
+      "owedAheadUsda": "283719179018",
+      "ratioBps": "383410",
+      "nicr": "12275067000"
+     },
+     {
+      "rank": 38,
+      "owner": "SP3TKT08Y3NA1R6MYR4YVCQ36Q0EV0KK3Z2VH38G0",
+      "ownerIsDeployer": false,
+      "collateral": "149244821",
+      "owedUsda": "1225197",
+      "owedAheadUsda": "283719294203",
+      "ratioBps": "438257",
+      "nicr": "14031081074"
+     },
+     {
+      "rank": 39,
+      "owner": "SP2Z7BS65RDDHE17JSXVHCQDGNPJVW6672W0WZT00",
+      "ownerIsDeployer": false,
+      "collateral": "116410960",
+      "owedUsda": "906364",
+      "owedAheadUsda": "283720519400",
+      "ratioBps": "462090",
+      "nicr": "14794104265"
+     },
+     {
+      "rank": 40,
+      "owner": "SP2S6MCR2K3TYAC02RSYQ74RE9RJ3Q0EV3FYFGKGB",
+      "ownerIsDeployer": false,
+      "collateral": "596979284",
+      "owedUsda": "4270749",
+      "owedAheadUsda": "283721425764",
+      "ratioBps": "502910",
+      "nicr": "16101015504"
+     },
+     {
+      "rank": 41,
+      "owner": "SPHTME3Z11YK1AGKC0MBNNXKCPRC9WR52MDDV9GK",
+      "ownerIsDeployer": false,
+      "collateral": "20107671",
+      "owedUsda": "115185",
+      "owedAheadUsda": "283725696513",
+      "ratioBps": "628060",
+      "nicr": "20107671000"
+     },
+     {
+      "rank": 42,
+      "owner": "SP3KFNCCPKPCGMFKMVCCGK877M9VTD23Q9JNSR4TD",
+      "ownerIsDeployer": false,
+      "collateral": "24874136",
+      "owedUsda": "115185",
+      "owedAheadUsda": "283725811698",
+      "ratioBps": "776940",
+      "nicr": "24874136000"
+     },
+     {
+      "rank": 43,
+      "owner": "SPN4Y5QPGQA8882ZXW90ADC2DHYXMSTN8VAR8C3X",
+      "ownerIsDeployer": false,
+      "collateral": "99496547",
+      "owedUsda": "428226",
+      "owedAheadUsda": "283725926883",
+      "ratioBps": "835931",
+      "nicr": "26762858587"
+     },
+     {
+      "rank": 44,
+      "owner": "SP1JVB9ZWKPGMYQ62YFWA8KBE66SDEFJHGJR9DVX1",
+      "ownerIsDeployer": false,
+      "collateral": "27859033",
+      "owedUsda": "115185",
+      "owedAheadUsda": "283726355109",
+      "ratioBps": "870173",
+      "nicr": "27859033000"
+     },
+     {
+      "rank": 45,
+      "owner": "SP15W9F3KC39ZHXS6Q3HA4J3VMXSVDWF4DSND7GAK",
+      "ownerIsDeployer": false,
+      "collateral": "29944077",
+      "owedUsda": "116070",
+      "owedAheadUsda": "283726470294",
+      "ratioBps": "928168",
+      "nicr": "29715859201"
+     },
+     {
+      "rank": 46,
+      "owner": "SP2MN9BT5230AM8YPXK4JVYRMAXJ6G3VZ206ZS8X1",
+      "ownerIsDeployer": false,
+      "collateral": "994965474",
+      "owedUsda": "3533354",
+      "owedAheadUsda": "283726586364",
+      "ratioBps": "1013110",
+      "nicr": "32435363335"
+     },
+     {
+      "rank": 47,
+      "owner": "SP1SBR1Z6PZBJT17PHYBSPB6YP7TBGBRD85FJ31X5",
+      "ownerIsDeployer": false,
+      "collateral": "40793584",
+      "owedUsda": "120129",
+      "owedAheadUsda": "283730119718",
+      "ratioBps": "1221742",
+      "nicr": "39114402692"
+     },
+     {
+      "rank": 48,
+      "owner": "SP2EEJQ060B714W0DPXTZ9STWS9F1FXZ807ZYJPX5",
+      "ownerIsDeployer": false,
+      "collateral": "1020375001",
+      "owedUsda": "2938646",
+      "owedAheadUsda": "283730239847",
+      "ratioBps": "1249247",
+      "nicr": "39995429692"
+     },
+     {
+      "rank": 49,
+      "owner": "SP2132VJK6NHGW73PQSDH0QKY4CMT5BQSZ75XADDF",
+      "ownerIsDeployer": false,
+      "collateral": "54723101",
+      "owedUsda": "115185",
+      "owedAheadUsda": "283733178493",
+      "ratioBps": "1709269",
+      "nicr": "54723101000"
+     },
+     {
+      "rank": 50,
+      "owner": "SP15M3SRPBS8P9TQG9R095BARHA4S5A5QFMCY2TGM",
+      "ownerIsDeployer": false,
+      "collateral": "76612341",
+      "owedUsda": "115185",
+      "owedAheadUsda": "283733293678",
+      "ratioBps": "2392977",
+      "nicr": "76612341000"
+     },
+     {
+      "rank": 51,
+      "owner": "SP1GCY8C8TAFTWK2CF1MFGN85W3FSJCN9N2VRFZF7",
+      "ownerIsDeployer": false,
+      "collateral": "99496547",
+      "owedUsda": "116961",
+      "owedAheadUsda": "283733408863",
+      "ratioBps": "3060573",
+      "nicr": "97984643943"
+     },
+     {
+      "rank": 52,
+      "owner": "SP1RJ9M7YTC2H8DAYGTAQGEYHNQ7SATF0SJMQJX59",
+      "ownerIsDeployer": false,
+      "collateral": "99496547",
+      "owedUsda": "115185",
+      "owedAheadUsda": "283733525824",
+      "ratioBps": "3107763",
+      "nicr": "99496547000"
+     },
+     {
+      "rank": 53,
+      "owner": "SPKPA06RC4DW68HGDS3CFEXT7ZH7QPMGM97B7K02",
+      "ownerIsDeployer": false,
+      "collateral": "198993094",
+      "owedUsda": "145071",
+      "owedAheadUsda": "283733641009",
+      "ratioBps": "4935068",
+      "nicr": "157996231778"
+     },
+     {
+      "rank": 54,
+      "owner": "SP3822PDE5AZSHDMF7W1F60QMFWVRRC641AGBKYYY",
+      "ownerIsDeployer": false,
+      "collateral": "174673790",
+      "owedUsda": "115185",
+      "owedAheadUsda": "283733786080",
+      "ratioBps": "5455915",
+      "nicr": "174673790000"
+     },
+     {
+      "rank": 55,
+      "owner": "SP2BHZ4GDZBP12WGWH0GGVF3ZNVGYWTWN6B7P3QXY",
+      "ownerIsDeployer": false,
+      "collateral": "198993094",
+      "owedUsda": "115185",
+      "owedAheadUsda": "283733901265",
+      "ratioBps": "6215526",
+      "nicr": "198993094000"
+     },
+     {
+      "rank": 56,
+      "owner": "SP2E85Y7SJAPEET3RG6X79AMCSSEMP28M09W0V026",
+      "ownerIsDeployer": false,
+      "collateral": "218892404",
+      "owedUsda": "115229",
+      "owedAheadUsda": "283734016450",
+      "ratioBps": "6834467",
+      "nicr": "218807069242"
+     },
+     {
+      "rank": 57,
+      "owner": "SP30NSFJ78W9Q1KREP8NJD7T3YAMY6HR8E4ACDQVE",
+      "ownerIsDeployer": false,
+      "collateral": "224862197",
+      "owedUsda": "115185",
+      "owedAheadUsda": "283734131679",
+      "ratioBps": "7023544",
+      "nicr": "224862197000"
+     },
+     {
+      "rank": 58,
+      "owner": "SP2NR2625HB0YFFRFBD9VHVYESNY83VTMKZXMV6H0",
+      "ownerIsDeployer": false,
+      "collateral": "248741368",
+      "owedUsda": "115185",
+      "owedAheadUsda": "283734246864",
+      "ratioBps": "7769407",
+      "nicr": "248741368000"
+     },
+     {
+      "rank": 59,
+      "owner": "SP1EMFNE8SYE60AAH6X2YW1RC2K2VE1744KT4G3YD",
+      "ownerIsDeployer": false,
+      "collateral": "293514815",
+      "owedUsda": "115185",
+      "owedAheadUsda": "283734362049",
+      "ratioBps": "9167900",
+      "nicr": "293514815000"
+     },
+     {
+      "rank": 60,
+      "owner": "SP168KQV2ME5PDA6P6KRQ49M7ZED1TYC0JMX2VNDK",
+      "ownerIsDeployer": false,
+      "collateral": "994965474",
+      "owedUsda": "115185",
+      "owedAheadUsda": "283734477234",
+      "ratioBps": "31077630",
+      "nicr": "994965474000"
+     },
+     {
+      "rank": 61,
+      "owner": "SP18ZWQMEX1K741ZXQ6FZ1J6RMZ4NWNR08YTH8HK4",
+      "ownerIsDeployer": false,
+      "collateral": "2543701024",
+      "owedUsda": "115185",
+      "owedAheadUsda": "283734592419",
+      "ratioBps": "79452203",
+      "nicr": "2543701024000"
+     },
+     {
+      "rank": 62,
+      "owner": "SP1DW2D361PXVM0VC3Z0MPTGAVC8RQYPAG19YSBVG",
+      "ownerIsDeployer": false,
+      "collateral": "3004057764",
+      "owedUsda": "115185",
+      "owedAheadUsda": "283734707604",
+      "ratioBps": "93831392",
+      "nicr": "3004057764000"
+     },
+     {
+      "rank": 63,
+      "owner": "SP2ZDK0KDW1CFRJ0Q6KCB77XA16BW5ZREA1QG92ST",
+      "ownerIsDeployer": false,
+      "collateral": "3702303780",
+      "owedUsda": "115335",
+      "owedAheadUsda": "283734822789",
+      "ratioBps": "115490627",
+      "nicr": "3697423181400"
+     },
+     {
+      "rank": 64,
+      "owner": "SP1E4RB2PRM9SNN8M4V6C6K7DG55DM722DJ0AQWS8",
+      "ownerIsDeployer": false,
+      "collateral": "5134977645",
+      "owedUsda": "115185",
+      "owedAheadUsda": "283734938124",
+      "ratioBps": "160390426",
+      "nicr": "5134977645000"
+     },
+     {
+      "rank": 65,
+      "owner": "SP12C6V7SMTTM4DK87FX4FDAA9WPCV7P83EP4EMD1",
+      "ownerIsDeployer": false,
+      "collateral": "8093179401",
+      "owedUsda": "115185",
+      "owedAheadUsda": "283735053309",
+      "ratioBps": "252789511",
+      "nicr": "8093179401000"
+     },
+     {
+      "rank": 66,
+      "owner": "SP25GVRF24WD68CG4A6Q5PTN5CGC0SSPWZZW0V9XM",
+      "ownerIsDeployer": false,
+      "collateral": "26356956715",
+      "owedUsda": "115185",
+      "owedAheadUsda": "283735168494",
+      "ratioBps": "823256459",
+      "nicr": "26356956715000"
+     }
+    ]
+   },
+   {
+    "token": "SP3DX3H4FEYZJZ586MFBS25ZW3HZDMEW92260R2PR.Wrapped-Bitcoin",
+    "symbol": "xBTC",
+    "vaults": 1,
+    "owedTotalUsda": "65262242",
+    "feeBps": "100",
+    "feeMinBps": "100",
+    "feeMaxBps": "300",
+    "liquidationRatioBps": "14000",
+    "head": {
+     "rank": 1,
+     "owner": "SPPMGZTRGMBVCFW3RMEVQJEF26MW9G6EKT51EMD8",
+     "ownerIsDeployer": false,
+     "collateral": "569272",
+     "owedUsda": "65262242",
+     "owedAheadUsda": "0",
+     "ratioBps": "72870",
+     "nicr": "1071006"
+    },
+    "deployerVaults": 0,
+    "deployerOwedUsda": "0",
+    "entries": [
+     {
+      "rank": 1,
+      "owner": "SPPMGZTRGMBVCFW3RMEVQJEF26MW9G6EKT51EMD8",
+      "ownerIsDeployer": false,
+      "collateral": "569272",
+      "owedUsda": "65262242",
+      "owedAheadUsda": "0",
+      "ratioBps": "72870",
+      "nicr": "1071006"
+     }
+    ]
+   },
+   {
+    "token": "SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token",
+    "symbol": "sBTC",
+    "vaults": 4,
+    "owedTotalUsda": "61421451226",
+    "feeBps": "3000",
+    "feeMinBps": "3000",
+    "feeMaxBps": "6000",
+    "liquidationRatioBps": "14000",
+    "head": {
+     "rank": 1,
+     "owner": "SPJXWDR6YPME7X4BZ8PK6WDG76B7DZVHKEPAACF3",
+     "ownerIsDeployer": false,
+     "collateral": "67336067",
+     "owedUsda": "37537133415",
+     "owedAheadUsda": "0",
+     "ratioBps": "14985",
+     "nicr": "179398"
+    },
+    "deployerVaults": 1,
+    "deployerOwedUsda": "2850490758",
+    "entries": [
+     {
+      "rank": 1,
+      "owner": "SPJXWDR6YPME7X4BZ8PK6WDG76B7DZVHKEPAACF3",
+      "ownerIsDeployer": false,
+      "collateral": "67336067",
+      "owedUsda": "37537133415",
+      "owedAheadUsda": "0",
+      "ratioBps": "14985",
+      "nicr": "179398"
+     },
+     {
+      "rank": 2,
+      "owner": "SP2YADQRAJ4468KEX4CYD4MQPF0S6QYFT5BRA22J0",
+      "ownerIsDeployer": false,
+      "collateral": "70998968",
+      "owedUsda": "20500620052",
+      "owedAheadUsda": "37537133415",
+      "ratioBps": "28931",
+      "nicr": "354977"
+     },
+     {
+      "rank": 3,
+      "owner": "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR",
+      "ownerIsDeployer": true,
+      "collateral": "20886657",
+      "owedUsda": "2850490758",
+      "owedAheadUsda": "58037753467",
+      "ratioBps": "61212",
+      "nicr": "737583"
+     },
+     {
+      "rank": 4,
+      "owner": "SP1HRWQ1NB3QP80AWCSNFP7HV7MC9T0D85MTFXJRW",
+      "ownerIsDeployer": false,
+      "collateral": "6000000",
+      "owedUsda": "533207001",
+      "owedAheadUsda": "60888244225",
+      "ratioBps": "94004",
+      "nicr": "1200000"
+     }
+    ]
+   }
+  ]
+ },
+ "liquidationSummary": {
+  "liquidatable": {
+   "n": 0,
+   "debtUsd": "0"
+  },
+  "band": {
+   "n": 0,
+   "debtUsd": "0"
+  },
+  "healthy": {
+   "n": 24,
+   "debtUsd": "36317130415000"
+  },
+  "noCollateral": {
+   "n": 0,
+   "debtUsd": "0"
+  },
+  "dust": {
+   "n": 92,
+   "debtUsd": "7684599800"
+  },
+  "liquidated": {
+   "days": 30,
+   "txs": 0,
+   "borrowers": 0,
+   "debtRepaidUsd": "0",
+   "collateralSeizedUsd": "0",
+   "unpricedAssets": [],
+   "stillLiquidatable": 0
+  }
+ },
+ "elapsedMs": 31449
+}

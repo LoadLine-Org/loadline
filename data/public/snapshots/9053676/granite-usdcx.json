@@ -1,0 +1,1752 @@
+{
+ "schema": 1,
+ "market": "granite-usdcx",
+ "name": "Granite USDCx",
+ "protocol": "Granite",
+ "block": {
+  "height": 9053676,
+  "indexBlockHash": "8054dd90f5ff1967841815fecda2951777bcff62c41e950ba83fd0e881cfc6b6",
+  "hash": "ca7d2454d8c9638bb39b0a3120a4a60c48d5d0066bce2af297e998db7231a92a",
+  "blockTime": 1790256347,
+  "burnHeight": 968395,
+  "burnTime": 1790254217,
+  "canonical": true
+ },
+ "generatedAt": "2026-09-24T13:32:46.588Z",
+ "code": {
+  "version": "0.1.0",
+  "fingerprint": "fb68cff128512c3b1cddd6026ea78d26ce28be6a6a9162e7af0612a10e3abe46"
+ },
+ "generation": {
+  "id": "SPSX722N clone set (Lazer adapter)",
+  "activationBlock": 8692946,
+  "evidence": [
+   "0xaa03b37c (set-allowed-contract borrower-v1, 2026-08-03 02:04:41Z)"
+  ],
+  "contracts": {
+   "state": "SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.state-v1",
+   "borrower": "SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.borrower-v1",
+   "liquidator": "SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.liquidator-v1",
+   "pythAdapter": "SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.pyth-adapter-v1",
+   "ir": "SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.linear-kinked-ir-v1",
+   "governance": "SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.governance-v1",
+   "constants": "SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.constants-v2",
+   "marketAsset": "SP120SBRBQJ00MCWS7TM5R8WJNTTKD5K0HFRC2CNE.usdcx"
+  }
+ },
+ "priceBasis": {
+  "protocol": "pyth-adapter-v1: Pyth Lazer feed 1 (BTC) for sBTC collateral and feed 7 (USDC/USD) for USDCx debt, verified in each tx, max age 300 s",
+  "monitor": "7-venue CEX median for BTC and USDC; interest accrued to the block with the protocol's own accrue-interest read-only",
+  "exact": false
+ },
+ "band": {
+  "BTC": 0.6,
+  "USDC": 0.25
+ },
+ "bandSource": "BTC 0.60%: max Lazer-vs-reference deviation at block time in successful priced txs (measured from 1,583 decoded Lazer-carrying txs, 2026-08-13..09-22). USDC 0.25%: estimate [E], not yet measured.",
+ "dustUsd": 10,
+ "tolerances": {
+  "debt": {
+   "okPct": 0.05,
+   "failPct": 0.5
+  },
+  "collateral": {
+   "okPct": 0.1,
+   "failPct": 1
+  }
+ },
+ "pointers": [
+  {
+   "label": "Borrower entry point allowed",
+   "read": "state-v1.is-allowed-contract(SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.borrower-v1)",
+   "expected": "true",
+   "actual": "true",
+   "match": true
+  },
+  {
+   "label": "Liquidator entry point allowed",
+   "read": "state-v1.is-allowed-contract(SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.liquidator-v1)",
+   "expected": "true",
+   "actual": "true",
+   "match": true
+  },
+  {
+   "label": "Governance contract",
+   "read": "state-v1::governance",
+   "expected": "SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.governance-v1",
+   "actual": "SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.governance-v1",
+   "match": true
+  },
+  {
+   "label": "Retired SP3M2BYF…borrower-v1 stays disallowed",
+   "read": "state-v1.is-allowed-contract(SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.borrower-v1)",
+   "expected": "(err u107)",
+   "actual": "(err u107)",
+   "match": true
+  },
+  {
+   "label": "Retired SP3M2BYF…liquidator-v1 stays disallowed",
+   "read": "state-v1.is-allowed-contract(SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.liquidator-v1)",
+   "expected": "(err u107)",
+   "actual": "(err u107)",
+   "match": true
+  }
+ ],
+ "candidates": [],
+ "governance": {
+  "contract": "SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.governance-v1",
+  "txsScanned": 6,
+  "relevantProposalsInWindow": 0,
+  "pending": []
+ },
+ "prices": {
+  "method": "median of last traded 1m candle close (<=300 s old) before block time; USDT quotes x median USDT/USD (kraken, coinbase)",
+  "targetMinute": 1790256240,
+  "usdtUsd": 0.999655,
+  "usdtVenues": [
+   {
+    "venue": "kraken",
+    "sym": "USDTUSD",
+    "candleTime": 1790256240,
+    "closeRaw": 0.99964,
+    "quote": "USD",
+    "usd": 0.99964
+   },
+   {
+    "venue": "coinbase",
+    "sym": "USDT-USD",
+    "candleTime": 1790256240,
+    "closeRaw": 0.99967,
+    "quote": "USD",
+    "usd": 0.99967
+   }
+  ],
+  "assets": {
+   "BTC": {
+    "asset": "BTC",
+    "usd1e8": "8377810344775",
+    "median": 83778.10344775,
+    "venues": [
+     {
+      "venue": "coinbase",
+      "sym": "BTC-USD",
+      "candleTime": 1790256240,
+      "closeRaw": 83779.02,
+      "quote": "USD",
+      "usd": 83779.02
+     },
+     {
+      "venue": "kraken",
+      "sym": "XBTUSD",
+      "candleTime": 1790256240,
+      "closeRaw": 83786.1,
+      "quote": "USD",
+      "usd": 83786.1
+     },
+     {
+      "venue": "binance",
+      "sym": "BTCUSDT",
+      "candleTime": 1790256240,
+      "closeRaw": 83804,
+      "quote": "USDT",
+      "usd": 83775.08761999999
+     },
+     {
+      "venue": "bybit",
+      "sym": "BTCUSDT",
+      "candleTime": 1790256240,
+      "closeRaw": 83802.7,
+      "quote": "USDT",
+      "usd": 83773.7880685
+     },
+     {
+      "venue": "kucoin",
+      "sym": "BTC-USDT",
+      "candleTime": 1790256240,
+      "closeRaw": 83808.2,
+      "quote": "USDT",
+      "usd": 83779.286171
+     },
+     {
+      "venue": "gate",
+      "sym": "BTC_USDT",
+      "candleTime": 1790256240,
+      "closeRaw": 83806.1,
+      "quote": "USDT",
+      "usd": 83777.1868955
+     }
+    ],
+    "missing": [
+     {
+      "venue": "okx",
+      "reason": "fetch failed"
+     }
+    ]
+   },
+   "STX": {
+    "asset": "STX",
+    "usd1e8": "30949319",
+    "median": 0.309493188,
+    "venues": [
+     {
+      "venue": "coinbase",
+      "sym": "STX-USD",
+      "candleTime": 1790256180,
+      "closeRaw": 0.3092,
+      "quote": "USD",
+      "usd": 0.3092
+     },
+     {
+      "venue": "binance",
+      "sym": "STXUSDT",
+      "candleTime": 1790256240,
+      "closeRaw": 0.3096,
+      "quote": "USDT",
+      "usd": 0.309493188
+     },
+     {
+      "venue": "bybit",
+      "sym": "STXUSDT",
+      "candleTime": 1790256240,
+      "closeRaw": 0.3096,
+      "quote": "USDT",
+      "usd": 0.309493188
+     },
+     {
+      "venue": "kucoin",
+      "sym": "STX-USDT",
+      "candleTime": 1790256060,
+      "closeRaw": 0.3097,
+      "quote": "USDT",
+      "usd": 0.30959315349999994
+     },
+     {
+      "venue": "gate",
+      "sym": "STX_USDT",
+      "candleTime": 1790256180,
+      "closeRaw": 0.3095,
+      "quote": "USDT",
+      "usd": 0.3093932225
+     }
+    ],
+    "missing": [
+     {
+      "venue": "kraken",
+      "reason": "fetch failed"
+     },
+     {
+      "venue": "okx",
+      "reason": "unreachable this run: fetch failed"
+     }
+    ]
+   },
+   "USDC": {
+    "asset": "USDC",
+    "usd1e8": "99985493",
+    "median": 0.9998549309999999,
+    "venues": [
+     {
+      "venue": "binance",
+      "sym": "USDCUSDT",
+      "candleTime": 1790256240,
+      "closeRaw": 1.00022,
+      "quote": "USDT",
+      "usd": 0.9998749241000001
+     },
+     {
+      "venue": "bybit",
+      "sym": "USDCUSDT",
+      "candleTime": 1790256240,
+      "closeRaw": 1.0002,
+      "quote": "USDT",
+      "usd": 0.9998549309999999
+     },
+     {
+      "venue": "kucoin",
+      "sym": "USDC-USDT",
+      "candleTime": 1790256240,
+      "closeRaw": 1.0002,
+      "quote": "USDT",
+      "usd": 0.9998549309999999
+     },
+     {
+      "venue": "gate",
+      "sym": "USDC_USDT",
+      "candleTime": 1790256240,
+      "closeRaw": 1.0002,
+      "quote": "USDT",
+      "usd": 0.9998549309999999
+     }
+    ],
+    "missing": [
+     {
+      "venue": "kraken",
+      "reason": "unreachable this run: fetch failed"
+     },
+     {
+      "venue": "okx",
+      "reason": "unreachable this run: fetch failed"
+     }
+    ]
+   }
+  }
+ },
+ "priceVector": {
+  "BTC": "8377810344775",
+  "STX": "30949319",
+  "USDC": "99985493"
+ },
+ "discovery": {
+  "method": "every principal in state-v1's transaction history (sender, top-level contract, call arguments); positions + user-collaterals map reads at the block",
+  "stateTxs": 1298,
+  "candidates": 121,
+  "positions": 38
+ },
+ "params": {
+  "marketAsset": "usdcx",
+  "openInterestStored": "1167466034483",
+  "openInterestAccrued": "1167513922777",
+  "lastAccruedBlockTime": "1790166061",
+  "totalDebtShares": "1155543538591",
+  "liquidationLtv": "65000000",
+  "maxLtv": "50000000",
+  "collateralDecimals": 8,
+  "marketTokenDecimals": 6,
+  "scalingFactor": "100000000",
+  "priceScalingFactor": "100000000",
+  "minimumHealth": "100000000",
+  "borrowEnabled": true,
+  "liquidationEnabled": true,
+  "candidates": [
+   "SM275N04VCDVG27KQSESEKD6X06PS3HH636Z2N1GW",
+   "SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token",
+   "SP0FXE34KAPN1NJ68TZP8HW2TT6CTBS2R6Y2N5T7",
+   "SP10GK6MG2GM7BCVYV7XBHK1JVJDHFDMNBENNBRC3",
+   "SP11F9RDXFPP8XCQ4V1QSE1E0CM3X2DQVEKB6WXT8",
+   "SP120SBRBQJ00MCWS7TM5R8WJNTTKD5K0HFRC2CNE.usdcx",
+   "SP14GRPF3JBKQS3ZD274B4FR431P6X0H0N86T7T39",
+   "SP14YFFWP15FJCYRFY6Z0JN71QMMXZYS4CY25HVR2",
+   "SP17MRV60MP61BRP9QJC92GHV1PQYDCE5KH99AEHQ",
+   "SP186AJ38C3F3W3MN2BH989GJGZ5MAVTC5MPSC86E",
+   "SP18QG8A8943KY9S15M08AMAWWF58W9X1M90BRCSJ",
+   "SP1BJGDG8MSM64DMH33A0F1NB0DT40YGBPSW00NES",
+   "SP1BJK54NVVEKTCTE1RDGGXKVZZ0XJK8EHCM15AT7",
+   "SP1CGXWEAMG6P6FT04W66NVGJ7PQWMDAC19R7PJ0Y.pyth-pnau-decoder-v3",
+   "SP1CGXWEAMG6P6FT04W66NVGJ7PQWMDAC19R7PJ0Y.pyth-storage-v4",
+   "SP1CGXWEAMG6P6FT04W66NVGJ7PQWMDAC19R7PJ0Y.wormhole-core-v4",
+   "SP1FFX5FWK8WPGJ3PH74S8947HVJJFWDJ582RG8JR",
+   "SP1FWW464A8YVYBHYSDQSR1QVXTM7PR361STNT68C",
+   "SP1H5KER1B71D5TQTJ67510F9564EZJH7WETP50TY",
+   "SP1H68DAV0HZZ2NJXD38DK12EXXSR7A39J5HT19N1",
+   "SP1HTBP5NGG1K6C8JEHEJBSZJMFSWRFD7WV5PAPJ0",
+   "SP1HZ88S59X3SJBTG14E9KYH8YVC885BXMP5VHYEZ",
+   "SP1JVF2VV3T30JQZ4D4FW9W4K819RSQMDYZDQRNS1",
+   "SP1R87EXE2QND23KZSCN6Z7BPPVHB5NM6Y0X2XM9P",
+   "SP1S23PXWKHEM3BD1XDBBXQSBC3RAZGKC1WE8N3A3",
+   "SP1S2ZTV7QVAYBRJVB85FHXE7P8PZZHXVCERMEHN9",
+   "SP1T07GK9H4M0WP4N1DSSA7NJ7GNTQZ0GBZM0GAR2",
+   "SP1VJY83YWDZE8G5RTVMTG85XZZKGFFS5JG46JM4V",
+   "SP1Y3FBARS8CVANS1GCYVN3B6NZFMA7H61Z6TP6RK",
+   "SP1Y6F2J8REJ3ST1ARGFYQGP9AAQ0WQ9XS652PG7A",
+   "SP1ZCA2YV8TGX1NCJ8K04P5WJSGJVM1XD44APZD9Q",
+   "SP1ZJHN74VH26SPHHJB4YP6NSEYVKFZD1W0ZK5K9H",
+   "SP203AZJZHBTCJ3D9HD1FH5G0PFDPWP1NJJSXS1T5",
+   "SP2154FKKKX40REDZQSEX9WMAPVZ4SYYJ193BSPR4",
+   "SP21E0Z40WM7WH92015RJ911222WGX3YWZ6F7042D",
+   "SP21GTVTEEDQBBQSK6FPEG4G4XGQRJGJDQV41CAD",
+   "SP21ST5MTGH478AFW1CC38QJB9BJKWCS9NGZK741F",
+   "SP22YFNH4BYXM6QK3XN55JTJSRBHE99K5VPH8S4BR",
+   "SP23ZSH34VFD9WC6FVWYNKJAVME1SN89ZWHHR5NCC",
+   "SP26E434SDGRSA9QF5D65A3WZ29Y0MXD9AMXFJYDC",
+   "SP2AFS93R0SNHCHHFCH9X9CJTPSHFD1PNM75F6AWD",
+   "SP2CMK69QNY60HBG8BJ4X5TD7XX2ZT4XB62V13SV",
+   "SP2DRPT3AA170EK5DC4T22CMSXZ6HACATPXHPAT7H",
+   "SP2DRPT3AA170EK5DC4T22CMSXZ6HACATPXHPAT7H.adapter-granite-usdcx",
+   "SP2DRPT3AA170EK5DC4T22CMSXZ6HACATPXHPAT7H.adapter-granite-usdcx-v3",
+   "SP2DRPT3AA170EK5DC4T22CMSXZ6HACATPXHPAT7H.adapter-zest-v2-usdc-v2",
+   "SP2DRPT3AA170EK5DC4T22CMSXZ6HACATPXHPAT7H.adapter-zest-v2-usdc-v3",
+   "SP2DRPT3AA170EK5DC4T22CMSXZ6HACATPXHPAT7H.vault-usdcx-v2-prod",
+   "SP2DRPT3AA170EK5DC4T22CMSXZ6HACATPXHPAT7H.vault-usdcx-v3",
+   "SP2DXHX9Q844EBT80DYJXFWXJKCJ5FFAX50CQQAWN",
+   "SP2DZKR60CN5QKJQT18T8ZMSERGA6R4QKHEM5QT1W",
+   "SP2F1JZEJ2R0Q1S5R23QQ2T8BARBQB1WCSYZT9A4M",
+   "SP2GMT23R9WWF12B9S1795RPV18PG50S1V66DNK22",
+   "SP2JFW1CBXJD3P0EJ0QNGBWY4W5NQBV066V8BCARC",
+   "SP2N7SK0W83NJSZHFH8HH31ZT3DXJG7NFE5VYT9SJ",
+   "SP2NT41F1FJJ3WJDGF9MF38QYH944QH2PYZ3E1D8Y",
+   "SP2QG1SX849NHFJ78P1CE02E8JCK47Z92G1KMRXJ9",
+   "SP2QMKJ1WP899FG20DP0A1ECA5C64EMNB0N33WB74",
+   "SP2QZ2S55DJD5CK92NFZMZK1X6B781ZQM0V2HJ9JM",
+   "SP2RHNHAHGPXVEQVQ88KYHHYNAXPA5YDNHC1RZGC5",
+   "SP2VG7S0R4Z8PYNYCAQ04HCBX1MH75VT11VXCWQ6G",
+   "SP2VWSP59FEVDXXYGGWYG90M3N67ZST2AGQK6Q5RY",
+   "SP2VY20D9G3P4VXEN06SYEHE4YQEH9W5NNPJDEJ6F",
+   "SP2WEPFRFH6KJWJK6JDZQH9B4J9JJRZ3CPQ3MDWVC",
+   "SP2XQFBGEG5MA7K0M5B5MQZZ5K4ZB8HJ94BS0ATK1",
+   "SP2YWSAM488HZ0BG7RV9KHHD9WSG3V7HXKX1ZD7S",
+   "SP2Z0HPNE0EN7BRSESTPEMRBB4EB6KTYFE9CC82CW",
+   "SP2ZQD9D4VGKJPCK2HD3YC78Q9J6PVK52HF1K1A9F",
+   "SP322MZH33TRF1KDD3746FMN29JVCEX4086RBSZQR",
+   "SP327KCNPVJZ8BKVJ4BRH65ERT1BGDRRPE539WFGT",
+   "SP32PE6T0XA6YCV0E506J3PZNY5V6Y87A2DKNA2K5",
+   "SP33HRNWBTQK9GEPQN7G4SD9D7RCNGAQZDM53EHX4",
+   "SP34M22KZDV4TYQZEAM10XC96TZR1G5W75FRHG3KA",
+   "SP37G0E1F51CPKJRBDBH0PEEQ8WJ6BMPQWMH16H21",
+   "SP388WPTVQMET2Z7M3ANQ6VRR8AATBF8VDPH0RRF9",
+   "SP3BEYCVV6C93XMCG05JKBB8YHCKCVJRQG0VY5TWC",
+   "SP3H8CQHXHY05EXPPR1AP5141A1QTVY2TSK5NCC2K",
+   "SP3K1T00MGGNNY1JW9K0Q6RV022B1FYK1WRKYP1R4",
+   "SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE",
+   "SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.borrower-v1",
+   "SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.flash-loan-v1",
+   "SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.governance-v1",
+   "SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.liquidator-v1",
+   "SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.liquidity-provider-v1",
+   "SP3M2BYF7RGF8WKW5FVDNJ6WR8D7AR9BHDXAKPXZE.staking-v1",
+   "SP3N0S0YMTV25T3CPTN8086GNVD3DD27WH1A9WE5S",
+   "SP3N0TGQW4GDYHCFZ6K7CS6W3JV0E5P7ZFJ99CRNV",
+   "SP3N7RQN2E224Z3NQ0GRE9DN3JXFSYWX9GSJN290S",
+   "SP3ND3H6QF7RW2H3TM4MA316Y1J158SFWS6YDD83Z",
+   "SP3QXCV3CDV124V6XXJN1HXY3KXCSG30P9XFT3ZSK",
+   "SP3TVE45JSYHE7V1R161CD2MJ73H0W6B2J3N26JH8",
+   "SP3XD84X3PE79SHJAZCDW1V5E9EA8JSKRBPEKAEK7",
+   "SP3YMY68XR3A84V4PXAXNSCEHRMQC4D23V6P92RXC",
+   "SP3YMY68XR3A84V4PXAXNSCEHRMQC4D23V6P92RXC.liquidator",
+   "SP3Z21D3SDJC51VT2KQR22KRXKD23G84SEHKH11AH.re-finance7",
+   "SP3Z7511VWR5WG9J3MAKER3NRZYKWT83K2XTP36EV",
+   "SP482K4RCT3VWREN3FCSW1AZSBVGAJNSHQ99ASCC",
+   "SP520XAE70F1E4QVBC82Q4WPJP7ZXGCQVSRATC92",
+   "SP5TTJZE1PS87F8XPDGAE1GF26X3PYBXCESAV92B",
+   "SP6KXYPBM5C62GHY2XAVPQXZ3C6PZ64XXWTRQ9JW",
+   "SP6XGBDAD800GGY6XF48AC27467W9PEHA6EPBGKJ",
+   "SP6XGBDAD800GGY6XF48AC27467W9PEHA6EPBGKJ.test-granite-interface-hbtc-v9",
+   "SP6XGBDAD800GGY6XF48AC27467W9PEHA6EPBGKJ.test-trading-hbtc-v9-1",
+   "SP6XGBDAD800GGY6XF48AC27467W9PEHA6EPBGKJ.test-vault-hbtc-v9",
+   "SPA2ZFXWKSH8VW0WW4W2G0ZA9EXSJ7CMH9HDEJB7",
+   "SPBKBJ2BTC3DMT08E98XPZ2F8QWXFG8M48BEYCRY",
+   "SPJXN1F2E5X33Y32XTKHQ3DTQSBM7A70766JDPY8",
+   "SPMM6TGD0J5QHBNCB3MJCVD5ZCPV1R0X1PXH70QR",
+   "SPMWCPXZJRDW3RP3NVQYAJHM71V2FMV9CMKR6GBR",
+   "SPN3AV2KQ8HYFHGKC34SGVSS9TNMJXG56GXRSR70",
+   "SPN5AKG35QZSK2M8GAMR4AFX45659RJHDW353HSG.minting-auto-v1-2",
+   "SPN5AKG35QZSK2M8GAMR4AFX45659RJHDW353HSG.staking-silo-v1-1",
+   "SPN5AKG35QZSK2M8GAMR4AFX45659RJHDW353HSG.staking-v1-1",
+   "SPN6PP6AWX1QXY86M6XT9PY6AF9SRM6RK9GXZ7F7",
+   "SPN7W8G8FCKDYRZ3HQWE0NWNSZ3KTF73ES10SN49",
+   "SPR123DQ16K8D58DWM7F6K3PFEDXN34X97QR436Q",
+   "SPSFDTQXTN62FM260RKA50PY4FKMHWBY7AGXAD86",
+   "SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.borrower-v1",
+   "SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.liquidity-provider-v1",
+   "SPT0VNCM718ZY6HD4GPX2GH800TWRZJ5AXVT3GRY",
+   "SPWEA3BQ1KRXGDGGTN5W8TDKHGZWGMAWTNN4QNWT"
+  ]
+ },
+ "onchain": {
+  "totalDebtShares": "1155543538591",
+  "sbtcHeldByState": "3617015489",
+  "openInterestStored": "1167466034483"
+ },
+ "checks": [
+  {
+   "id": "debt:shares",
+   "kind": "debt",
+   "asset": "debt-shares",
+   "label": "Debt shares: Σ positions vs state-v1 total-debt-shares",
+   "indexed": "1155543538591",
+   "onchain": "1155543538591",
+   "delta": "0",
+   "deltaPct": 0,
+   "rule": "tolerance",
+   "okPct": 0.05,
+   "failPct": 0.5,
+   "status": "OK"
+  },
+  {
+   "id": "collateral:sBTC",
+   "kind": "collateral",
+   "asset": "sBTC",
+   "decimals": 8,
+   "label": "sBTC collateral: Σ positions vs sBTC held by state-v1",
+   "indexed": "3617015489",
+   "onchain": "3617015489",
+   "delta": "0",
+   "deltaPct": 0,
+   "rule": "tolerance",
+   "okPct": 0.1,
+   "failPct": 1,
+   "status": "OK"
+  }
+ ],
+ "liquidationPath": {
+  "status": "UNPROVEN",
+  "summary": "No liquidation has executed through liquidator-v1 since this generation went live (0 attempts).",
+  "evidence": {
+   "contract": "SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.liquidator-v1",
+   "liquidationEnabled": true,
+   "attempts": 0,
+   "successfulTxs": 0,
+   "lastSuccess": null,
+   "scanComplete": true
+  }
+ },
+ "liquidations": {
+  "contract": "SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.liquidator-v1",
+  "fns": [
+   "liquidate-collateral",
+   "batch-liquidate"
+  ],
+  "window": {
+   "days": 30,
+   "fromTime": 1787664347,
+   "toHeight": 9053676
+  },
+  "events": [],
+  "sinceActivation": {
+   "fromHeight": 8692946,
+   "attempts": 0,
+   "successes": 0
+  },
+  "indirectSuccessful": 0,
+  "scanComplete": true
+ },
+ "positions": [
+  {
+   "account": "SM275N04VCDVG27KQSESEKD6X06PS3HH636Z2N1GW",
+   "collateral": {
+    "sBTC": "5391"
+   },
+   "debt": {},
+   "debtStored": {},
+   "meta": {
+    "borrowedBlock": 8564134,
+    "borrowedAmount": "0",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "451647700",
+    "debtUsd": "0",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": null,
+    "threshold": "100000000",
+    "h": null,
+    "hLow": null,
+    "hHigh": null,
+    "liquidatable": "n/a",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP10GK6MG2GM7BCVYV7XBHK1JVJDHFDMNBENNBRC3",
+   "collateral": {
+    "sBTC": "238145800"
+   },
+   "debt": {
+    "usdcx": "95560049857"
+   },
+   "debtStored": {
+    "shares": "94580283802"
+   },
+   "meta": {
+    "borrowedBlock": 9031691,
+    "borrowedAmount": "95061789012",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "19951403468000",
+    "debtUsd": "9554618696100",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "135729249",
+    "threshold": "100000000",
+    "h": 1.357292,
+    "hLow": 1.345784,
+    "hHigh": 1.368858,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP14YFFWP15FJCYRFY6Z0JN71QMMXZYS4CY25HVR2",
+   "collateral": {
+    "sBTC": "289000000"
+   },
+   "debt": {
+    "usdcx": "116785619654"
+   },
+   "debtStored": {
+    "shares": "115588230306"
+   },
+   "meta": {
+    "borrowedBlock": 9024334,
+    "borrowedAmount": "116550000000",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "24211871896300",
+    "debtUsd": "11676867756500",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "134776868",
+    "threshold": "100000000",
+    "h": 1.347769,
+    "hLow": 1.336341,
+    "hHigh": 1.359253,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP17MRV60MP61BRP9QJC92GHV1PQYDCE5KH99AEHQ",
+   "collateral": {
+    "sBTC": "187834849"
+   },
+   "debt": {
+    "usdcx": "81130421366"
+   },
+   "debtStored": {
+    "shares": "80298600610"
+   },
+   "meta": {
+    "borrowedBlock": 9046943,
+    "borrowedAmount": "80900000000",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "15736447410600",
+    "debtUsd": "8111865177600",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "126095424",
+    "threshold": "100000000",
+    "h": 1.260954,
+    "hLow": 1.250263,
+    "hHigh": 1.271699,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP18QG8A8943KY9S15M08AMAWWF58W9X1M90BRCSJ",
+   "collateral": {
+    "sBTC": "1"
+   },
+   "debt": {},
+   "debtStored": {},
+   "meta": {
+    "borrowedBlock": 6806811,
+    "borrowedAmount": "0",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "83700",
+    "debtUsd": "0",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": null,
+    "threshold": "100000000",
+    "h": null,
+    "hLow": null,
+    "hHigh": null,
+    "liquidatable": "n/a",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP1BJGDG8MSM64DMH33A0F1NB0DT40YGBPSW00NES",
+   "collateral": {
+    "sBTC": "100000"
+   },
+   "debt": {
+    "usdcx": "4041823"
+   },
+   "debtStored": {
+    "shares": "4000382"
+   },
+   "meta": {
+    "borrowedBlock": 5695305,
+    "borrowedAmount": "4001999",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "8377810300",
+    "debtUsd": "404123700",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "1347502410",
+    "threshold": "100000000",
+    "h": 13.475024,
+    "hLow": 13.360772,
+    "hHigh": 13.589849,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP1BJK54NVVEKTCTE1RDGGXKVZZ0XJK8EHCM15AT7",
+   "collateral": {
+    "sBTC": "1990"
+   },
+   "debt": {
+    "usdcx": "597036"
+   },
+   "debtStored": {
+    "shares": "590914"
+   },
+   "meta": {
+    "borrowedBlock": 8116283,
+    "borrowedAmount": "594007",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "166718400",
+    "debtUsd": "59695000",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "181534299",
+    "threshold": "100000000",
+    "h": 1.815343,
+    "hLow": 1.799952,
+    "hHigh": 1.830811,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP1FWW464A8YVYBHYSDQSR1QVXTM7PR361STNT68C",
+   "collateral": {
+    "sBTC": "100"
+   },
+   "debt": {
+    "usdcx": "510"
+   },
+   "debtStored": {
+    "shares": "504"
+   },
+   "meta": {
+    "borrowedBlock": 6797849,
+    "borrowedAmount": "505",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "8377800",
+    "debtUsd": "51000",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "10677450980",
+    "threshold": "100000000",
+    "h": 106.77451,
+    "hLow": 105.71875,
+    "hHigh": 107.626719,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP1H68DAV0HZZ2NJXD38DK12EXXSR7A39J5HT19N1",
+   "collateral": {
+    "sBTC": "15000000"
+   },
+   "debt": {
+    "usdcx": "2590415977"
+   },
+   "debtStored": {
+    "shares": "2563856743"
+   },
+   "meta": {
+    "borrowedBlock": 8718921,
+    "borrowedAmount": "2577717605",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "1256671551700",
+    "debtUsd": "259004018600",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "315375998",
+    "threshold": "100000000",
+    "h": 3.15376,
+    "hLow": 3.12702,
+    "hHigh": 3.180634,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP1HZ88S59X3SJBTG14E9KYH8YVC885BXMP5VHYEZ",
+   "collateral": {
+    "sBTC": "488118000"
+   },
+   "debt": {
+    "usdcx": "170015588248"
+   },
+   "debtStored": {
+    "shares": "168272438235"
+   },
+   "meta": {
+    "borrowedBlock": 8847280,
+    "borrowedAmount": "168738104219",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "40893600298700",
+    "debtUsd": "16999092408700",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "156366231",
+    "threshold": "100000000",
+    "h": 1.563662,
+    "hLow": 1.550404,
+    "hHigh": 1.576987,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP1JVF2VV3T30JQZ4D4FW9W4K819RSQMDYZDQRNS1",
+   "collateral": {
+    "sBTC": "4"
+   },
+   "debt": {
+    "usdcx": "2"
+   },
+   "debtStored": {
+    "shares": "1"
+   },
+   "meta": {
+    "borrowedBlock": 6909266,
+    "borrowedAmount": "1",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "335100",
+    "debtUsd": "200",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "108900000000",
+    "threshold": "100000000",
+    "h": 1089,
+    "hLow": 721.666667,
+    "hHigh": 1095.5,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP1S2ZTV7QVAYBRJVB85FHXE7P8PZZHXVCERMEHN9",
+   "collateral": {
+    "sBTC": "100000"
+   },
+   "debt": {},
+   "debtStored": {},
+   "meta": {
+    "borrowedBlock": 8695797,
+    "borrowedAmount": "0",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "8377810300",
+    "debtUsd": "0",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": null,
+    "threshold": "100000000",
+    "h": null,
+    "hLow": null,
+    "hHigh": null,
+    "liquidatable": "n/a",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP1T07GK9H4M0WP4N1DSSA7NJ7GNTQZ0GBZM0GAR2",
+   "collateral": {
+    "sBTC": "4874"
+   },
+   "debt": {
+    "usdcx": "1003"
+   },
+   "debtStored": {
+    "shares": "992"
+   },
+   "meta": {
+    "borrowedBlock": 8707687,
+    "borrowedAmount": "1000",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "408334400",
+    "debtUsd": "100300",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "264623429710",
+    "threshold": "100000000",
+    "h": 2646.234297,
+    "hLow": 2622.512922,
+    "hHigh": 2667.430569,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP1ZJHN74VH26SPHHJB4YP6NSEYVKFZD1W0ZK5K9H",
+   "collateral": {
+    "sBTC": "405827"
+   },
+   "debt": {
+    "usdcx": "40003967"
+   },
+   "debtStored": {
+    "shares": "39593810"
+   },
+   "meta": {
+    "borrowedBlock": 9041022,
+    "borrowedAmount": "40000000",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "33999416300",
+    "debtUsd": "3999816400",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "552515872",
+    "threshold": "100000000",
+    "h": 5.525159,
+    "hLow": 5.478312,
+    "hHigh": 5.57224,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP2154FKKKX40REDZQSEX9WMAPVZ4SYYJ193BSPR4",
+   "collateral": {
+    "sBTC": "5759537"
+   },
+   "debt": {
+    "usdcx": "2115454953"
+   },
+   "debtStored": {
+    "shares": "2093765439"
+   },
+   "meta": {
+    "borrowedBlock": 7738068,
+    "borrowedAmount": "2100000000",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "482523086500",
+    "debtUsd": "211514806400",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "148282766",
+    "threshold": "100000000",
+    "h": 1.482828,
+    "hLow": 1.470255,
+    "hHigh": 1.495463,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP21GTVTEEDQBBQSK6FPEG4G4XGQRJGJDQV41CAD",
+   "collateral": {
+    "sBTC": "43291443"
+   },
+   "debt": {
+    "usdcx": "10003200118"
+   },
+   "debtStored": {
+    "shares": "9900638472"
+   },
+   "meta": {
+    "borrowedBlock": 8960654,
+    "borrowedAmount": "9970000000",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "3626874990000",
+    "debtUsd": "1000174895400",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "235705650",
+    "threshold": "100000000",
+    "h": 2.357057,
+    "hLow": 2.337072,
+    "hHigh": 2.377142,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP22YFNH4BYXM6QK3XN55JTJSRBHE99K5VPH8S4BR",
+   "collateral": {
+    "sBTC": "71301900"
+   },
+   "debt": {
+    "usdcx": "26836690455"
+   },
+   "debtStored": {
+    "shares": "26561536995"
+   },
+   "meta": {
+    "borrowedBlock": 8838146,
+    "borrowedAmount": "26639995539",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "5973537954200",
+    "debtUsd": "2683279725700",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "144703499",
+    "threshold": "100000000",
+    "h": 1.447035,
+    "hLow": 1.434766,
+    "hHigh": 1.459366,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP23ZSH34VFD9WC6FVWYNKJAVME1SN89ZWHHR5NCC",
+   "collateral": {
+    "sBTC": "3087865"
+   },
+   "debt": {
+    "usdcx": "601463926"
+   },
+   "debtStored": {
+    "shares": "595297186"
+   },
+   "meta": {
+    "borrowedBlock": 8961480,
+    "borrowedAmount": "600000000",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "258695473400",
+    "debtUsd": "60137667200",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "279611873",
+    "threshold": "100000000",
+    "h": 2.796119,
+    "hLow": 2.772411,
+    "hHigh": 2.819945,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP2GMT23R9WWF12B9S1795RPV18PG50S1V66DNK22",
+   "collateral": {
+    "sBTC": "459623001"
+   },
+   "debt": {
+    "usdcx": "167936649518"
+   },
+   "debtStored": {
+    "shares": "166214814622"
+   },
+   "meta": {
+    "borrowedBlock": 8847259,
+    "borrowedAmount": "166715425638",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "38506343324700",
+    "debtUsd": "16791228694900",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "149060700",
+    "threshold": "100000000",
+    "h": 1.490607,
+    "hLow": 1.477968,
+    "hHigh": 1.503309,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP2QMKJ1WP899FG20DP0A1ECA5C64EMNB0N33WB74",
+   "collateral": {
+    "sBTC": "44085"
+   },
+   "debt": {
+    "usdcx": "14121150"
+   },
+   "debtStored": {
+    "shares": "13976367"
+   },
+   "meta": {
+    "borrowedBlock": 6222559,
+    "borrowedAmount": "14000004",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "3693357600",
+    "debtUsd": "1411910200",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "170030813",
+    "threshold": "100000000",
+    "h": 1.700308,
+    "hLow": 1.685892,
+    "hHigh": 1.714797,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP2VWSP59FEVDXXYGGWYG90M3N67ZST2AGQK6Q5RY",
+   "collateral": {
+    "sBTC": "35"
+   },
+   "debt": {
+    "usdcx": "5"
+   },
+   "debtStored": {
+    "shares": "4"
+   },
+   "meta": {
+    "borrowedBlock": 8659075,
+    "borrowedAmount": "4",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "2932200",
+    "debtUsd": "500",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "381180000000",
+    "threshold": "100000000",
+    "h": 3811.8,
+    "hLow": 3157.333333,
+    "hHigh": 3834.6,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP2YWSAM488HZ0BG7RV9KHHD9WSG3V7HXKX1ZD7S",
+   "collateral": {
+    "sBTC": "110827000"
+   },
+   "debt": {
+    "usdcx": "38740256587"
+   },
+   "debtStored": {
+    "shares": "38343057251"
+   },
+   "meta": {
+    "borrowedBlock": 8847302,
+    "borrowedAmount": "38452804706",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "9284875870800",
+    "debtUsd": "3873463653800",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "155808079",
+    "threshold": "100000000",
+    "h": 1.558081,
+    "hLow": 1.54487,
+    "hHigh": 1.571358,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP2Z0HPNE0EN7BRSESTPEMRBB4EB6KTYFE9CC82CW",
+   "collateral": {
+    "sBTC": "100085"
+   },
+   "debt": {
+    "usdcx": "39078870"
+   },
+   "debtStored": {
+    "shares": "38678198"
+   },
+   "meta": {
+    "borrowedBlock": 8955650,
+    "borrowedAmount": "39056945",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "8384931400",
+    "debtUsd": "3907320100",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "139487046",
+    "threshold": "100000000",
+    "h": 1.39487,
+    "hLow": 1.383044,
+    "hHigh": 1.406757,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP322MZH33TRF1KDD3746FMN29JVCEX4086RBSZQR",
+   "collateral": {
+    "sBTC": "870"
+   },
+   "debt": {
+    "usdcx": "257976"
+   },
+   "debtStored": {
+    "shares": "255331"
+   },
+   "meta": {
+    "borrowedBlock": 6818039,
+    "borrowedAmount": "255961",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "72886900",
+    "debtUsd": "25793900",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "183672883",
+    "threshold": "100000000",
+    "h": 1.836729,
+    "hLow": 1.821157,
+    "hHigh": 1.852383,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP327KCNPVJZ8BKVJ4BRH65ERT1BGDRRPE539WFGT",
+   "collateral": {
+    "sBTC": "76964083"
+   },
+   "debt": {
+    "usdcx": "27740650993"
+   },
+   "debtStored": {
+    "shares": "27456229331"
+   },
+   "meta": {
+    "borrowedBlock": 6180716,
+    "borrowedAmount": "27500876834",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "6447904907300",
+    "debtUsd": "2773662665700",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "151104827",
+    "threshold": "100000000",
+    "h": 1.511048,
+    "hLow": 1.498236,
+    "hHigh": 1.523924,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP34M22KZDV4TYQZEAM10XC96TZR1G5W75FRHG3KA",
+   "collateral": {
+    "sBTC": "35"
+   },
+   "debt": {
+    "usdcx": "10647"
+   },
+   "debtStored": {
+    "shares": "10537"
+   },
+   "meta": {
+    "borrowedBlock": 6785824,
+    "borrowedAmount": "10562",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "2932200",
+    "debtUsd": "1064600",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "179024985",
+    "threshold": "100000000",
+    "h": 1.79025,
+    "hLow": 1.774946,
+    "hHigh": 1.805537,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SP3BEYCVV6C93XMCG05JKBB8YHCKCVJRQG0VY5TWC",
+   "collateral": {
+    "sBTC": "364995051"
+   },
+   "debt": {
+    "usdcx": "83855644843"
+   },
+   "debtStored": {
+    "shares": "82995882689"
+   },
+   "meta": {
+    "borrowedBlock": 8320128,
+    "borrowedAmount": "83227000001",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "30578593140500",
+    "debtUsd": "8384347990500",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "237061791",
+    "threshold": "100000000",
+    "h": 2.370618,
+    "hLow": 2.350518,
+    "hHigh": 2.390819,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP3H8CQHXHY05EXPPR1AP5141A1QTVY2TSK5NCC2K",
+   "collateral": {
+    "sBTC": "127646733"
+   },
+   "debt": {
+    "usdcx": "38999975576"
+   },
+   "debtStored": {
+    "shares": "38600113371"
+   },
+   "meta": {
+    "borrowedBlock": 8762168,
+    "borrowedAmount": "38930950000",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "10694001202000",
+    "debtUsd": "3899431785000",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "178259325",
+    "threshold": "100000000",
+    "h": 1.782593,
+    "hLow": 1.767479,
+    "hHigh": 1.797783,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP3N0S0YMTV25T3CPTN8086GNVD3DD27WH1A9WE5S",
+   "collateral": {
+    "sBTC": "2000"
+   },
+   "debt": {},
+   "debtStored": {},
+   "meta": {
+    "borrowedBlock": 8245441,
+    "borrowedAmount": "0",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "167556200",
+    "debtUsd": "0",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": null,
+    "threshold": "100000000",
+    "h": null,
+    "hLow": null,
+    "hHigh": null,
+    "liquidatable": "n/a",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP3N0TGQW4GDYHCFZ6K7CS6W3JV0E5P7ZFJ99CRNV",
+   "collateral": {
+    "sBTC": "869999"
+   },
+   "debt": {},
+   "debtStored": {},
+   "meta": {
+    "borrowedBlock": 6785633,
+    "borrowedAmount": "0",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "72886866200",
+    "debtUsd": "0",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": null,
+    "threshold": "100000000",
+    "h": null,
+    "hLow": null,
+    "hHigh": null,
+    "liquidatable": "n/a",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP3N7RQN2E224Z3NQ0GRE9DN3JXFSYWX9GSJN290S",
+   "collateral": {
+    "sBTC": "5471408"
+   },
+   "debt": {
+    "usdcx": "1001591284"
+   },
+   "debtStored": {
+    "shares": "991322085"
+   },
+   "meta": {
+    "borrowedBlock": 8792949,
+    "borrowedAmount": "1000000000",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "458384185400",
+    "debtUsd": "100144598400",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "297519512",
+    "threshold": "100000000",
+    "h": 2.975195,
+    "hLow": 2.949969,
+    "hHigh": 3.000548,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP3ND3H6QF7RW2H3TM4MA316Y1J158SFWS6YDD83Z",
+   "collateral": {
+    "sBTC": "626064922"
+   },
+   "debt": {
+    "usdcx": "86646422828"
+   },
+   "debtStored": {
+    "shares": "85758047152"
+   },
+   "meta": {
+    "borrowedBlock": 8677409,
+    "borrowedAmount": "86100000000",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "52450531800300",
+    "debtUsd": "8663385303200",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "393527985",
+    "threshold": "100000000",
+    "h": 3.93528,
+    "hLow": 3.901913,
+    "hHigh": 3.968814,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP3QXCV3CDV124V6XXJN1HXY3KXCSG30P9XFT3ZSK",
+   "collateral": {
+    "sBTC": "233342851"
+   },
+   "debt": {
+    "usdcx": "100728922213"
+   },
+   "debtStored": {
+    "shares": "99696160312"
+   },
+   "meta": {
+    "borrowedBlock": 9046959,
+    "borrowedAmount": "100480000000",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "19549021509800",
+    "debtUsd": "10071430946900",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "126167414",
+    "threshold": "100000000",
+    "h": 1.261674,
+    "hLow": 1.250977,
+    "hHigh": 1.272425,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SP3Z7511VWR5WG9J3MAKER3NRZYKWT83K2XTP36EV",
+   "collateral": {
+    "sBTC": "1000000"
+   },
+   "debt": {
+    "usdcx": "399230166"
+   },
+   "debtStored": {
+    "shares": "395136905"
+   },
+   "meta": {
+    "borrowedBlock": 8926622,
+    "borrowedAmount": "398936950",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "83778103400",
+    "debtUsd": "39917225000",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "136421725",
+    "threshold": "100000000",
+    "h": 1.364217,
+    "hLow": 1.35265,
+    "hHigh": 1.375842,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SPJXN1F2E5X33Y32XTKHQ3DTQSBM7A70766JDPY8",
+   "collateral": {
+    "sBTC": "2896"
+   },
+   "debt": {},
+   "debtStored": {},
+   "meta": {
+    "borrowedBlock": 0,
+    "borrowedAmount": "0",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "242621300",
+    "debtUsd": "0",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": null,
+    "threshold": "100000000",
+    "h": null,
+    "hLow": null,
+    "hHigh": null,
+    "liquidatable": "n/a",
+    "dust": false
+   }
+  },
+  {
+   "account": "SPMM6TGD0J5QHBNCB3MJCVD5ZCPV1R0X1PXH70QR",
+   "collateral": {
+    "sBTC": "67"
+   },
+   "debt": {
+    "usdcx": "23"
+   },
+   "debtStored": {
+    "shares": "22"
+   },
+   "meta": {
+    "borrowedBlock": 7060061,
+    "borrowedAmount": "22",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "5613100",
+    "debtUsd": "2300",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "158630434782",
+    "threshold": "100000000",
+    "h": 1586.304348,
+    "hLow": 1511.083333,
+    "hHigh": 1595.826087,
+    "liquidatable": "no",
+    "dust": true
+   }
+  },
+  {
+   "account": "SPT0VNCM718ZY6HD4GPX2GH800TWRZJ5AXVT3GRY",
+   "collateral": {
+    "sBTC": "533783"
+   },
+   "debt": {
+    "usdcx": "151210197"
+   },
+   "debtStored": {
+    "shares": "149659856"
+   },
+   "meta": {
+    "borrowedBlock": 6663341,
+    "borrowedAmount": "150000000",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "44719327300",
+    "debtUsd": "15118826100",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "192260711",
+    "threshold": "100000000",
+    "h": 1.922607,
+    "hLow": 1.906306,
+    "hHigh": 1.93899,
+    "liquidatable": "no",
+    "dust": false
+   }
+  },
+  {
+   "account": "SPWEA3BQ1KRXGDGGTN5W8TDKHGZWGMAWTNN4QNWT",
+   "collateral": {
+    "sBTC": "267369004"
+   },
+   "debt": {
+    "usdcx": "115576351025"
+   },
+   "debtStored": {
+    "shares": "114391360167"
+   },
+   "meta": {
+    "borrowedBlock": 9046921,
+    "borrowedAmount": "115270000000",
+    "collaterals": "sbtc-token"
+   },
+   "d": {
+    "collUsd": "22399668075800",
+    "debtUsd": "11555958436400",
+    "metric": "position-health (1e8 = 1.0)",
+    "value": "125993740",
+    "threshold": "100000000",
+    "h": 1.259937,
+    "hLow": 1.249255,
+    "hHigh": 1.270674,
+    "liquidatable": "no",
+    "dust": false
+   }
+  }
+ ],
+ "state": {
+  "state": "VERIFIED",
+  "since": {
+   "height": 9049309,
+   "time": 1790182173
+  },
+  "reasons": [],
+  "pending": [],
+  "passesSinceUnverified": 0,
+  "lastVerified": {
+   "height": 9049309,
+   "indexBlockHash": "e09ec7824541c05da41d6b59e234860a4bab496331a9a51efc82798756821065",
+   "time": 1790182173,
+   "snapshot": "snapshots/9049309/granite-usdcx.json"
+  }
+ },
+ "withheld": {
+  "positions": null,
+  "risk": null
+ },
+ "summary": {
+  "positions": 38,
+  "borrowers": 32,
+  "dustBorrowers": 9,
+  "risk": {
+   "debtUsd": "116734455156300",
+   "dustDebtUsd": "490831500",
+   "collUsd": "303026697807800",
+   "liquidatable": {
+    "yes": 0,
+    "band": 0,
+    "no": 23
+   },
+   "badDebt": {
+    "count": 0,
+    "debtUsd": "0"
+   },
+   "excluded": [],
+   "within": {
+    "5%": 0,
+    "10%": 0,
+    "25%": 1
+   },
+   "nearest": [
+    {
+     "key": "SPWEA3BQ1KRXGDGGTN5W8TDKHGZWGMAWTNN4QNWT",
+     "h": 1.259937,
+     "hLow": 1.249255,
+     "hHigh": 1.270674,
+     "debtUsd": "11555958436400",
+     "liquidatable": "no"
+    },
+    {
+     "key": "SP17MRV60MP61BRP9QJC92GHV1PQYDCE5KH99AEHQ",
+     "h": 1.260954,
+     "hLow": 1.250263,
+     "hHigh": 1.271699,
+     "debtUsd": "8111865177600",
+     "liquidatable": "no"
+    },
+    {
+     "key": "SP3QXCV3CDV124V6XXJN1HXY3KXCSG30P9XFT3ZSK",
+     "h": 1.261674,
+     "hLow": 1.250977,
+     "hHigh": 1.272425,
+     "debtUsd": "10071430946900",
+     "liquidatable": "no"
+    },
+    {
+     "key": "SP14YFFWP15FJCYRFY6Z0JN71QMMXZYS4CY25HVR2",
+     "h": 1.347769,
+     "hLow": 1.336341,
+     "hHigh": 1.359253,
+     "debtUsd": "11676867756500",
+     "liquidatable": "no"
+    },
+    {
+     "key": "SP10GK6MG2GM7BCVYV7XBHK1JVJDHFDMNBENNBRC3",
+     "h": 1.357292,
+     "hLow": 1.345784,
+     "hHigh": 1.368858,
+     "debtUsd": "9554618696100",
+     "liquidatable": "no"
+    },
+    {
+     "key": "SP3Z7511VWR5WG9J3MAKER3NRZYKWT83K2XTP36EV",
+     "h": 1.364217,
+     "hLow": 1.35265,
+     "hHigh": 1.375842,
+     "debtUsd": "39917225000",
+     "liquidatable": "no"
+    },
+    {
+     "key": "SP2Z0HPNE0EN7BRSESTPEMRBB4EB6KTYFE9CC82CW",
+     "h": 1.39487,
+     "hLow": 1.383044,
+     "hHigh": 1.406757,
+     "debtUsd": "3907320100",
+     "liquidatable": "no"
+    },
+    {
+     "key": "SP22YFNH4BYXM6QK3XN55JTJSRBHE99K5VPH8S4BR",
+     "h": 1.447035,
+     "hLow": 1.434766,
+     "hHigh": 1.459366,
+     "debtUsd": "2683279725700",
+     "liquidatable": "no"
+    },
+    {
+     "key": "SP2154FKKKX40REDZQSEX9WMAPVZ4SYYJ193BSPR4",
+     "h": 1.482828,
+     "hLow": 1.470255,
+     "hHigh": 1.495463,
+     "debtUsd": "211514806400",
+     "liquidatable": "no"
+    },
+    {
+     "key": "SP2GMT23R9WWF12B9S1795RPV18PG50S1V66DNK22",
+     "h": 1.490607,
+     "hLow": 1.477968,
+     "hHigh": 1.503309,
+     "debtUsd": "16791228694900",
+     "liquidatable": "no"
+    }
+   ]
+  }
+ },
+ "extras": null,
+ "liquidationSummary": {
+  "liquidatable": {
+   "n": 0,
+   "debtUsd": "0"
+  },
+  "band": {
+   "n": 0,
+   "debtUsd": "0"
+  },
+  "healthy": {
+   "n": 23,
+   "debtUsd": "116733964324800"
+  },
+  "noCollateral": {
+   "n": 0,
+   "debtUsd": "0"
+  },
+  "dust": {
+   "n": 9,
+   "debtUsd": "490831500"
+  },
+  "liquidated": {
+   "days": 30,
+   "txs": 0,
+   "borrowers": 0,
+   "debtRepaidUsd": "0",
+   "collateralSeizedUsd": "0",
+   "unpricedAssets": [],
+   "stillLiquidatable": 0
+  }
+ },
+ "elapsedMs": 11799
+}

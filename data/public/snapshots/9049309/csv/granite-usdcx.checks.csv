@@ -1,0 +1,3 @@
+block_height,market,check,kind,asset,decimals,indexed,onchain,delta,delta_pct,rule,status
+9049309,granite-usdcx,debt:shares,debt,debt-shares,,1155543538591,1155543538591,0,0,tolerance,OK
+9049309,granite-usdcx,collateral:sBTC,collateral,sBTC,8,3616973823,3616973823,0,0,tolerance,OK

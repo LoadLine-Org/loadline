@@ -9,10 +9,10 @@
   "pending": [],
   "passesSinceUnverified": 0,
   "lastVerified": {
-   "height": 9049309,
-   "indexBlockHash": "e09ec7824541c05da41d6b59e234860a4bab496331a9a51efc82798756821065",
-   "time": 1790182173,
-   "snapshot": "snapshots/9049309/zest-v2.json"
+   "height": 9053676,
+   "indexBlockHash": "8054dd90f5ff1967841815fecda2951777bcff62c41e950ba83fd0e881cfc6b6",
+   "time": 1790256347,
+   "snapshot": "snapshots/9053676/zest-v2.json"
   }
  },
  "zest-v1": {
@@ -25,10 +25,10 @@
   "pending": [],
   "passesSinceUnverified": 0,
   "lastVerified": {
-   "height": 9049309,
-   "indexBlockHash": "e09ec7824541c05da41d6b59e234860a4bab496331a9a51efc82798756821065",
-   "time": 1790182173,
-   "snapshot": "snapshots/9049309/zest-v1.json"
+   "height": 9053676,
+   "indexBlockHash": "8054dd90f5ff1967841815fecda2951777bcff62c41e950ba83fd0e881cfc6b6",
+   "time": 1790256347,
+   "snapshot": "snapshots/9053676/zest-v1.json"
   }
  },
  "granite-usdcx": {
@@ -41,10 +41,10 @@
   "pending": [],
   "passesSinceUnverified": 0,
   "lastVerified": {
-   "height": 9049309,
-   "indexBlockHash": "e09ec7824541c05da41d6b59e234860a4bab496331a9a51efc82798756821065",
-   "time": 1790182173,
-   "snapshot": "snapshots/9049309/granite-usdcx.json"
+   "height": 9053676,
+   "indexBlockHash": "8054dd90f5ff1967841815fecda2951777bcff62c41e950ba83fd0e881cfc6b6",
+   "time": 1790256347,
+   "snapshot": "snapshots/9053676/granite-usdcx.json"
   }
  },
  "granite-aeusdc": {
@@ -57,10 +57,10 @@
   "pending": [],
   "passesSinceUnverified": 0,
   "lastVerified": {
-   "height": 9049309,
-   "indexBlockHash": "e09ec7824541c05da41d6b59e234860a4bab496331a9a51efc82798756821065",
-   "time": 1790182173,
-   "snapshot": "snapshots/9049309/granite-aeusdc.json"
+   "height": 9053676,
+   "indexBlockHash": "8054dd90f5ff1967841815fecda2951777bcff62c41e950ba83fd0e881cfc6b6",
+   "time": 1790256347,
+   "snapshot": "snapshots/9053676/granite-aeusdc.json"
   }
  },
  "arkadiko-v2": {
@@ -73,10 +73,10 @@
   "pending": [],
   "passesSinceUnverified": 0,
   "lastVerified": {
-   "height": 9049309,
-   "indexBlockHash": "e09ec7824541c05da41d6b59e234860a4bab496331a9a51efc82798756821065",
-   "time": 1790182173,
-   "snapshot": "snapshots/9049309/arkadiko-v2.json"
+   "height": 9053676,
+   "indexBlockHash": "8054dd90f5ff1967841815fecda2951777bcff62c41e950ba83fd0e881cfc6b6",
+   "time": 1790256347,
+   "snapshot": "snapshots/9053676/arkadiko-v2.json"
   }
  }
 }

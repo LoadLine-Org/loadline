@@ -1,0 +1,16 @@
+block_height,market,check,kind,asset,decimals,indexed,onchain,delta,delta_pct,rule,status
+9053676,zest-v2,debt:STX,debt,STX,6,3233804348693,3233804348697,4,1e-10,tolerance,OK
+9053676,zest-v2,debt:sBTC,debt,sBTC,8,7250920044,7250920045,1,1.37e-8,tolerance,OK
+9053676,zest-v2,debt:stSTX,debt,stSTX,6,578693009050,578693009054,4,6e-10,tolerance,OK
+9053676,zest-v2,debt:USDC,debt,USDC,6,6962352871891,6962352871893,2,0,tolerance,OK
+9053676,zest-v2,debt:USDH,debt,USDH,8,12582145383142,12582145383147,5,0,tolerance,OK
+9053676,zest-v2,debt:stSTXbtc,debt,stSTXbtc,6,0,0,0,0,tolerance,OK
+9053676,zest-v2,debt:stBTC,debt,stBTC,8,0,0,0,0,tolerance,OK
+9053676,zest-v2,collateral:zSTX,collateral,zSTX,6,7077268843011,7077268843011,0,0,tolerance,OK
+9053676,zest-v2,collateral:sBTC,collateral,sBTC,8,1082360661,1082360661,0,0,tolerance,OK
+9053676,zest-v2,collateral:zsBTC,collateral,zsBTC,8,22735187409,22735187409,0,0,tolerance,OK
+9053676,zest-v2,collateral:zstSTX,collateral,zstSTX,6,4981984783442,4981984783442,0,0,tolerance,OK
+9053676,zest-v2,collateral:zUSDC,collateral,zUSDC,6,9999027746338,9999027746338,0,0,tolerance,OK
+9053676,zest-v2,collateral:zstSTXbtc,collateral,zstSTXbtc,6,5594031781538,5594031781538,0,0,tolerance,OK
+9053676,zest-v2,collateral:zstBTC,collateral,zstBTC,8,13049689000,13049689000,0,0,tolerance,OK
+9053676,zest-v2,count:registry,count,,,1271,1271,0,0,exact,OK
