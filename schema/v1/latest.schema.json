@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/LoadLine-Org/loadline/blob/main/schema/v1/latest.schema.json",
+  "title": "LoadLine latest.json",
+  "type": "object",
+  "required": [
+    "schema",
+    "generatedAt",
+    "block",
+    "code",
+    "markets"
+  ],
+  "properties": {
+    "schema": {
+      "const": 1
+    },
+    "block": {
+      "type": "object",
+      "required": [
+        "height",
+        "indexBlockHash",
+        "blockTime",
+        "burnHeight"
+      ],
+      "properties": {
+        "height": {
+          "type": "integer"
+        },
+        "indexBlockHash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "hash": {
+          "type": "string"
+        },
+        "blockTime": {
+          "type": "integer",
+          "description": "Unix seconds"
+        },
+        "burnHeight": {
+          "type": "integer"
+        },
+        "burnTime": {
+          "type": "integer"
+        }
+      }
+    },
+    "markets": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "name",
+          "protocol",
+          "state",
+          "reasons",
+          "verifiedAt",
+          "snapshot",
+          "current",
+          "withheld",
+          "summary",
+          "checks",
+          "liquidationPath"
+        ],
+        "properties": {
+          "state": {
+            "enum": [
+              "VERIFIED",
+              "PENDING",
+              "UNVERIFIED"
+            ]
+          },
+          "snapshot": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

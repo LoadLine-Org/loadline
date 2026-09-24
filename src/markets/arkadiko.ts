@@ -41,6 +41,9 @@ export const arkadiko: Adapter = {
         liquidationRatio: B(tc["liquidation-ratio"]).toString(),
         stabilityFee: B(tc["stability-fee"]).toString(),
         liquidationPenalty: B(tc["liquidation-penalty"]).toString(),
+        redemptionFeeMin: B(tc["redemption-fee-min"]).toString(),
+        redemptionFeeMax: B(tc["redemption-fee-max"]).toString(),
+        redemptionFeeBlockInterval: B(tc["redemption-fee-block-interval"]).toString(),
         firstOwner: so["first-owner"],
         totalVaults: B(so["total-vaults"]).toString(),
         totalDebt: B(per[3 * i + 2]).toString(),
@@ -117,11 +120,15 @@ export const arkadiko: Adapter = {
       onchain[`count:${sym}`] = tokenCfg[t].totalVaults;
     }
     const [poolLiqUsda] = await strict(r, [[C.usda, "get-balance", Cl.principal(C["vaults-pool-liq"])]], "pool-liq USDA");
+    // Redemption fee state per token (vaults-manager map), for the redemption-queue panel.
+    const rbl = await strict(r, (tokens as string[]).map((t) => [C["vaults-manager"], "get-redemption-block-last", Cl.principal(t)] as any), "redemption-block-last");
+    const redemptionBlockLast: Record<string, string> = {};
+    (tokens as string[]).forEach((t, i) => (redemptionBlockLast[t] = B(rbl[i]["block-last"]).toString()));
 
     return {
       positions,
       onchain,
-      params: { tokens: tokenCfg, prices, burnHeight: r.block.burnHeight, poolLiqUsda: B(poolLiqUsda).toString() },
+      params: { tokens: tokenCfg, prices, burnHeight: r.block.burnHeight, poolLiqUsda: B(poolLiqUsda).toString(), redemptionBlockLast, deployer: C.deployer },
       discovery: { method: "walk of each token's vaults-sorted linked list from first-owner (cached owners batch-read, new owners stepped)", walked, sequentialReads },
     };
   },
@@ -183,6 +190,30 @@ export const arkadiko: Adapter = {
     return names.map((n, i) => ({ label: `DAO registry "${n}"`, read: `arkadiko-dao.get-qualified-name-by-name("${n}")`, expected: C[n], actual: show(res[i]), match: show(res[i]) === C[n] }));
   },
 
+  liquidationSpec(cfg) {
+    const C = cfg.generation.contracts;
+    // The vault's debt is burned from the liquidation pool, and its collateral moves into the pool.
+    return { contract: C["vaults-manager"], fns: ["liquidate-vault"], protocolPrefixes: [C.deployer], mode: "pool-burns", pool: C["vaults-pool-liq"], burnAsset: C.usda, activationBlock: 0 };
+  },
+
+  redemptionSpec(cfg) {
+    const C = cfg.generation.contracts;
+    return { contract: C["vaults-manager"], fns: ["redeem-vault"], protocolPrefixes: [C.deployer], mode: "caller-burns", burnAsset: C.usda, activationBlock: 0 };
+  },
+
+  extras(positions, params) {
+    return { redemptionQueue: redemptionQueue(positions, params, (p) => { const v = arkadiko.value(p, params, { BTC: "0", STX: "0", USDC: "0" }).value; return v === null ? null : B(v); }) };
+  },
+
+  assetUsd(asset, amount, params, _px, cfg) {
+    const contract = asset.split("::")[0];
+    if (contract === cfg.generation.contracts.usda) return B(amount) * 100n; // USDA, 6 decimals, valued at $1 as the protocol does
+    const t = params.tokens[contract];
+    if (!t) return null;
+    const pr = params.prices[t.symbol];
+    return divDown(B(amount) * B(pr.lastPrice) * 100n, B(pr.decimals));
+  },
+
   async liquidationPath(r, cfg, out, ctx) {
     const C = cfg.generation.contracts;
     const pool = B(out.params.poolLiqUsda);
@@ -208,3 +239,53 @@ export const arkadiko: Adapter = {
     };
   },
 };
+
+// ---- redemption queue (pure; published with each snapshot and recomputed by verify)
+
+/** Owed = debt + stability fee accrued to the block, exactly as vaults-helpers computes it. */
+export function owedUsda(p: Position, params: Record<string, any>): bigint {
+  const t = params.tokens[p.meta.token as string];
+  const debt = B(p.debtStored.USDA);
+  const blocks = BigInt(params.burnHeight) - BigInt(p.meta.lastBlock as number);
+  const sf = divDown(divDown(B(t.stabilityFee) * debt, 10000n) * (blocks > 0n ? blocks : 0n), 144n * 365n);
+  return debt + sf;
+}
+
+/** vaults-manager.get-redemption-fee at the block, in basis points. */
+export function redemptionFeeBps(token: string, params: Record<string, any>): bigint {
+  const t = params.tokens[token];
+  const min = B(t.redemptionFeeMin), max = B(t.redemptionFeeMax), interval = B(t.redemptionFeeBlockInterval);
+  const diff = max - min;
+  const blockDiff = BigInt(params.burnHeight) - B(params.redemptionBlockLast[token]);
+  const change = interval === 0n ? diff : (diff * blockDiff) / interval;
+  return change >= diff ? min : max - change;
+}
+
+export type QueueEntry = { rank: number; owner: string; ownerIsDeployer: boolean; collateral: string; owedUsda: string; owedAheadUsda: string; ratioBps: string | null; nicr: string };
+export type QueueToken = { token: string; symbol: string; vaults: number; owedTotalUsda: string; feeBps: string; feeMinBps: string; feeMaxBps: string; liquidationRatioBps: string; head: QueueEntry | null; deployerVaults: number; deployerOwedUsda: string; entries: QueueEntry[] };
+
+/**
+ * Only the first vault of a token's sorted list can be redeemed (vaults-manager ERR_NOT_FIRST_VAULT).
+ * A redeemer burns USDA 1:1 against that vault's debt and receives its collateral at the oracle price,
+ * minus the redemption fee. "Owed ahead" is the USDA that must be redeemed before a vault reaches the head.
+ */
+export function redemptionQueue(positions: Position[], params: Record<string, any>, ratio: (p: Position) => bigint | null): QueueToken[] {
+  const out: QueueToken[] = [];
+  for (const [token, t] of Object.entries<any>(params.tokens)) {
+    const vs = positions.filter((p) => p.meta.token === token).sort((a, b) => Number(a.meta.listIndex) - Number(b.meta.listIndex));
+    let ahead = 0n;
+    const entries: QueueEntry[] = vs.map((p, i) => {
+      const owed = owedUsda(p, params);
+      const r = ratio(p);
+      const e: QueueEntry = { rank: i + 1, owner: p.account, ownerIsDeployer: p.account === params.deployer, collateral: p.collateral[t.symbol], owedUsda: owed.toString(), owedAheadUsda: ahead.toString(), ratioBps: r === null ? null : r.toString(), nicr: String(p.meta.nicr) };
+      ahead += owed;
+      return e;
+    });
+    const dep = entries.filter((e) => e.ownerIsDeployer);
+    out.push({
+      token, symbol: t.symbol, vaults: entries.length, owedTotalUsda: ahead.toString(), feeBps: redemptionFeeBps(token, params).toString(), feeMinBps: t.redemptionFeeMin, feeMaxBps: t.redemptionFeeMax, liquidationRatioBps: t.liquidationRatio,
+      head: entries[0] ?? null, deployerVaults: dep.length, deployerOwedUsda: dep.reduce((a, e) => a + B(e.owedUsda), 0n).toString(), entries,
+    });
+  }
+  return out;
+}

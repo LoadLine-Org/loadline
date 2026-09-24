@@ -1,0 +1,42 @@
+{
+  "note": "Light migration replay: the four July–August 2026 switches that produced each market's current contract generation. Pointers are read with today's config at the block before and the block of each step.",
+  "switches": [
+    {
+      "id": "zest-v2-v0-8",
+      "market": "zest-v2",
+      "title": "Zest v2: v0-7 → v0-8 market (with the stBTC vault)",
+      "newContract": "SP1A27KFY4XERQCCRCARCYD1CC5N7M6688BSYADJ7.v0-8-market",
+      "steps": [{ "label": "Multisig script stbm1 switches the market implementation", "txid": "0xce8d5c1a27565f72cb89c2c096b7915d2e93ac5f3a62aa2cef961738dd966096" }]
+    },
+    {
+      "id": "zest-v1-zip-054",
+      "market": "zest-v1",
+      "title": "Zest v1: zip-054 (Lazer oracle v1-7, entry point borrow-helper-v2-1-8)",
+      "newContract": "SP2VCQJGH7PHP2DJK7Z0V48AGBHQAW3R3ZW1QF4N.borrow-helper-v2-1-8",
+      "steps": [{ "label": "zip-054 executed by zest-governance", "txid": "0x9610f1c7708a944c1532374697d2859fd04ece07b331118b8881e04b82477b08" }]
+    },
+    {
+      "id": "granite-usdcx-spsx722n",
+      "market": "granite-usdcx",
+      "title": "Granite USDCx: SP3M2BYF → SPSX722N contract set (Lazer adapter)",
+      "newContract": "SPSX722NK9V3A8D3CVQT0CDY4EBQ3E9FSDDE61FT.borrower-v1",
+      "steps": [
+        { "label": "New borrower-v1 allowed on state-v1", "txid": "0xaa03b37cfecdaa90d0ce8712eefe9825e029df34e118c398e23d812e4b7f5184" },
+        { "label": "Remaining new entry points allowed", "height": 8693007 },
+        { "label": "Old SP3M2BYF entry points removed", "txid": "0x3b4ef4e9869e49b4b95024412d31043e68ea8b0f70c16db5efa02d8a890beca7" },
+        { "label": "Governance moved to SPSX722N", "txid": "0xccc373149bf20cab8df2b7b2ddbc8921083241393f354538521d3f54135057af" }
+      ]
+    },
+    {
+      "id": "granite-aeusdc-sp119qj4",
+      "market": "granite-aeusdc",
+      "title": "Granite aeUSDC: SP26NGV9 → SP119QJ4 contract set",
+      "newContract": "SP119QJ4NVE3RQP8RXJVW5EXAV3XD4CJZWRCEEAAR.borrower-v1",
+      "steps": [
+        { "label": "New borrower-v1 allowed on state-v1", "txid": "0xa346b1963bb7ea823b54ffc715e779ff53dcb56a5967497ebafd0742782cf7bb" },
+        { "label": "Old SP26NGV9 / SP3BJR4P entry points removed", "txid": "0xfe5806a7a030e7a5b8226e89a18cb1783e1618bb5f207ca3bb2705f3d6bb307e" },
+        { "label": "Governance moved to SP119QJ4", "txid": "0x11f827717fa4e971e6bf5dc8645f9f1bc50f0d8cb5846b6c65ba8f38d7f36223" }
+      ]
+    }
+  ]
+}

@@ -17,7 +17,11 @@ It also keeps a 90-day record of the price oracles those markets depend on.
 Each snapshot reads all five markets at one pinned Stacks block. For every market it records:
 - **the live-contract pointer** it read, and the block the figures were verified at;
 - **every reconciliation check:** Σ positions against the contract's own total, with the delta;
-- **health per position**, and whether the market's liquidation path is `LIVE`, `UNPROVEN` or `BLOCKED`.
+- **health per position**, and whether the market's liquidation path is `LIVE`, `UNPROVEN` or `BLOCKED`;
+- **liquidatable vs actually liquidated:** debt by status (liquidatable, in the price band, healthy, no collateral, dust) next to every liquidation the entry contract executed in the last 30 days, with repaid and seized amounts read from the transactions;
+- for Arkadiko, the **redemption queue**: which vault is redeemed first and how much USDA stands ahead of each.
+
+It also publishes a **light migration replay** of the four July–August 2026 contract switches, and the data as an **open dataset** with CSV exports, JSON Schemas and a hash index ([docs/DATASET.md](docs/DATASET.md)).
 
 ## Check the numbers yourself
 
@@ -41,6 +45,7 @@ It exits non-zero if any published number differs. See [docs/VERIFY.md](docs/VER
 ```sh
 npm run snapshot   # all five markets at (tip − 6 blocks) → data/public/
 npm run oracle     # 90-day oracle-health record → data/public/oracle/
+npm run replay     # light migration replay → data/public/replay/
 npm test           # unit tests (state machine, bands, checks)
 ```
 
@@ -65,7 +70,9 @@ Each market is `VERIFIED`, `PENDING` or `UNVERIFIED`.
 ## Caveats
 
 - **The USDC band (±0.25%) is an estimate.** The BTC and STX bands are measured; the USDC one is not yet.
-- **`verify` does not recount liquidation-path counts or governance-watch results.** Both are published with transaction ids so they can be checked on an explorer, but `verify` does not recompute them.
+- **Liquidation dollar values use the snapshot's reference prices,** not the price on the day of each liquidation; token amounts are exact. Liquidations routed through another contract would not be counted (none so far, and the count of such transactions is published).
+- **The migration replay is light:** four switches, pointer reads only, with today's configuration. It does not re-run positions or health at those blocks.
+- **Arkadiko redemptions:** USDA's market price is not sourced, so the redemption panel shows order and amounts, not whether redeeming is profitable.
 - **Lazer prices are not published.** The oracle record carries Lazer payload ages and transaction outcomes only, pending a licence answer from Pyth.
 - **Dependence on a third-party read API:** chain reads go to the free stxer batch API, with the Hiro node API as fallback. Both are third parties with no SLA.
 - **The name "LoadLine" is used by unrelated products,** including an AI risk-monitoring tool. This project is not affiliated with them.
@@ -79,7 +86,9 @@ src/lib/                chain reads pinned to one block, exchange candles, throt
 src/markets/            one adapter per protocol: chain reads + pure health/reconciliation functions
 src/engine/             snapshot run, state machine, migration watch, transaction scans
 src/oracle/             90-day oracle-health record
+src/replay/             light migration replay
 src/verify/             the verify command
+schema/v1/              JSON Schemas for every published file
 data/public/            published snapshots and oracle record
 ```
 

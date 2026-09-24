@@ -21,6 +21,8 @@ import { B, derive } from "./math.ts";
 import { governanceWatch, probeCandidates, type PendingItem } from "./migration.ts";
 import { decide, publishesRisk, type MarketState } from "./state.ts";
 import { codeFingerprint } from "./fingerprint.ts";
+import { liquidationSummary, scanLiquidations } from "./liquidations.ts";
+import { writeIndex, writeSnapshotCsvs } from "./dataset.ts";
 
 export const SCHEMA = 1;
 
@@ -163,6 +165,8 @@ export async function runSnapshot(opts: RunOpts) {
       for (const c of checks.filter((c) => c.status === "FAIL")) critical.push(`reconciliation FAIL: ${c.label} (indexed ${c.indexed}, on-chain ${c.onchain})`);
 
       const liquidationPath = await ad.liquidationPath(r, cfg, out, ctx);
+      const liquidations = await scanLiquidations(opts.cacheDir, ad.liquidationSpec(cfg), block, log);
+      const redemptions = ad.redemptionSpec ? await scanLiquidations(opts.cacheDir, ad.redemptionSpec(cfg), block, log) : undefined;
       Object.assign(snap, {
         generation: cfg.generation,
         priceBasis: cfg.priceBasis,
@@ -180,6 +184,8 @@ export async function runSnapshot(opts: RunOpts) {
         onchain: out.onchain,
         checks,
         liquidationPath,
+        liquidations,
+        ...(redemptions ? { redemptions } : {}),
         positions: out.positions,
       });
     } catch (e) {
@@ -204,6 +210,8 @@ export async function runSnapshot(opts: RunOpts) {
       if (riskReason) {
         withheld.risk = riskReason;
         delete snap.liquidationPath;
+        delete snap.liquidations;
+        delete snap.redemptions;
       }
     } else {
       withheld = { positions: next.reasons.join("; "), risk: next.reasons.join("; ") };
@@ -211,11 +219,17 @@ export async function runSnapshot(opts: RunOpts) {
     snap.state = next;
     snap.withheld = withheld;
     snap.summary = balancesOk ? summarize(snap.positions, cfg) : null;
+    snap.extras = balancesOk && !withheld.risk && ad.extras ? ad.extras(snap.positions.map(({ d: _d, ...p }: any) => p), snap.params, px) : null;
+    snap.liquidationSummary =
+      balancesOk && snap.liquidations && px
+        ? liquidationSummary(snap.positions, snap.liquidations, (a, amt) => ad.assetUsd(a, amt, snap.params, px, cfg), new Set((cfg.reconciliationExclusions ?? []).map((e: any) => e.account)))
+        : null;
     snap.elapsedMs = Date.now() - m0;
 
     const rel = `snapshots/${block.height}/${id}.json`;
     if (balancesOk) {
       writeJson(path.join(opts.outDir, rel), snap);
+      writeSnapshotCsvs(opts.outDir, snap);
       if (riskOk && pxOk) next.lastVerified = { height: block.height, indexBlockHash: block.indexBlockHash, time: block.blockTime, snapshot: rel };
     } else {
       writeJson(path.join(opts.quarantineDir, rel), snap);
@@ -235,6 +249,7 @@ export async function runSnapshot(opts: RunOpts) {
       summary: balancesOk ? snap.summary : (latestPrev.markets?.[id]?.summary ?? null),
       checks: checks.map((c) => ({ id: c.id, status: c.status, deltaPct: c.deltaPct, delta: c.delta })),
       liquidationPath: snap.liquidationPath ? { status: snap.liquidationPath.status, summary: snap.liquidationPath.summary } : null,
+      liquidationSummary: snap.liquidationSummary ?? null,
       pointer: snap.pointers?.[0] ?? null,
     };
     const worst = checks.some((c) => c.status === "FAIL") ? "FAIL" : checks.some((c) => c.status === "WARN") ? "WARN" : "OK";
@@ -243,6 +258,7 @@ export async function runSnapshot(opts: RunOpts) {
 
   writeJson(statePath, states);
   writeJson(latestPath, latest);
+  writeIndex(opts.outDir);
   if (transitions.length) fs.appendFileSync(path.join(opts.outDir, "transitions.jsonl"), transitions.map((t) => JSON.stringify(t)).join("\n") + "\n");
   const run = { height: block.height, indexBlockHash: block.indexBlockHash, blockTime: block.blockTime, startedAt: new Date(t0).toISOString(), seconds: Math.round((Date.now() - t0) / 1000), reader: r.stats, requests: ledgerSummary(), markets: Object.fromEntries(ids.map((id) => [id, states[id].state])) };
   fs.appendFileSync(path.join(opts.outDir, "runs.jsonl"), JSON.stringify(run) + "\n");

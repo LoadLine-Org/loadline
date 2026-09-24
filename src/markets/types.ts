@@ -7,6 +7,7 @@
 // (`value`, `checks`) that take only published data.
 
 import type { Reader } from "../lib/chain.ts";
+import type { LiquidationSpec } from "../engine/liquidations.ts";
 
 export type MarketId = "zest-v2" | "zest-v1" | "granite-usdcx" | "granite-aeusdc" | "arkadiko-v2";
 
@@ -140,6 +141,14 @@ export type Adapter = {
   bandPct(cfg: MarketConfig): BandPct;
   pointers(r: Reader, cfg: MarketConfig): Promise<PointerResult[]>;
   liquidationPath(r: Reader, cfg: MarketConfig, out: ReadOut, ctx: ReadContext): Promise<LiquidationPath>;
+  /** Which transactions are liquidations, and how their token movements read. */
+  liquidationSpec(cfg: MarketConfig): LiquidationSpec;
+  /** Optional: a second forced-deleveraging path read the same way (Arkadiko redemptions). */
+  redemptionSpec?(cfg: MarketConfig): LiquidationSpec;
+  /** Optional, pure: market-specific panels computed from published data only (recomputed by verify). */
+  extras?(positions: Position[], params: Record<string, any>, px: PriceVector | null): Record<string, unknown>;
+  /** Pure: USD (1e8) of a token amount (asset = FT id `contract::name`, or `STX`) at the snapshot's prices; null if unpriced. */
+  assetUsd(asset: string, amount: string, params: Record<string, any>, px: PriceVector, cfg: MarketConfig): bigint | null;
 };
 
 export type ReadContext = {

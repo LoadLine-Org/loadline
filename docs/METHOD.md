@@ -52,6 +52,18 @@ A position's `h` is normalised so that 1.0 is the liquidation line. `hLow`/`hHig
 - **UNPROVEN:** enabled, but no successful liquidation since the current contracts went live.
 - **LIVE:** at least one success since activation. The last one is shown.
 
+## Liquidatable vs actually liquidated
+
+Each snapshot sets two figures side by side:
+- **Debt by status** at reference prices, among borrowers with debt: liquidatable (the rule is met at every price in the band), in the band (met at some prices, not others), not liquidatable, debt with no collateral, and dust. The band gets its own row; it is never folded into either side.
+- **Actually liquidated:** every successful call of the market's liquidation function on its entry contract (`liquidation-call`, `liquidate…`, `liquidate-collateral`, `liquidate-vault`) in the 30 days up to the block. Repaid debt and seized collateral come from the transaction's token movements: the liquidator's transfers into the protocol and the protocol's transfers back (Arkadiko: USDA burned from the liquidation pool, collateral moved into it). A `(ok u0)` return code is not trusted either way; the movements are.
+
+Dollar values of liquidations use the snapshot's reference prices, not the price on the day. Interest-bearing zTokens are left unpriced rather than approximated. Liquidations routed through another contract would not be counted; none has been so far, and every snapshot publishes the count of such transactions.
+
+## Arkadiko redemption queue
+
+`vaults-manager.redeem-vault` only accepts the first vault of a token's `vaults-sorted` list (`ERR_NOT_FIRST_VAULT`). The list is kept in ascending order of `nicr` (collateral per unit of debt, no price applied). The redeemer burns USDA at face value against that vault's debt, stability fee included, and receives collateral at the oracle price less the redemption fee. The panel publishes, per token, each vault's place, what it owes, the USDA owed by every vault ahead of it, and the current fee, which mirrors `get-redemption-fee` from values read at the block. USDA's market price is not sourced, so the panel does not claim whether redeeming pays.
+
 ## Migration watch
 
 Every run does three things:
@@ -61,6 +73,8 @@ Every run does three things:
    - Zest v1 `v0-transfer-v1-1`: **unverified**. It is already approved, so its deploy *is* its activation.
    - Others: **info**.
 3. **Governance watch.** It re-derives the current governance contract (Granite aeUSDC has moved it twice) and scans its transactions. A migration-relevant proposal inside the protocol's window that hasn't been executed yet makes the market PENDING.
+
+**Light migration replay** (`npm run replay`, `config/replay.json`): the four July–August 2026 switches that produced today's contract generations. At the block before and the block of each step, every pointer is read with today's config. Published at `replay/replay.json`; `verify` re-reads every pointer. Zest v2 (v0-8) and Zest v1 (zip-054) move from UNVERIFIED to all-match at the activation block. Both Granite markets move in phases (new entry points allowed, old ones removed, governance moved) and match today's config only after the last phase.
 
 Replay check (2026-09-23): with today's config pinned at block 8,700,000 (2026-08-04), Zest v2 (`v0-5-market` live then), Zest v1 (`borrow-helper-v2-1-8` not approved) and both Granite markets (old contract sets and governance) all went UNVERIFIED, each for the correct pointer. Arkadiko, unchanged since then, stayed VERIFIED. Replaying history with the *right* numbers needs a config per past generation. Until one exists, the pipeline refuses to read a generation it has no config for, and withholds the numbers.
 

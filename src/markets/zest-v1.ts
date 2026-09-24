@@ -18,7 +18,7 @@ import { B, divDown, pow10, ratio, sumBy, toleranceCheck, exactCheck } from "../
 import { scanTxs } from "../engine/txscan.ts";
 import { ftHolders } from "../engine/holders.ts";
 import { strict, show, short } from "./util.ts";
-import type { Adapter, HealthValue, Position, ReadOut, ReconCheck } from "./types.ts";
+import type { Adapter, HealthValue, Position, PriceVector, ReadOut, ReconCheck } from "./types.ts";
 
 const ONE8 = 100_000_000n;
 
@@ -36,6 +36,16 @@ type Reserve = {
   priceKind: string; // BTC | STX | STX*ststxRatio | fixed
   fixedPrice: string | null; // 1e8, read from the protocol's fixed-price oracle
 };
+
+function reservePrice(x: Reserve, params: Record<string, any>, px: PriceVector): bigint | null {
+  switch (x.priceKind) {
+    case "BTC": return B(px.BTC);
+    case "STX": return B(px.STX);
+    case "STX*ststxRatio": return divDown(B(px.STX) * B(params.ststxRatio), 1_000_000n);
+    case "fixed": return x.fixedPrice === null ? null : B(x.fixedPrice);
+    default: return null;
+  }
+}
 
 export const zestV1: Adapter = {
   id: "zest-v1",
@@ -327,6 +337,20 @@ export const zestV1: Adapter = {
       out.push({ label: `${cfg.assets[a].symbol} reserve oracle`, read: `${short(C.reserve)}.get-reserve-state(${short(a)}).oracle`, expected: C.oracle, actual, match: actual === C.oracle });
     });
     return out;
+  },
+
+  liquidationSpec(cfg) {
+    const C = cfg.generation.contracts;
+    return { contract: C.helper, fns: ["liquidation-call"], protocolPrefixes: [C.deployer], mode: "liquidator-pays", activationBlock: cfg.generation.activationBlock };
+  },
+
+  assetUsd(asset, amount, params, px, cfg) {
+    // Underlying reserve tokens only. zTokens (interest-bearing claims) are left unpriced rather than approximated.
+    const contract = asset === "STX" ? `${cfg.generation.contracts.deployer}.wstx` : asset.split("::")[0];
+    const x: Reserve | undefined = params.reserves[contract];
+    if (!x) return null;
+    const p = reservePrice(x, params, px);
+    return p === null ? null : divDown(B(amount) * p, pow10(x.decimals));
   },
 
   async liquidationPath(r, cfg, _out, ctx) {

@@ -40,6 +40,12 @@ if (cmd === "snapshot") {
     cacheDir: path.resolve(arg("cache") ?? path.join(ROOT, "data/cache")),
     height: arg("height") ? Number(arg("height")) : undefined,
   });
+} else if (cmd === "replay") {
+  const { runReplay } = await import("./replay/replay.ts");
+  const { writeIndex } = await import("./engine/dataset.ts");
+  const outDir = path.resolve(arg("out") ?? path.join(ROOT, "data/public"));
+  await runReplay({ outDir, cacheDir: path.resolve(arg("cache") ?? path.join(ROOT, "data/cache")) });
+  writeIndex(outDir);
 } else if (cmd === "verify") {
   const { runVerify } = await import("./verify/verify.ts");
   const code = await runVerify({ from: arg("from") ?? path.join(ROOT, "data/public"), markets: markets(), skipPrices: flag("skip-prices"), height: arg("height") ? Number(arg("height")) : undefined });
@@ -48,6 +54,7 @@ if (cmd === "snapshot") {
   console.log(`usage:
   node src/cli.ts snapshot [--markets zest-v2,zest-v1,...]
   node src/cli.ts oracle [--height N]          90-day oracle-health record -> data/public/oracle/
+  node src/cli.ts replay                      light migration replay -> data/public/replay/
   node src/cli.ts verify [--from <published dir or https URL>] [--height N] [--markets ...] [--skip-prices]
 markets: ${MARKET_IDS.join(", ")}`);
   process.exit(cmd ? 2 : 0);

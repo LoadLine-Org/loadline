@@ -1,0 +1,691 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/LoadLine-Org/loadline/blob/main/schema/v1/snapshot.schema.json",
+  "title": "LoadLine market snapshot (snapshots/<height>/<market>.json)",
+  "type": "object",
+  "required": [
+    "schema",
+    "market",
+    "name",
+    "protocol",
+    "block",
+    "generatedAt",
+    "code",
+    "state",
+    "withheld",
+    "positions",
+    "checks",
+    "onchain",
+    "params",
+    "pointers",
+    "summary"
+  ],
+  "properties": {
+    "schema": {
+      "const": 1
+    },
+    "market": {
+      "enum": [
+        "zest-v2",
+        "zest-v1",
+        "granite-usdcx",
+        "granite-aeusdc",
+        "arkadiko-v2"
+      ]
+    },
+    "name": {
+      "type": "string"
+    },
+    "protocol": {
+      "type": "string"
+    },
+    "block": {
+      "type": "object",
+      "required": [
+        "height",
+        "indexBlockHash",
+        "blockTime",
+        "burnHeight"
+      ],
+      "properties": {
+        "height": {
+          "type": "integer"
+        },
+        "indexBlockHash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "hash": {
+          "type": "string"
+        },
+        "blockTime": {
+          "type": "integer",
+          "description": "Unix seconds"
+        },
+        "burnHeight": {
+          "type": "integer"
+        },
+        "burnTime": {
+          "type": "integer"
+        }
+      }
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "code": {
+      "type": "object",
+      "required": [
+        "version",
+        "fingerprint"
+      ]
+    },
+    "state": {
+      "type": "object",
+      "required": [
+        "state",
+        "since",
+        "reasons"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "VERIFIED",
+            "PENDING",
+            "UNVERIFIED"
+          ]
+        }
+      }
+    },
+    "withheld": {
+      "type": "object",
+      "required": [
+        "positions",
+        "risk"
+      ]
+    },
+    "positions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "account",
+          "collateral",
+          "debt",
+          "debtStored",
+          "meta",
+          "d"
+        ],
+        "properties": {
+          "account": {
+            "type": "string"
+          },
+          "collateral": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "pattern": "^[0-9]+$",
+              "description": "Unsigned integer as a decimal string (base units)."
+            }
+          },
+          "debt": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "pattern": "^[0-9]+$",
+              "description": "Unsigned integer as a decimal string (base units)."
+            }
+          },
+          "debtStored": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "pattern": "^[0-9]+$",
+              "description": "Unsigned integer as a decimal string (base units)."
+            }
+          },
+          "meta": {
+            "type": "object"
+          },
+          "d": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "required": [
+                  "collUsd",
+                  "debtUsd",
+                  "metric",
+                  "value",
+                  "threshold",
+                  "h",
+                  "hLow",
+                  "hHigh",
+                  "liquidatable",
+                  "dust"
+                ],
+                "properties": {
+                  "collUsd": {
+                    "type": "string",
+                    "pattern": "^[0-9]+$",
+                    "description": "US dollars \u00d7 1e8 as a decimal string."
+                  },
+                  "debtUsd": {
+                    "type": "string",
+                    "pattern": "^[0-9]+$",
+                    "description": "US dollars \u00d7 1e8 as a decimal string."
+                  },
+                  "h": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "hLow": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "hHigh": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "liquidatable": {
+                    "enum": [
+                      "yes",
+                      "no",
+                      "band",
+                      "n/a"
+                    ]
+                  },
+                  "dust": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            ],
+            "description": "Derived values; null when risk figures are withheld."
+          }
+        }
+      }
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "label",
+          "indexed",
+          "onchain",
+          "delta",
+          "deltaPct",
+          "rule",
+          "status"
+        ],
+        "properties": {
+          "indexed": {
+            "type": "string",
+            "pattern": "^[0-9]+$",
+            "description": "Unsigned integer as a decimal string (base units)."
+          },
+          "onchain": {
+            "type": "string",
+            "pattern": "^[0-9]+$",
+            "description": "Unsigned integer as a decimal string (base units)."
+          },
+          "delta": {
+            "type": "string",
+            "pattern": "^-?[0-9]+$"
+          },
+          "deltaPct": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "rule": {
+            "enum": [
+              "tolerance",
+              "lte",
+              "exact"
+            ]
+          },
+          "status": {
+            "enum": [
+              "OK",
+              "WARN",
+              "FAIL"
+            ]
+          }
+        }
+      }
+    },
+    "onchain": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "params": {
+      "type": "object",
+      "description": "Protocol parameters read at the block; shape is market-specific."
+    },
+    "pointers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "label",
+          "read",
+          "expected",
+          "actual",
+          "match"
+        ]
+      }
+    },
+    "candidates": {
+      "type": "array"
+    },
+    "governance": {
+      "type": "object"
+    },
+    "priceVector": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "prices": {
+      "type": "object"
+    },
+    "liquidationPath": {
+      "type": "object",
+      "required": [
+        "status",
+        "summary",
+        "evidence"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "LIVE",
+            "UNPROVEN",
+            "BLOCKED"
+          ]
+        }
+      }
+    },
+    "liquidations": {
+      "type": "object",
+      "required": [
+        "contract",
+        "fns",
+        "window",
+        "events",
+        "sinceActivation",
+        "indirectSuccessful",
+        "scanComplete"
+      ],
+      "properties": {
+        "contract": {
+          "type": "string"
+        },
+        "fns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "window": {
+          "type": "object",
+          "required": [
+            "days",
+            "fromTime",
+            "toHeight"
+          ]
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "txid",
+              "height",
+              "time",
+              "fn",
+              "liquidator",
+              "borrowers",
+              "debtRepaid",
+              "collateralSeized"
+            ],
+            "properties": {
+              "txid": {
+                "type": "string"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "time": {
+                "type": "integer"
+              },
+              "liquidator": {
+                "type": "string"
+              },
+              "borrowers": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "debtRepaid": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "asset",
+                    "amount"
+                  ],
+                  "properties": {
+                    "asset": {
+                      "type": "string",
+                      "description": "FT identifier contract::name, or STX"
+                    },
+                    "amount": {
+                      "type": "string",
+                      "pattern": "^[0-9]+$",
+                      "description": "Unsigned integer as a decimal string (base units)."
+                    }
+                  }
+                }
+              },
+              "collateralSeized": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "asset",
+                    "amount"
+                  ],
+                  "properties": {
+                    "asset": {
+                      "type": "string",
+                      "description": "FT identifier contract::name, or STX"
+                    },
+                    "amount": {
+                      "type": "string",
+                      "pattern": "^[0-9]+$",
+                      "description": "Unsigned integer as a decimal string (base units)."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "sinceActivation": {
+          "type": "object",
+          "required": [
+            "fromHeight",
+            "attempts",
+            "successes"
+          ]
+        },
+        "indirectSuccessful": {
+          "type": "integer"
+        },
+        "scanComplete": {
+          "type": "boolean"
+        }
+      }
+    },
+    "redemptions": {
+      "type": "object",
+      "required": [
+        "contract",
+        "fns",
+        "window",
+        "events",
+        "sinceActivation",
+        "indirectSuccessful",
+        "scanComplete"
+      ],
+      "properties": {
+        "contract": {
+          "type": "string"
+        },
+        "fns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "window": {
+          "type": "object",
+          "required": [
+            "days",
+            "fromTime",
+            "toHeight"
+          ]
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "txid",
+              "height",
+              "time",
+              "fn",
+              "liquidator",
+              "borrowers",
+              "debtRepaid",
+              "collateralSeized"
+            ],
+            "properties": {
+              "txid": {
+                "type": "string"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "time": {
+                "type": "integer"
+              },
+              "liquidator": {
+                "type": "string"
+              },
+              "borrowers": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "debtRepaid": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "asset",
+                    "amount"
+                  ],
+                  "properties": {
+                    "asset": {
+                      "type": "string",
+                      "description": "FT identifier contract::name, or STX"
+                    },
+                    "amount": {
+                      "type": "string",
+                      "pattern": "^[0-9]+$",
+                      "description": "Unsigned integer as a decimal string (base units)."
+                    }
+                  }
+                }
+              },
+              "collateralSeized": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "asset",
+                    "amount"
+                  ],
+                  "properties": {
+                    "asset": {
+                      "type": "string",
+                      "description": "FT identifier contract::name, or STX"
+                    },
+                    "amount": {
+                      "type": "string",
+                      "pattern": "^[0-9]+$",
+                      "description": "Unsigned integer as a decimal string (base units)."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "sinceActivation": {
+          "type": "object",
+          "required": [
+            "fromHeight",
+            "attempts",
+            "successes"
+          ]
+        },
+        "indirectSuccessful": {
+          "type": "integer"
+        },
+        "scanComplete": {
+          "type": "boolean"
+        }
+      }
+    },
+    "liquidationSummary": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "required": [
+            "liquidatable",
+            "band",
+            "healthy",
+            "noCollateral",
+            "dust",
+            "liquidated"
+          ],
+          "properties": {
+            "liquidatable": {
+              "type": "object",
+              "required": [
+                "n",
+                "debtUsd"
+              ],
+              "properties": {
+                "n": {
+                  "type": "integer"
+                },
+                "debtUsd": {
+                  "type": "string",
+                  "pattern": "^[0-9]+$",
+                  "description": "US dollars \u00d7 1e8 as a decimal string."
+                }
+              }
+            },
+            "band": {
+              "type": "object",
+              "required": [
+                "n",
+                "debtUsd"
+              ],
+              "properties": {
+                "n": {
+                  "type": "integer"
+                },
+                "debtUsd": {
+                  "type": "string",
+                  "pattern": "^[0-9]+$",
+                  "description": "US dollars \u00d7 1e8 as a decimal string."
+                }
+              }
+            },
+            "healthy": {
+              "type": "object",
+              "required": [
+                "n",
+                "debtUsd"
+              ],
+              "properties": {
+                "n": {
+                  "type": "integer"
+                },
+                "debtUsd": {
+                  "type": "string",
+                  "pattern": "^[0-9]+$",
+                  "description": "US dollars \u00d7 1e8 as a decimal string."
+                }
+              }
+            },
+            "noCollateral": {
+              "type": "object",
+              "required": [
+                "n",
+                "debtUsd"
+              ],
+              "properties": {
+                "n": {
+                  "type": "integer"
+                },
+                "debtUsd": {
+                  "type": "string",
+                  "pattern": "^[0-9]+$",
+                  "description": "US dollars \u00d7 1e8 as a decimal string."
+                }
+              }
+            },
+            "dust": {
+              "type": "object",
+              "required": [
+                "n",
+                "debtUsd"
+              ],
+              "properties": {
+                "n": {
+                  "type": "integer"
+                },
+                "debtUsd": {
+                  "type": "string",
+                  "pattern": "^[0-9]+$",
+                  "description": "US dollars \u00d7 1e8 as a decimal string."
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "extras": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "Market-specific panels (Arkadiko: redemptionQueue)."
+    },
+    "summary": {
+      "type": [
+        "object",
+        "null"
+      ]
+    }
+  }
+}

@@ -14,13 +14,16 @@
     "oracle": "node src/cli.ts oracle",
     "typecheck": "tsc --noEmit",
     "test": "node --test test/*.test.ts",
-    "start": "node server/index.ts"
+    "start": "node server/index.ts",
+    "replay": "node src/cli.ts replay"
   },
   "dependencies": {
     "@stacks/transactions": "7.6.0"
   },
   "devDependencies": {
-    "typescript": "5.9.3",
-    "@types/node": "24.13.6"
+    "@types/node": "24.13.6",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
+    "typescript": "5.9.3"
   }
 }

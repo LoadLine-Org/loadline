@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/LoadLine-Org/loadline/blob/main/schema/v1/replay.schema.json",
+  "title": "LoadLine replay/replay.json",
+  "type": "object",
+  "required": [
+    "schema",
+    "generatedAt",
+    "switches"
+  ],
+  "properties": {
+    "schema": {
+      "const": 1
+    },
+    "switches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "market",
+          "title",
+          "configGeneration",
+          "newContract",
+          "newContractDeploy",
+          "warningMinutes",
+          "steps"
+        ],
+        "properties": {
+          "newContractDeploy": {
+            "type": "object",
+            "required": [
+              "txid",
+              "height",
+              "time"
+            ]
+          },
+          "warningMinutes": {
+            "type": "integer"
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "label",
+                "tx",
+                "before",
+                "at",
+                "changed"
+              ],
+              "properties": {
+                "before": {
+                  "type": "object",
+                  "required": [
+                    "height",
+                    "indexBlockHash",
+                    "time",
+                    "pointers",
+                    "state",
+                    "mismatches"
+                  ],
+                  "properties": {
+                    "height": {
+                      "type": "integer"
+                    },
+                    "indexBlockHash": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    },
+                    "time": {
+                      "type": "integer"
+                    },
+                    "pointers": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "label",
+                          "read",
+                          "actual",
+                          "match"
+                        ]
+                      }
+                    },
+                    "state": {
+                      "enum": [
+                        "VERIFIED",
+                        "UNVERIFIED"
+                      ]
+                    },
+                    "mismatches": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "at": {
+                  "type": "object",
+                  "required": [
+                    "height",
+                    "indexBlockHash",
+                    "time",
+                    "pointers",
+                    "state",
+                    "mismatches"
+                  ],
+                  "properties": {
+                    "height": {
+                      "type": "integer"
+                    },
+                    "indexBlockHash": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    },
+                    "time": {
+                      "type": "integer"
+                    },
+                    "pointers": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "label",
+                          "read",
+                          "actual",
+                          "match"
+                        ]
+                      }
+                    },
+                    "state": {
+                      "enum": [
+                        "VERIFIED",
+                        "UNVERIFIED"
+                      ]
+                    },
+                    "mismatches": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "changed": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

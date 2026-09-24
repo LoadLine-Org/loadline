@@ -35,6 +35,36 @@ const CALLCODE_VAULT: Record<string, number> = { "0x01": 0, "0x02": 2, "0x03": 4
 
 type AssetCfg = { id: number; addr: string; decimals: number; type: string; ident: string; callcode: string | null; maxStaleness: number; collateral: boolean; debt: boolean };
 
+function priceOf(aid: number, params: Record<string, any>, px: PriceVector): bigint {
+  const assets: Record<number, AssetCfg> = params.assets;
+  const base = (a: AssetCfg): bigint => {
+    if (a.type === "0x01") return B(params.diaUsdh.value); // DIA
+    const k = IDENT[a.ident];
+    if (!k) throw new Error(`zest-v2: unknown oracle ident ${a.ident}`);
+    return B(px[k]);
+  };
+  const lidx = (vaultAid: number) => B(params.vaults[vaultAid].lindexNext);
+  const a = assets[aid];
+  const p = base(a);
+  switch (a.callcode) {
+    case null:
+      return p;
+    case "0x00":
+      return divDown(p * B(params.ststxRatio), 1_000_000n);
+    case "0x03":
+      return divDown(divDown(p * B(params.ststxRatio), 1_000_000n) * lidx(4), INDEX);
+    case "0x07": {
+      const r = divDown(B(params.stbtcRatio) * (BPS - B(params.stbtcHaircutBps)), BPS);
+      return divDown(p * r, 100_000_000n);
+    }
+    default: {
+      const v = CALLCODE_VAULT[a.callcode];
+      if (v === undefined) throw new Error(`zest-v2: unknown callcode ${a.callcode}`);
+      return divDown(p * lidx(v), INDEX);
+    }
+  }
+}
+
 export const zestV2: Adapter = {
   id: "zest-v2",
 
@@ -192,34 +222,7 @@ export const zestV2: Adapter = {
   value(p, params, px): HealthValue {
     const assets: Record<number, AssetCfg> = params.assets;
     const bitmap = B(params.bitmap);
-    const base = (a: AssetCfg): bigint => {
-      if (a.type === "0x01") return B(params.diaUsdh.value); // DIA
-      const k = IDENT[a.ident];
-      if (!k) throw new Error(`zest-v2: unknown oracle ident ${a.ident}`);
-      return B(px[k]);
-    };
-    const lidx = (vaultAid: number) => B(params.vaults[vaultAid].lindexNext);
-    const price = (aid: number): bigint => {
-      const a = assets[aid];
-      const p = base(a);
-      switch (a.callcode) {
-        case null:
-          return p;
-        case "0x00":
-          return divDown(p * B(params.ststxRatio), 1_000_000n);
-        case "0x03":
-          return divDown(divDown(p * B(params.ststxRatio), 1_000_000n) * lidx(4), INDEX);
-        case "0x07": {
-          const r = divDown(B(params.stbtcRatio) * (BPS - B(params.stbtcHaircutBps)), BPS);
-          return divDown(p * r, 100_000_000n);
-        }
-        default: {
-          const v = CALLCODE_VAULT[a.callcode];
-          if (v === undefined) throw new Error(`zest-v2: unknown callcode ${a.callcode}`);
-          return divDown(p * lidx(v), INDEX);
-        }
-      }
-    };
+    const price = (aid: number) => priceOf(aid, params, px);
     let coll = 0n;
     for (const [sym, amt] of Object.entries(p.collateral)) {
       const aid = AID[sym];
@@ -305,6 +308,18 @@ export const zestV2: Adapter = {
         label: `v0-vault-${v} authorises the market`, read: `v0-vault-${v}.is-authorized-contract(${C.market.split(".")[1]})`, expected: "true", actual: show(res[2 + i]), match: show(res[2 + i]) === "true",
       })),
     ];
+  },
+
+  liquidationSpec(cfg) {
+    const C = cfg.generation.contracts;
+    return { contract: C.market, fns: ["liquidate", "liquidate-multi-with-feeds", "liquidate-redeem"], protocolPrefixes: [C.deployer], mode: "liquidator-pays", activationBlock: cfg.generation.activationBlock };
+  },
+
+  assetUsd(asset, amount, params, px) {
+    const contract = asset === "STX" ? `${Object.values<any>(params.assets).find((a) => a.addr.endsWith(".wstx"))?.addr}` : asset.split("::")[0];
+    const a = Object.values<any>(params.assets).find((x) => x.addr === contract);
+    if (!a) return null;
+    return divDown(B(amount) * priceOf(a.id, params, px), pow10(a.decimals));
   },
 
   async liquidationPath(r, cfg, out, ctx) {

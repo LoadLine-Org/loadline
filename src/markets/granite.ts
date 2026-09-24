@@ -15,7 +15,7 @@
 
 import { Cl, Err } from "../lib/clarity.ts";
 import { B, divDown, divUp, pow10, ratio, sumBy, toleranceCheck } from "../engine/math.ts";
-import { scanTxs, scanEvents, getTx } from "../engine/txscan.ts";
+import { scanTxs } from "../engine/txscan.ts";
 import { strict, show, short } from "./util.ts";
 import type { Adapter, HealthValue, MarketId, Position, ReadOut, ReconCheck } from "./types.ts";
 
@@ -193,21 +193,31 @@ function granite(id: MarketId): Adapter {
       ];
       retired.forEach((c, i) => {
         const a = show(res[2 + i]);
-        out.push({ label: `Retired entry point stays disallowed`, read: `${short(S)}.is-allowed-contract(${c})`, expected: "(err u107)", actual: a, match: a === "(err u107)" });
+        out.push({ label: `Retired ${c.split(".")[0].slice(0, 8)}…${short(c)} stays disallowed`, read: `${short(S)}.is-allowed-contract(${c})`, expected: "(err u107)", actual: a, match: a === "(err u107)" });
       });
       return out;
+    },
+
+    liquidationSpec(cfg) {
+      const C = cfg.generation.contracts;
+      // Funds sit in state-v1: the liquidator repays into it and receives collateral from it.
+      return { contract: C.liquidator, fns: ["liquidate-collateral", "batch-liquidate"], protocolPrefixes: [C.state], mode: "liquidator-pays", activationBlock: cfg.generation.activationBlock };
+    },
+
+    assetUsd(asset, amount, params, px, cfg) {
+      const contract = asset.split("::")[0];
+      if (contract === cfg.generation.contracts.marketAsset) return divDown(B(amount) * B(px.USDC), pow10(params.marketTokenDecimals));
+      if (contract === cfg.sbtc) return divDown(B(amount) * B(px.BTC), pow10(params.collateralDecimals));
+      return null;
     },
 
     async liquidationPath(r, cfg, out, ctx) {
       const C = cfg.generation.contracts;
       const enabled = out.params.liquidationEnabled === true;
-      // Successful liquidations print from liquidator-v1 (also when called through a bot contract).
-      const { events } = await scanEvents(ctx.cacheDir, C.liquidator);
-      const liqEvents = events.filter((e) => /liquidat/i.test(e.repr));
-      const txids = [...new Set(liqEvents.map((e) => e.txid))];
-      const txs = [];
-      for (const t of txids.slice(0, 50)) txs.push(await getTx(ctx.cacheDir, t));
-      const ok = txs.filter((t) => t.status === "success" && t.h <= r.block.height).sort((a, b) => b.h - a.h);
+      // Every call of the liquidation functions on liquidator-v1, up to this block (deterministic, so verify recounts it).
+      const { txs, complete } = await scanTxs(ctx.cacheDir, C.liquidator, r.block.height, { log: ctx.log });
+      const calls = txs.filter((t) => t.cid === C.liquidator && (t.fn === "liquidate-collateral" || t.fn === "batch-liquidate"));
+      const ok = calls.filter((t) => t.status === "success").sort((a, b) => b.h - a.h);
       const last = ok[0];
       const status = !enabled ? "BLOCKED" : ok.length === 0 ? "UNPROVEN" : "LIVE";
       return {
@@ -215,9 +225,9 @@ function granite(id: MarketId): Adapter {
         summary: !enabled
           ? "Liquidations are disabled on this market (state-v1.is-liquidation-enabled = false)."
           : ok.length === 0
-            ? `No liquidation has executed through ${short(C.liquidator)} since this generation went live.`
-            : `${ok.length} liquidation transaction${ok.length === 1 ? "" : "s"} through ${C.liquidator.split(".")[0].slice(0, 8)}…${short(C.liquidator)}; last at block ${last.h} (${((r.block.blockTime - last.t) / 86400).toFixed(1)} days before this block).`,
-        evidence: { contract: C.liquidator, liquidationEnabled: enabled, successfulTxs: ok.length, lastSuccess: last ? { txid: last.txid, height: last.h, time: last.t } : null },
+            ? `No liquidation has executed through ${short(C.liquidator)} since this generation went live (${calls.length} attempt${calls.length === 1 ? "" : "s"}).`
+            : `${ok.length} of ${calls.length} liquidation calls through ${C.liquidator.split(".")[0].slice(0, 8)}…${short(C.liquidator)} succeeded; last at block ${last.h} (${((r.block.blockTime - last.t) / 86400).toFixed(1)} days before this block).`,
+        evidence: { contract: C.liquidator, liquidationEnabled: enabled, attempts: calls.length, successfulTxs: ok.length, lastSuccess: last ? { txid: last.txid, height: last.h, time: last.t } : null, scanComplete: complete },
       };
     },
   };

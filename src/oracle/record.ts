@@ -24,6 +24,7 @@ import { ROOT } from "../markets/index.ts";
 import { scanTxs, type Tx } from "../engine/txscan.ts";
 import { buildReference, refAt, MAX_CARRY, MIN_SOURCES, SOURCES, type RefSeries } from "./candles.ts";
 import { lazerTimestampUs } from "./lazer.ts";
+import { writeIndex } from "../engine/dataset.ts";
 
 type Write = { t: number; h: number; txid: string; value: number; feedTs: number; seed?: boolean; extra?: Record<string, string | number> };
 type Feed = { source: "DIA" | "Arkadiko"; feed: string; ref: string; frozen: any; writes: Write[]; consumers: string };
@@ -414,6 +415,7 @@ export async function runOracleRecord(o: { outDir: string; cacheDir: string; hei
     ...summary,
   };
   fs.writeFileSync(path.join(out, "summary.json"), JSON.stringify(full, null, 1));
+  writeIndex(o.outDir);
   log(`  wrote ${out}: ${pushRows.DIA.length} DIA rows, ${pushRows.Arkadiko.length} Arkadiko rows, ${lazerRows.length} Lazer rows, ${episodes.length} episodes`);
   return full;
 }

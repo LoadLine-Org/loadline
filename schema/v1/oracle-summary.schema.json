@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/LoadLine-Org/loadline/blob/main/schema/v1/oracle-summary.schema.json",
+  "title": "LoadLine oracle/summary.json",
+  "type": "object",
+  "required": [
+    "schema",
+    "generatedAt",
+    "window",
+    "method",
+    "provenance",
+    "episodeCounts",
+    "feeds",
+    "lazer",
+    "findings"
+  ],
+  "properties": {
+    "schema": {
+      "const": 1
+    },
+    "window": {
+      "type": "object",
+      "required": [
+        "from",
+        "to",
+        "days",
+        "endBlock"
+      ]
+    },
+    "feeds": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "source",
+          "feed",
+          "writesInWindow",
+          "gapS",
+          "hoursDeviationOver",
+          "frozenHours",
+          "now"
+        ]
+      }
+    },
+    "lazer": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "market",
+          "contract",
+          "limitS",
+          "lazerTxs",
+          "ok",
+          "oracleRevertsStale",
+          "oracleRevertsOther",
+          "nonOracleReverts",
+          "payloadAgeAtInclusionOkS"
+        ]
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "severity",
+          "title",
+          "statement",
+          "evidence"
+        ]
+      }
+    }
+  }
+}

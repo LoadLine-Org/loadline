@@ -21,34 +21,56 @@ import { getBlock, Reader } from "../lib/chain.ts";
 import { ledgerSummary } from "../lib/http.ts";
 import { lastCandle, recomputeMedian, to1e8, type Venue } from "../lib/prices.ts";
 import { derive } from "../engine/math.ts";
-import { probeCandidates } from "../engine/migration.ts";
+import { governanceWatch, probeCandidates } from "../engine/migration.ts";
+import { liquidationSummary, scanLiquidations } from "../engine/liquidations.ts";
+import { sha256, snapshotCsvs } from "../engine/dataset.ts";
+import { replaySwitch } from "../replay/replay.ts";
 import { codeFingerprint } from "../engine/fingerprint.ts";
 import { summarize, jsonReplacer, type PublishedPosition } from "../engine/snapshot.ts";
-import { ADAPTERS, MARKET_IDS, loadConfig, positionKey } from "../markets/index.ts";
+import { ADAPTERS, MARKET_IDS, loadConfig, positionKey, ROOT } from "../markets/index.ts";
 import type { MarketId, Position } from "../markets/types.ts";
 
 type Row = { market: string; check: string; result: "PASS" | "FAIL" | "SKIP"; detail: string };
 
-async function loader(from: string) {
+async function rawLoader(from: string) {
   const isUrl = /^https?:\/\//.test(from);
-  return async (rel: string) => {
+  return async (rel: string): Promise<string | null> => {
     if (isUrl) {
       const r = await fetch(new URL(rel, from.endsWith("/") ? from : from + "/"), { headers: { "user-agent": "loadline-verify" } });
+      if (r.status === 404) return null;
       if (!r.ok) throw new Error(`fetch ${rel}: HTTP ${r.status}`);
-      return r.json();
+      return r.text();
     }
-    return JSON.parse(fs.readFileSync(path.join(from, rel), "utf8"));
+    const f = path.join(from, rel);
+    return fs.existsSync(f) ? fs.readFileSync(f, "utf8") : null;
+  };
+}
+
+async function loader(from: string) {
+  const raw = await rawLoader(from);
+  return async (rel: string) => {
+    const t = await raw(rel);
+    if (t === null) throw new Error(`${rel}: not found`);
+    return JSON.parse(t);
   };
 }
 
 const canon = (x: unknown) => JSON.stringify(x, jsonReplacer);
 
-/** Deep diff; returns up to `max` "path: published != recomputed" lines. */
+/**
+ * Deep diff of a published value against its recomputation; returns up to `max`
+ * "path: published != recomputed" lines. Every published field must be reproduced. Fields the
+ * current code computes but an older snapshot does not carry are ignored: within a schema major
+ * version, changes are additive (docs/DATASET.md), so older snapshots stay verifiable.
+ */
 function diff(a: any, b: any, p = "", out: string[] = [], max = 8): string[] {
   if (out.length >= max) return out;
   if (canon(a) === canon(b)) return out;
   if (a && b && typeof a === "object" && typeof b === "object" && !Array.isArray(a) && !Array.isArray(b)) {
-    for (const k of new Set([...Object.keys(a), ...Object.keys(b)])) diff(a[k], b[k], p ? `${p}.${k}` : k, out, max);
+    for (const k of Object.keys(a)) {
+      if (!(k in b)) out.push(`${p ? `${p}.${k}` : k}: published but not recomputed`);
+      else diff(a[k], b[k], p ? `${p}.${k}` : k, out, max);
+    }
     return out;
   }
   if (Array.isArray(a) && Array.isArray(b) && a.length === b.length) {
@@ -67,6 +89,9 @@ const stripD = (p: PublishedPosition): Position => {
 export async function runVerify(o: { from: string; markets?: MarketId[]; skipPrices?: boolean; height?: number }): Promise<number> {
   const load = await loader(o.from);
   const latest = await load("latest.json");
+  const raw = await rawLoader(o.from);
+  const indexText = await raw("index.json");
+  const index = indexText ? JSON.parse(indexText) : null;
   const ids = (o.markets ?? MARKET_IDS).filter((id) => latest.markets[id]);
   const rows: Row[] = [];
   const add = (market: string, check: string, ok: boolean | null, detail: string) => {
@@ -144,7 +169,63 @@ export async function runVerify(o: { from: string; markets?: MarketId[]; skipPri
     const sDiffs = diff(snap.summary, summarize(pubPos, cfg));
     add(id, "summary", !sDiffs.length, `market summary ${sDiffs.length ? sDiffs.join("; ") : "identical"}`);
 
-    // 6. prices
+    // 6. liquidations: re-scan the entry contract's transactions up to the block, re-read each
+    //    successful liquidation's token movements, recount the liquidation path, recompute the summary.
+    if (snap.liquidations) {
+      const l0 = Date.now();
+      const lctx = { cacheDir, log: () => {} };
+      const rec = await scanLiquidations(cacheDir, ad.liquidationSpec(cfg), snap.block);
+      const lDiffs = diff(snap.liquidations, rec);
+      add(id, "liquid", !lDiffs.length, `${rec.events.length} liquidation${rec.events.length === 1 ? "" : "s"} in the ${rec.window.days}-day window, ${rec.sinceActivation.successes} of ${rec.sinceActivation.attempts} calls successful since activation: ${lDiffs.length ? lDiffs.join("; ") : "re-scanned from the chain and identical, including every repaid and seized amount"}`);
+      const lp = await ad.liquidationPath(r, cfg, out, lctx);
+      const pDiffs = diff(snap.liquidationPath, lp);
+      add(id, "liquid", !pDiffs.length, `liquidation path ${lp.status}: ${pDiffs.length ? pDiffs.join("; ") : "recounted and identical"}`);
+      const excl = new Set<string>(((cfg as any).reconciliationExclusions ?? []).map((e: any) => e.account));
+      const ls = liquidationSummary(pubPos, snap.liquidations, (a, amt) => ad.assetUsd(a, amt, snap.params, snap.priceVector, cfg), excl);
+      const lsDiffs = diff(snap.liquidationSummary, ls);
+      add(id, "liquid", !lsDiffs.length, `liquidatable vs liquidated summary ${lsDiffs.length ? lsDiffs.join("; ") : "recomputed and identical"} (${((Date.now() - l0) / 1000).toFixed(0)} s)`);
+    } else add(id, "liquid", null, snap.withheld?.risk ? `liquidation figures withheld in this snapshot (${snap.withheld.risk})` : "this snapshot has no liquidation records: it was published before they were added");
+
+    if (snap.redemptions) {
+      const rr = await scanLiquidations(cacheDir, ad.redemptionSpec!(cfg), snap.block);
+      const rDiffs2 = diff(snap.redemptions, rr);
+      add(id, "liquid", !rDiffs2.length, `${rr.events.length} redemption${rr.events.length === 1 ? "" : "s"} in the ${rr.window.days}-day window: ${rDiffs2.length ? rDiffs2.join("; ") : "re-scanned and identical"}`);
+    }
+    if (snap.extras && ad.extras) {
+      const xDiffs = diff(snap.extras, ad.extras(pubPos.map(stripD), snap.params, snap.priceVector));
+      add(id, "extras", !xDiffs.length, `${Object.keys(snap.extras).join(", ")} ${xDiffs.length ? xDiffs.join("; ") : "recomputed from published positions and identical"}`);
+    }
+
+    // dataset: the published file matches the index hash, and every CSV export regenerates byte for byte
+    if (index) {
+      const entry = index.snapshots.find((s: any) => s.height === snap.block.height);
+      const files: Record<string, { sha256: string }> = Object.fromEntries((entry?.files ?? []).map((f: any) => [f.path, f]));
+      const jsonText = await raw(rel);
+      const probs: string[] = [];
+      if (!files[rel]) probs.push(`${rel} not in index.json`);
+      else if (sha256(jsonText!) !== files[rel].sha256) probs.push(`${rel} sha256 differs from index.json`);
+      const csvs = snapshotCsvs(snap);
+      for (const [f, content] of Object.entries(csvs)) {
+        const p = `snapshots/${snap.block.height}/csv/${f}`;
+        const h = sha256(content);
+        if (!files[p]) probs.push(`${f} not in index.json`);
+        else if (files[p].sha256 !== h) probs.push(`${f}: index hash differs from the regenerated CSV`);
+        const pub = await raw(p);
+        if (pub === null) probs.push(`${f} not published`);
+        else if (sha256(pub) !== h) probs.push(`${f}: published CSV differs from the regenerated one`);
+      }
+      add(id, "dataset", !probs.length, probs.length ? probs.slice(0, 4).join("; ") : `snapshot JSON matches index.json (sha256), ${Object.keys(csvs).length} CSV exports regenerated byte for byte`);
+    } else add(id, "dataset", null, "no index.json published at this location");
+
+    // 7. governance watch: re-derive the governance contract and re-scan its proposals up to the block
+    if (snap.governance?.contract) {
+      const gov = await governanceWatch(r, cfg, cacheDir, () => {});
+      const g = { contract: gov.governance, txsScanned: gov.scanned, relevantProposalsInWindow: gov.relevantInWindow, pending: gov.pending };
+      const gDiffs = diff(snap.governance, g);
+      add(id, "gov", !gDiffs.length, `governance ${g.contract.split(".")[1]}: ${g.txsScanned} txs, ${g.relevantProposalsInWindow} migration proposals in window, ${g.pending.length} pending: ${gDiffs.length ? gDiffs.join("; ") : "re-scanned and identical"}`);
+    }
+
+    // 8. prices
     if (o.skipPrices || !snap.priceVector) add(id, "prices", null, o.skipPrices ? "skipped (--skip-prices)" : "no reference prices used");
     else {
       const target: number = snap.prices.targetMinute;
@@ -174,6 +255,25 @@ export async function runVerify(o: { from: string; markets?: MarketId[]; skipPri
         if (m === null ? a.median !== null : to1e8(m).toString() !== String(a.usd1e8)) medDiffs.push(`${a.asset}: published ${a.usd1e8}, recomputed ${m === null ? null : to1e8(m)}`);
       }
       add(id, "prices", !bad && !medDiffs.length, `${all.length - skipped} exchange candles re-fetched and identical${skipped ? `, ${skipped} not re-checkable (kraken keeps 12 h / venue unreachable)` : ""}; medians ${medDiffs.length ? medDiffs.join("; ") : "recomputed identically"}${qs.length ? " | " + qs.slice(0, 3).join("; ") : ""}`);
+    }
+  }
+
+  // Migration replay: every pointer read at every checkpoint, re-read at that block.
+  const replayText = o.markets ? null : await raw("replay/replay.json");
+  if (replayText) {
+    const pub = JSON.parse(replayText);
+    const conf = JSON.parse(fs.readFileSync(path.join(ROOT, "config/replay.json"), "utf8"));
+    console.log(`\nMigration replay  (replay/replay.json, ${pub.switches.length} switches)`);
+    for (const s of pub.switches) {
+      const c = conf.switches.find((x: any) => x.id === s.id);
+      if (!c) {
+        add("replay", "replay", false, `${s.id}: not in this checkout's config/replay.json`);
+        continue;
+      }
+      const again = await replaySwitch(c, cacheDir);
+      const d = diff(s, again);
+      const reads = s.steps.reduce((a: number, st: any) => a + st.before.pointers.length + st.at.pointers.length, 0);
+      add("replay", "replay", !d.length, `${s.id}: ${s.steps.length} step(s), ${reads} pointer reads at ${s.steps.length * 2} blocks, deploy ${s.warningMinutes} min before the first step: ${d.length ? d.join("; ") : "re-read and identical"}`);
     }
   }
 

@@ -15,6 +15,9 @@ import path from "node:path";
 import zlib from "node:zlib";
 import { runSnapshot } from "../src/engine/snapshot.ts";
 import { runOracleRecord } from "../src/oracle/record.ts";
+import { runReplay } from "../src/replay/replay.ts";
+import { writeIndex } from "../src/engine/dataset.ts";
+import { codeFingerprint } from "../src/engine/fingerprint.ts";
 import { ROOT } from "../src/markets/index.ts";
 
 const DATA_DIR = path.resolve(process.env.DATA_DIR ?? path.join(ROOT, "data"));
@@ -149,6 +152,19 @@ function oracleToday(): boolean {
   }
 }
 
-if (!snapshotToday()) daily();
-else if (!oracleToday()) job("oracle", () => runOracleRecord({ outDir: PUBLIC, cacheDir: path.join(DATA_DIR, "cache"), log }));
+// Published figures always come from the running code: a deploy with different code takes a fresh
+// snapshot at boot (an extra snapshot that day; published snapshots are never edited).
+function latestFingerprint(): string | null {
+  try {
+    return JSON.parse(fs.readFileSync(path.join(PUBLIC, "latest.json"), "utf8")).code?.fingerprint ?? null;
+  } catch {
+    return null;
+  }
+}
+const fp = codeFingerprint();
+if (!snapshotToday() || latestFingerprint() !== fp) {
+  log(`boot: latest snapshot ${snapshotToday() ? `was produced by code ${String(latestFingerprint()).slice(0, 12)}, running ${fp.slice(0, 12)}` : "is not from today"}; running now`);
+  daily();
+} else if (!oracleToday()) job("oracle", () => runOracleRecord({ outDir: PUBLIC, cacheDir: path.join(DATA_DIR, "cache"), log }));
+if (!fs.existsSync(path.join(PUBLIC, "replay/replay.json"))) job("replay", async () => { await runReplay({ outDir: PUBLIC, cacheDir: path.join(DATA_DIR, "cache"), log }); writeIndex(PUBLIC); });
 scheduleNext();

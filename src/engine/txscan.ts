@@ -154,3 +154,34 @@ export async function getTx(cacheDir: string, txid: string): Promise<Tx> {
   fs.writeFileSync(file, JSON.stringify(tx));
   return tx;
 }
+
+/** A token movement in a transaction: FT transfer/mint/burn, or an STX transfer. */
+export type Move = { kind: "transfer" | "mint" | "burn"; asset: string; sender: string | null; recipient: string | null; amount: string };
+export type TxMoves = { txid: string; h: number; t: number; status: string; sender: string; fn: string | null; args: string[]; moves: Move[] };
+
+/** A transaction with its token movements (cached; confirmed transactions never change). */
+export async function getTxMoves(cacheDir: string, txid: string): Promise<TxMoves> {
+  const dir = path.join(cacheDir, "txmoves");
+  fs.mkdirSync(dir, { recursive: true });
+  const file = path.join(dir, txid + ".json");
+  if (fs.existsSync(file)) return JSON.parse(fs.readFileSync(file, "utf8"));
+  const moves: Move[] = [];
+  let base: any = null;
+  for (let offset = 0; ; offset += 100) {
+    const j = await requestJson(`${HIRO}/extended/v1/tx/${txid}?event_offset=${offset}&event_limit=100`);
+    base ??= j;
+    for (const e of j.events ?? []) {
+      if (e.event_type === "fungible_token_asset") {
+        const a = e.asset;
+        moves.push({ kind: a.asset_event_type, asset: a.asset_id, sender: a.sender || null, recipient: a.recipient || null, amount: String(a.amount) });
+      } else if (e.event_type === "stx_asset" && e.asset.asset_event_type === "transfer") {
+        moves.push({ kind: "transfer", asset: "STX", sender: e.asset.sender, recipient: e.asset.recipient, amount: String(e.asset.amount) });
+      }
+    }
+    if ((j.events ?? []).length < 100 || offset + 100 >= (j.event_count ?? 0)) break;
+  }
+  const tx = toTx(base);
+  const out: TxMoves = { txid, h: tx.h, t: tx.t, status: tx.status, sender: tx.sender, fn: tx.fn, args: tx.args, moves };
+  fs.writeFileSync(file, JSON.stringify(out));
+  return out;
+}

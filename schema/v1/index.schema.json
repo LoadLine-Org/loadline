@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/LoadLine-Org/loadline/blob/main/schema/v1/index.schema.json",
+  "title": "LoadLine index.json",
+  "type": "object",
+  "required": [
+    "schema",
+    "generatedAt",
+    "deprecations",
+    "growth",
+    "latest",
+    "snapshots",
+    "oracle"
+  ],
+  "properties": {
+    "schema": {
+      "const": 1
+    },
+    "deprecations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "field",
+          "since",
+          "removeAfter",
+          "note"
+        ]
+      }
+    },
+    "latest": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "snapshots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "height",
+          "indexBlockHash",
+          "blockTime",
+          "bytes",
+          "files"
+        ],
+        "properties": {
+          "files": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/file"
+            }
+          }
+        }
+      }
+    },
+    "oracle": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/file"
+      }
+    },
+    "replay": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/file"
+      }
+    }
+  },
+  "$defs": {
+    "file": {
+      "type": "object",
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  }
+}
