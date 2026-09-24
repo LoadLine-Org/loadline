@@ -140,5 +140,15 @@ const server = http.createServer((req, res) => {
 
 seed();
 server.listen(PORT, () => log(`serving ${PUBLIC} on :${PORT}`));
+function oracleToday(): boolean {
+  try {
+    const o = JSON.parse(fs.readFileSync(path.join(PUBLIC, "oracle/summary.json"), "utf8"));
+    return o.window.to.slice(0, 10) === new Date().toISOString().slice(0, 10);
+  } catch {
+    return false;
+  }
+}
+
 if (!snapshotToday()) daily();
+else if (!oracleToday()) job("oracle", () => runOracleRecord({ outDir: PUBLIC, cacheDir: path.join(DATA_DIR, "cache"), log }));
 scheduleNext();

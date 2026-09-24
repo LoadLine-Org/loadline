@@ -50,7 +50,9 @@ const kucoin = (sym: string): Src["fetch"] => async (from, to) => {
 const coinbase = (sym: string, gran = 60): Src["fetch"] => async (from, to) => {
   const out: [number, number, number][] = [];
   for (let t = from; t < to; t += 300 * gran) {
-    const j = await J<any[]>(`https://api.exchange.coinbase.com/products/${sym}/candles?granularity=${gran}&start=${iso(t)}&end=${iso(Math.min(to, t + 300 * gran) - gran)}`);
+    const end = Math.min(to, t + 300 * gran) - gran;
+    if (end < t) break; // no complete candle of this granularity yet (e.g. hourly, just after midnight)
+    const j = await J<any[]>(`https://api.exchange.coinbase.com/products/${sym}/candles?granularity=${gran}&start=${iso(t)}&end=${iso(end)}`);
     for (const k of j ?? []) out.push([k[0], +k[4], +k[5]]);
   }
   return out;
